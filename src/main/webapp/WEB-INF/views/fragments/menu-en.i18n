@@ -18,7 +18,8 @@ master.menu.sign-out = Sign out
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
-master.menu.anonymous.favourite-link = 08892865F: Romero Sánchez, Rubén
+master.menu.anonymous.favourite-link-2 = 08892865F: Romero Sánchez, Rubén
+master.menu.anonymous.favourite-link-1 = 76584962E: Ulecia García, Javier
 
 # master.menu.administrator ###################################################
 
