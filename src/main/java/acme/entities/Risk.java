@@ -1,10 +1,12 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
@@ -32,9 +34,10 @@ public class Risk extends AbstractEntity {
 	@NotNull
 	private String				reference;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Past(message = "Identification date must be in the past")
 	@NotNull
-	private LocalDateTime		identificationDate;
+	private Date				date;
 
 	@DecimalMin(value = "0", message = "The impact must be a positive number")
 	@NotNull
@@ -54,7 +57,7 @@ public class Risk extends AbstractEntity {
 
 
 	@Transient
-	private Double getValue() {
+	private Double Value() {
 		return this.impact * this.probability;
 
 	}
