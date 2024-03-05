@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -49,13 +48,6 @@ public class Objective extends AbstractEntity {
 	private Instant				duration;
 
 	private String				link;
-
-
-	@Transient
-	private Double calculatedValue() {
-		// Add your calculation logic here if needed
-		return null;
-	}
 
 
 	public enum Priority {
