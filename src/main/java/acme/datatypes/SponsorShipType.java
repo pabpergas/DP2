@@ -2,6 +2,6 @@
 package acme.datatypes;
 
 public enum SponsorShipType {
-	FINANCIAL, In_KIND
+	FINANCIAL, IN_KIND
 
 }
