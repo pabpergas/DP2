@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -33,17 +34,16 @@ public class Risk extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@NotNull
-	@Length(max = 255)
 	private String				reference;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past(message = "Identification date must be in the past")
 	@NotNull
-	private Date				date;
+	private Date				identificationDate;
 
-	@DecimalMin(value = "0", message = "The impact must be a positive number")
+	@Positive(message = "The impact must be a positive number")
 	@NotNull
-	private Double				impact;
+	private Integer				impact;
 
 	@NotNull
 	@DecimalMin(value = "0", message = "The probability must be a positive number")
