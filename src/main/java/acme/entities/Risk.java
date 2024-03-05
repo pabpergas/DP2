@@ -1,5 +1,4 @@
 
-
 package acme.entities;
 
 import java.util.Date;
@@ -62,4 +61,4 @@ public class Risk extends AbstractEntity {
 		return this.impact * this.probability;
 
 	}
-
+}
