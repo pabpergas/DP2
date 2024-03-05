@@ -1,10 +1,12 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -24,31 +26,32 @@ public class Contract extends AbstractEntity {
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: [A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
-	private String			code;
+	private String	code;
 
 	@NotNull
 	@Past
-	private LocalDateTime	instantiationMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date	instantiationMoment;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
-	private String			providerName;
+	private String	providerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
-	private String			customerName;
+	private String	customerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 100)
-	private String			goals;
+	private String	goals;
 
 	@PositiveOrZero
 	@NotNull
-	private double			budget;
+	private Double	budget;
 
-	private String			link;
+	private String	link;
 
 }

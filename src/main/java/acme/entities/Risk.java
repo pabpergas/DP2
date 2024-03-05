@@ -13,7 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Risk extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@NotNull
+	@Length(max = 255)
 	private String				reference;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,11 +50,12 @@ public class Risk extends AbstractEntity {
 	private Double				probability;
 
 	@NotBlank
-	@Size(max = 100, message = "Description must be less than 101 characters")
+	@Length(max = 100, message = "Description must be less than 101 characters")
 	@NotNull
 	private String				description;
 
 	//Optional
+	@Length(max = 255)
 	private String				link;
 
 

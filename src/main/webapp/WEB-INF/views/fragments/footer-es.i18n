@@ -19,3 +19,7 @@ master.footer.label.twitter = Twitter
 master.footer.title.languages = Lenguajes
 master.footer.label.english = Inglés
 master.footer.label.spanish = Español
+master.footer.title.coins = Monedas
+master.footer.coin.eur = EUR
+master.footer.coin.usd = USD
+master.footer.coin.gbp = GBP
