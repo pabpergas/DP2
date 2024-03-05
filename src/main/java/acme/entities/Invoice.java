@@ -7,12 +7,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -40,18 +44,21 @@ public class Invoice extends AbstractEntity {
 
 	@Positive
 	@NotNull
-	private Integer	quantity;
+	private int		quantity;
 
 	@PositiveOrZero
 	@NotNull
-	private Double	tax;
+	private double	tax;
 
 
-	private Double calculateTotalAmount() {
+	@Transient
+	private double calculateTotalAmount() {
 		return this.quantity + this.quantity * this.tax;
 	}
 
 
+	@URL
+	@Length(max = 255)
 	private String link;
 
 }
