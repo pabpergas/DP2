@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -27,13 +27,13 @@ public class Claim extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "^C-[0-9]{4}$")
 	@NotBlank
 	@Column(unique = true)
 	String						code;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	Date						instantiation;
 
@@ -50,9 +50,11 @@ public class Claim extends AbstractEntity {
 	String						department;
 
 	@Email
+	@Length(min = 0, max = 100)
 	String						email;
 
 	@URL
+	@Length(min = 0, max = 100)
 	String						link;
 
 }
