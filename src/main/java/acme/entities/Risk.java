@@ -13,7 +13,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -37,22 +39,23 @@ public class Risk extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past(message = "Identification date must be in the past")
 	@NotNull
-	private Date				date;
+	private Date				identificationDate;
 
-	@DecimalMin(value = "0", message = "The impact must be a positive number")
+	@Positive(message = "The impact must be a positive number")
 	@NotNull
-	private Double				impact;
+	private Integer				impact;
 
 	@NotNull
 	@DecimalMin(value = "0", message = "The probability must be a positive number")
 	private Double				probability;
 
 	@NotBlank
-	@Size(max = 100, message = "Description must be less than 101 characters")
+	@Length(max = 100, message = "Description must be less than 101 characters")
 	@NotNull
 	private String				description;
 
 	//Optional
+	@Length(max = 255)
 	private String				link;
 
 

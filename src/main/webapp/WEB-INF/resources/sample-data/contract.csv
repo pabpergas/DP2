@@ -1,0 +1,2 @@
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,link
+contract-01,AAA-111,2020/01/21 18:00,contract1,"contractCustomer1","contractGoal1",1.00,"http://link.com/"
