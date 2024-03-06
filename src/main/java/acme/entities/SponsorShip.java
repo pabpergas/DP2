@@ -1,10 +1,10 @@
 
 package acme.entities;
 
-import java.sql.Date;
-import java.time.Duration;
+import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +21,12 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.datatypes.SponsorShipType;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class SponsorShip extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -44,13 +49,13 @@ public class SponsorShip extends AbstractEntity {
 
 	//En el servicio validar que la duration 
 	@NotNull
-	private Duration			duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				duration;
 
 	@Positive(message = "The amount must be a positive number")
 	@NotNull
-	private double				amount;
+	private Double				amount;
 
-	@NotBlank
 	@NotNull
 	private SponsorShipType		type;
 

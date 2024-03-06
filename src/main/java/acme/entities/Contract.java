@@ -22,36 +22,45 @@ import lombok.Setter;
 @Setter
 public class Contract extends AbstractEntity {
 
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
+
 	@NotBlank
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: [A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
-	private String	code;
+
+	private String				code;
 
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
-	private String	providerName;
+
+	private String				providerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
-	private String	customerName;
+
+	private String				customerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 100)
-	private String	goals;
+
+	private String				goals;
 
 	@PositiveOrZero
 	@NotNull
-	private Double	budget;
+	private Double				budget;
 
-	private String	link;
+	private String				link;
 
 }
