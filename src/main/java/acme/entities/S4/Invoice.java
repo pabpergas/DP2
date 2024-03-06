@@ -14,13 +14,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.groupal.Risk;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,9 +49,8 @@ public class Invoice extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date	dueDate;
 
-	@Positive
 	@NotNull
-	private Integer	quantity;
+	private Money	quantity;
 
 	@PositiveOrZero
 	@NotNull
@@ -64,7 +63,9 @@ public class Invoice extends AbstractEntity {
 
 	@Transient
 	private Double totalAmount() {
-		return this.quantity + this.quantity * this.tax;
+		Double q = this.quantity.getAmount();
+
+		return q + q * this.tax;
 	}
 
 }

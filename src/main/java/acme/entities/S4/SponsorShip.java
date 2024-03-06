@@ -14,12 +14,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.datatypes.SponsorShipType;
 import acme.entities.S1.Project;
 import lombok.Getter;
@@ -50,9 +50,8 @@ public class SponsorShip extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				duration;
 
-	@Positive
 	@NotNull
-	private Double				amount;
+	private Money				amount;
 
 	@NotNull
 	private SponsorShipType		type;
