@@ -5,15 +5,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
+import acme.entities.S1.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,45 +28,43 @@ import lombok.Setter;
 @Setter
 public class Contract extends AbstractEntity {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 1L;
+	@ManyToOne
+	@Valid
+	private Project				project;
 
 	@NotBlank
-	@NotNull
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: [A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	@Column(unique = true)
 
 	private String				code;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@NotNull
-	@Column(length = 75)
+	@Length(max = 75)
 
 	private String				providerName;
 
 	@NotBlank
-	@NotNull
-	@Column(length = 75)
+	@Length(max = 75)
 
 	private String				customerName;
 
 	@NotBlank
-	@NotNull
-	@Column(length = 100)
+	@Length(max = 100)
 
 	private String				goals;
 
-	@PositiveOrZero
 	@NotNull
-	private Double				budget;
+	private Money				budget;
 
+	@URL
+	@Length(max = 150)
 	private String				link;
 
+	private boolean				draftMode;
 }

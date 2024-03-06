@@ -3,6 +3,7 @@ package acme.roles;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -21,7 +22,7 @@ public class Client extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Pattern(regexp = "CLI-[0-9]{4}")
+	@Pattern(regexp = "^CLI-[0-9]{4}$")
 	@Column(unique = true)
 	String						identification;
 
@@ -32,10 +33,11 @@ public class Client extends AbstractRole {
 	@NotBlank
 	String						type;
 
-	@NotBlank
+	@Email
 	String						email;
 
 	@URL
+	@Length(max = 150)
 	String						link;
 
 }

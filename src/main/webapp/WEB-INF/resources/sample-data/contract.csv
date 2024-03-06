@@ -1,2 +1,2 @@
-key,code,instantiation-moment,provider-name,customer-name,goals,budget,link
-contract-01,AAA-111,2020/01/21 18:00,contract1,"contractCustomer1","contractGoal1",1.00,"http://link.com/"
+key,key:project,code,instantiation-moment,provider-name,customer-name,goals,budget,link,draftMode
+contract-01,project-01,AAA-111,2020/01/21 18:00,contract1,"contractCustomer1","contractGoal1","USD 1,000.00","http://link.com/",true

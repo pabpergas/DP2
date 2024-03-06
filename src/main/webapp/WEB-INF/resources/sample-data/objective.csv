@@ -1,2 +1,2 @@
-key,title,description,priority,critical,instantiationMoment,duration,link
-objective-01,objectiveTitle,objectiveDescription,LOW,false,2019/01/21 18:00,2020/02/21 18:00,"http://link.com/"
+key,title,description,priority,critical,instantiationMoment,startDate,endDate,link
+objective-01,objectiveTitle,objectiveDescription,LOW,false,2019/01/21 18:00,2020/02/21 18:00,2020/02/21 19:00,"http://link.com/"
