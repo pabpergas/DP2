@@ -1,15 +1,14 @@
 
-package acme.entities;
+package acme.entities.groupal;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -20,46 +19,49 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.SponsorShipType;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class SponsorShip extends AbstractEntity {
+public class Risk extends AbstractEntity {
+
+	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	@Valid
-	private Project				project;
-
+	@Pattern(regexp = "^R-[0-9]{3}$")
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	@Column(unique = true)
-	private String				code;
+	private String				reference;
 
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
-	private Date				moment;
-
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				duration;
+	private Date				identificationDate;
 
 	@Positive
 	@NotNull
-	private Double				amount;
+	private Integer				impact;
 
 	@NotNull
-	private SponsorShipType		type;
+	@Min(0)
+	private Double				probability;
 
-	@Email
-	private String				contactEmail;
+	@NotBlank
+	@Length(max = 100)
+	@NotNull
+	private String				description;
 
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+
+	@Transient
+	private Double Value() {
+		return this.impact * this.probability;
+
+	}
 }

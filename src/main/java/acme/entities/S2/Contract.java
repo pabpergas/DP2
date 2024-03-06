@@ -1,63 +1,66 @@
 
-package acme.entities;
+package acme.entities.S2;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
+import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.Difficulty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Training extends AbstractEntity {
+public class Contract extends AbstractEntity {
+
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: [A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
-	private String		code;
+
+	private String				code;
 
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		moment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@NotNull
-	@Length(max = 100)
-	private String		details;
+	@Column(length = 75)
+
+	private String				providerName;
 
 	@NotBlank
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Difficulty	difficulty;
+	@Column(length = 75)
 
-	@URL
-	private String		link;
+	private String				customerName;
 
-	@Past
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date		updateMoment;
-
+	@NotBlank
 	@NotNull
-	@Column(name = "estimated_total_time")
-	private int			estimatedTotalTime; // Represented in minutes
+	@Column(length = 100)
 
-	// Constructors, getters, and setters can be added here
+	private String				goals;
+
+	@PositiveOrZero
+	@NotNull
+	private Double				budget;
+
+	private String				link;
+
 }

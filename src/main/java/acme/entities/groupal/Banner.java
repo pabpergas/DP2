@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.groupal;
 
 import java.util.Date;
 

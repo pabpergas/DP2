@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.S1;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.Priority;
 import lombok.Getter;
 import lombok.Setter;
 
