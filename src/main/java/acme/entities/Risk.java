@@ -8,14 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -30,31 +31,30 @@ public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "R-[0-9]{3}", message = "The reference must follow the pattern 'R-XXX'")
+	@Pattern(regexp = "^R-[0-9]{3}$")
 	@NotBlank
 	@Column(unique = true)
-	@NotNull
 	private String				reference;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past(message = "Identification date must be in the past")
+	@PastOrPresent
 	@NotNull
 	private Date				identificationDate;
 
-	@Positive(message = "The impact must be a positive number")
+	@Positive
 	@NotNull
 	private Integer				impact;
 
 	@NotNull
-	@DecimalMin(value = "0", message = "The probability must be a positive number")
+	@Min(0)
 	private Double				probability;
 
 	@NotBlank
-	@Length(max = 100, message = "Description must be less than 101 characters")
+	@Length(max = 100)
 	@NotNull
 	private String				description;
 
-	//Optional
+	@URL
 	@Length(max = 255)
 	private String				link;
 
