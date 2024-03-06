@@ -1,2 +1,2 @@
-key,reference,date,impact,probability,description,link
-risk-01,R-009,2022/02/02 18:00,2.00,0.80,"This is a risk for sample data", "http://acme.es"
+key,reference,identification-date,impact,probability,description,link
+risk-01,R-009,2022/02/02 18:00,2,0.80,"This is a risk for sample data", "http://acme.es"
