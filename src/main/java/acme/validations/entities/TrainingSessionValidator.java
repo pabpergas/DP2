@@ -7,7 +7,7 @@ import java.time.ZoneId;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import acme.entities.Sessions;
+import acme.entities.S3.Sessions;
 import acme.validations.ValidTrainingSession;
 
 public class TrainingSessionValidator implements ConstraintValidator<ValidTrainingSession, Sessions> {

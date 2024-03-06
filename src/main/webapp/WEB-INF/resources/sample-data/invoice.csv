@@ -1,0 +1,2 @@
+key,key:risk,code,registration-time,due-date,quantity,tax,link
+invoice-01,risk-01,IN-0001-0001,2022/01/01 13:00,2022/02/03 12:00,"USD 2,000.00",2.00,"http://invoice01.es"

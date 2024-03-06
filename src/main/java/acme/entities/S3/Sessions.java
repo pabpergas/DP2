@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.S3;
 
 import java.time.LocalDate;
 

@@ -1,16 +1,18 @@
 
-package acme.entities;
+package acme.entities.groupal;
 
-import java.time.Instant;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -24,29 +26,35 @@ public class Objective extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Size(max = 76, message = "Title must be shorter than 76 characters")
-	@Column(nullable = false)
+	@Size(max = 75)
+
 	private String				title;
 
 	@NotBlank
-	@Size(max = 100, message = "Description must be shorter than 101 characters")
-	@Column(nullable = false)
+	@Size(max = 100)
+
 	private String				description;
 
 	@NotNull
-	@Enumerated(EnumType.STRING)
 	private Priority			priority;
 
-	@NotNull
 	private boolean				critical;
 
 	@NotNull
-	@Past(message = "Instantiation moment must be in the past")
-	private Instant				instantiationMoment;
+	@PastOrPresent
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				instantiationMoment;
 
 	@NotNull
-	private Instant				duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startDate;
 
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
+
+	@URL
+	@Length(max = 150)
 	private String				link;
 
 
