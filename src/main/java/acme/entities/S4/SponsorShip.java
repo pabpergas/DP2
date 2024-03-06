@@ -22,6 +22,7 @@ import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
 import acme.datatypes.SponsorShipType;
 import acme.entities.S1.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -62,4 +63,8 @@ public class SponsorShip extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	@ManyToOne
+	@Valid
+	private Sponsor				sponsor;
 }
