@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.S4;
 
 import java.util.Date;
 
@@ -12,15 +12,16 @@ import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
+import acme.entities.groupal.Risk;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,37 +36,36 @@ public class Invoice extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}", message = "The code must be in the correct format: IN-XXXX-XXXX")
+	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
 	@Column(unique = true)
 	private String	code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	private Date	registrationTime;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	//Validacion en el servicio
 	private Date	dueDate;
 
-	@Positive(message = "The quantity must be a positive number")
 	@NotNull
-	private Integer	quantity;
+	private Money	quantity;
 
-	@PositiveOrZero(message = "The tax must be a positive number or zero")
+	@PositiveOrZero
 	@NotNull
 	private Double	tax;
+
+	@URL
+	@Length(max = 255)
+	private String	link;
 
 
 	@Transient
 	private Double totalAmount() {
-		return this.quantity + this.quantity * this.tax;
+		Double q = this.quantity.getAmount();
+
+		return q + q * this.tax;
 	}
-
-
-	@URL
-	@Length(max = 255)
-	private String link;
 
 }

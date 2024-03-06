@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.S4;
 
 import java.util.Date;
 
@@ -12,15 +12,16 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.SponsorShipType;
+import acme.client.data.datatypes.Money;
+import acme.entities.S1.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +30,6 @@ import lombok.Setter;
 @Setter
 public class SponsorShip extends AbstractEntity {
 
-	// Serialisation identifier -----------------------------------------------
-
 	private static final long	serialVersionUID	= 1L;
 
 	@ManyToOne
@@ -38,23 +37,21 @@ public class SponsorShip extends AbstractEntity {
 	private Project				project;
 
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: ABC-123")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	@Column(unique = true)
 	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	private Date				moment;
 
-	//En el servicio validar que la duration 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				duration;
 
-	@Positive(message = "The amount must be a positive number")
 	@NotNull
-	private Double				amount;
+	private Money				amount;
 
 	@NotNull
 	private SponsorShipType		type;
@@ -65,4 +62,15 @@ public class SponsorShip extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	@ManyToOne
+	@Valid
+	private Sponsor				sponsor;
+
+
+	public enum SponsorShipType {
+		FINANCIAL, IN_KIND
+
+	}
+
 }

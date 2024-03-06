@@ -2,6 +2,7 @@
 package acme.roles;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -14,23 +15,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Manager extends AbstractRole {
+public class Sponsor extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Length(min = 0, max = 75)
-	String						degree;
+	@Length(max = 75)
+	private String				name;
 
 	@NotBlank
-	@Length(min = 0, max = 100)
-	String						overview;
-
-	@NotBlank
-	@Length(min = 0, max = 100)
-	String						certifications;
+	@Length(max = 100)
+	private String				expectedBenefits;
 
 	@URL
-	@Length(min = 0, max = 100)
-	String						link;
+	private String				webPage;
+
+	@Email
+	private String				emailContact;
+
 }
