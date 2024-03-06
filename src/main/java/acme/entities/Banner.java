@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import acme.client.data.AbstractEntity;
 import acme.validations.entities.BannerValidator;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,32 +17,32 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@BannerValidator(initial = "instantationMoment", start = "startDisplay", end = "endDisplay",
-    message = "start moment of display must be after instant moment, between start and end of display must be at least 7 days")
-public class Banner {
+@BannerValidator(initial = "instantationMoment", start = "startDisplay", end = "endDisplay", message = "start moment of display must be after instant moment, between start and end of display must be at least 7 days")
+public class Banner extends AbstractEntity {
 
-    @NotNull
-    @Past
-    private LocalDateTime instantationMoment;
+	private static final long	serialVersionUID	= 1L;
 
-    @NotNull
-    private LocalDateTime startDisplay;
+	@NotNull
+	@Past
+	private LocalDateTime		instantationMoment;
 
-    @NotNull
-    private LocalDateTime endDisplay;
+	@NotNull
+	private LocalDateTime		startDisplay;
 
-    @NotNull
-    @NotBlank
-    private String pictureLink;
+	@NotNull
+	private LocalDateTime		endDisplay;
 
-    @NotNull
-    @NotBlank
-    @Size(min = 1, max = 76)
-    private String slogan;
+	@NotNull
+	@NotBlank
+	private String				pictureLink;
 
-    @NotNull
-    @NotBlank
-    private String documentLink;
+	@NotNull
+	@NotBlank
+	@Size(min = 1, max = 76)
+	private String				slogan;
 
+	@NotNull
+	@NotBlank
+	private String				documentLink;
 
 }
