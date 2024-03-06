@@ -33,6 +33,12 @@
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.english" action="/?locale=en"/>
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.spanish" action="/?locale=es"/>
 	</acme:footer-subpanel>
+	
+	<acme:footer-subpanel code="master.footer.title.coins">
+		<acme:footer-option icon="fa fa-euro-sign" code="master.footer.coin.eur" action="/?locale=en"/>
+		<acme:footer-option icon="fa fa-dollar-sign" code="master.footer.coin.usd" action="/?locale=es"/>
+		<acme:footer-option icon="fa fa-pound-sign" code="master.footer.coin.gbp" action="/?locale=es"/>
+	</acme:footer-subpanel>
 
 	<acme:footer-logo logo="images/logo.png" alt="master.company.name">
 		<acme:footer-copyright code="master.company.name"/>

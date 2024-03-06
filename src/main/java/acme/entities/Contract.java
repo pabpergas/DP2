@@ -31,6 +31,7 @@ public class Contract extends AbstractEntity {
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: [A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
+
 	private String				code;
 
 	@NotNull
@@ -41,16 +42,19 @@ public class Contract extends AbstractEntity {
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
+
 	private String				providerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 75)
+
 	private String				customerName;
 
 	@NotBlank
 	@NotNull
 	@Column(length = 100)
+
 	private String				goals;
 
 	@PositiveOrZero
