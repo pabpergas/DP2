@@ -1,5 +1,5 @@
 key,key:userAccount,name,expected-benefits,web-page,email-contact
-sponsor-01,user-account-sponsor-01,sponsor1よ芝,"3.000, 2.000, 4.000",https://sponsor01.es,sponsor1@gmail.com
+sponsor-01,user-account-sponsor-01,sponsor1,"3.000, 2.000, 4.000",https://sponsor01.es,sponsor1@gmail.com
 sponsor-02,user-account-sponsor-02,sponsor2,"1",https://sponsor02.es,sponsor2@gmail.com
-sponsor-03,user-account-sponsor-03,sponsor3,"3.000, 2.000, 4.000",https://s芝ponsor02.es,sponsor3@gmail.com
-sponsor-04,user-account-sponsor-04,sponsor4,"3.000, 2.000, 4.000",https://sponsor03.es,芝sponsor4@gmail.com
+sponsor-03,user-account-sponsor-03,sponsor3,"3.000, 2.000, 4.000",https://sponsor02.es,sponsor3@gmail.com
+sponsor-04,user-account-sponsor-04,sponsor4,"3.000, 2.000, 4.000",https://sponsor03.es,sponsor4@gmail.com
