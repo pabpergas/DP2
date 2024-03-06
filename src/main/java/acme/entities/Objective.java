@@ -1,12 +1,14 @@
 
 package acme.entities;
 
-import java.time.Instant;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -41,11 +43,13 @@ public class Objective extends AbstractEntity {
 	private boolean				critical;
 
 	@NotNull
-	@Past(message = "Instantiation moment must be in the past")
-	private Instant				instantiationMoment;
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				instantiationMoment;
 
 	@NotNull
-	private Instant				duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				duration;
 
 	private String				link;
 
