@@ -21,7 +21,6 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.entities.groupal.Risk;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,33 +31,32 @@ public class Invoice extends AbstractEntity {
 
 	@ManyToOne
 	@Valid
-	private Risk	risk;
+	private SponsorShip	sponsorShip;
 
 	@NotBlank
-	@NotNull
 	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
 	@Column(unique = true)
-	private String	code;
+	private String		code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
-	private Date	registrationTime;
+	private Date		registrationTime;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	dueDate;
+	private Date		dueDate;
 
 	@NotNull
-	private Money	quantity;
+	private Money		quantity;
 
 	@PositiveOrZero
 	@NotNull
-	private Double	tax;
+	private Double		tax;
 
 	@URL
 	@Length(max = 255)
-	private String	link;
+	private String		link;
 
 
 	@Transient

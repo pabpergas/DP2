@@ -51,7 +51,6 @@ public class Risk extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	@NotNull
 	private String				description;
 
 	@URL
@@ -60,7 +59,7 @@ public class Risk extends AbstractEntity {
 
 
 	@Transient
-	private Double Value() {
+	private Double value() {
 		return this.impact * this.probability;
 
 	}
