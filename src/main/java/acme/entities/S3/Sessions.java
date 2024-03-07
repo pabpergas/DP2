@@ -28,8 +28,7 @@ import lombok.Setter;
 public class Sessions extends AbstractEntity {
 
 	@NotBlank
-	@NotNull
-	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "The code must be in the correct format: TS-[A-Z]{1,3}-[0-9]{3}")
+	@Pattern(regexp = "^TS-[A-Z]{1,3}-[0-9]{3}$")
 	@Column(unique = true)
 	private String		code;
 
@@ -53,12 +52,9 @@ public class Sessions extends AbstractEntity {
 	private String		link;
 
 	@NotNull
-	@Future
-	@Column(name = "start_date")
 	private LocalDate	startDate;
 
 	@NotNull
-	@Column(name = "duration_in_weeks")
 	private int			durationInWeeks;
 
 }
