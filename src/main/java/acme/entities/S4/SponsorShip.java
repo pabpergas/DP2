@@ -48,7 +48,11 @@ public class SponsorShip extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				duration;
+	private Date				startDate;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@NotNull
 	private Money				amount;
