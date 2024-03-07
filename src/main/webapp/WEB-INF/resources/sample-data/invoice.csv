@@ -1,5 +1,3 @@
-key,key:risk,code,registration-time,due-date,quantity,tax,link
+key,key:sponsorShip,code,registration-time,due-date,quantity,tax,link
 invoice-01,sponsorShip-01,"IN-0001-0001","2022/01/01 13:00","2022/02/03 12:00","USD 2,000.00",2.00,"http://invoice01.es"
-invoice-02sponsorShip-02,"IN-0002-0002","2022/01/01 13:00","2022/02/03 12:00","GBD 2,000.00",2.00,"http://invoice01.es"
-invoice-03,sponsorShip-03,"IN-0003-0003","2022/01/01 13:00","2022/02/03 12:00","USD 2,000.00",2.00,"http://invoice01.es"
-
+invoice-02,sponsorShip-02,"IN-0002-0002","2022/01/01 13:00","2022/02/03 12:00","GBD 2,000.00",2.00,"http://invoice01.es"
