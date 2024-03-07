@@ -8,8 +8,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.validations.entities.BannerValidator;
@@ -25,7 +27,7 @@ public class Banner extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantationMoment;
 
@@ -37,18 +39,15 @@ public class Banner extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDisplay;
 
-
 	@NotNull
-	@NotBlank
 	private String				pictureLink;
 
-	@NotNull
 	@NotBlank
-	@Size(min = 1, max = 76)
+	@Size(min = 1, max = 75)
 	private String				slogan;
 
 	@NotNull
-	@NotBlank
+	@URL
 	private String				documentLink;
 
 }

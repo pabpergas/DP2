@@ -30,31 +30,31 @@ public class Claim extends AbstractEntity {
 	@Pattern(regexp = "^C-[0-9]{4}$")
 	@NotBlank
 	@Column(unique = true)
-	String						code;
+	private String				code;
 
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
-	Date						instantiation;
+	private Date				instantiation;
 
 	@NotBlank
 	@Length(min = 0, max = 75)
-	String						heading;
+	private String				heading;
 
 	@NotBlank
 	@Length(min = 0, max = 100)
-	String						description;
+	private String				description;
 
 	@NotBlank
 	@Length(min = 0, max = 100)
-	String						department;
+	private String				department;
 
 	@Email
 	@Length(min = 0, max = 100)
-	String						email;
+	private String				email;
 
 	@URL
 	@Length(min = 0, max = 100)
-	String						link;
+	private String				link;
 
 }
