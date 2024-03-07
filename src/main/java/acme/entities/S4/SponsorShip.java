@@ -67,6 +67,8 @@ public class SponsorShip extends AbstractEntity {
 	@Valid
 	private Sponsor				sponsor;
 
+	private boolean				draftMode;
+
 
 	public enum SponsorShipType {
 		FINANCIAL, IN_KIND
