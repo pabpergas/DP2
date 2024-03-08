@@ -1,0 +1,4 @@
+key,code,moment,details,difficulty,link,updateMoment,estimatedTotalTime
+training-1,ABC-123,"2022/03/17 12:30",Run a marathon,ADVANCED,https://www.marathon.com,"2022/05/17 12:40",4
+training-2,DEF-456,"2022/03/18 14:00",Climb a mountain,INTERMEDIATE,https://www.mountain.com,"2022/04/18 14:10",6
+training-3,GHI-789,"2022/03/19 15:30",Swim a mile,BASIC,https://www.swim.com,"2022/05/19 15:40",1

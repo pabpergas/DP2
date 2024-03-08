@@ -1,3 +1,3 @@
-key,key:userAccount,companyName,seniority,email,link
-developer1,user-account-developer1,ACME,L5,developer1@acme.com,https://developer1.acme.com/
-developer2,user-account-developer2,ACME,L4,developer2@acme.com,https://developer2.acme.com/
+key,key:userAccount,degree,specialitation,skills,email,link
+developer1,user-account-developer1,Software Engineering,Backend,"Java, Javascript",developer1@acme.com,https://developer1.acme.com/
+developer2,user-account-developer2,Software Engineering,Frontend,"SQL, React",developer2@acme.com,https://developer2.acme.com/

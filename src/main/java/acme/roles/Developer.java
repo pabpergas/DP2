@@ -21,10 +21,15 @@ public class Developer extends AbstractRole {
 
 	@NotBlank
 	@Length(max = 75)
-	String						companyName;
+	String						degree;
 
 	@NotBlank
-	String						seniority;
+	@Length(max = 100)
+	String						specialitation;
+
+	@NotBlank
+	@Length(max = 100)
+	String						skills;
 
 	@Email
 	String						email;

@@ -1,0 +1,4 @@
+key,instantiationMoment,title,author,message,emailAddress,link
+notice-1,"2022/02/02 18:00",Welcome,John Doe,Welcome to ACME Groupal!,admin@acme.com,http://www.acme.com/welcome
+notice-2,"2022/02/02 18:00",Update,Jane Doe,Important update: implement ASAP.,manager@acme.com,http://www.acme.com/update
+notice-3,"2022/02/02 18:00",Security Policy,Security Team,Review new security policy.,security@acme.com,http://www.acme.com/security-policy

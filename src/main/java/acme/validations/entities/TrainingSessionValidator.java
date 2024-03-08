@@ -1,8 +1,7 @@
 
 package acme.validations.entities;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.Date;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -19,16 +18,14 @@ public class TrainingSessionValidator implements ConstraintValidator<ValidTraini
 	@Override
 	public boolean isValid(final Sessions sessions, final ConstraintValidatorContext constraintValidatorContext) {
 		if (sessions == null)
-			return true; // Null values should be handled by @NotNull
+			return true;
 
-		LocalDate moduleCreationMoment = sessions.getTraining().getMoment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		LocalDate sessionStartDate = sessions.getStartDate();
+		Date moduleCreationMoment = sessions.getTraining().getMoment();
+		Date sessionStartDate = sessions.getStartDate();
 
-		// Check if the session start date is at least one week ahead of the training module creation moment
-		if (!sessionStartDate.isAfter(moduleCreationMoment.plusWeeks(1)))
+		if (sessionStartDate.before(Date.from(moduleCreationMoment.toInstant().plusSeconds(60 * 60 * 24 * 7))))
 			return false;
 
-		// Check if the session duration is at least one week
 		if (sessions.getDurationInWeeks() < 1)
 			return false;
 

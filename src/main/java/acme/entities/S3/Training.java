@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -18,7 +16,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.Difficulty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,7 +38,7 @@ public class Training extends AbstractEntity {
 	@Length(max = 100)
 	private String		details;
 
-	@NotBlank
+	@NotNull
 	private Difficulty	difficulty;
 
 	@URL
@@ -51,6 +48,11 @@ public class Training extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date		updateMoment;
 
-	private int			estimatedTotalTime; 
+	private int			estimatedTotalTime;
+
+
+	public enum Difficulty {
+		BASIC, INTERMEDIATE, ADVANCED
+	}
 
 }
