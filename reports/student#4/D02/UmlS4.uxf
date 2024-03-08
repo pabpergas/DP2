@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>490</y>
+      <w>430</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+SponsorShip
+--
++ code: String {Unique, NotBlank, Pattern}
++ moment: Date {NotNull, Temporal(TimeStamp), PastOrPresent}
++ startDate: Date {NotNull,Temporal(TimeStamp)}
++ endDate: Date {NotNull,Temporal(TimeStamp)}
++ amount: Money {NotNull}
++ type: SponsorShipType {NotNull}
++ contactEmail: String {Email}
++ link: String {URL, Lenght(0, 255)}
++ draftMode: boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>260</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+SponsorShiptype
+--
+FINANCIAL
+IN_KIND
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>250</y>
+      <w>460</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Invoice
+--
++ code: String {Unique, NotBlank, Pattern}
++ registrationTime: Date {NotNull,Temporal(TimeStamp), PastOrPresent}
++ dueDate: Date {NotNull, Temporal(TimeStamp)}
++ quantity: Money {NotNull}
++ tax: Double {NotNull, PositiveOrZero}
++ link: String {URL, Lenght(0, 255)}
++/ totalAmount: Double {Transient }
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>490</y>
+      <w>340</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Sponsor
+--
++ name: String {NotBlank, Length(0, 75)}
++ expectedBenefits: String {NotBlank, Length(0, 100)}
++ webPage: String {URL}
++ emailContact: String {Email}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>410</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>390</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+AbstractRole
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>430</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>550</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>100</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+AbstractEntity
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>140</y>
+      <w>30</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>140</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>750</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>670</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
