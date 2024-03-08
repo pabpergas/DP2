@@ -35,9 +35,9 @@
 	</acme:footer-subpanel>
 	
 	<acme:footer-subpanel code="master.footer.title.coins">
-		<acme:footer-option icon="fa fa-euro-sign" code="master.footer.coin.eur" action="/?locale=en"/>
-		<acme:footer-option icon="fa fa-dollar-sign" code="master.footer.coin.usd" action="/?locale=es"/>
-		<acme:footer-option icon="fa fa-pound-sign" code="master.footer.coin.gbp" action="/?locale=es"/>
+		<acme:footer-option icon="fa fa-euro-sign" code="master.footer.coin.eur" action="/?locale=es"/>
+		<acme:footer-option icon="fa fa-dollar-sign" code="master.footer.coin.usd" action="/?locale=en"/>
+		<acme:footer-option icon="fa fa-pound-sign" code="master.footer.coin.gbp" action="/?locale=en"/>
 	</acme:footer-subpanel>
 
 	<acme:footer-logo logo="images/logo.png" alt="master.company.name">
