@@ -1,18 +1,18 @@
 
-package acme.features.authenticated.sponsorship;
+package acme.features.authenticated.sponsor;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S4.SponsorShip;
+import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedSponsorShipListService extends AbstractService<Authenticated, SponsorShip> {
+public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor, SponsorShip> {
 
 	@Autowired
 	private AuthenticatedSponsorShipRepository repository;

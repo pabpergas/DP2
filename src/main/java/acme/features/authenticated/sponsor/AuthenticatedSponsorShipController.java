@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.sponsorship;
+package acme.features.authenticated.sponsor;
 
 import javax.annotation.PostConstruct;
 
@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Authenticated;
 import acme.entities.S4.SponsorShip;
+import acme.roles.Sponsor;
 
 @Controller
-public class AuthenticatedSponsorShipController extends AbstractController<Authenticated, SponsorShip> {
+public class AuthenticatedSponsorShipController extends AbstractController<Sponsor, SponsorShip> {
 
 	@Autowired
 	private AuthenticatedSponsorShipListService	listService;

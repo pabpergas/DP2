@@ -1,0 +1,23 @@
+# banner-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+sponsor.sponsorShip.list.label.project.title = Project
+sponsor.sponsorShip.list.label.moment = Moment
+sponsor.sponsorShip.list.label.code  = Code
+sponsor.sponsorShip.list.label.startDate = Start Date
+sponsor.sponsorShip.list.label.endDate = End Date
+sponsor.sponsorShip.list.label.amount = Amount
+sponsor.sponsorShip.list.label.type = Type
+sponsor.sponsorShip.list.label.contactEmail = Contact Email
+sponsor.sponsorShip.list.label.link = Link
+sponsor.sponsorShip.list.label.sponsor.name = Sponsor Name
+sponsor.sponsor-ship.form.title = Sponsorship Information
+sponsor.sponsor-ship.list.title = Your sponsorShips

@@ -45,8 +45,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/authenticated/sponsor-ship/list" access="hasRole('Sponsor')"/>
-			<acme:menu-suboption code="master.menu.sponsor.invoices" action="/authenticated/invoice/list" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/sponsor/sponsor-ship/list" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.invoices" action="/sponsor/invoice/list" access="hasRole('Sponsor')"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/administrator/system/populate-initial"/>
 		</acme:menu-option>

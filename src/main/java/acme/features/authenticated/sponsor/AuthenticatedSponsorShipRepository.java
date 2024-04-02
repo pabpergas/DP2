@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.sponsorship;
+package acme.features.authenticated.sponsor;
 
 import java.util.Collection;
 
