@@ -1,3 +1,3 @@
-key,key:project,code,moment,startDate,endDate,amount,type,contact-email,link
-sponsorShip-01,project-01,"AAA-001","2022/02/26 18:00", "2022/02/26 18:00","2022/03/27 18:00","USD 6,100.01","IN_KIND","sponsorShip1@email.com","http://sponsorShip1芝.masInfo.es"
-sponsorShip-02,project-02,"AAA-002","2022/02/26 18:00","2022/02/26 18:00", "2022/03/27 18:00","USD 6,100.01","FINANCIAL","sponsorShip2芝@email.com","http://sponsorShip2芝.masInfo.es"
+key,key:project,key:sponsor,code,moment,startDate,endDate,amount,type,contact-email,link
+sponsorShip-01,project-01,sponsor-01,"AAA-001","2022/02/26 18:00", "2022/02/26 18:00","2022/03/27 18:00","USD 6,100.01","IN_KIND","sponsorShip1@email.com","http://sponsorShip1芝.masInfo.es"
+sponsorShip-02,project-02,sponsor-02,"AAA-002","2022/02/26 18:00","2022/02/26 18:00", "2022/03/27 18:00","USD 6,100.01","FINANCIAL","sponsorShip2芝@email.com","http://sponsorShip2芝.masInfo.es"
