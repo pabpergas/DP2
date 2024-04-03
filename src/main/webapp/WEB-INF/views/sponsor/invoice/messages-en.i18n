@@ -8,13 +8,13 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.invoice.list.label.sponsorShip.code = Sponsor Code
-authenticated.invoice.list.label.code = Code
-authenticated.invoice.list.label.registrationTime = Registration Time
-authenticated.invoice.list.label.dueDate = Due Date
-authenticated.invoice.list.label.quantity = Quantity
-authenticated.invoice.list.label.tax = Tax
-authenticated.invoice.list.label.link = Link
-authenticated.invoice.form.title = Your Invoice Data
-authenticated.invoice.list.title = Your Invoices
+sponsor.invoice.list.label.sponsorShip.code = Sponsor Code
+sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.registrationTime = Registration Time
+sponsor.invoice.list.label.dueDate = Due Date
+sponsor.invoice.list.label.quantity = Quantity
+sponsor.invoice.list.label.tax = Tax
+sponsor.invoice.list.label.link = Link
+sponsor.invoice.form.title = Your Invoice Data
+sponsor.invoice.list.title = Your Invoices
 

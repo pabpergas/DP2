@@ -32,10 +32,6 @@ public class SponsorShip extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	@Valid
-	private Project				project;
-
 	@NotBlank
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
 	@Column(unique = true)
@@ -67,11 +63,17 @@ public class SponsorShip extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
+	private boolean				draftMode;
+
 	@ManyToOne
 	@Valid
+	@NotNull
 	private Sponsor				sponsor;
 
-	private boolean				draftMode;
+	@ManyToOne
+	@Valid
+	@NotNull
+	private Project				project;
 
 
 	public enum SponsorShipType {

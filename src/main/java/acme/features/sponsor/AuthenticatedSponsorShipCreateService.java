@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.sponsor;
+package acme.features.sponsor;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.services.AbstractService;

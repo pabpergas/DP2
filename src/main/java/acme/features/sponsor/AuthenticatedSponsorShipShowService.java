@@ -1,7 +1,5 @@
 
-package acme.features.authenticated.sponsor;
-
-import java.util.Collection;
+package acme.features.sponsor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +10,7 @@ import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor, SponsorShip> {
+public class AuthenticatedSponsorShipShowService extends AbstractService<Sponsor, SponsorShip> {
 
 	@Autowired
 	private AuthenticatedSponsorShipRepository repository;
@@ -21,14 +19,18 @@ public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
+
 	}
 
 	@Override
 	public void load() {
-		Collection<SponsorShip> sponsorShip;
+		SponsorShip object;
+		int id;
 
-		sponsorShip = this.repository.findAllSponsorShip();
-		super.getBuffer().addData(sponsorShip);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneSponsorShipById(id);
+		super.getBuffer().addData(object);
+
 	}
 
 	@Override
@@ -37,8 +39,9 @@ public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "project.title", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "sponsor.name");
+		dataset = super.unbind(object, "project.title", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 		super.getResponse().addData(dataset);
+
 	}
 
 }

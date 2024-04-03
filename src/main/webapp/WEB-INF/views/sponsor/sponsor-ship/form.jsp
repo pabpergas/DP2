@@ -25,11 +25,10 @@
 	<acme:input-textbox code="sponsor.sponsorShip.list.label.type" path="type"/>
 	<acme:input-textbox code="sponsor.sponsorShip.list.label.contactEmail" path="contactEmail"/>
 	<acme:input-url code="sponsor.sponsorShip.list.label.link" path="link"/>
-	
-	
+		
 	<jstl:choose> 
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="authenticated.sponsorShip.form.button.create" action="/sponsor/sponsor-ship/create"/>
+			<acme:submit code="sponsor.sponsorShip.form.button.create" action="/sponsor/sponsor-ship/create"/>
 		</jstl:when>
 	</jstl:choose> 
 

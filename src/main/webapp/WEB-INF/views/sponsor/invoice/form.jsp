@@ -16,11 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.invoice.list.label.sponsorShip.code" path="sponsorShip.code" />
-	<acme:input-textbox code="authenticated.invoice.list.label.code" path="code" />
-	<acme:input-textbox code="authenticated.invoice.list.label.registrationTime" path="registrationTime" />
-	<acme:input-textbox code="authenticated.invoice.list.label.dueDate" path="dueDate"/>
-	<acme:input-textbox code="authenticated.invoice.list.label.quantity" path="quantity"/>
-	<acme:input-textbox code="authenticated.invoice.list.label.tax" path="tax"/>
-	<acme:input-textbox code="authenticated.invoice.list.label.link" path="link"/>
+	<acme:input-textbox code="sponsor.invoice.list.label.sponsorShip.code" path="sponsorShip.code" />
+	<acme:input-textbox code="sponsor.invoice.list.label.code" path="code" />
+	<acme:input-textbox code="sponsor.invoice.list.label.registrationTime" path="registrationTime" />
+	<acme:input-textbox code="sponsor.invoice.list.label.dueDate" path="dueDate"/>
+	<acme:input-textbox code="sponsor.invoice.list.label.quantity" path="quantity"/>
+	<acme:input-textbox code="sponsor.invoice.list.label.tax" path="tax"/>
+	<acme:input-textbox code="sponsor.invoice.list.label.link" path="link"/>
 </acme:form>

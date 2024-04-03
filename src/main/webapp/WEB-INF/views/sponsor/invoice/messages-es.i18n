@@ -9,13 +9,13 @@
 # they accept any liabilities with respect to them.
 
 
-authenticated.invoice.list.label.sponsorShip.code = Código del patrocinador
-authenticated.invoice.list.label.code  = Código
-authenticated.invoice.list.label.registrationTime = Registro
-authenticated.invoice.list.label.dueDate = Fecha de vencimiento
-authenticated.invoice.list.label.quantity = Cantidad
-authenticated.invoice.list.label.tax = tasa
-authenticated.invoice.list.label.link = Link
-authenticated.invoice.form.title = Datos de tus Facturas
-authenticated.invoice.list.title = Tus Facturas
+sponsor.invoice.list.label.sponsorShip.code = Código del patrocinador
+sponsor.invoice.list.label.code  = Código
+sponsor.invoice.list.label.registrationTime = Registro
+sponsor.invoice.list.label.dueDate = Fecha de vencimiento
+sponsor.invoice.list.label.quantity = Cantidad
+sponsor.invoice.list.label.tax = tasa
+sponsor.invoice.list.label.link = Link
+sponsor.invoice.form.title = Datos de tus Facturas
+sponsor.invoice.list.title = Tus Facturas
 

@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.sponsor;
+package acme.features.sponsor;
 
 import javax.annotation.PostConstruct;
 
