@@ -10,8 +10,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -31,21 +31,23 @@ public class Notice extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Size(max = 75)
+	@Length(min = 0, max = 75)
 	private String				title;
 
 	@NotBlank
-	@Size(max = 75)
+	@Length(min = 0, max = 75)
 	private String				author;
 
 	@NotBlank
-	@Size(max = 100)
+	@Length(min = 0, max = 100)
 	private String				message;
 
 	@Email
+	@Length(min = 0, max = 255)
 	private String				emailAddress;
 
 	@URL
+	@Length(min = 0, max = 255)
 	private String				link;
 
 
