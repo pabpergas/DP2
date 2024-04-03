@@ -4,13 +4,13 @@ package acme.features.authenticated.invoices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S4.Invoice;
+import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedInvoiceShowService extends AbstractService<Authenticated, Invoice> {
+public class AuthenticatedInvoiceShowService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
 	private AuthenticatedInvoiceRepository repository;

@@ -6,13 +6,13 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S4.Invoice;
+import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedInvoiceListService extends AbstractService<Authenticated, Invoice> {
+public class AuthenticatedInvoiceListService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
 	private AuthenticatedInvoiceRepository repository;

@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Authenticated;
 import acme.entities.S4.Invoice;
+import acme.roles.Sponsor;
 
 @Controller
-public class AuthenticatedInvoiceController extends AbstractController<Authenticated, Invoice> {
+public class AuthenticatedInvoiceController extends AbstractController<Sponsor, Invoice> {
 
 	@Autowired
 	private AuthenticatedInvoiceListService	listService;
