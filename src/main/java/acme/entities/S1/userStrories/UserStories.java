@@ -1,5 +1,5 @@
 
-package acme.entities.S1;
+package acme.entities.S1.userStrories;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.S1.project.Project;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;

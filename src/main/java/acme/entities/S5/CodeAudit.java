@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.S1.Project;
+import acme.entities.S1.project.Project;
 import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
