@@ -57,10 +57,11 @@ public class SponsorShip extends AbstractEntity {
 	private SponsorShipType		type;
 
 	@Email
+	@Length(min = 0, max = 255)
 	private String				contactEmail;
 
 	@URL
-	@Length(max = 255)
+	@Length(min = 0, max = 255)
 	private String				link;
 
 	private boolean				draftMode;
