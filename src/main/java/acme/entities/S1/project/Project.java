@@ -49,7 +49,7 @@ public class Project extends AbstractEntity {
 	int							cost;
 
 	@URL
-	@Length(min = 0, max = 100)
+	@Length(min = 0, max = 255)
 	String						link;
 
 	@NotNull
