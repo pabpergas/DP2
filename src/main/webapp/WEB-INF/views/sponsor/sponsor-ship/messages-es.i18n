@@ -21,4 +21,16 @@ sponsor.sponsorShip.list.label.link = Link
 sponsor.sponsorShip.list.label.sponsor.name = Nombre del Sponsor
 sponsor.sponsor-ship.form.title = Datos del Patrocinio
 sponsor.sponsor-ship.list.title = Tus patrocinios
-sponsor.sponsorShip.form.button.create = Crear
+sponsor.sponsorShip.list.button.create = Crear
+sponsor.sponsorShip.list.button.update = Actualizar
+sponsor.sponsorShip.list.button.delete = Eliminar
+sponsor.sponsorShip.list.button.publish = Publicar
+
+sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.form.placerholder.type = El tipo debe ser: FINANCIAL, IN_KIND
+
+sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coincidir con uno anteriormente registrado
+sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
+
+

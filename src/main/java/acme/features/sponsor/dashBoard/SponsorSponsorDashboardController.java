@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.invoices;
+package acme.features.sponsor.dashBoard;
 
 import javax.annotation.PostConstruct;
 
@@ -7,23 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.S4.Invoice;
+import acme.forms.SponsorDashboard;
 import acme.roles.Sponsor;
 
 @Controller
-public class AuthenticatedInvoiceController extends AbstractController<Sponsor, Invoice> {
+public class SponsorSponsorDashboardController extends AbstractController<Sponsor, SponsorDashboard> {
 
 	@Autowired
-	private AuthenticatedInvoiceListService	listService;
-
-	@Autowired
-	private AuthenticatedInvoiceShowService	showService;
+	private SponsorSponsorDashboardListService listService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
 
 	}
 

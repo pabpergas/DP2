@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.invoices;
+package acme.features.sponsor.invoice;
 
 import java.util.Collection;
 
@@ -12,10 +12,10 @@ import acme.entities.S4.Invoice;
 import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedInvoiceListService extends AbstractService<Sponsor, Invoice> {
+public class SponsorInvoiceListMineService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	private AuthenticatedInvoiceRepository repository;
+	private SponsorInvoiceRepository repository;
 
 
 	@Override
@@ -26,8 +26,10 @@ public class AuthenticatedInvoiceListService extends AbstractService<Sponsor, In
 	@Override
 	public void load() {
 		Collection<Invoice> sponsorShip;
+		int sponsorId;
 
-		sponsorShip = this.repository.findAllInvoice();
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		sponsorShip = this.repository.findInvoicesBySponsorId(sponsorId);
 		super.getBuffer().addData(sponsorShip);
 	}
 
@@ -37,7 +39,7 @@ public class AuthenticatedInvoiceListService extends AbstractService<Sponsor, In
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "sponsorShip.code", "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
 		super.getResponse().addData(dataset);
 	}
 

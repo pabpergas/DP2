@@ -67,9 +67,11 @@ public class Invoice extends AbstractEntity {
 	}
 
 
+	private boolean		draftMode	= false;
+
 	@ManyToOne
 	@Valid
 	@NotNull
-	private SponsorShip sponsorShip;
+	private SponsorShip	sponsorShip;
 
 }

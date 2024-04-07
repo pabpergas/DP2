@@ -82,5 +82,5 @@ master.menu.user-account.become-consumer = Become a consumer
 
 
 # master.menu.principal ####################################################
-master.menu.principal = Register
+master.menu.principal = Authenticated
 master.menu.principal.claim = Claims

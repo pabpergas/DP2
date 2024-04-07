@@ -62,5 +62,5 @@ master.menu.user-account.become-consumer = Hazte consumidor
 
 
 # master.menu.principal ####################################################
-master.menu.principal = Registrado
+master.menu.principal = Autenticado
 master.menu.principal.claim = Demandas

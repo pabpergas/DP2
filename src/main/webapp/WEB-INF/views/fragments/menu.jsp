@@ -44,17 +44,18 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/sponsor/sponsor-ship/list" access="hasRole('Sponsor')"/>
-			<acme:menu-suboption code="master.menu.sponsor.invoices" action="/sponsor/invoice/list" access="hasRole('Sponsor')"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/administrator/system/populate-initial"/>
-		</acme:menu-option>
-		
 		<acme:menu-option code="master.menu.principal" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.principal.claim" action="/authenticated/claim/list" access="isAuthenticated()"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/sponsor/sponsor-ship/list-mine" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.invoices" action="/sponsor/invoice/list-mine" access="hasRole('Sponsor')"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-dashboard/list"/>
+		</acme:menu-option>
+		
+
 		
 		
 		

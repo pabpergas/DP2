@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorShip;
 
 import java.util.Collection;
 
@@ -12,10 +12,10 @@ import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor, SponsorShip> {
+public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, SponsorShip> {
 
 	@Autowired
-	private AuthenticatedSponsorShipRepository repository;
+	private SponsorSponsorShipRepository repository;
 
 
 	@Override
@@ -26,8 +26,10 @@ public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor
 	@Override
 	public void load() {
 		Collection<SponsorShip> sponsorShip;
+		int sponsorId;
 
-		sponsorShip = this.repository.findAllSponsorShip();
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		sponsorShip = this.repository.findSponsorShipBySponsorId(sponsorId);
 		super.getBuffer().addData(sponsorShip);
 	}
 
@@ -37,7 +39,7 @@ public class AuthenticatedSponsorShipListService extends AbstractService<Sponsor
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "project.title", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "sponsor.name");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 		super.getResponse().addData(dataset);
 	}
 

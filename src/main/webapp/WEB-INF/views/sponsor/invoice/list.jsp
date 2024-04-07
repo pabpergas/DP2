@@ -24,3 +24,7 @@
     <acme:list-column code="sponsor.invoice.list.label.tax" path="tax" width="20%"/>
     <acme:list-column code="sponsor.invoice.list.label.link" path="link" width="20%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list-mine'}">
+	<acme:button code="sponsor.sponsorShip.list.button.create" action="/sponsor/invoice/create"/>
+</jstl:if>
