@@ -25,7 +25,7 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 		usId = super.getRequest().getData("id", int.class);
 		project = this.repo.findOneProjectByUserStoryId(usId);
 
-		status = project != null && (project.getDraftMode() == true || super.getRequest().getPrincipal().hasRole(project.getManager()));
+		status = project != null && (project.getDraftMode() == false || super.getRequest().getPrincipal().hasRole(project.getManager()));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,7 +48,6 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "proirity", "link");
-		dataset.put("masterId", object.getProject().getId());
 
 		super.getResponse().addData(dataset);
 	}

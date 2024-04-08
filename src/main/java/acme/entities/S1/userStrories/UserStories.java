@@ -13,7 +13,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.S1.project.Project;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,9 +51,6 @@ public class UserStories extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne
-	Project						project;
-
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
@@ -64,5 +60,4 @@ public class UserStories extends AbstractEntity {
 	public enum priorityUserStories {
 		Must, Should, Could, WillNot
 	}
-
 }

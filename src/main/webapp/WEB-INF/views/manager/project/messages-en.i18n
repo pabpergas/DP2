@@ -18,7 +18,8 @@ manager.project.form.label.hasFatalErrors = Has fatal errors
 manager.project.form.label.cost = Cost
 manager.project.form.label.link = Link
 
-manager.userStory.list.label.title = Title
-manager.userStory.list.label.estimatedCost: Cost
+manager.project.list.label.code = Code
+manager.project.list.label.title = Title
+manager.project.list.label.cost = Cost
 
 manager.project.form.button.us = User stories

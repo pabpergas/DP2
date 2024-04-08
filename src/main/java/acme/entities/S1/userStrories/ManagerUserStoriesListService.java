@@ -38,7 +38,7 @@ public class ManagerUserStoriesListService extends AbstractService<Manager, User
 		int masterId;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repo.findManylUserStoriesById(masterId);
+		objects = this.repo.findManylUserStoriesByProjectId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
