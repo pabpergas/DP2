@@ -1,5 +1,5 @@
 
-package acme.entities.S1.project;
+package acme.entities.S1;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,7 +10,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.S1.userStrories.UserStories;
 import lombok.Getter;
 import lombok.Setter;
 

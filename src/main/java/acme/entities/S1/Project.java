@@ -1,13 +1,15 @@
 
-package acme.entities.S1.userStrories;
+package acme.entities.S1;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -20,11 +22,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class UserStories extends AbstractEntity {
+public class Project extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
+
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$")
+	@NotBlank
+	@Column(unique = true)
+	String						code;
 
 	@NotBlank
 	@Length(min = 0, max = 75)
@@ -32,22 +39,21 @@ public class UserStories extends AbstractEntity {
 
 	@NotBlank
 	@Length(min = 0, max = 100)
-	String						description;
-
-	@NotBlank
-	@Length(min = 0, max = 100)
-	String						acceptanceCriteria;
-
-	@Positive  //tiene el Positive y no el PositiveOrZero porque el minimi es 1
-	@Max(10)
-	int							estimatedCost;
+	String						summary;
 
 	@NotNull
-	priorityUserStories			priority;
+	boolean						hasFatalErrors;
+
+	@PositiveOrZero
+	@Max(10)
+	int							cost;
 
 	@URL
 	@Length(min = 0, max = 255)
 	String						link;
+
+	@NotNull
+	Boolean						draftMode;
 
 	// Relationships ----------------------------------------------------------
 
@@ -56,8 +62,4 @@ public class UserStories extends AbstractEntity {
 	@Valid
 	Manager						manager;
 
-
-	public enum priorityUserStories {
-		Must, Should, Could, WillNot
-	}
 }

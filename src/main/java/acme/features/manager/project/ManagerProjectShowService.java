@@ -1,11 +1,12 @@
 
-package acme.entities.S1.project;
+package acme.features.manager.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.S1.Project;
 import acme.roles.Manager;
 
 @Service

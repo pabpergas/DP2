@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.entities.S1.project.Project;
+import acme.entities.S1.Project;
 import lombok.Getter;
 import lombok.Setter;
 

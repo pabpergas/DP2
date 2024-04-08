@@ -1,5 +1,5 @@
 
-package acme.entities.S1.project;
+package acme.features.manager.project;
 
 import javax.annotation.PostConstruct;
 
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
+import acme.entities.S1.Project;
 import acme.roles.Manager;
 
 @Controller

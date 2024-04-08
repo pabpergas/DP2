@@ -1,12 +1,13 @@
 
-package acme.entities.S1.userStrories;
+package acme.features.manager.userStories;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.S1.project.Project;
+import acme.entities.S1.Project;
+import acme.entities.S1.UserStories;
 
 public interface ManagerUserStoriesRepository extends AbstractRepository {
 

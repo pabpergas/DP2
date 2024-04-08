@@ -1,11 +1,12 @@
 
-package acme.entities.S1.project;
+package acme.features.manager.project;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.S1.Project;
 
 public interface ManagerProjectRepository extends AbstractRepository {
 

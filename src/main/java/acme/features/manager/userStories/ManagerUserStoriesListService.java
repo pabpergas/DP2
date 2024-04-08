@@ -1,5 +1,5 @@
 
-package acme.entities.S1.userStrories;
+package acme.features.manager.userStories;
 
 import java.util.Collection;
 
@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.S1.project.Project;
+import acme.entities.S1.Project;
+import acme.entities.S1.UserStories;
 import acme.roles.Manager;
 
 @Service
