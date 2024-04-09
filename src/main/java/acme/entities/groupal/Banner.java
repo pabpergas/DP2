@@ -9,8 +9,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -38,14 +38,17 @@ public class Banner extends AbstractEntity {
 	private Date				endDisplay;
 
 	@NotNull
+	@URL
+	@Length(min = 0, max = 255)
 	private String				pictureLink;
 
 	@NotBlank
-	@Size(min = 0, max = 75)
+	@Length(min = 0, max = 75)
 	private String				slogan;
 
 	@NotNull
 	@URL
+	@Length(min = 0, max = 255)
 	private String				documentLink;
 
 }

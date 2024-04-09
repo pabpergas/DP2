@@ -28,6 +28,7 @@
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.banner" action="/authenticated/banner/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
@@ -47,6 +48,22 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.principal" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.principal.claim" action="/authenticated/claim/list" access="isAuthenticated()"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/sponsor/sponsor-ship/list-mine" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.invoices" action="/sponsor/invoice/list-mine" access="hasRole('Sponsor')"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-dashboard/list"/>
+		</acme:menu-option>
+		
+
+		
+		
+		
 	</acme:menu-left>
 
 	<acme:menu-right>
