@@ -27,7 +27,7 @@ public class Claim extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "^C-[0-9]{4}$")
+	@Pattern(regexp = "^C-[0-9]{4}$", message = "{error.claim}")
 	@NotBlank
 	@Column(unique = true)
 	private String				code;
@@ -38,11 +38,11 @@ public class Claim extends AbstractEntity {
 	private Date				instantiation;
 
 	@NotBlank
-	@Length(min = 0, max = 75)
+	@Length(min = 1, max = 75)
 	private String				heading;
 
 	@NotBlank
-	@Length(min = 0, max = 100)
+	@Length(min = 1, max = 100)
 	private String				description;
 
 	@NotBlank
@@ -50,7 +50,7 @@ public class Claim extends AbstractEntity {
 	private String				department;
 
 	@Email
-	@Length(min = 0, max = 255)
+	@Length(min = 1, max = 255)
 	private String				email;
 
 	@URL
