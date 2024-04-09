@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S5.CodeAudit;
@@ -24,10 +25,11 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 	@Override
 	public void load() {
 		Collection<CodeAudit> codeAudit;
-		int auditorId;
+		Principal principal;
 		
-		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
-		codeAudit = this.repo.findCodeAuditByAuditorId(auditorId);
+		principal = super.getRequest().getPrincipal();
+		codeAudit = this.repo.findCodeAuditByAuditorId(principal.getActiveRoleId());
+		
 		super.getBuffer().addData(codeAudit);
 	}
 	

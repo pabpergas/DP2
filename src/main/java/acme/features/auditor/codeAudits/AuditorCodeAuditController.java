@@ -31,13 +31,14 @@ public class AuditorCodeAuditController extends AbstractController<Auditor, Code
 	private AuditorCodeAuditPublishService publishService;
 	
 	@PostConstruct
-	protected void initialise() {
-		super.addBasicCommand("list", listMineService);
-		super.addBasicCommand("show", showService);
-		super.addBasicCommand("create", createService);
-		super.addBasicCommand("update", updateService);
-		super.addBasicCommand("delete", deleteService);
-		super.addBasicCommand("publish", publishService);
+	protected void initialice() {
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+		
+		super.addCustomCommand("list-mine", "list", this.listMineService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }
