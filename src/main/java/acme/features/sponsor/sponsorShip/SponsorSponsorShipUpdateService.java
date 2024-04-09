@@ -1,7 +1,9 @@
 
 package acme.features.sponsor.sponsorShip;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +66,13 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 			existing = this.repository.findOneSponsorShipByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
 		}
-		//Falta validar el moment
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date deadLine;
+
+			deadLine = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+
+		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
 

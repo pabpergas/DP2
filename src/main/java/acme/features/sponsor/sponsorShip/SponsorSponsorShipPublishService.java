@@ -1,7 +1,9 @@
 
 package acme.features.sponsor.sponsorShip;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,11 +66,37 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 			existing = this.repository.findOneSponsorShipByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
 		}
-		//Falta validar el moment
+
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date deadLine;
+
+			deadLine = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
 
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			Double totalAmount;
+			SponsorShip sponsorShip;
+			int id;
+			id = super.getRequest().getData("id", int.class);
+
+			totalAmount = this.repository.findSumInvoiceAmountBySponsorShipId(id);
+
+			sponsorShip = this.repository.findOneSponsorShipById(id);
+
+			if (totalAmount != null)
+				super.state(totalAmount.equals(sponsorShip.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.amount");
+			if (totalAmount == null && !sponsorShip.getAmount().getAmount().equals(.0))
+				super.state(false, "amount", "sponsor.sponsorShip.error.total-amount");
+
+		}
+
 	}
+
 	@Override
 	public void perform(final SponsorShip object) {
 		assert object != null;

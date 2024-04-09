@@ -16,23 +16,25 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-select code="sponsor.invoice.list.label.sponsorShip.code" path="sponsorShip" choices="${sponsorShips}"/>
 	<acme:input-textbox code="sponsor.invoice.list.label.code" path="code" />
-	<acme:input-textbox code="sponsor.invoice.list.label.registrationTime" path="registrationTime" />
+	<acme:input-moment code="sponsor.invoice.list.label.registrationTime" path="registrationTime" />
 	<acme:input-textbox code="sponsor.invoice.list.label.dueDate" path="dueDate"/>
 	<acme:input-textbox code="sponsor.invoice.list.label.quantity" path="quantity"/>
 	<acme:input-textbox code="sponsor.invoice.list.label.tax" path="tax"/>
 	<acme:input-textbox code="sponsor.invoice.list.label.link" path="link"/>
 	
+	
+	
+	
 	<jstl:choose> 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-			<acme:submit code="sponsor.sponsorShip.list.button.update" action="/sponsor/invoice/update"/>
-			<acme:submit code="sponsor.sponsorShip.list.button.delete" action="/sponsor/invoice/delete"/>
-			<acme:submit code="sponsor.sponsorShip.list.button.publish" action="/sponsor/invoice/publish"/>	
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/sponsor/invoice/update"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/sponsor/invoice/delete"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.publish" action="/sponsor/invoice/publish"/>	
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="sponsor.sponsorShip.list.button.create" action="/sponsor/invoice/create"/>
+			<acme:submit code="sponsor.sponsorShip.list.button.create" action="/sponsor/invoice/create?masterId=${masterId}"/>
 		</jstl:when>
 	</jstl:choose> 
 	

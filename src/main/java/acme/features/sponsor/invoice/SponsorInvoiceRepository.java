@@ -14,8 +14,8 @@ import acme.roles.Sponsor;
 @Repository
 public interface SponsorInvoiceRepository extends AbstractRepository {
 
-	@Query("select i from Invoice i where i.sponsorShip.sponsor.id = :id")
-	Collection<Invoice> findInvoicesBySponsorId(int id);
+	@Query("select i from Invoice i where i.sponsorShip.id = :id")
+	Collection<Invoice> findInvoicesBySponsorShipId(int id);
 
 	@Query("select i from Invoice i where i.id = :id")
 	Invoice findOneInvoiceById(int id);
@@ -28,8 +28,5 @@ public interface SponsorInvoiceRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.code = :code")
 	Invoice findOneInvoiceByCode(String code);
-
-	@Query("SELECT DISTINCT s FROM SponsorShip s WHERE s.sponsor.id = :id")
-	Collection<SponsorShip> findManySponsorShipsBySponsorId(int id);
 
 }
