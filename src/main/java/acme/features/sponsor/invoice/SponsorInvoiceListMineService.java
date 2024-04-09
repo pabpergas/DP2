@@ -25,21 +25,25 @@ public class SponsorInvoiceListMineService extends AbstractService<Sponsor, Invo
 
 	@Override
 	public void load() {
-		Collection<Invoice> sponsorShip;
-		int sponsorId;
+		Collection<Invoice> invoices;
+		int sponsorShipId;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShip = this.repository.findInvoicesBySponsorId(sponsorId);
-		super.getBuffer().addData(sponsorShip);
+		sponsorShipId = super.getRequest().getData("masterId", int.class);
+		invoices = this.repository.findInvoicesBySponsorShipId(sponsorShipId);
+		super.getBuffer().addData(invoices);
 	}
 
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
 
+		int sponsorShipId;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		sponsorShipId = super.getRequest().getData("masterId", int.class);
+
+		dataset = super.unbind(object, "code", "registrationTime", "quantity", "tax");
+		super.getResponse().addGlobal("masterId", sponsorShipId);
 		super.getResponse().addData(dataset);
 	}
 

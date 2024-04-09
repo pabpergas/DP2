@@ -10,6 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
+import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
@@ -74,6 +75,10 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 	public void perform(final SponsorShip object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+
+		invoices = this.repository.findManyInvoicesBySponsorShipId(object.getId());
+		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
 	}
 

@@ -32,7 +32,7 @@ import lombok.Setter;
 public class Invoice extends AbstractEntity {
 
 	@NotBlank
-	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
+	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.error.code}")
 	@Column(unique = true)
 	private String	code;
 
@@ -67,7 +67,7 @@ public class Invoice extends AbstractEntity {
 	}
 
 
-	private boolean		draftMode	= false;
+	private boolean		draftMode	= true;
 
 	@ManyToOne
 	@Valid

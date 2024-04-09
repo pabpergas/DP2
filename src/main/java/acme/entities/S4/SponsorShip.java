@@ -2,7 +2,6 @@
 package acme.entities.S4;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -64,24 +63,17 @@ public class SponsorShip extends AbstractEntity {
 	@Length(min = 0, max = 255)
 	private String				link;
 
-
-	public Double getDuration() {
-		long durationInMiliseconds = this.startDate.getTime() - this.endDate.getTime();
-		return (double) TimeUnit.MILLISECONDS.toDays(durationInMiliseconds);
-	}
-
-
-	private boolean	draftMode	= true;
+	private boolean				draftMode			= true;
 
 	@ManyToOne
 	@Valid
 	@NotNull
-	private Sponsor	sponsor;
+	private Sponsor				sponsor;
 
 	@ManyToOne
 	@Valid
 	@NotNull
-	private Project	project;
+	private Project				project;
 
 
 	public enum SponsorShipType {
