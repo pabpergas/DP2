@@ -60,7 +60,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repo.findProjectByCodeAuditId(projectId);
-		super.bind(object, "executionDate", "type", "correctiveActions", "mark");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "mark");
 		
 		object.setProject(project);
 	}
