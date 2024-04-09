@@ -8,19 +8,33 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.S5.CodeAudit;
 import acme.entities.S1.Project;
+import acme.entities.S5.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, CodeAudit> {
 	
 	@Autowired
 	private AuditorCodeAuditRepository repo;
 	
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		CodeAudit codeAudit;
+		Auditor auditor;
+		
+		masterId = super.getRequest().getData("id", int.class);
+		System.out.println("hola1" + masterId);
+		
+		codeAudit = this.repo.findCodeAuditById(masterId);
+		auditor = codeAudit == null ? null : codeAudit.getAuditor();
+		System.out.println("hola3" + auditor + codeAudit);
+		
+		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		System.out.println("hola2" + status);
+		super.getResponse().setAuthorised(status);
 	}
 	
 	@Override
@@ -30,7 +44,34 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		
 		id = super.getRequest().getData("id", int.class);
 		object = this.repo.findCodeAuditById(id);
+		
 		super.getBuffer().addData(object);
+	}
+	
+	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+		
+		int projectId;
+		Project project;
+		
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repo.findProjectByCodeAuditId(projectId);
+		super.bind(object, "executionDate", "type", "correctiveActions", "mark");
+		
+		object.setProject(project);
+	}
+	
+	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+	}
+	
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+		
+		this.repo.delete(object);
 	}
 
 	@Override
@@ -52,4 +93,5 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		dataset.put("projects", choices);
 		super.getResponse().addData(dataset);
 	}
+
 }

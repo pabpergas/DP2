@@ -53,6 +53,8 @@ public class CodeAudit extends AbstractEntity {
 	private Auditor				auditor;
 
 	private boolean draftMode	= true;
+	
+	private Mark	mark;
 
 	public enum type {
 		STATIC, DINAMIC

@@ -13,14 +13,28 @@ import acme.entities.S1.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditCreateService extends AbstractService<Auditor, CodeAudit>{
+public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
 	
 	@Autowired
 	private AuditorCodeAuditRepository repo;
 	
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		CodeAudit codeAudit;
+		Auditor auditor;
+		
+		masterId = super.getRequest().getData("id", int.class);
+		System.out.println("hola1" + masterId);
+		
+		codeAudit = this.repo.findCodeAuditById(masterId);
+		auditor = codeAudit == null ? null : codeAudit.getAuditor();
+		System.out.println("hola3" + auditor + codeAudit);
+		
+		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+		System.out.println("hola2" + status);
+		super.getResponse().setAuthorised(status);
 	}
 	
 	@Override
@@ -38,6 +52,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	
 	@Override
 	public void bind(final CodeAudit object) {
+
 		assert object != null;
 		
 		int projectId;
@@ -51,14 +66,14 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	}
 	
 	@Override
-	public void validate(final CodeAudit object) {
+	public void  validate(final CodeAudit object) {
 		assert object != null;
-		
-		//TODO: Hacer la validaciones personalizadas
+				
+		//TODO: Crear validaciones personalizadas
 	}
 	
 	@Override
-	public void perform (final CodeAudit object) {
+	public void perform(final CodeAudit object) {
 		assert object != null;
 		
 		this.repo.save(object);
@@ -66,6 +81,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	
 	@Override
 	public void unbind(final CodeAudit object) {
+
 		assert object != null;
 		
 		int auditorId;
