@@ -27,7 +27,7 @@ import lombok.Setter;
 public class Sessions extends AbstractEntity {
 
 	@NotBlank
-	@Pattern(regexp = "^TS-[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^TS-[A-Z]{1,3}-[0-9]{3}$", message = "error.session")
 	@Column(unique = true)
 	private String		code;
 

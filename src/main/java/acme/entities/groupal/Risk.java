@@ -32,7 +32,7 @@ public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "^R-[0-9]{3}$")
+	@Pattern(regexp = "^R-[0-9]{3}$", message = "{error.risk}")
 	@NotBlank
 	@Column(unique = true)
 	private String				reference;

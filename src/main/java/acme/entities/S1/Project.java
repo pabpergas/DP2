@@ -4,6 +4,8 @@ package acme.entities.S1;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -26,7 +28,7 @@ public class Project extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$", message = "{error.project}")
 	@NotBlank
 	@Column(unique = true)
 	String						code;
@@ -40,13 +42,14 @@ public class Project extends AbstractEntity {
 	String						summary;
 
 	@NotNull
-	Boolean						hasFatalErrors;
+	boolean						hasFatalErrors;
 
 	@PositiveOrZero
-	Integer						cost;
+	@Max(10)
+	int							cost;
 
 	@URL
-	@Length(min = 0, max = 100)
+	@Length(min = 0, max = 255)
 	String						link;
 
 	@NotNull
@@ -56,6 +59,7 @@ public class Project extends AbstractEntity {
 
 	@ManyToOne(optional = false)
 	@NotNull
+	@Valid
 	Manager						manager;
 
 }
