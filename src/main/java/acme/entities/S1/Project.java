@@ -28,7 +28,7 @@ public class Project extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$", message = "{error.project}")
 	@NotBlank
 	@Column(unique = true)
 	String						code;

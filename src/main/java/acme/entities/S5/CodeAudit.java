@@ -33,7 +33,7 @@ public class CodeAudit extends AbstractEntity {
 	private Project				project;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.code")
 	@Column(unique = true)
 	private String				code;
 
@@ -48,13 +48,13 @@ public class CodeAudit extends AbstractEntity {
 	@Size(max = 100)
 	private String				correctiveActions;
 
-
 	@ManyToOne
 	private Auditor				auditor;
 
-	private boolean draftMode	= true;
-	
-	private Mark	mark;
+	private boolean				draftMode			= true;
+
+	private Mark				mark;
+
 
 	public enum type {
 		STATIC, DINAMIC
