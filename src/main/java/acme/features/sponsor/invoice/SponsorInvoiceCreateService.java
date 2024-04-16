@@ -1,14 +1,11 @@
 
 package acme.features.sponsor.invoice;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
@@ -28,12 +25,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void load() {
 		Invoice object;
-		Sponsor sponsor;
+		SponsorShip sponsorShip;
+		int sponsorShipId;
 
-		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		sponsorShipId = super.getRequest().getData("masterId", int.class);
+		sponsorShip = this.repository.findOneSponsorShipById(sponsorShipId);
+
 		object = new Invoice();
 		object.setDraftMode(true);
-
+		object.setSponsorShip(sponsorShip);
 		super.getBuffer().addData(object);
 	}
 
@@ -44,7 +44,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		int sponsorShipId;
 		SponsorShip sponsorShip;
 
-		sponsorShipId = super.getRequest().getData("sponsorShip", int.class);
+		sponsorShipId = super.getRequest().getData("masterId", int.class);
 		sponsorShip = this.repository.findOneSponsorShipById(sponsorShipId);
 		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
 
@@ -77,19 +77,11 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
-
-		int sponsorId;
-		Collection<SponsorShip> sponsorShips;
-		SelectChoices choices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShips = this.repository.findManySponsorShipsBySponsorId(sponsorId);
-		choices = SelectChoices.from(sponsorShips, "code", object.getSponsorShip());
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("sponsorShip", choices.getSelected().getKey());
-		dataset.put("sponsorShips", choices);
 		super.getResponse().addData(dataset);
 
 	}

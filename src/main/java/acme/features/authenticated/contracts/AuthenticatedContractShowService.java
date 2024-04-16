@@ -1,19 +1,19 @@
 
-package acme.features.sponsor.invoice;
+package acme.features.authenticated.contracts;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.S4.Invoice;
-import acme.roles.Sponsor;
+import acme.entities.S2.Contract;
 
 @Service
-public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice> {
+public class AuthenticatedContractShowService extends AbstractService<Authenticated, Contract> {
 
 	@Autowired
-	private SponsorInvoiceRepository repository;
+	private AuthenticatedContractRepository repository;
 
 
 	@Override
@@ -24,25 +24,23 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 	@Override
 	public void load() {
-		Invoice object;
+		Contract object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneInvoiceById(id);
+		object = this.repository.findOneContractById(id);
 		super.getBuffer().addData(object);
 
 	}
 
 	@Override
-	public void unbind(final Invoice object) {
+	public void unbind(final Contract object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
-		dataset.put("masterId", object.getSponsorShip().getId());
 
+		dataset = super.unbind(object, "project.title", "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "link");
 		super.getResponse().addData(dataset);
 
 	}
-
 }

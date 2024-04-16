@@ -22,13 +22,17 @@ sponsor.sponsorShip.list.label.sponsor.name = Sponsor Name
 sponsor.sponsor-ship.form.title = Sponsorship Information
 sponsor.sponsor-ship.list.title = Your sponsorShips
 sponsor.sponsorShip.list.button.create = Create
-sponsor.sponsorShip.list.button.update = Update
-sponsor.sponsorShip.list.button.delete = Delete
-sponsor.sponsorShip.list.button.publish = Publish
+sponsor.sponsorShip.list.button.invoices = Invoices
+sponsor.sponsorShip.list.submit.create = Create
+sponsor.sponsorShip.list.submit.update = Update
+sponsor.sponsorShip.list.submit.delete = Delete
+sponsor.sponsorShip.list.submit.publish = Publish
 
 sponsor.sponsorShip.form.placerholder.code = The code pattern should be 3 letters-3 numbers, like here: AAA-000
 sponsor.sponsorShip.form.placerholder.type = The type must be: FINANCIAL, IN_KIND
-
+sponsor.sponsorShip.error.amount = Amount must be the sum of the totalAmount of the asociated invoices of the sponsorShip
+sponsor.sponsorShip.error.total-amount= This amount don't have any invoice, and the amount is not 0,00
 sponsor.sponsorShip.error.duplicated = The sponsorship code cannot match one previously registered
 sponsor.sponsorShip.error.code = Patern of the code must be 3 number-3 leters, like that:AAA-000
 sponsor.sponsorShip.error.too-close = The sponsorship startDate must be after the moment
+sponsor.sponsorShip.error.endDate  = End Date must be 1 month later than Start Date

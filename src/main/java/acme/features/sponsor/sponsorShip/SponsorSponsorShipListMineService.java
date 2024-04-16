@@ -27,7 +27,6 @@ public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, 
 	public void load() {
 		Collection<SponsorShip> sponsorShip;
 		int sponsorId;
-
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		sponsorShip = this.repository.findSponsorShipBySponsorId(sponsorId);
 		super.getBuffer().addData(sponsorShip);

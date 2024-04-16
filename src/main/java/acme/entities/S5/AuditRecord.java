@@ -29,7 +29,7 @@ public class AuditRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.auditRecord")
 	@Column(unique = true)
 	private String				code;
 
@@ -55,8 +55,4 @@ public class AuditRecord extends AbstractEntity {
 	@ManyToOne
 	private Auditor				auditor;
 
-
-	public enum Mark {
-		APLUS, A, B, C, F, FMINUS
-	}
 }

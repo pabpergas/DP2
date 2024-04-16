@@ -11,6 +11,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S4.SponsorShip;
+import acme.entities.S4.SponsorShip.SponsorShipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -44,15 +45,23 @@ public class SponsorSponsorShipShowService extends AbstractService<Sponsor, Spon
 		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices typeChoices;
 		Dataset dataset;
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
-		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		choices = SelectChoices.from(projects, "title", object.getProject());
+		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
+
 		super.getResponse().addData(dataset);
 
 	}
