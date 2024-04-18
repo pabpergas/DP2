@@ -55,8 +55,5 @@ public class AuditRecord extends AbstractEntity {
 	@ManyToOne
 	private Auditor				auditor;
 
-
-	public enum Mark {
-		APLUS, A, B, C, F, FMINUS
-	}
+	private Boolean				draftMode				= true;
 }
