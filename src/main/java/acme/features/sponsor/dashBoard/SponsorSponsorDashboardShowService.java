@@ -73,6 +73,15 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 	public void unbind(final SponsorDashboard object) {
 		assert object != null;
 
+		Dataset dataset;
+
+		dataset = super.unbind(object, //
+			"totalInvoicesWithTaxLessThanOrEqualTo21Percent", "totalSponsorshipsWithLink", // 
+			"averageSponsorshipAmount", "deviationSponsorshipAmount", //
+			"minimumSponsorshipAmount", "maximumSponsorshipAmount", //
+			"averageSponsorshipQuantity", "deviationSponsorshipQuantity", // 
+			"minimumSponsorshipQuantity", "maximumSponsorshipQuantity");
+
 		super.getResponse().addData(dataset);
 	}
 
