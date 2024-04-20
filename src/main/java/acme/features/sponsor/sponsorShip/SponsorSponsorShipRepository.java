@@ -30,6 +30,9 @@ public interface SponsorSponsorShipRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT s.project FROM SponsorShip s WHERE s.sponsor.id = :id")
 	Collection<Project> findManyProjectsBySponsorId(int id);
 
+	@Query("SELECT DISTINCT s FROM SponsorShip s WHERE s.sponsor.id = :id")
+	Collection<SponsorShip> findManySponsorShipsBySponsorId(int id);
+
 	@Query("select s from SponsorShip s where s.code = :code")
 	SponsorShip findOneSponsorShipByCode(String code);
 

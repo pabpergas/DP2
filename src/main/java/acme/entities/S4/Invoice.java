@@ -46,6 +46,7 @@ public class Invoice extends AbstractEntity {
 	private Date	dueDate;
 
 	@NotNull
+	@Valid
 	private Money	quantity;
 
 	@Min(0)
@@ -67,11 +68,15 @@ public class Invoice extends AbstractEntity {
 	}
 
 
-	private boolean		draftMode	= true;
-
 	@ManyToOne
 	@Valid
 	@NotNull
-	private SponsorShip	sponsorShip;
+	private SponsorShip sponsorShip;
+
+
+	@Override
+	public String toString() {
+		return "Invoice [code=" + this.code + ", registrationTime=" + this.registrationTime + ", dueDate=" + this.dueDate + ", quantity=" + this.quantity + ", tax=" + this.tax + ", link=" + this.link + ", sponsorShip=" + this.sponsorShip + "]";
+	}
 
 }

@@ -1,7 +1,10 @@
 
 package acme.features.sponsor.sponsorShip;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -38,7 +41,19 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 		object = new SponsorShip();
 		object.setDraftMode(true);
 		object.setSponsor(sponsor);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, 2022);
+		calendar.set(Calendar.MONTH, Calendar.FEBRUARY); // Nota: Enero es 0, Febrero es 1, etc.
+		calendar.set(Calendar.DAY_OF_MONTH, 26);
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
 
+		// Obtener el objeto Date
+		Date fechaPersonalizada = calendar.getTime();
+		object.setMoment(fechaPersonalizada);
+		System.out.println("hola" + object.getMoment());
 		super.getBuffer().addData(object);
 	}
 
@@ -51,7 +66,7 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "momemnt", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 
 		object.setProject(project);
 	}
@@ -62,20 +77,21 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
-
 			existing = this.repository.findOneSponsorShipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date deadLine;
-
-			deadLine = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
-
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
 
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date deadLine;
+			Date startDate = object.getStartDate();
+			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
+			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() >= 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 	}
 
 	@Override
@@ -101,7 +117,7 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 		choices = SelectChoices.from(projects, "title", object.getProject());
 		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
 
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);

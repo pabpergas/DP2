@@ -8,13 +8,20 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-sponsor.invoice.list.label.sponsorShip.code = Sponsor Code
+sponsor.invoice.list.label.sponsorShip.code = SponsorShip Code
 sponsor.invoice.list.label.code = Code
 sponsor.invoice.list.label.registrationTime = Registration Time
 sponsor.invoice.list.label.dueDate = Due Date
-sponsor.invoice.list.label.quantity = Quantity
-sponsor.invoice.list.label.tax = Tax
-sponsor.invoice.list.label.link = Link
+sponsor.invoice.form.label.tax = Tax
+sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.title = Your Invoice Data
+sponsor.invoice.form.label.quantity = Quantity
 sponsor.invoice.list.title = Your Invoices
 
+sponsor.invoice.form.title = Create
+
+
+sponsor.invoice.error.code = Patern of the code must be IN-4numbers-4numbers, like that:IN-0000-0000
+sponsor.invoice.error.duplicated = The invoice code cannot match a previously registered one
+sponsor.invoice.error.dueDate = The due date must be at least one month latter than the registration time
+sponsor.invoice.error.amount = The amount must be greater than 0 and less than 1,000,000.00

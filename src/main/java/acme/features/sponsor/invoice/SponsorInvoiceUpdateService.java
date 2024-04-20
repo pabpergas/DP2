@@ -17,7 +17,7 @@ import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoice> {
+public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
 	private SponsorInvoiceRepository repository;
@@ -26,11 +26,12 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int invoiceId;
 		SponsorShip sponsorship;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		sponsorship = this.repository.findOneSponsorShipById(masterId);
+		invoiceId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+
 		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
 
 		super.getResponse().setAuthorised(status);
@@ -39,14 +40,10 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void load() {
 		Invoice object;
-		SponsorShip sponsorShip;
-		int masterId;
+		int id;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		sponsorShip = this.repository.findOneSponsorShipById(masterId);
-
-		object = new Invoice();
-		object.setSponsorShip(sponsorShip);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneInvoiceById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -66,7 +63,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 
-			existing = this.repository.findOneInvoiceByCode(object.getCode());
+			existing = this.repository.findOneInvoiceByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.invoice.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
@@ -95,7 +92,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("masterId", object.getSponsorShip().getId());
 		dataset.put("draftMode", object.getSponsorShip().isDraftMode());
 
 		super.getResponse().addData(dataset);

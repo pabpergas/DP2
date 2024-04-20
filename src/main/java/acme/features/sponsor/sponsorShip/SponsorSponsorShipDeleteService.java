@@ -27,16 +27,10 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 		int masterId;
 		SponsorShip sponsorShip;
 		Sponsor sponsor;
-
 		masterId = super.getRequest().getData("id", int.class);
-		System.out.println("hola1" + masterId);
-
 		sponsorShip = this.repository.findOneSponsorShipById(masterId);
 		sponsor = sponsorShip == null ? null : sponsorShip.getSponsor();
-		System.out.println("hola3" + sponsor + sponsorShip);
-
 		status = sponsorShip != null && sponsorShip.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
-		System.out.println("hola2" + status);
 		super.getResponse().setAuthorised(status);
 	}
 

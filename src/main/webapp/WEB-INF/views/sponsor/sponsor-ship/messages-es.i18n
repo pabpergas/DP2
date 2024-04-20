@@ -28,10 +28,10 @@ sponsor.sponsorShip.list.submit.update = Actualizar
 sponsor.sponsorShip.list.submit.delete = Eliminar
 sponsor.sponsorShip.list.submit.publish = Publicar
 
-sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3letras-3 números, como aquí: AAA-000
 sponsor.sponsorShip.form.placerholder.type = El tipo debe ser: FINANCIAL, IN_KIND
 
-sponsor.sponsorShip.error.amount = La cantidad debe ser la suma de la cantidad total de las facturas asociadas del patrocinador
+sponsor.sponsorShip.error.amount = La cantidad debe ser mayor a 0 y menor a 1.000.000,00
 sponsor.sponsorShip.error.total-amount=Esta cantidad no tiene ninguna factura asociada y la cantidad no es 0,00
 sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coincidir con uno anteriormente registrado
 sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000

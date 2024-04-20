@@ -50,6 +50,7 @@ public class SponsorShip extends AbstractEntity {
 	private Date				endDate;
 
 	@NotNull
+	@Valid
 	private Money				amount;
 
 	@NotNull
