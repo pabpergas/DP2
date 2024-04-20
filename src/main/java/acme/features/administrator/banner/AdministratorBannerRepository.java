@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.banner;
+package acme.features.administrator.banner;
 
 import java.util.Collection;
 
@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.groupal.Banner;
 
 @Repository
-public interface AuthenticatedBannerRepository extends AbstractRepository {
+public interface AdministratorBannerRepository extends AbstractRepository {
 
 	@Query("select b from Banner b")
 	Collection<Banner> findAllBanners();
