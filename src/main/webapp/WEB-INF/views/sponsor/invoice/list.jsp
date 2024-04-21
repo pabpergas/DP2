@@ -16,8 +16,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column code="sponsor.invoice.list.label.sponsorShip.code" path="sponsorShip.code" width="10%"/>
     <acme:list-column code="sponsor.invoice.list.label.code" path="code" width="10%"/>
+    <acme:list-column code="sponsor.invoice.list.label.sponsorShip.code" path="sponsorShip.code" width="10%"/>
     <acme:list-column code="sponsor.invoice.list.label.dueDate" path="dueDate" width="10%"/>
 </acme:list>
 

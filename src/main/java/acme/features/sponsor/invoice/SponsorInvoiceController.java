@@ -25,14 +25,22 @@ public class SponsorInvoiceController extends AbstractController<Sponsor, Invoic
 	@Autowired
 	private SponsorInvoiceUpdateService		updateService;
 
+	@Autowired
+	private SponsorInvoiceDeleteService		deleteService;
+
+	@Autowired
+	private SponsorInvoicePublishService	publishService;
+
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
 
 		super.addCustomCommand("list-mine", "list", this.listMineService);
+		super.addCustomCommand("publish", "update", this.publishService);
 
 	}
 
