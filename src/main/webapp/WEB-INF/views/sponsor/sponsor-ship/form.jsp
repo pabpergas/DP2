@@ -25,10 +25,8 @@
 	<acme:input-select code="sponsor.sponsorShip.list.label.type" path="type" choices="${types}"/>
 	<acme:input-email code="sponsor.sponsorShip.list.label.contactEmail" path="contactEmail"/>
 	<acme:input-url code="sponsor.sponsorShip.list.label.link" path="link"/>
-	
 		
 	<jstl:choose> 
-	
 	<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="sponsor.sponsorShip.list.button.invoices" action="/sponsor/invoice/list-mine?masterId=${id}"/>
 		</jstl:when>
