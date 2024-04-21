@@ -1,11 +1,6 @@
 
 package acme.features.administrator.banner;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +11,7 @@ import acme.client.services.AbstractService;
 import acme.entities.groupal.Banner;
 
 @Service
-public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerDeleteService extends AbstractService<Administrator, Banner> {
 
 	@Autowired
 	private AdministratorBannerRepository repository;
@@ -24,7 +19,13 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Banner banner;
+		masterId = super.getRequest().getData("id", int.class);
+		banner = this.repository.findOneBannerById(masterId);
+		status = banner != null;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -48,26 +49,13 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("startDisplay"))
-			super.state(MomentHelper.isAfter(object.getStartDisplay(), object.getInstantationMoment()), "startDisplay", "administrator.banner.error.startDisplay");
-		if (!super.getBuffer().getErrors().hasErrors("endDisplay")) {
-			Date deadLine;
-			Date startDisplay = object.getStartDisplay();
-
-			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDisplay.getTime()).minus(Duration.ofSeconds(1)));
-
-			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDisplay(), deadLine), "endDisplay", "administrator.banner.error.endDisplay");
-
-		}
 	}
 
 	@Override
 	public void perform(final Banner object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
