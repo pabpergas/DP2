@@ -36,4 +36,4 @@ sponsor.sponsorShip.error.total-amount= The sum of the total amount of the invoi
 sponsor.sponsorShip.error.duplicated = The sponsorship code cannot match one previously registered
 sponsor.sponsorShip.error.code = Patern of the code must be 3leters-3numbers, like that:AAA-000
 sponsor.sponsorShip.error.too-close = The sponsorship startDate must be after the moment
-sponsor.sponsorShip.error.endDate  = End Date must be 1 month later than Start Date
+sponsor.sponsorShip.error.endDate  = End Date must be 30 days later than Start Date

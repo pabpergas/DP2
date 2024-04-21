@@ -36,5 +36,5 @@ sponsor.sponsorShip.error.total-amount= La suma de la cantidad total de las fact
 sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coincidir con uno anteriormente registrado
 sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
 sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
-sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 1 mes posterior a la fecha de inicio
+sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 30 días posterior a la fecha de inicio
 
