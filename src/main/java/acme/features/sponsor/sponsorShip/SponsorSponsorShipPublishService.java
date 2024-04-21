@@ -15,6 +15,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
+import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.entities.S4.SponsorShip.SponsorShipType;
 import acme.roles.Sponsor;
@@ -71,6 +72,8 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	public void validate(final SponsorShip object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
 
@@ -88,7 +91,7 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() >= 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
+			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
 
@@ -98,18 +101,14 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 			int id;
 			id = super.getRequest().getData("id", int.class);
 
-			totalAmount = this.repository.findSumInvoiceAmountBySponsorShipId(id);
+			invoices = this.repository.findManyInvoicesBySponsorShipId(id);
+			totalAmount = invoices.stream().mapToDouble(Invoice::totalAmount).sum();
+			System.out.println("totalAmount" + totalAmount);
 
 			if (totalAmount != null)
 				super.state(totalAmount.equals(object.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.total-amount");
-			if (totalAmount == null)
-				System.out.println("hola" + totalAmount);
-			System.out.println(object.getAmount().getAmount());
-			System.out.println(0.00);
-
-			System.out.println(object.getAmount().getAmount() == 0.00);
-
-			super.state(object.getAmount().getAmount() == .0, "amount", "sponsor.sponsorShip.error.total-amount");
+			if (totalAmount == 0.0)
+				super.state(object.getAmount().getAmount() == .0, "amount", "sponsor.sponsorShip.error.no-total-amount");
 
 		}
 
@@ -119,7 +118,12 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	public void perform(final SponsorShip object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+
 		object.setDraftMode(false);
+		invoices = this.repository.findManyInvoicesBySponsorShipId(object.getId());
+		invoices.stream().forEach(invoice -> invoice.setDraftMode(false));
+
 		this.repository.save(object);
 	}
 

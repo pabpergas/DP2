@@ -74,7 +74,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isAfter(object.getDueDate(), deadLine), "dueDate", "sponsor.invoice.error.dueDate");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0 && object.getQuantity().getAmount() <= 1000000, "amount", "sponsor.invoice.error.amount");
+			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "amount", "sponsor.invoice.error.amount");
 
 	}
 

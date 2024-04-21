@@ -56,27 +56,23 @@ public class Invoice extends AbstractEntity {
 	private Double	tax;
 
 	@URL
-	@Length(max = 255)
+	@Length(min = 0, max = 255)
 	private String	link;
 
 
 	@Transient
-	private Double totalAmount() {
+	public Double totalAmount() {
 		Double q = this.quantity.getAmount();
 
 		return q + q * this.tax;
 	}
 
 
+	private boolean		draftMode	= true;
+
 	@ManyToOne
 	@Valid
 	@NotNull
-	private SponsorShip sponsorShip;
-
-
-	@Override
-	public String toString() {
-		return "Invoice [code=" + this.code + ", registrationTime=" + this.registrationTime + ", dueDate=" + this.dueDate + ", quantity=" + this.quantity + ", tax=" + this.tax + ", link=" + this.link + ", sponsorShip=" + this.sponsorShip + "]";
-	}
+	private SponsorShip	sponsorShip;
 
 }
