@@ -1,6 +1,8 @@
 
 package acme.features.sponsor.sponsorShip;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
@@ -13,7 +15,9 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
+import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
+import acme.entities.S4.SponsorShip.SponsorShipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -25,7 +29,16 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		SponsorShip sponsorShip;
+		Sponsor sponsor;
+
+		masterId = super.getRequest().getData("id", int.class);
+		sponsorShip = this.repository.findOneSponsorShipById(masterId);
+		sponsor = sponsorShip == null ? null : sponsorShip.getSponsor();
+		status = sponsorShip != null && sponsorShip.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -35,7 +48,6 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 
 		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new SponsorShip();
-		object.setDraftMode(false);
 		object.setSponsor(sponsor);
 
 		super.getBuffer().addData(object);
@@ -60,38 +72,43 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	public void validate(final SponsorShip object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
 
 			existing = this.repository.findOneSponsorShipByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date deadLine;
-
-			deadLine = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
-
-		}
-
 		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
 
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date deadLine;
+			Date startDate = object.getStartDate();
+			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
+			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+
+		{
 			Double totalAmount;
 			SponsorShip sponsorShip;
 			int id;
 			id = super.getRequest().getData("id", int.class);
 
-			totalAmount = this.repository.findSumInvoiceAmountBySponsorShipId(id);
-
-			sponsorShip = this.repository.findOneSponsorShipById(id);
+			invoices = this.repository.findManyInvoicesBySponsorShipId(id);
+			totalAmount = invoices.stream().mapToDouble(Invoice::totalAmount).sum();
+			System.out.println("totalAmount" + totalAmount);
 
 			if (totalAmount != null)
-				super.state(totalAmount.equals(sponsorShip.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.amount");
-			if (totalAmount == null && !sponsorShip.getAmount().getAmount().equals(.0))
-				super.state(false, "amount", "sponsor.sponsorShip.error.total-amount");
+				super.state(totalAmount.equals(object.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.total-amount");
+			if (totalAmount == 0.0)
+				super.state(object.getAmount().getAmount() == .0, "amount", "sponsor.sponsorShip.error.no-total-amount");
 
 		}
 
@@ -100,6 +117,12 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void perform(final SponsorShip object) {
 		assert object != null;
+
+		Collection<Invoice> invoices;
+
+		object.setDraftMode(false);
+		invoices = this.repository.findManyInvoicesBySponsorShipId(object.getId());
+		invoices.stream().forEach(invoice -> invoice.setDraftMode(false));
 
 		this.repository.save(object);
 	}
@@ -111,15 +134,21 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices typeChoices;
 		Dataset dataset;
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
 		choices = SelectChoices.from(projects, "title", object.getProject());
+		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
 
 		dataset = super.unbind(object, "project", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
 		super.getResponse().addData(dataset);
 
 	}
