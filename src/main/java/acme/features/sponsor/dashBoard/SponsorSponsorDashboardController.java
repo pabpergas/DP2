@@ -14,7 +14,7 @@ import acme.roles.Sponsor;
 public class SponsorSponsorDashboardController extends AbstractController<Sponsor, SponsorDashboard> {
 
 	@Autowired
-	private SponsorSponsorDashboardListService listService;
+	private SponsorSponsorDashboardShowService listService;
 
 
 	@PostConstruct

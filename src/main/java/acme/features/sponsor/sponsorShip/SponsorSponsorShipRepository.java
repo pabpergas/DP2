@@ -30,14 +30,14 @@ public interface SponsorSponsorShipRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT s.project FROM SponsorShip s WHERE s.sponsor.id = :id")
 	Collection<Project> findManyProjectsBySponsorId(int id);
 
+	@Query("SELECT DISTINCT s FROM SponsorShip s WHERE s.sponsor.id = :id")
+	Collection<SponsorShip> findManySponsorShipsBySponsorId(int id);
+
 	@Query("select s from SponsorShip s where s.code = :code")
 	SponsorShip findOneSponsorShipByCode(String code);
 
 	@Query("select s from SponsorShip s where s.code = :code AND s.id <> :id ")
 	SponsorShip findOneSponsorShipByCodeAndDistinctId(String code, int id);
-
-	@Query("SELECT SUM(i.quantity.amount * (1 + i.tax / 100)) FROM Invoice i WHERE i.sponsorShip.id = :id")
-	Double findSumInvoiceAmountBySponsorShipId(int id);
 
 	@Query("select i from Invoice i where i.sponsorShip.id = :id")
 	Collection<Invoice> findManyInvoicesBySponsorShipId(int id);

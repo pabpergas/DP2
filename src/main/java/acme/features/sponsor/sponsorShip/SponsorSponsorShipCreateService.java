@@ -1,6 +1,8 @@
 
 package acme.features.sponsor.sponsorShip;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
@@ -38,7 +40,7 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 		object = new SponsorShip();
 		object.setDraftMode(true);
 		object.setSponsor(sponsor);
-
+		object.setMoment(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(object);
 	}
 
@@ -62,20 +64,21 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
-
 			existing = this.repository.findOneSponsorShipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date deadLine;
-
-			deadLine = MomentHelper.deltaFromMoment(object.getStartDate(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
-
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
 
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date deadLine;
+			Date startDate = object.getStartDate();
+			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
+			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 	}
 
 	@Override

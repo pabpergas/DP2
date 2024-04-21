@@ -2,11 +2,13 @@
 package acme.features.sponsor.sponsorShip;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
@@ -23,8 +25,19 @@ public class SponsorSponsorShipShowService extends AbstractService<Sponsor, Spon
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		SponsorShip sponsorShip;
+		Sponsor sponsor;
+		Date currentMoment;
 
+		masterId = super.getRequest().getData("id", int.class);
+		sponsorShip = this.repository.findOneSponsorShipById(masterId);
+		sponsor = sponsorShip == null ? null : sponsorShip.getSponsor();
+		currentMoment = MomentHelper.getCurrentMoment();
+		status = super.getRequest().getPrincipal().hasRole(sponsor) || sponsorShip != null && !sponsorShip.isDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
