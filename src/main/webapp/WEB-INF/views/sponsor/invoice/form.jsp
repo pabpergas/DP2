@@ -23,13 +23,11 @@
 	<acme:input-textbox code="sponsor.invoice.form.label.tax" path="tax"/>
 	<acme:input-textbox code="sponsor.invoice.form.label.link" path="link"/>
 	
-	
-	
-	
 	<jstl:choose> 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/sponsor/invoice/update"/>
 			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/sponsor/invoice/delete"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.publish" action="/sponsor/invoice/publish"/>			
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
