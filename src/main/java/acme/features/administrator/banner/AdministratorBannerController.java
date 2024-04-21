@@ -14,16 +14,20 @@ import acme.entities.groupal.Banner;
 public class AdministratorBannerController extends AbstractController<Administrator, Banner> {
 
 	@Autowired
-	private AdministratorBannerListService	listService;
+	private AdministratorBannerListService		listService;
 
 	@Autowired
-	private AdministratorBannerShowService	showService;
+	private AdministratorBannerShowService		showService;
+
+	@Autowired
+	private AdministratorBannerCreateService	createService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 
 	}
 

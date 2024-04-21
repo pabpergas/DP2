@@ -16,11 +16,25 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="administrator.banner.list.label.code" path="code" />
-	<acme:input-textbox code="administrator..banner.list.label.instantiation" path="instantiation" />
-	<acme:input-textbox code="administrator.banner.list.label.heading" path="heading" />
-	<acme:input-textbox code="administrator.banner.list.label.description" path="description"/>
-	<acme:input-textbox code="administrator.banner.banner.list.label.department" path="department"/>
-	<acme:input-textbox code="administrator.banner.banner.list.label.email" path="email"/>
-	<acme:input-textbox code="administrator.banner.banner.list.label.link" path="link"/>
+	<acme:input-textbox code="administrator.banner.list.label.instantationMoment" path="instantationMoment" readonly="true" />
+	<acme:input-textbox code="administrator.banner.list.label.startDisplay" path="startDisplay" />
+	<acme:input-textbox code="administrator.banner.list.label.endDisplay" path="endDisplay" />
+	<acme:input-textbox code="administrator.banner.list.label.pictureLink" path="pictureLink"/>
+	<acme:input-textbox code="administrator.banner.list.label.slogan" path="slogan"/>
+	<acme:input-textbox code="administrator.banner.list.label.documentLink" path="documentLink"/>
+	
+		<jstl:choose> 
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/sponsor/sponsor-ship/update"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/sponsor/sponsor-ship/delete"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.publish" action="/sponsor/sponsor-ship/publish"/>	
+		</jstl:when>
+		
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="administrator.invoice.list.button.create" action="/administrator/banner/create"/>
+		</jstl:when>
+	</jstl:choose> 
+	
 </acme:form>
+
+

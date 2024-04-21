@@ -16,10 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column code="administrator.banner.list.label.instantationMoment" path="instantationMoment" width="5%"/>
-    <acme:list-column code="administrator.banner.list.label.startDisplay" path="startDisplay" width="10%"/>
-    <acme:list-column code="administrator.banner.list.label.endDisplay" path="endDisplay" width="20%"/>
-    <acme:list-column code="administrator.banner.list.label.pictureLink" path="pictureLink" width="20%"/>
     <acme:list-column code="administrator.banner.list.label.slogan" path="slogan" width="20%"/>
-    <acme:list-column code="administrator.banner.list.label.documentLink" path="documentLink" width="20%"/>
-</acme:list>
+     <acme:list-column code="administrator.banner.list.label.endDisplay" path="endDisplay" width="20%"/>
+    <acme:list-column code="administrator.banner.list.label.pictureLink" path="pictureLink" width="20%"/>
+</acme:list>  
+    
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="administrator.invoice.list.button.create" action="/administrator/banner/create"/>
+</jstl:if>

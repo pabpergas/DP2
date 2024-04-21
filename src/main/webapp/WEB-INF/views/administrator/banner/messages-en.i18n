@@ -16,4 +16,10 @@ administrator.banner.list.label.pictureLink = Department
 administrator.banner.list.label.slogan = Slogan
 administrator.banner.list.label.documentLink = Document Link
 administrator.banner.form.title = Banner Data
-banner.list.title = Banner
+administratorbanner.list.title = Banner
+administrator.invoice.list.button.create = Crear
+
+
+administrator.banner.error.startDisplay = StartDisplay must be after than the instationMoment
+administrator.banner.error.endDisplay = End Display must be at least 7 days before than Start Display
+
