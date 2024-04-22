@@ -42,7 +42,7 @@ public class CodeAudit extends AbstractEntity {
 	private Date				executionDate;
 
 	@NotNull
-	private type				type;
+	private CodeAuditType				type;
 
 	@NotBlank
 	@Size(max = 100)
@@ -56,8 +56,4 @@ public class CodeAudit extends AbstractEntity {
 	
 	private Boolean				draftMode			= true;
 
-
-	public enum type {
-		STATIC, DINAMIC
-	}
 }

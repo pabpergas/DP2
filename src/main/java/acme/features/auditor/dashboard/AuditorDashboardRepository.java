@@ -10,10 +10,10 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AuditorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(c) from CodeAudit c where c.type = acme.entities.codeaudits.CodeAuditType.STATIC")
+	@Query("select count(c) from CodeAudit c where c.type = acme.entities.S5.CodeAuditType.STATIC")
 	int totalStaticCodeAudits();
 
-	@Query("select count(c) from CodeAudit c where c.type = acme.entities.codeaudits.CodeAuditType.DYNAMIC")
+	@Query("select count(c) from CodeAudit c where c.type = acme.entities.S5.CodeAuditType.DINAMIC")
 	int totalDinamicCodeAudits();
 
 	@Query("select count(a) from AuditRecord a where a.codeAudit.auditor.id = :auditorId group by a.codeAudit.id")
