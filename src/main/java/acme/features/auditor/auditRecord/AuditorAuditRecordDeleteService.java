@@ -38,7 +38,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		CodeAudit codeAudit;
 		codeAudit = object.getCodeAudit();
 
-		super.bind(object, "code", "periodBeginning", "periodEnd", "mark", "link");
+		super.bind(object, "code", "startAudition", "endAudition", "mark", "informationLink");
 		object.setCodeAudit(codeAudit);
 	}
 

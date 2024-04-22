@@ -52,7 +52,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		Auditor auditor;
 		auditor = object.getAuditor();
 
-		super.bind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "project");
 		object.setAuditor(auditor);
 	}
 
@@ -81,7 +81,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		auditor = object.getAuditor();
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveAction", "link", "project");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
 		dataset.put("auditor", auditor);
 		super.getResponse().addData(dataset);
 	}
