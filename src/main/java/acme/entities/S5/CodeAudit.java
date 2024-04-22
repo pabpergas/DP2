@@ -50,6 +50,10 @@ public class CodeAudit extends AbstractEntity {
 
 	@ManyToOne
 	private Auditor				auditor;
+	
+	private Mark				mark				= Mark.FMINUS;
+	
+	private Boolean				draftMode			= true;
 
 	private boolean				draftMode			= true;
 
