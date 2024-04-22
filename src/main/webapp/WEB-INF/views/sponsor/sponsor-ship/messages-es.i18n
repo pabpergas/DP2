@@ -1,0 +1,40 @@
+# banner-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+sponsor.sponsorShip.list.label.project.title = Proyecto
+sponsor.sponsorShip.list.label.moment = Momento
+sponsor.sponsorShip.list.label.code  = Código
+sponsor.sponsorShip.list.label.startDate = Comienzo
+sponsor.sponsorShip.list.label.endDate = Fin
+sponsor.sponsorShip.list.label.amount = Cantidad
+sponsor.sponsorShip.list.label.type = Tipo
+sponsor.sponsorShip.list.label.contactEmail = Email de contacto
+sponsor.sponsorShip.list.label.link = Link
+sponsor.sponsorShip.list.label.sponsor.name = Nombre del Sponsor
+sponsor.sponsor-ship.form.title = Datos del Patrocinio
+sponsor.sponsor-ship.list.title = Tus patrocinios
+sponsor.sponsorShip.list.button.create = Crear
+sponsor.sponsorShip.list.button.invoices = Facturas
+sponsor.sponsorShip.list.submit.create = Crear
+sponsor.sponsorShip.list.submit.update = Actualizar
+sponsor.sponsorShip.list.submit.delete = Eliminar
+sponsor.sponsorShip.list.submit.publish = Publicar
+
+sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.form.placerholder.type = El tipo debe ser: FINANCIAL, IN_KIND
+sponsor.sponsorShip.error.amount = La cantidad debe ser mayor a 0 y menor a 1.000.000,00
+sponsor.sponsorShip.error.no-total-amount=Este patrocionio no tiene ninguna factura asociada y la cantidad no es 0,00
+sponsor.sponsorShip.error.total-amount= La suma de la cantidad total de las facturas debe ser igual al monto del patrocinio.
+sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coincidir con uno anteriormente registrado
+sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
+sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 30 días posterior a la fecha de inicio
+sponsor.sponsorShip.error.amount.currency = El tipo de moneda debe ser EUR, GBD o USD

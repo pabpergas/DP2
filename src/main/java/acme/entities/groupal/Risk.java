@@ -32,7 +32,7 @@ public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "^R-[0-9]{3}$")
+	@Pattern(regexp = "^R-[0-9]{3}$", message = "{error.risk}")
 	@NotBlank
 	@Column(unique = true)
 	private String				reference;
@@ -45,7 +45,7 @@ public class Risk extends AbstractEntity {
 	@Min(0)
 	@Max(100)
 	@Digits(integer = 3, fraction = 2)
-	private int					impact;
+	private double				impact;
 
 	@Min(0)
 	@Max(100)
@@ -53,7 +53,7 @@ public class Risk extends AbstractEntity {
 	private double				probability;
 
 	@NotBlank
-	@Length(min = 0, max = 100)
+	@Length(max = 100)
 	private String				description;
 
 	@URL
