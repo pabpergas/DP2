@@ -18,10 +18,10 @@
 <acme:form>
 	<acme:input-textbox code="sponsor.invoice.list.label.code" path="code" />
 	<acme:input-moment code="sponsor.invoice.list.label.registrationTime" path="registrationTime" readonly ="true"/>
-	<acme:input-textbox code="sponsor.invoice.list.label.dueDate" path="dueDate"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.quantity" path="quantity"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.tax" path="tax"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.link" path="link"/>
+	<acme:input-moment code="sponsor.invoice.list.label.dueDate" path="dueDate"/>
+	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>
+	<acme:input-double code="sponsor.invoice.form.label.tax" path="tax"/>
+	<acme:input-url code="sponsor.invoice.form.label.link" path="link"/>
 	
 	
 	
