@@ -16,7 +16,7 @@ administrator.banner.list.label.slogan = Eslogan
 administrator.banner.list.label.documentLink = Enlace del Documento
 administrator.banner.form.title = Datos del Banner
 administrator.banner.list.title = Lista de Banners
-administrator.invoice.list.button.create = Create
 
+administrator.banner.list.title = Banderas
 administrator.banner.error.startDisplay = El Comienzo de Visualización tiene que ser después del Momento de Instanciación
 administrator.banner.error.endDisplay = El Fin de Visualización debe ser al menos 7 días después del Comienzo de Visualización 

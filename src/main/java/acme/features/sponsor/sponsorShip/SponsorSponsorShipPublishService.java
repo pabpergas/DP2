@@ -73,6 +73,10 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 		assert object != null;
 
 		Collection<Invoice> invoices;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		invoices = this.repository.findManyInvoicesBySponsorShipId(id);
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
@@ -97,11 +101,7 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 
 		{
 			Double totalAmount;
-			SponsorShip sponsorShip;
-			int id;
-			id = super.getRequest().getData("id", int.class);
 
-			invoices = this.repository.findManyInvoicesBySponsorShipId(id);
 			totalAmount = invoices.stream().mapToDouble(Invoice::totalAmount).sum();
 			System.out.println("totalAmount" + totalAmount);
 
@@ -109,7 +109,8 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 				super.state(totalAmount.equals(object.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.total-amount");
 			if (totalAmount == 0.0)
 				super.state(object.getAmount().getAmount() == .0, "amount", "sponsor.sponsorShip.error.no-total-amount");
-
+			if (!super.getBuffer().getErrors().hasErrors("amount"))
+				super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBD") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
 		}
 
 	}

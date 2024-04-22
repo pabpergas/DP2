@@ -17,10 +17,6 @@
 
 <acme:list>
     <acme:list-column code="authenticated.claim.list.label.code" path="code" width="5%"/>
-    <acme:list-column code="authenticated.claim.list.label.instantiation" path="instantiation" width="10%"/>
-    <acme:list-column code="authenticated.claim.list.label.heading" path="heading" width="20%"/>
-    <acme:list-column code="authenticated.claim.list.label.description" path="description" width="20%"/>
     <acme:list-column code="authenticated.claim.list.label.department" path="department" width="20%"/>
-    <acme:list-column code="authenticated.claim.list.label.email" path="email" width="20%"/>
-    <acme:list-column code="authenticated.claim.list.label.link" path="link" width="20%"/>
+    <acme:list-column code="authenticated.claim.list.label.instantiation" path="instantiation" width="10%"/>
 </acme:list>
