@@ -17,7 +17,7 @@ import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoice> {
+public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
 	private SponsorInvoiceRepository repository;
@@ -82,6 +82,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void perform(final Invoice object) {
 		assert object != null;
 
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

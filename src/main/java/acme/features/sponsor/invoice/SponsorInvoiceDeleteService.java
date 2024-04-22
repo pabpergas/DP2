@@ -11,7 +11,7 @@ import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice> {
+public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
 	private SponsorInvoiceRepository repository;
@@ -25,6 +25,7 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 		invoiceId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+
 		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
 
 		super.getResponse().setAuthorised(status);
@@ -37,8 +38,29 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneInvoiceById(id);
-		super.getBuffer().addData(object);
 
+		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final Invoice object) {
+		assert object != null;
+
+		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+
+	}
+
+	@Override
+	public void validate(final Invoice object) {
+		assert object != null;
+
+	}
+
+	@Override
+	public void perform(final Invoice object) {
+		assert object != null;
+
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -46,7 +68,8 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
 		dataset.put("masterId", object.getSponsorShip().getId());
 
 		super.getResponse().addData(dataset);
