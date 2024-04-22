@@ -1,7 +1,9 @@
 
 package acme.entities.S5;
 
+import java.beans.Transient;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,4 +58,10 @@ public class AuditRecord extends AbstractEntity {
 	private Auditor				auditor;
 
 	private Boolean				draftMode				= true;
+	
+	@Transient
+	public Long getAuditionPeriod() {
+		long diff = this.endAudition.getTime() - this.startAudition.getTime();
+		return Long.valueOf(TimeUnit.MILLISECONDS.toMinutes(diff));
+	}
 }

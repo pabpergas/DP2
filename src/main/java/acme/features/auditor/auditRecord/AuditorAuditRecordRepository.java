@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.S5.AuditRecord;
-import acme.roles.Auditor;
 
 @Repository
 public interface AuditorAuditRecordRepository extends AbstractRepository {
@@ -17,5 +16,8 @@ public interface AuditorAuditRecordRepository extends AbstractRepository {
 	
 	@Query("SELECT ar FROM AuditRecord ar WHERE ar.id = :id")
 	AuditRecord findById(int id);
+	
+	@Query("select a from AuditRecord a where a.codeAudit.auditor.id = :auditorId")
+	Collection<AuditRecord> findAllByAuditorId(int auditorId);
 
 }
