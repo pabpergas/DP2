@@ -38,7 +38,9 @@ public class AuthenticatedClaimShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "instantiation", "heading", "description", "department", "email", "link");
+		dataset = super.unbind(object, "code", "instantiation", "department");
+		dataset.put("confirmation", false);
+		dataset.put("readonly", true);
 		super.getResponse().addData(dataset);
 
 	}
