@@ -8,15 +8,26 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-sponsor.sponsor-dashboard.list.title = SponsorDashBoard
-sponsor.sponsorShip.list.label.totalInvoicesWithTaxLessThanOrEqualTo21Percent = Total Invoice wih a tax les or equals to 21%
-sponsor.sponsorShip.list.label.totalSponsorshipsWithLink = Total of SponsorShips with Link
-sponsor.sponsorShip.list.label.averageSponsorshipAmount = SponsorShip Amount Average
-sponsor.sponsorShip.list.label.deviationSponsorshipAmount = SponsorShip Amount Desviation
-sponsor.sponsorShip.list.label.minimumSponsorshipAmount = SponsorShip Minimum Amount
-sponsor.sponsorShip.list.label.maximumSponsorshipAmount = SponsorShip Maximum Amount
+sponsor.sponsor-dashboard.form.title = SponsorDashBoard
 
-sponsor.sponsorShip.list.label.averageSponsorshipQuantity = SponsorShip Quantity Average
-sponsor.sponsorShip.list.label.deviationSponsorshipQuantity = SponsorShip Quantity Desviation
-sponsor.sponsorShip.list.label.minimumSponsorshipQuantity = SponsorShip Minimum Quantity
-sponsor.sponsorShip.list.label.maximumSponsorshipQuantity = SponsorShip Maximum Quantity
+sponsor.sponsorShip.form.label.totalInvoicesWithTaxLessThanOrEqualTo21Percent = Total Invoice wih a tax les or equals to 21%
+sponsor.sponsorShip.form.label.totalSponsorshipsWithLink = Total of SponsorShips with Link
+
+
+sponsor.sponsorShip.form.label.averageSponsorshipAmountEUR = Average Amount of your SponsorShips(EUR)
+sponsor.sponsorShip.form.label.deviationSponsorshipAmountEUR = Deviation Amount of your SponsorShips(EUR)
+sponsor.sponsorShip.form.label.minimumSponsorshipAmountEUR = Minimum Amount of your SponsorShips(EUR)
+sponsor.sponsorShip.form.label.maximumSponsorshipAmountEUR = Maximum Amount of your SponsorShips(EUR)
+sponsor.sponsorShip.form.label.averageInvoiceQuantityEUR = Average Quantity of your Invoices(EUR)
+sponsor.sponsorShip.form.label.deviationInvoiceQuantityEUR = Deviation Quantity of your Invoices(EUR)
+sponsor.sponsorShip.form.label.minimumInvoiceQuantityEUR = Minimum Quantity of your Invoices(EUR)
+sponsor.sponsorShip.form.label.maximumInvoiceQuantityEUR  = Maximum Quantity of your Invoices(EUR)
+
+sponsor.sponsorShip.form.label.averageSponsorshipAmountUSD = Average Amount of your SponsorShips(USD)
+sponsor.sponsorShip.form.label.deviationSponsorshipAmountUSD = Deviation Amount of your SponsorShips(USD)
+sponsor.sponsorShip.form.label.minimumSponsorshipAmountUSD = Minimum Amount of your SponsorShips(USD)
+sponsor.sponsorShip.form.label.maximumSponsorshipAmountUSD = Maximum Amount of your SponsorShips(USD)
+sponsor.sponsorShip.form.label.averageInvoiceQuantityUSD = Average Quantity of your Invoices(USD)
+sponsor.sponsorShip.form.label.deviationInvoiceQuantityUSD = Deviation Quantity of your Invoices(USD)
+sponsor.sponsorShip.form.label.minimumInvoiceQuantityUSD = Minimum Quantity of your Invoices(USD)
+sponsor.sponsorShip.form.label.maximumInvoiceQuantityUSD = Maximum Quantity of your Invoices(USD)

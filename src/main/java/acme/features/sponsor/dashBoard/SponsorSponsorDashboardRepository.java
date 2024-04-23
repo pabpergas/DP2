@@ -15,28 +15,57 @@ public interface SponsorSponsorDashboardRepository extends AbstractRepository {
 	@Query("SELECT COUNT(s) FROM SponsorShip s WHERE s.link IS NOT NULL")
 	int countSponsorshipsWithLink();
 
-	@Query("SELECT avg(amount.amount) FROM SponsorShip")
-	Double findAverageAmount();
+	//EUR
+	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
+	Double findAverageAmountEUR();
 
-	@Query("SELECT STDDEV(amount.amount) FROM SponsorShip")
-	Double findStandardDeviationAmount();
+	@Query("SELECT STDDEV(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
+	Double findDeviationAmountEUR();
 
-	@Query("SELECT MIN(amount.amount) FROM SponsorShip")
-	Double findMinimumAmount();
+	@Query("SELECT MIN(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
+	Double findMinimumAmountEUR();
 
-	@Query("SELECT MAX(amount.amount) FROM SponsorShip")
-	Double findMaximumAmount();
+	@Query("SELECT MAX(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
+	Double findMaximumAmountEUR();
 
-	@Query("SELECT avg(quantity.amount) FROM Invoice")
-	Double findAverageQuantity();
+	//USD
 
-	@Query("SELECT STDDEV(quantity.amount) FROM Invoice")
-	Double findStandardDeviationQuantity();
+	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
+	Double findAverageAmountUSD();
 
-	@Query("SELECT MIN(quantity.amount) FROM Invoice")
-	Double findMinimumQuantity();
+	@Query("SELECT STDDEV(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
+	Double findDeviationAmountUSD();
 
-	@Query("SELECT MAX(quantity.amount) FROM Invoice")
-	Double findMaximumQuantity();
+	@Query("SELECT MIN(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
+	Double findMinimumAmountUSD();
+
+	@Query("SELECT MAX(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
+	Double findMaximumAmountUSD();
+
+	//Invoices
+
+	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
+	Double findAverageQuantityEUR();
+
+	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
+	Double findDeviationQuantityEUR();
+
+	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
+	Double findMinimumQuantityEUR();
+
+	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
+	Double findMaximumQuantityEUR();
+
+	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
+	Double findAverageQuantityUSD();
+
+	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
+	Double findDeviationQuantityUSD();
+
+	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
+	Double findMinimumQuantityUSD();
+
+	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
+	Double findMaximumQuantityUSD();
 
 }
