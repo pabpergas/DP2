@@ -12,10 +12,13 @@
 
 package acme.features.authenticated.banner;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import acme.client.helpers.MomentHelper;
 import acme.entities.groupal.Banner;
 
 @ControllerAdvice
@@ -28,9 +31,9 @@ public class BannerAdvisor {
 	@ModelAttribute("banner")
 	public Banner getBanner() {
 		Banner result;
-
+		Date currentMoment = MomentHelper.getCurrentMoment();
 		try {
-			result = this.repository.findRandomBanner();
+			result = this.repository.findRandomBanner(currentMoment);
 		} catch (final Throwable oops) {
 			result = null;
 		}

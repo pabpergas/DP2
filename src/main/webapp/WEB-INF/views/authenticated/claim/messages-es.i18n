@@ -18,3 +18,9 @@ authenticated.claim.list.label.link = Enlace
 authenticated.claim.form.title = Tus Datos de Reclamación
 authenticated.claim.list.title = Tus Reclamaciones
 
+authenticated.claim.form.button.create = Crear
+authenticated.claim.form.label.confirmation = Se requiere confirmación para crear una reclamación
+authenticated.claim.list.button.create = Crear
+
+claim.error.duplicated = El código de la reclamación no puede coincidir con uno anteriormente registrado 
+claim.error.code = El patrón de código debe ser C-3números, como este: C-000
