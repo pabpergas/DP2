@@ -19,11 +19,15 @@ public class AuthenticatedClaimController extends AbstractController<Authenticat
 	@Autowired
 	private AuthenticatedClaimShowService	showService;
 
+	@Autowired
+	private AuthenticatedClaimCreateService	createService;
+
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 
 	}
 

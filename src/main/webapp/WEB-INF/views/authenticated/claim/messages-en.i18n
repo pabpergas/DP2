@@ -18,3 +18,9 @@ authenticated.claim.list.label.link = Link
 authenticated.claim.form.title = Your Claim Data
 authenticated.claim.list.title = Your Claims
 
+authenticated.claim.form.button.create = Create
+authenticated.claim.form.label.confirmation = Confirmation is required to create a Claim
+authenticated.claim.list.button.create = Create
+
+claim.error.duplicated = The claim code cannot match one previously registered
+claim.error.code =The Code Patern must be C-3números, lyke that: C-000
