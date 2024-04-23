@@ -8,14 +8,14 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-sponsor.sponsorShip.list.label.totalInvoicesWithTaxLessThanOrEqualTo21Percent = Total de Facturas con Impuesto Menor o Igual a 21%
-sponsor.sponsorShip.list.label.totalSponsorshipsWithLink = Total de Patrocinios con Enlace
-sponsor.sponsorShip.list.label.averageSponsorshipAmount = Promedio del Monto del Patrocinio
-sponsor.sponsorShip.list.label.deviationSponsorshipAmount = Desviación del Monto del Patrocinio
-sponsor.sponsorShip.list.label.minimumSponsorshipAmount = Monto Mínimo del Patrocinio
-sponsor.sponsorShip.list.label.maximumSponsorshipAmount = Monto Máximo del Patrocinio
+sponsor.sponsorShip.form.label.totalInvoicesWithTaxLessThanOrEqualTo21Percent = Total de Facturas con Impuesto Menor o Igual a 21%
+sponsor.sponsorShip.form.label.totalSponsorshipsWithLink = Total de Patrocinios con Enlace
+sponsor.sponsorShip.form.label.averageSponsorshipAmount = Promedio del Monto del Patrocinio
+sponsor.sponsorShip.form.label.deviationSponsorshipAmount = Desviación del Monto del Patrocinio
+sponsor.sponsorShip.form.label.minimumSponsorshipAmount = Monto Mínimo del Patrocinio
+sponsor.sponsorShip.form.label.maximumSponsorshipAmount = Monto Máximo del Patrocinio
 
-sponsor.sponsorShip.list.label.averageSponsorshipQuantity = Promedio de la Cantidad del Patrocinio
-sponsor.sponsorShip.list.label.deviationSponsorshipQuantity = Desviación de la Cantidad del Patrocinio
-sponsor.sponsorShip.list.label.minimumSponsorshipQuantity = Cantidad Mínima del Patrocinio
-sponsor.sponsorShip.list.label.maximumSponsorshipQuantity = Cantidad Máxima del Patrocinio
+sponsor.sponsorShip.form.label.averageSponsorshipQuantity = Promedio de la Cantidad del Patrocinio
+sponsor.sponsorShip.form.label.deviationSponsorshipQuantity = Desviación de la Cantidad del Patrocinio
+sponsor.sponsorShip.form.label.minimumSponsorshipQuantity = Cantidad Mínima del Patrocinio
+sponsor.sponsorShip.form.label.maximumSponsorshipQuantity = Cantidad Máxima del Patrocinio
