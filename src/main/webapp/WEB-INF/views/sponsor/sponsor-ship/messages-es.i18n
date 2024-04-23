@@ -37,4 +37,4 @@ sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coinci
 sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
 sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
 sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 30 días posterior a la fecha de inicio
-
+sponsor.sponsorShip.error.amount.currency = El tipo de moneda debe ser EUR, GBD o USD

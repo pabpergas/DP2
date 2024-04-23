@@ -38,23 +38,23 @@ public class Claim extends AbstractEntity {
 	private Date				instantiation;
 
 	@NotBlank
-	@Length(min = 1, max = 75)
+	@Length(max = 75)
 	private String				heading;
 
 	@NotBlank
-	@Length(min = 1, max = 100)
+	@Length(max = 100)
 	private String				description;
 
 	@NotBlank
-	@Length(min = 0, max = 100)
+	@Length(max = 100)
 	private String				department;
 
 	@Email
-	@Length(min = 1, max = 255)
+	@Length(max = 255)
 	private String				email;
 
 	@URL
-	@Length(min = 0, max = 255)
+	@Length(max = 255)
 	private String				link;
 
 }

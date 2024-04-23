@@ -17,8 +17,10 @@ sponsor.invoice.form.label.tax = Tasa
 sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.title = Datos de tus Facturas
 sponsor.invoice.list.title = Tus Facturas
-
 sponsor.invoice.form.label.quantity = Cantidad
+
+sponsor.invoice.list.placeholder.link = 100.00,00
+sponsor.invoice.list.placeholder.code = IN-0000-0000
 
 sponsor.invoice.form.title = Crear
 

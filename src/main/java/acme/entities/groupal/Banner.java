@@ -39,16 +39,16 @@ public class Banner extends AbstractEntity {
 
 	@NotNull
 	@URL
-	@Length(min = 0, max = 255)
+	@Length(max = 255)
 	private String				pictureLink;
 
 	@NotBlank
-	@Length(min = 1, max = 75)
+	@Length(max = 75)
 	private String				slogan;
 
 	@NotNull
 	@URL
-	@Length(min = 0, max = 255)
+	@Length(max = 255)
 	private String				documentLink;
 
 }

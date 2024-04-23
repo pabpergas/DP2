@@ -42,7 +42,7 @@ public class CodeAudit extends AbstractEntity {
 	private Date				executionDate;
 
 	@NotNull
-	private type				type;
+	private CodeAuditType				type;
 
 	@NotBlank
 	@Size(max = 100)
@@ -50,13 +50,9 @@ public class CodeAudit extends AbstractEntity {
 
 	@ManyToOne
 	private Auditor				auditor;
+	
+	private Mark				mark				= Mark.FMINUS;
+	
+	private Boolean				draftMode			= true;
 
-	private boolean				draftMode			= true;
-
-	private Mark				mark;
-
-
-	public enum type {
-		STATIC, DINAMIC
-	}
 }
