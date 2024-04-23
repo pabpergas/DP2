@@ -25,8 +25,8 @@
 	
 		<jstl:choose> 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|deletes')}">
-			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/admnistrator/banner/update"/>
-			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/admnistrator/banner/delete"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/administrator/banner/update"/>
+			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/administrator/banner/delete"/>
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
