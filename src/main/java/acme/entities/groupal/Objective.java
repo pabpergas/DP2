@@ -9,7 +9,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -25,13 +24,18 @@ public class Objective extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
+	@PastOrPresent
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				instantiationMoment;
+
 	@NotBlank
-	@Size(max = 75)
+	@Length(max = 75)
 
 	private String				title;
 
 	@NotBlank
-	@Size(max = 100)
+	@Length(max = 100)
 
 	private String				description;
 
@@ -39,11 +43,6 @@ public class Objective extends AbstractEntity {
 	private Priority			priority;
 
 	private boolean				status;
-
-	@NotNull
-	@PastOrPresent
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,7 +53,7 @@ public class Objective extends AbstractEntity {
 	private Date				endDate;
 
 	@URL
-	@Length(max = 150)
+	@Length(max = 255)
 	private String				link;
 
 

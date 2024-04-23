@@ -1,0 +1,41 @@
+key,instantationMoment,startDisplay,endDisplay,pictureLink,slogan,documentLink
+banner-01,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-02,2000/01/01 00:00,2022/02/27 18:00,2022/04/27 18:00,http://picture2.org,Bad banner,http://document.com
+banner-03,2000/01/01 00:01,2022/02/27 18:00,2022/04/27 18:00,http://picture2.org,Bad banner,http://document.com
+banner-04,2022/07/30 00:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-05,2022/06/30 23:59,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-06,2020/02/29 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-07,2022/02/26 18:00,2000/01/01 00:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-08,2022/02/26 18:00,2000/01/01 00:01,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-09,2022/02/26 18:00,2022/07/30 00:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-10,2022/02/26 18:00,2022/07/30 23:59,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-11,2022/02/26 18:00,2020/02/29 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://document.com
+banner-12,2022/02/26 18:00,2022/02/27 18:00,2000/01/01 00:00,http://picture.org,Good banner,http://document.com
+banner-13,2022/02/26 18:00,2022/02/27 18:00,2000/01/01 00:01,https://i.imgur.com/8YcXhS0.png,Good banner,http://document.com
+banner-14,2022/02/26 18:00,2022/02/27 18:00,2022/07/30 00:00,https://i.imgur.com/8YcXhS0.png,Good banner,http://document.com
+banner-15,2022/02/26 18:00,2022/02/27 18:00,2022/07/30 23:59,https://i.imgur.com/8YcXhS0.png,Good banner,http://document.com
+banner-16,2022/02/26 18:00,2022/02/27 18:00,2020/02/29 18:00,http://picture.org,Good banner,http://document.com
+banner-17,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,"",Good banner,http://document.com
+banner-18,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://a.org,Good banner,http://document.com
+banner-19,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictur.org,Good banner,http://document.com
+banner-20,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictu.org,Good banner,http://document.com
+banner-21,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://a芝.org,Good banner,http://document.com
+banner-22,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://?a.org,Good banner,http://document.com
+banner-23,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,G,http://document.com
+banner-24,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Go,http://document.com
+banner-25,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodb,http://document.com
+banner-26,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGood,http://document.com
+banner-27,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,<script>console.log("hacked")<script>,http://document.com
+banner-28,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,or 'A'='A' ,http://document.com
+banner-29,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner芝,http://document.com
+banner-30,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,""
+banner-31,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://d.com
+banner-32,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocu.com
+banner-32-01,2022/02/26 18:00,2022/02/27 18:00,2022/04/27 18:00,http://picture.org,Good banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdoc.com
+banner-33,2022/06/20 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/8YcXhS0.png,https://www.freepik.es/fotos-vectores-gratis/png,http://document.com
+banner-34,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/MtBRoNP.png,https://www.worldwildlife.org/,http://document.com
+banner-35,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/NGLSjk6.png,https://i.imgur.com/MtBRoNP.png,https://www.doctorswithoutborders.org/
+banner-36,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/2eVF1HG.png,https://i.imgur.com/NGLSjk6.png,https://www.change.org/
+banner-37,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/2eVF1HG.png,https://i.imgur.com/NGLSjk6.png,https://www.change.org/
+banner-38,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/sgx1bFo.png,https://i.imgur.com/2eVF1HG.png,https://www.afoprodei.com/
+banner-39,2022/06/26 18:00,2022/07/27 18:00,2022/08/27 18:00,https://i.imgur.com/qu5SrLN.png,https://i.imgur.com/CqtMSmM.png,https://fundacionmornese.com

@@ -19,8 +19,8 @@ public class AuditorDashboard extends AbstractForm {
 	Double						averageNumberRecords;
 	Double						deviationNumberRecords;
 
-	Double						minPeriodRecord;
-	Double						maxPeriodRecord;
+	Integer						minPeriodRecord;
+	Integer						maxPeriodRecord;
 	Double						averagePeriodRecord;
 	Double						deviationPeriodRecord;
 }
