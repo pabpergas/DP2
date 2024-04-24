@@ -39,6 +39,7 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsor-ships = Patrocinio
 master.menu.sponsor.invoices = Facturas
 master.menu.sponsor.dashboard = Panel
+master.menu.sponsor.invoices = Facturas
 
 
 # master.menu.provider ########################################################

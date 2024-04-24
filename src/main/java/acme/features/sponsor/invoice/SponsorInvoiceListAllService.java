@@ -1,5 +1,5 @@
 
-package acme.features.sponsor.sponsorShip;
+package acme.features.sponsor.invoice;
 
 import java.util.Collection;
 
@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.S4.SponsorShip;
+import acme.entities.S4.Invoice;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, SponsorShip> {
+public class SponsorInvoiceListAllService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	private SponsorSponsorShipRepository repository;
+	private SponsorInvoiceRepository repository;
 
 
 	@Override
@@ -29,21 +29,24 @@ public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, 
 
 	@Override
 	public void load() {
-		Collection<SponsorShip> sponsorShip;
+		Collection<Invoice> invoices;
 		int sponsorId;
+
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShip = this.repository.findSponsorShipBySponsorId(sponsorId);
-		super.getBuffer().addData(sponsorShip);
+
+		invoices = this.repository.findAllInvoicesBySponsorId(sponsorId);
+
+		super.getBuffer().addData(invoices);
 	}
 
 	@Override
-	public void unbind(final SponsorShip object) {
+	public void unbind(final Invoice object) {
 		assert object != null;
 
+		int masterId;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "project.title");
+		dataset = super.unbind(object, "code", "sponsorShip.code", "dueDate");
 		super.getResponse().addData(dataset);
 	}
-
 }
