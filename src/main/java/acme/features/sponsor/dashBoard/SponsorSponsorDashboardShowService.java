@@ -39,7 +39,6 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 		Money deviationSponsorshipAmountEUR = new Money();
 		Money minimumSponsorshipAmountEUR = new Money();
 		Money maximumSponsorshipAmountEUR = new Money();
-
 		Money averageInvoiceQuantityEUR = new Money();
 		Money deviationInvoiceQuantityEUR = new Money();
 		Money minimumInvoiceQuantityEUR = new Money();
@@ -49,11 +48,19 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 		Money deviationSponsorshipAmountUSD = new Money();
 		Money minimumSponsorshipAmountUSD = new Money();
 		Money maximumSponsorshipAmountUSD = new Money();
-
 		Money averageInvoiceQuantityUSD = new Money();
 		Money deviationInvoiceQuantityUSD = new Money();
 		Money minimumInvoiceQuantityUSD = new Money();
 		Money maximumInvoiceQuantityUSD = new Money();
+
+		Money averageSponsorshipAmountGBD = new Money();
+		Money deviationSponsorshipAmountGBD = new Money();
+		Money minimumSponsorshipAmountGBD = new Money();
+		Money maximumSponsorshipAmountGBD = new Money();
+		Money averageInvoiceQuantityGBD = new Money();
+		Money deviationInvoiceQuantityGBD = new Money();
+		Money minimumInvoiceQuantityGBD = new Money();
+		Money maximumInvoiceQuantityGBD = new Money();
 
 		totalInvoicesWithTaxLessThanOrEqualTo21Percent = this.repository.countInvoicesWithTaxLessThanOrEqualTo21Percent();
 		totalSponsorshipsWithLink = this.repository.countSponsorshipsWithLink();
@@ -96,6 +103,25 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 		maximumInvoiceQuantityUSD.setCurrency("USD");
 		maximumInvoiceQuantityUSD.setAmount(this.repository.findMaximumQuantityUSD());
 
+		//GBD
+		averageSponsorshipAmountGBD.setCurrency("GBD");
+		averageSponsorshipAmountGBD.setAmount(this.repository.findAverageAmountGBD());
+		deviationSponsorshipAmountGBD.setCurrency("GBD");
+		deviationSponsorshipAmountGBD.setAmount(this.repository.findDeviationAmountGBD());
+		minimumSponsorshipAmountGBD.setCurrency("GBD");
+		minimumSponsorshipAmountGBD.setAmount(this.repository.findMinimumAmountGBD());
+		maximumSponsorshipAmountGBD.setCurrency("GBD");
+		maximumSponsorshipAmountGBD.setAmount(this.repository.findMaximumAmountGBD());
+
+		averageInvoiceQuantityGBD.setCurrency("GBD");
+		averageInvoiceQuantityGBD.setAmount(this.repository.findAverageQuantityGBD());
+		deviationInvoiceQuantityGBD.setCurrency("GBD");
+		deviationInvoiceQuantityGBD.setAmount(this.repository.findDeviationQuantityGBD());
+		minimumInvoiceQuantityGBD.setCurrency("GBD");
+		minimumInvoiceQuantityGBD.setAmount(this.repository.findMinimumQuantityGBD());
+		maximumInvoiceQuantityGBD.setCurrency("GBD");
+		maximumInvoiceQuantityGBD.setAmount(this.repository.findMaximumQuantityGBD());
+
 		sponsorDashBoard.setTotalInvoicesWithTaxLessThanOrEqualTo21Percent(totalInvoicesWithTaxLessThanOrEqualTo21Percent);
 		sponsorDashBoard.setTotalSponsorshipsWithLink(totalSponsorshipsWithLink);
 		//-------------------------------------------------------------------------------------------------------------------------
@@ -120,6 +146,16 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 		sponsorDashBoard.setMinimumInvoiceQuantityUSD(minimumInvoiceQuantityUSD);
 		sponsorDashBoard.setMaximumInvoiceQuantityUSD(maximumInvoiceQuantityUSD);
 
+		//GBD
+		sponsorDashBoard.setAverageSponsorshipAmountGBD(averageSponsorshipAmountGBD);
+		sponsorDashBoard.setDeviationSponsorshipAmountGBD(deviationSponsorshipAmountGBD);
+		sponsorDashBoard.setMinimumSponsorshipAmountGBD(minimumSponsorshipAmountGBD);
+		sponsorDashBoard.setMaximumSponsorshipAmountGBD(maximumSponsorshipAmountGBD);
+		sponsorDashBoard.setAverageInvoiceQuantityGBD(averageInvoiceQuantityGBD);
+		sponsorDashBoard.setDeviationInvoiceQuantityGBD(deviationInvoiceQuantityGBD);
+		sponsorDashBoard.setMinimumInvoiceQuantityGBD(minimumInvoiceQuantityGBD);
+		sponsorDashBoard.setMaximumInvoiceQuantityGBD(maximumInvoiceQuantityGBD);
+
 		super.getBuffer().addData(sponsorDashBoard);
 	}
 
@@ -130,9 +166,13 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 		Dataset dataset;
 
 		dataset = super.unbind(object, "totalInvoicesWithTaxLessThanOrEqualTo21Percent", "totalSponsorshipsWithLink", //
-			"averageSponsorshipAmountEUR", "deviationSponsorshipAmountEUR", "minimumSponsorshipAmountEUR", "maximumSponsorshipAmountEUR", "averageInvoiceQuantityEUR", "deviationInvoiceQuantityEUR", "minimumInvoiceQuantityEUR", "maximumInvoiceQuantityEUR",//
+			"averageSponsorshipAmountEUR", "deviationSponsorshipAmountEUR", "minimumSponsorshipAmountEUR", "maximumSponsorshipAmountEUR",//
+			"averageInvoiceQuantityEUR", "deviationInvoiceQuantityEUR", "minimumInvoiceQuantityEUR", "maximumInvoiceQuantityEUR",//
 			"averageSponsorshipAmountUSD", "deviationSponsorshipAmountUSD", "minimumSponsorshipAmountUSD", "maximumSponsorshipAmountUSD",//
-			"averageInvoiceQuantityUSD", "deviationInvoiceQuantityUSD", "minimumInvoiceQuantityUSD", "maximumInvoiceQuantityUSD"//
+			"averageInvoiceQuantityUSD", "deviationInvoiceQuantityUSD", "minimumInvoiceQuantityUSD", "maximumInvoiceQuantityUSD",//
+			"averageSponsorshipAmountGBD", "deviationSponsorshipAmountGBD", "minimumSponsorshipAmountGBD", "maximumSponsorshipAmountGBD",//
+			"averageInvoiceQuantityGBD", "deviationInvoiceQuantityGBD", "minimumInvoiceQuantityGBD", "maximumInvoiceQuantityGBD"
+
 		);
 		super.getResponse().addData(dataset);
 	}

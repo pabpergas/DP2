@@ -26,6 +26,11 @@ public class SponsorDashboard extends AbstractForm {
 	Money						minimumSponsorshipAmountUSD;
 	Money						maximumSponsorshipAmountUSD;
 
+	Money						averageSponsorshipAmountGBD;
+	Money						deviationSponsorshipAmountGBD;
+	Money						minimumSponsorshipAmountGBD;
+	Money						maximumSponsorshipAmountGBD;
+
 	//Invoices
 	Money						averageInvoiceQuantityEUR;
 	Money						deviationInvoiceQuantityEUR;
@@ -36,5 +41,10 @@ public class SponsorDashboard extends AbstractForm {
 	Money						deviationInvoiceQuantityUSD;
 	Money						minimumInvoiceQuantityUSD;
 	Money						maximumInvoiceQuantityUSD;
+
+	Money						averageInvoiceQuantityGBD;
+	Money						deviationInvoiceQuantityGBD;
+	Money						minimumInvoiceQuantityGBD;
+	Money						maximumInvoiceQuantityGBD;
 
 }

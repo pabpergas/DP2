@@ -36,6 +36,16 @@
 	<acme:input-money code="sponsor.sponsorShip.form.label.minimumInvoiceQuantityUSD" path="minimumInvoiceQuantityUSD" />
 	<acme:input-money code="sponsor.sponsorShip.form.label.maximumInvoiceQuantityUSD" path="maximumInvoiceQuantityUSD" />
 	
+	<acme:input-money code="sponsor.sponsorShip.form.label.averageSponsorshipAmountGBD" path="averageSponsorshipAmountGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.deviationSponsorshipAmountGBD" path="deviationSponsorshipAmountGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.minimumSponsorshipAmountGBD" path="minimumSponsorshipAmountGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.maximumSponsorshipAmountGBD" path="maximumSponsorshipAmountGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.averageInvoiceQuantityGBD" path="averageInvoiceQuantityGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.deviationInvoiceQuantityGBD" path="deviationInvoiceQuantityGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.minimumInvoiceQuantityGBD" path="minimumInvoiceQuantityGBD" />
+	<acme:input-money code="sponsor.sponsorShip.form.label.maximumInvoiceQuantityGBD" path="maximumInvoiceQuantityGBD" />
+		
+	
 	
 	
 	

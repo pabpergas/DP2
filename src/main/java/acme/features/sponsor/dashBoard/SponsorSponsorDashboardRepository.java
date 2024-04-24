@@ -42,6 +42,19 @@ public interface SponsorSponsorDashboardRepository extends AbstractRepository {
 	@Query("SELECT MAX(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
 	Double findMaximumAmountUSD();
 
+	//GBD
+	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
+	Double findAverageAmountGBD();
+
+	@Query("SELECT STDDEV(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
+	Double findDeviationAmountGBD();
+
+	@Query("SELECT MIN(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
+	Double findMinimumAmountGBD();
+
+	@Query("SELECT MAX(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
+	Double findMaximumAmountGBD();
+
 	//Invoices
 
 	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
@@ -67,5 +80,17 @@ public interface SponsorSponsorDashboardRepository extends AbstractRepository {
 
 	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
 	Double findMaximumQuantityUSD();
+
+	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
+	Double findAverageQuantityGBD();
+
+	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
+	Double findDeviationQuantityGBD();
+
+	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
+	Double findMinimumQuantityGBD();
+
+	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
+	Double findMaximumQuantityGBD();
 
 }
