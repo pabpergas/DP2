@@ -21,6 +21,4 @@
     <acme:list-column code="sponsor.invoice.list.label.dueDate" path="dueDate" width="10%"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list-mine'}">
-<acme:button code="sponsor.sponsorShip.list.button.create" action="/sponsor/invoice/create?masterId=${masterId}"/>
-</jstl:if>
+<acme:button test="${showCreate}" code="sponsor.sponsorShip.list.button.create" action="/sponsor/invoice/create?masterId=${masterId}"/>
