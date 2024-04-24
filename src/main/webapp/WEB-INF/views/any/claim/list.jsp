@@ -16,9 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column code="authenticated.claim.list.label.code" path="code" width="5%"/>
-    <acme:list-column code="authenticated.claim.list.label.department" path="department" width="20%"/>
-    <acme:list-column code="authenticated.claim.list.label.instantiation" path="instantiation" width="10%"/>
+    <acme:list-column code="any.claim.list.label.code" path="code" width="5%"/>
+    <acme:list-column code="any.claim.list.label.department" path="department" width="20%"/>
+    <acme:list-column code="any.claim.list.label.instantiation" path="instantiation" width="10%"/>
 </acme:list>
 
-<acme:button code="authenticated.claim.list.button.create" action="/authenticated/claim/create"/>
+<acme:button code="any.claim.list.button.create" action="/any/claim/create"/>

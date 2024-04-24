@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.banner;
+package acme.components;
 
 import java.util.Date;
 import java.util.List;

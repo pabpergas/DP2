@@ -1,19 +1,19 @@
 
-package acme.features.authenticated.claim;
+package acme.features.any.claim;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.groupal.Claim;
 
 @Service
-public class AuthenticatedClaimShowService extends AbstractService<Authenticated, Claim> {
+public class AnyClaimShowService extends AbstractService<Any, Claim> {
 
 	@Autowired
-	private AuthenticatedClaimRepository repository;
+	private AnyClaimRepository repository;
 
 
 	@Override
@@ -38,7 +38,7 @@ public class AuthenticatedClaimShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "instantiation", "department");
+		dataset = super.unbind(object, "code", "instantiation", "heading", "decription", "department", "email", "link");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", true);
 		super.getResponse().addData(dataset);

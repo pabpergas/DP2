@@ -1,22 +1,22 @@
 
-package acme.features.authenticated.claim;
+package acme.features.any.claim;
 
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.groupal.Claim;
 
 @Service
-public class AuthenticatedClaimCreateService extends AbstractService<Authenticated, Claim> {
+public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 
 	@Autowired
-	private AuthenticatedClaimRepository repository;
+	private AnyClaimRepository repository;
 
 
 	@Override
@@ -41,7 +41,7 @@ public class AuthenticatedClaimCreateService extends AbstractService<Authenticat
 	public void bind(final Claim object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiation", "heading", "description", "department", "email", "link");
+		super.bind(object, "code", "heading", "description", "department", "email", "link");
 	}
 
 	@Override
