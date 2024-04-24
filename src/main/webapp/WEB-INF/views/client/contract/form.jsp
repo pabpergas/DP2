@@ -17,6 +17,7 @@
 
 <acme:form>
 	<acme:input-textbox code="client.contract.list.label.code" path="code" placeholder="client.contract.form.placerholder.code"/>
+	<acme:input-select code="client.contract.list.label.goals" path="project" choices="${projects}" />
 	<acme:input-moment code="client.contract.list.label.instantiationMoment" path="instantiationMoment" readonly = "true"/>
 	<acme:input-textbox code="client.contract.list.label.providerName" path="providerName" placeholder="client.contract.form.placerholder.providerName"/>
 	<acme:input-textbox code="client.contract.list.label.customerName" path="customerName" placeholder="client.contract.form.placerholder.customerName"/>

@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.S1.Project;
 import acme.entities.S2.Contract;
+import acme.roles.Client;
 
 @Repository
 public interface ClientContractRepository extends AbstractRepository {
@@ -20,4 +22,13 @@ public interface ClientContractRepository extends AbstractRepository {
 
 	@Query("select s from Contract s where s.id = :id")
 	Contract findOneContractById(int id);
+
+	@Query("select c from Client c where c.id = :id")
+	Client findOneClientById(int id);
+
+	@Query("select p from Project p where p.id = :id")
+	Project findOneProjectById(int id);
+
+	@Query("SELECT DISTINCT c.project FROM Contract c WHERE c.client.id = :id")
+	Collection<Project> findManyProjectsByClientId(int id);
 }
