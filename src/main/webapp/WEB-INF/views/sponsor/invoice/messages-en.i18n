@@ -13,6 +13,7 @@ sponsor.invoice.list.label.code = Code
 sponsor.invoice.list.label.registrationTime = Registration Time
 sponsor.invoice.list.label.dueDate = Due Date
 sponsor.invoice.form.label.tax = Tax
+sponsor.invoice.form.label.totalAmount = Amount with tax aplied
 sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.title = Your Invoice Data
 sponsor.invoice.form.label.quantity = Quantity

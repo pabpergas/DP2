@@ -14,6 +14,7 @@ sponsor.invoice.list.label.code  = Código
 sponsor.invoice.list.label.registrationTime = Registro
 sponsor.invoice.list.label.dueDate = Fecha de vencimiento
 sponsor.invoice.form.label.tax = Tasa
+sponsor.invoice.form.label.totalAmount = Cantidad con la tasa aplicada
 sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.title = Datos de tus Facturas
 sponsor.invoice.list.title = Tus Facturas
