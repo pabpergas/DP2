@@ -27,7 +27,7 @@ public class Claim extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Pattern(regexp = "^C-[0-9]{4}$", message = "{error.claim}")
+	@Pattern(regexp = "^C-[0-9]{4}$", message = "{claim.error.code}")
 	@NotBlank
 	@Column(unique = true)
 	private String				code;

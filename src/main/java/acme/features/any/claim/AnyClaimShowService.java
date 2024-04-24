@@ -38,7 +38,7 @@ public class AnyClaimShowService extends AbstractService<Any, Claim> {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "instantiation", "heading", "decription", "department", "email", "link");
+		dataset = super.unbind(object, "code", "instantiation", "heading", "description", "department", "email", "link");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", true);
 		super.getResponse().addData(dataset);
