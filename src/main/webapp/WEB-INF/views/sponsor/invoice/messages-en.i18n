@@ -16,10 +16,10 @@ sponsor.invoice.form.label.tax = Tax
 sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.title = Your Invoice Data
 sponsor.invoice.form.label.quantity = Quantity
+sponsor.invoice.form.label.totalAmount = Total Amount
 sponsor.invoice.list.title = Your Invoices
 sponsor.invoice.list.placeholder.link = 100,00.00
 sponsor.invoice.list.placeholder.code = IN-0000-0000
-
 sponsor.invoice.form.title = Create
 
 
@@ -27,3 +27,5 @@ sponsor.invoice.error.code = Patern of the code must be IN-4numbers-4numbers, li
 sponsor.invoice.error.duplicated = The invoice code cannot match a previously registered one
 sponsor.invoice.error.dueDate = The due date must be at least one month latter than the registration time
 sponsor.invoice.error.quantity = The amount must be greater than 0 and less than 1,000,000.00
+sponsor.invoice.error.dueDate.limitSup = The DueDate must be 2200/12/31 23:59 or lower
+sponsor.invoice.error.quantity.currency = The currency type of the quantity must be equals to the SponsorShip Amount currency

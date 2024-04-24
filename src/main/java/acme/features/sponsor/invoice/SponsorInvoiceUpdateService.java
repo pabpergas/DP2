@@ -3,6 +3,8 @@ package acme.features.sponsor.invoice;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -60,24 +62,33 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		LocalDateTime localDateTime = LocalDateTime.of(2201, 01, 01, 00, 00);
+		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+		Date limit = Date.from(instant);
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 
 			existing = this.repository.findOneInvoiceByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.invoice.error.duplicated");
 		}
+
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			Date deadLine;
 			Date registrationTime = object.getRegistrationTime();
 			Date registrationTimeMinusOneSecond = Date.from(Instant.ofEpochMilli(registrationTime.getTime()).minus(Duration.ofSeconds(1)));
 			deadLine = MomentHelper.deltaFromMoment(registrationTimeMinusOneSecond, 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getDueDate(), deadLine), "dueDate", "sponsor.invoice.error.dueDate");
+			super.state(MomentHelper.isAfter(limit, object.getDueDate()), "dueDate", "sponsor.invoice.error.dueDate.limitSup");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "amount", "sponsor.invoice.error.amount");
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			String SponsorShipcurrency = object.getSponsorShip().getAmount().getCurrency();
+			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
+			if (object.getQuantity() != null)
+				super.state(object.getQuantity().getCurrency().equals(SponsorShipcurrency), "quantity", "sponsor.invoice.error.quantity.currency");
+		}
 
 	}
-
 	@Override
 	public void perform(final Invoice object) {
 		assert object != null;

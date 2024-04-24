@@ -54,7 +54,7 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 
 		object.setProject(project);
 
