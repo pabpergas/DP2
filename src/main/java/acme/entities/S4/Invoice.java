@@ -64,7 +64,7 @@ public class Invoice extends AbstractEntity {
 	public Double totalAmount() {
 		Double q = this.quantity.getAmount();
 
-		return q + q * this.tax;
+		return q + q * this.tax / 100;
 	}
 
 

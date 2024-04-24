@@ -27,3 +27,4 @@ sponsor.invoice.error.code = Patern of the code must be IN-4numbers-4numbers, li
 sponsor.invoice.error.duplicated = The invoice code cannot match a previously registered one
 sponsor.invoice.error.dueDate = The due date must be at least one month latter than the registration time
 sponsor.invoice.error.quantity = The amount must be greater than 0 and less than 1,000,000.00
+sponsor.invoice.error.quantity.currency = The currency of the quantity must be the same that have sposnsorShip amount

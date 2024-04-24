@@ -64,6 +64,8 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		String sponsorShipCurrency = object.getSponsorShip().getAmount().getCurrency();
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 
@@ -79,6 +81,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		}
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
 			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
+		super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
 
 	}
 

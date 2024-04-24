@@ -90,7 +90,7 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
 			}
-			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate");
+			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
 
 		}
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {

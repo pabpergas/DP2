@@ -23,4 +23,4 @@ any.claim.form.label.confirmation = Se requiere confirmación para crear una rec
 any.claim.list.button.create = Crear
 
 claim.error.duplicated = El código de la reclamación no puede coincidir con uno anteriormente registrado 
-claim.error.code = El patrón de código debe ser C-3números, como este: C-000
+claim.error.code = El patrón de código debe ser C-4números, como este: C-0001

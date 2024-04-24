@@ -22,4 +22,4 @@ any.claim.form.label.confirmation = Confirmation is required to create a Claim
 any.claim.list.button.create = Create
 
 claim.error.duplicated = The claim code cannot match one previously registered
-claim.error.code =The Code Patern must be C-3números, lyke that: C-000
+claim.error.code =The Code Patern must be C-numbers, lyke that: C-0001
