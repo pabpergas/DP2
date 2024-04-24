@@ -77,25 +77,27 @@ public class SponsorSponsorShipCreateService extends AbstractService<Sponsor, Sp
 			existing = this.repository.findOneSponsorShipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("startDate"))
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
-
-		if (!super.getBuffer().getErrors().hasErrors("startDate"))
 			super.state(MomentHelper.isAfter(limit, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate") && object.getStartDate() != null) {
-			Date deadLine;
-			Date startDate = object.getStartDate();
-			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
-			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+			if (object.getStartDate() != null) {
+				Date deadLine;
+				Date startDate = object.getStartDate();
+				Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
+				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
+				super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+			}
+			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate");
 
 		}
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
-
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
 			super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBD") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
+
+		}
 	}
 
 	@Override
