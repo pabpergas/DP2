@@ -1,0 +1,27 @@
+# banner-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.banner.list.label.instantationMoment = Momento de Instanciación
+administrator.banner.list.label.startDisplay = Comienzo de Visualización
+administrator.banner.list.label.endDisplay = Fin de Visualización
+administrator.banner.list.label.pictureLink = Enlace de la imagen
+administrator.banner.list.label.slogan = Eslogan
+administrator.banner.list.label.documentLink = Enlace del Documento
+administrator.banner.form.title = Datos del Banner
+administrator.banner.list.title = Lista de Banners
+
+administrator.invoice.list.button.create = Crear
+
+administrator.banner.list.title = Banderas
+administrator.banner.error.startDisplay = El Comienzo de Visualización tiene que ser después del Momento de Instanciación
+administrator.banner.error.endDisplay = El Fin de Visualización debe ser al menos 7 días después del Comienzo de Visualización 
+
+administrator.banner.error.startDisplay.limitSup = La fecha de inicio debe ser 31/12/2200 23:59 o inferior
+administrator.banner.error.endDisplay.limitSup = La fecha de fin debe ser 31/12/2200 23:59 o inferior

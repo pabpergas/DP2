@@ -22,15 +22,22 @@ sponsor.sponsorShip.list.label.sponsor.name = Nombre del Sponsor
 sponsor.sponsor-ship.form.title = Datos del Patrocinio
 sponsor.sponsor-ship.list.title = Tus patrocinios
 sponsor.sponsorShip.list.button.create = Crear
-sponsor.sponsorShip.list.button.update = Actualizar
-sponsor.sponsorShip.list.button.delete = Eliminar
-sponsor.sponsorShip.list.button.publish = Publicar
+sponsor.sponsorShip.list.button.invoices = Facturas
+sponsor.sponsorShip.list.submit.create = Crear
+sponsor.sponsorShip.list.submit.update = Actualizar
+sponsor.sponsorShip.list.submit.delete = Eliminar
+sponsor.sponsorShip.list.submit.publish = Publicar
 
-sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
+sponsor.sponsorShip.form.placerholder.code = El patrón del código deber ser 3letras-3 números, como aquí: AAA-000
 sponsor.sponsorShip.form.placerholder.type = El tipo debe ser: FINANCIAL, IN_KIND
-
+sponsor.sponsorShip.error.amount = La cantidad debe ser mayor a 0 y menor a 1.000.000,00
+sponsor.sponsorShip.error.no-total-amount=Este patrocionio no tiene ninguna factura asociada y la cantidad no es 0,00
+sponsor.sponsorShip.error.total-amount= La suma de la cantidad total de las facturas debe ser igual al monto del patrocinio.
 sponsor.sponsorShip.error.duplicated = El código del patrocinio no puede coincidir con uno anteriormente registrado
 sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
 sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
-
+sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 30 días posterior a la fecha de inicio
+sponsor.sponsorShip.error.amount.currency = El tipo de moneda debe ser EUR, GBD o USD
+sponsor.sponsorShip.error.startDate.limitSup = La fecha de inicio debe ser 31/12/2200 23:59 o inferior
+sponsor.sponsorShip.error.endDate.limitSup = La fecha de fin debe ser 31/12/2200 23:59 o inferior
 

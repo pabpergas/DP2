@@ -2,8 +2,8 @@
 package acme.entities.S4;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -34,7 +34,7 @@ public class SponsorShip extends AbstractEntity {
 
 	@NotBlank
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{sponsor.sponsorShip.error.code}")
-	//@Column(unique = true)
+	@Column(unique = true)
 	private String				code;
 
 	@NotNull
@@ -51,6 +51,7 @@ public class SponsorShip extends AbstractEntity {
 	private Date				endDate;
 
 	@NotNull
+	@Valid
 	private Money				amount;
 
 	@NotNull
@@ -64,24 +65,17 @@ public class SponsorShip extends AbstractEntity {
 	@Length(min = 0, max = 255)
 	private String				link;
 
-
-	public Double getDuration() {
-		long durationInMiliseconds = this.startDate.getTime() - this.endDate.getTime();
-		return (double) TimeUnit.MILLISECONDS.toDays(durationInMiliseconds);
-	}
-
-
-	private boolean	draftMode	= true;
+	private boolean				draftMode			= true;
 
 	@ManyToOne
 	@Valid
 	@NotNull
-	private Sponsor	sponsor;
+	private Sponsor				sponsor;
 
 	@ManyToOne
 	@Valid
 	@NotNull
-	private Project	project;
+	private Project				project;
 
 
 	public enum SponsorShipType {

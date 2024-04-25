@@ -10,6 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
+import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
@@ -26,16 +27,10 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 		int masterId;
 		SponsorShip sponsorShip;
 		Sponsor sponsor;
-
 		masterId = super.getRequest().getData("id", int.class);
-		System.out.println("hola1" + masterId);
-
 		sponsorShip = this.repository.findOneSponsorShipById(masterId);
 		sponsor = sponsorShip == null ? null : sponsorShip.getSponsor();
-		System.out.println("hola3" + sponsor + sponsorShip);
-
 		status = sponsorShip != null && sponsorShip.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
-		System.out.println("hola2" + status);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -74,6 +69,10 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 	public void perform(final SponsorShip object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+
+		invoices = this.repository.findManyInvoicesBySponsorShipId(object.getId());
+		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
 	}
 

@@ -1,0 +1,3 @@
+key,code,executionDate,type,correctiveActions,key:project,key:auditor
+codeAudit-01,B-034,"2022/01/01 13:00",STATIC,http://audit.com,project-01,auditor-01
+codeAudit-02,ACD-178,"2022/01/01 13:00",DINAMIC,http://audit.com,project-02,auditor-02

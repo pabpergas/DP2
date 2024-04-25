@@ -1,14 +1,11 @@
 
 package acme.features.sponsor.invoice;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
@@ -22,8 +19,15 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int invoiceId;
+		SponsorShip sponsorship;
 
+		invoiceId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -41,19 +45,10 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	public void unbind(final Invoice object) {
 		assert object != null;
 
-		int sponsorId;
-		Collection<SponsorShip> sponsorShips;
-		SelectChoices choices;
 		Dataset dataset;
-
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShips = this.repository.findManySponsorShipsBySponsorId(sponsorId);
-		choices = SelectChoices.from(sponsorShips, "code", object.getSponsorShip());
-
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-
-		dataset.put("sponsorShip", choices.getSelected().getKey());
-		dataset.put("sponsorShips", choices);
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		dataset.put("masterId", object.getSponsorShip().getId());
+		dataset.put("totalAmount", object.totalAmount());
 
 		super.getResponse().addData(dataset);
 

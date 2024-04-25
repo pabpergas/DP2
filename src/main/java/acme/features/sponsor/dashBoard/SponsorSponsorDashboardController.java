@@ -14,12 +14,12 @@ import acme.roles.Sponsor;
 public class SponsorSponsorDashboardController extends AbstractController<Sponsor, SponsorDashboard> {
 
 	@Autowired
-	private SponsorSponsorDashboardListService listService;
+	private SponsorSponsorDashboardShowService showService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 
 	}
 
