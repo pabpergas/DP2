@@ -1,6 +1,10 @@
 
 package acme.forms;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
 import lombok.Getter;
@@ -15,36 +19,32 @@ public class SponsorDashboard extends AbstractForm {
 	int							totalInvoicesWithTaxLessThanOrEqualTo21Percent;
 	int							totalSponsorshipsWithLink;
 
-	//EUROS
-	Money						averageSponsorshipAmountEUR;
-	Money						deviationSponsorshipAmountEUR;
-	Money						minimumSponsorshipAmountEUR;
-	Money						maximumSponsorshipAmountEUR;
+	List<Money>					averageSponsorshipAmount;
+	List<Money>					deviationSponsorshipAmount;
+	List<Money>					minimumSponsorshipAmount;
+	List<Money>					maximumSponsorshipAmount;
 
-	Money						averageSponsorshipAmountUSD;
-	Money						deviationSponsorshipAmountUSD;
-	Money						minimumSponsorshipAmountUSD;
-	Money						maximumSponsorshipAmountUSD;
+	List<Money>					averageInvoiceQuantity;
+	List<Money>					deviationInvoiceQuantity;
+	List<Money>					minimumInvoiceQuantity;
+	List<Money>					maximumInvoiceQuantity;
 
-	Money						averageSponsorshipAmountGBD;
-	Money						deviationSponsorshipAmountGBD;
-	Money						minimumSponsorshipAmountGBD;
-	Money						maximumSponsorshipAmountGBD;
 
-	//Invoices
-	Money						averageInvoiceQuantityEUR;
-	Money						deviationInvoiceQuantityEUR;
-	Money						minimumInvoiceQuantityEUR;
-	Money						maximumInvoiceQuantityEUR;
+	public List<Money> parseoMoney(final Collection<Object[]> stats) {
+		List<Money> money = new ArrayList<Money>();
 
-	Money						averageInvoiceQuantityUSD;
-	Money						deviationInvoiceQuantityUSD;
-	Money						minimumInvoiceQuantityUSD;
-	Money						maximumInvoiceQuantityUSD;
+		for (Object[] row : stats) {
 
-	Money						averageInvoiceQuantityGBD;
-	Money						deviationInvoiceQuantityGBD;
-	Money						minimumInvoiceQuantityGBD;
-	Money						maximumInvoiceQuantityGBD;
+			String currency = (String) row[0];
+			Double averageAmount = ((Number) row[1]).doubleValue();
+
+			Money m = new Money();
+			m.setCurrency(currency);
+			m.setAmount(averageAmount);
+			money.add(m);
+		}
+		return money;
+
+	}
 
 }

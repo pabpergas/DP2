@@ -1,6 +1,8 @@
 
 package acme.features.sponsor.dashBoard;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -9,88 +11,35 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface SponsorSponsorDashboardRepository extends AbstractRepository {
 
-	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.tax <= 21.00")
-	int countInvoicesWithTaxLessThanOrEqualTo21Percent();
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.tax <= 21.00 AND i.sponsorShip.sponsor.id = :id")
+	int countInvoicesWithTaxLessThanOrEqualTo21Percent(int id);
 
-	@Query("SELECT COUNT(s) FROM SponsorShip s WHERE s.link IS NOT NULL")
-	int countSponsorshipsWithLink();
+	@Query("SELECT COUNT(s) FROM SponsorShip s WHERE s.link IS NOT NULL AND s.sponsor.id = :id")
+	int countSponsorshipsWithLink(int id);
 
-	//EUR
-	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
-	Double findAverageAmountEUR();
+	@Query("SELECT s.amount.currency, AVG(s.amount.amount) FROM SponsorShip s WHERE s.sponsor.id = :id GROUP BY s.amount.currency")
+	Collection<Object[]> averageAmountSponsorshipsBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT STDDEV(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
-	Double findDeviationAmountEUR();
+	@Query("SELECT s.amount.currency, STDDEV(s.amount.amount) FROM SponsorShip s WHERE s.sponsor.id = :id GROUP BY s.amount.currency")
+	Collection<Object[]> deviationAmountSponsorshipsBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT MIN(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
-	Double findMinimumAmountEUR();
+	@Query("SELECT s.amount.currency, MIN(s.amount.amount) FROM SponsorShip s WHERE s.sponsor.id = :id GROUP BY s.amount.currency")
+	Collection<Object[]> minimumAmountSponsorshipsBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT MAX(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'EUR'")
-	Double findMaximumAmountEUR();
-
-	//USD
-
-	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
-	Double findAverageAmountUSD();
-
-	@Query("SELECT STDDEV(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
-	Double findDeviationAmountUSD();
-
-	@Query("SELECT MIN(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
-	Double findMinimumAmountUSD();
-
-	@Query("SELECT MAX(amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'USD'")
-	Double findMaximumAmountUSD();
-
-	//GBD
-	@Query("SELECT AVG(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
-	Double findAverageAmountGBD();
-
-	@Query("SELECT STDDEV(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
-	Double findDeviationAmountGBD();
-
-	@Query("SELECT MIN(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
-	Double findMinimumAmountGBD();
-
-	@Query("SELECT MAX(s.amount.amount) FROM SponsorShip s WHERE s.amount.currency = 'GBD'")
-	Double findMaximumAmountGBD();
+	@Query("SELECT s.amount.currency, MAX(s.amount.amount) FROM SponsorShip s WHERE s.sponsor.id = :id GROUP BY s.amount.currency")
+	Collection<Object[]> maximumAmountSponsorshipsBySponsorIdGroupedByCurrency(int id);
 
 	//Invoices
 
-	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
-	Double findAverageQuantityEUR();
+	@Query("SELECT i.quantity.currency, AVG(i.quantity.amount) FROM Invoice i WHERE i.sponsorShip.sponsor.id = :id GROUP BY i.quantity.currency")
+	Collection<Object[]> averageInvoiceQuantityBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
-	Double findDeviationQuantityEUR();
+	@Query("SELECT i.quantity.currency, AVG(i.quantity.amount) FROM Invoice i WHERE i.sponsorShip.sponsor.id = :id GROUP BY i.quantity.currency")
+	Collection<Object[]> deviationInvoiceQuantitytBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
-	Double findMinimumQuantityEUR();
+	@Query("SELECT i.quantity.currency, AVG(i.quantity.amount) FROM Invoice i WHERE i.sponsorShip.sponsor.id = :id GROUP BY i.quantity.currency")
+	Collection<Object[]> minimumInvoiceQuantitysBySponsorIdGroupedByCurrency(int id);
 
-	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'EUR'")
-	Double findMaximumQuantityEUR();
-
-	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
-	Double findAverageQuantityUSD();
-
-	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
-	Double findDeviationQuantityUSD();
-
-	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
-	Double findMinimumQuantityUSD();
-
-	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'USD'")
-	Double findMaximumQuantityUSD();
-
-	@Query("SELECT avg(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
-	Double findAverageQuantityGBD();
-
-	@Query("SELECT STDDEV(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
-	Double findDeviationQuantityGBD();
-
-	@Query("SELECT MIN(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
-	Double findMinimumQuantityGBD();
-
-	@Query("SELECT MAX(quantity.amount) FROM Invoice i WHERE i.quantity.currency = 'GBD'")
-	Double findMaximumQuantityGBD();
-
+	@Query("SELECT i.quantity.currency, AVG(i.quantity.amount) FROM Invoice i WHERE i.sponsorShip.sponsor.id = :id GROUP BY i.quantity.currency")
+	Collection<Object[]> maximumInvoiceQuantityBySponsorIdGroupedByCurrency(int id);
 }
