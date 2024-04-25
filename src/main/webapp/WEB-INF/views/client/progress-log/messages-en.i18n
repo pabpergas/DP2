@@ -8,26 +8,26 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-client.contract.list.label.title = Project
-client.contract.list.title = Contracts
-client.contract.list.label.code  = Code
-client.contract.list.label.moment  = Instantiation Moment
-client.contract.list.label.providerName  = Provider Name
-client.contract.list.label.customerName  = Customer Name
-client.contract.list.label.goals  = Goals
-client.contract.list.label.budget  = Budget
-client.contract.list.label.link  = Link
-client.contract.list.button.create = Create
-client.contract.list.button.update = Update
-client.contract.list.button.delete = Delete
-client.contract.list.button.publish = Publish
-client.contract.list.button.progressLogs = Progress Logs
-client.contract.list.submit.create = Create
-client.contract.list.submit.update = Update
-client.contract.list.submit.delete = Delete
-client.contract.list.submit.publish = Publish
 
-client.contract.form.title = Contract
+
+
+client.progressLog.list.label.code = Code
+client.progressLog.list.label.moment = Moment
+client.progressLog.list.label.type = Type
+client.progressLog.list.label.registrationMoment = Registration Moment
+client.progressLog.list.label.responsiblePerson = Responsible Person
+client.progressLog.list.label.completenessPercentage = Completeness Percentage
+client.progressLog.form.label.completenessPercentage = Completeness Percentage
+client.progressLog.list.label.progressComment =  Progress Comment
+client.progressLog.list.label.recordId = Record Id
+client.progress-log.form.title = Your Progress Log Data
+
+
+
+
+client.progress-log.list.title = Progress Log
+client.progressLog.list.button.create = Create
+client.Contract.list.button.create = Create
 client.contract.form.placerholder.customerName = Shorter than 76 characters
 client.contract.form.placerholder.providerName = Shorter than 76 characters
 client.contract.form.placerholder.goals = Shorter than 101 characters
@@ -35,3 +35,11 @@ client.contract.form.placerholder.code = The code pattern should be 3 letters-3 
 client.contract.error.duplicated = The contract code cannot match one previously registered
 client.contract.error.code = Patern of the code must be 3leters-3numbers, like that:AAA-000
 client.contract.error.budget = The sum of the total budget less than or equal to the corresponding project cost
+
+
+
+
+
+
+
+

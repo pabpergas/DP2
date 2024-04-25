@@ -65,7 +65,7 @@ public class Contract extends AbstractEntity {
 	@Length(max = 150)
 	private String				link;
 
-	private boolean				draftMode;
+	private boolean				draftMode			= true;
 
 	@ManyToOne
 	@Valid

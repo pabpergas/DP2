@@ -1,14 +1,15 @@
-key,key:contract,recordId,completenessPercentage,progressComment,registrationMoment,responsiblePerson
-progessLog-01,contract-01,PG-AA-0000,95.55,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-02,contract-01,PG-ZZ-9999,95.55,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-03,contract-01,PG-AA-0001,00.01,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-04,contract-01,PG-AA-0002,99.99,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-05,contract-01,PG-AA-0003,95.55,"a",2020/02/21 18:00,Person1
-progessLog-06,contract-01,PG-AA-0004,95.55,"aa",2020/02/21 18:00,Person1
-progessLog-07,contract-01,PG-AA-0005,95.55,"This is a progress commentttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1
-progessLog-08,contract-01,PG-AA-0006,95.55,"This is a progress commenttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1
-progessLog-09,contract-01,PG-AA-0007,95.55,"This is a progress comment.",2000/01/01 00:00,Person1
-progessLog-10,contract-01,PG-AA-0008,95.55,"This is a progress comment.",2000/01/01 00:01,Person1
-progessLog-11,contract-01,PG-AA-0009,95.55,"This is a progress comment.",2020/02/21 18:00,P
-progessLog-12,contract-01,PG-AA-0010,95.55,"This is a progress comment.",2020/02/21 18:00,Person11111111111111111111111111111111111111111111111111111111111111111111
-progessLog-13,contract-01,PG-AA-0011,95.55,"This is a progress comment.",2020/02/21 18:00,Person1111111111111111111111111111111111111111111111111111111111111111111
+key,key:contract,recordId,completenessPercentage,progressComment,registrationMoment,responsiblePerson,draf-mode
+progessLog-00,contract-01,PG-AA-0000,95.55,"This is a progress comment.",2020/02/21 18:00,Person1,1
+progessLog-01,contract-02,PG-AA-0012,95.55,"This is a progress comment.",2020/02/21 18:00,Person1,1
+progessLog-02,contract-01,PG-ZZ-9999,95.55,"This is a progress comment.",2020/02/21 18:00,Person1,1
+progessLog-03,contract-01,PG-AA-0001,00.01,"This is a progress comment.",2020/02/21 18:00,Person1,1
+progessLog-04,contract-01,PG-AA-0002,99.99,"This is a progress comment.",2020/02/21 18:00,Person1,1
+progessLog-05,contract-01,PG-AA-0003,95.55,"a",2020/02/21 18:00,Person1,1
+progessLog-06,contract-01,PG-AA-0004,95.55,"aa",2020/02/21 18:00,Person1,1
+progessLog-07,contract-01,PG-AA-0005,95.55,"This is a progress commentttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1,1
+progessLog-08,contract-01,PG-AA-0006,95.55,"This is a progress commenttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1,1
+progessLog-09,contract-01,PG-AA-0007,95.55,"This is a progress comment.",2000/01/01 00:00,Person1,1
+progessLog-10,contract-01,PG-AA-0008,95.55,"This is a progress comment.",2000/01/01 00:01,Person1,1
+progessLog-11,contract-01,PG-AA-0009,95.55,"This is a progress comment.",2020/02/21 18:00,P,1
+progessLog-12,contract-01,PG-AA-0010,95.55,"This is a progress comment.",2020/02/21 18:00,Person11111111111111111111111111111111111111111111111111111111111111111111,1
+progessLog-13,contract-01,PG-AA-0011,95.55,"This is a progress comment.",2020/02/21 18:00,Person1111111111111111111111111111111111111111111111111111111111111111111,1

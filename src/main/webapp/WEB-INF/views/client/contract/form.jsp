@@ -17,8 +17,8 @@
 
 <acme:form>
 	<acme:input-textbox code="client.contract.list.label.code" path="code" placeholder="client.contract.form.placerholder.code"/>
-	<acme:input-select code="client.contract.list.label.goals" path="project" choices="${projects}" />
-	<acme:input-moment code="client.contract.list.label.instantiationMoment" path="instantiationMoment" readonly = "true"/>
+	<acme:input-select code="client.contract.list.label.title" path="project" choices="${projects}" />
+	<acme:input-moment code="client.contract.list.label.moment" path="instantiationMoment" readonly = "true"/>
 	<acme:input-textbox code="client.contract.list.label.providerName" path="providerName" placeholder="client.contract.form.placerholder.providerName"/>
 	<acme:input-textbox code="client.contract.list.label.customerName" path="customerName" placeholder="client.contract.form.placerholder.customerName"/>
 	<acme:input-textbox code="client.contract.list.label.goals" path="goals" placeholder="client.contract.form.placerholder.goals"/>
@@ -27,15 +27,20 @@
 	
 
 
+
 	<jstl:choose> 
+	<jstl:when test="${_command == 'show' && draftMode == false}">
+			<acme:button code="client.contract.list.button.progressLogs" action="/client/progress-log/list-mine?masterId=${id}"/>
+		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+			<acme:button code="client.contract.list.button.progressLogs" action="/client/progress-log/list-mine?masterId=${id}"/>
 			<acme:submit code="client.contract.list.button.update" action="/client/contract/update"/>
 			<acme:submit code="client.contract.list.button.delete" action="/client/contract/delete"/>
 			<acme:submit code="client.contract.list.button.publish" action="/client/contract/publish"/>	
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="client.contract.list.button.create" action="/client/contract/create"/>
+			<acme:submit code="client.contract.list.submit.create" action="/client/contract/create"/>
 		</jstl:when>
 	</jstl:choose> 
 

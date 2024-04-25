@@ -16,11 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="client.progessLog.list.label.code" path="recordId" width="10%"/>
-	<acme:list-column code="client.progessLog.list.label.moment" path="completenessPercentage" width="10%"/>
-¡	<acme:list-column code="client.progessLog.list.label.type" path="progressComment" width="10%"/>
+	<acme:list-column code="client.progressLog.list.label.code" path="recordId" width="10%"/>
+	<acme:list-column code="client.progressLog.list.label.completenessPercentage" path="completenessPercentage" width="10%"/>
+¡	<acme:list-column code="client.progressLog.list.label.progressComment" path="progressComment" width="10%"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="client.progessLog.list.button.create" action="/client/progessLog/create"/>
-</jstl:if>
+<acme:button test="${showCreate}" code="client.Contract.list.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
