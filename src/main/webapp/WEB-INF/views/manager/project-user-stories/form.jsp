@@ -10,17 +10,22 @@
 - they accept any liabilities with respect to them.
 --%>
 
-<%@page%>
+
+<%@page language="java"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form>
-	<acme:input-textbox code="manager.userstories.form.label.title" path="title"/>
-	<acme:input-textbox code="manager.userstories.form.label.description" path="description"/>
-	<acme:input-textbox code="manager.userstories.form.label.acceptanceCriteria" path="acceptanceCriteria"/>
-	<acme:input-textbox code="manager.userstories.form.label.estimatedCost" path="estimatedCost"/>
-	<acme:input-textbox code="manager.userstories.form.label.proirity" path="proirity"/>
-	<acme:input-textbox code="manager.userstories.form.label.link" path="link"/>
-	
+<acme:form>				
+	<jstl:choose>
+		<jstl:when test="${_command == 'show'}">
+			<acme:submit code="manager.project-user-stories.form.button.delete" action="/manager/project-user-stories/delete?projectId=${projectId}"/>
+		</jstl:when>		
+
+		<jstl:when test="${_command == 'create'}">
+			<acme:input-select code="manager.project-user-stories.form.label.userStory" path="userStories" choices="${userStories}"/>	
+			<acme:submit code="manager.project-user-stories.form.button.create" action="/manager/project-user-stories/create?projectId=${projectId}"/>
+		</jstl:when>		
+	</jstl:choose>	
+				
 </acme:form>

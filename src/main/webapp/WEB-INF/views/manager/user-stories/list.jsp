@@ -16,19 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="manager.project.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="manager.project.list.label.title" path="title" width="80%"/>	
-	<acme:list-column code="manager.project.list.label.cost" path="cost" width="10%"/>
+	<acme:list-column code="manager.userStory.list.label.title" path="title" width="80%"/>	
+	<acme:list-column code="manager.userStory.list.label.estimatedCost" path="estimatedCost" width="20%"/>
 </acme:list>
 
-
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="manager.userstories.form.button.create" action="/manager/user-stories/create"/>
 </jstl:if>
-
-<!--  
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="employer.job.list.button.create" action="/employer/job/create"/>
-</jstl:if>
-
--->	

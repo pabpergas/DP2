@@ -23,3 +23,18 @@ manager.project.list.label.title = Titulo
 manager.project.list.label.cost = Coste
 
 manager.project.form.button.us = Historias de usuario
+
+error.project.code = El codigo debe ser tres letras mayusculas, guion y cuatro numeros entre el 0 y el 9, ambos incluidos
+manager.project.form.error.duplicated-code = Este código ya está en uso 
+manager.project.form.error.hasErrors = No se puede publicar el proyecto si tiene errores
+
+manager.project.list.button.update = Actualizar
+manager.project.list.button.delete = Eliminar
+manager.project.list.button.publish = Publicar
+manager.project.form.button.list-userstories = Historias de usuario asociadas
+manager.project.list.button.create = Crear
+
+manager.project.form.button.add-userstories = Añadir historias de usuario
+
+
+

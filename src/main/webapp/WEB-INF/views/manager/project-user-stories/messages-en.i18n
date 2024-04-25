@@ -8,14 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.userstories.title = User story
+manager.project-user-stories.form.title = Choose one user story
 
-manager.userstories.form.label.title = Title
-manager.userstories.form.label.description = Description
-manager.userstories.form.label.acceptanceCriteria = Acceptance criteria
-manager.userstories.form.label.estimatedCost = Estimated cost
-manager.userstories.form.label.proirity = Proirity
-manager.userstories.form.label.link = Link
-
-manager.userStory.list.label.title = Title
-manager.userStory.list.label.estimatedCost: Cost
+manager.project-user-stories.form.button.delete = Delete
+manager.project-user-stories.form.label.userStory = User stories
+manager.project-user-stories.form.button.create = Add user story
