@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.URL;
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
 import acme.entities.S1.Project;
+import acme.roles.Client;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,9 +30,6 @@ import lombok.Setter;
 public class Contract extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-	@ManyToOne
-	@Valid
-	private Project				project;
 
 	@NotBlank
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.contract")
@@ -60,11 +58,21 @@ public class Contract extends AbstractEntity {
 	private String				goals;
 
 	@NotNull
+	@Valid
 	private Money				budget;
 
 	@URL
 	@Length(max = 150)
 	private String				link;
 
-	private boolean				draftMode;
+	private boolean				draftMode			= true;
+
+	@ManyToOne
+	@Valid
+	private Project				project;
+
+	@ManyToOne
+	@Valid
+	private Client				client;
+
 }

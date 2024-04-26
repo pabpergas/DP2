@@ -1,21 +1,21 @@
 
-package acme.features.authenticated.contracts;
+package acme.features.client.contracts;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S2.Contract;
+import acme.roles.Client;
 
 @Service
-public class AuthenticatedContractListService extends AbstractService<Authenticated, Contract> {
+public class ClientContractListMineService extends AbstractService<Client, Contract> {
 
 	@Autowired
-	private AuthenticatedContractRepository repository;
+	private ClientContractRepository repository;
 
 
 	@Override
@@ -25,9 +25,11 @@ public class AuthenticatedContractListService extends AbstractService<Authentica
 
 	@Override
 	public void load() {
+		int id;
+		id = super.getRequest().getPrincipal().getActiveRoleId();
 		Collection<Contract> contract;
 
-		contract = this.repository.findAllContract();
+		contract = this.repository.findManyContractsByClientId(id);
 		super.getBuffer().addData(contract);
 	}
 
@@ -37,7 +39,7 @@ public class AuthenticatedContractListService extends AbstractService<Authentica
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "project.title", "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "link");
+		dataset = super.unbind(object, "project.title", "code", "providerName", "customerName", "goals", "budget", "link");
 		super.getResponse().addData(dataset);
 	}
 
