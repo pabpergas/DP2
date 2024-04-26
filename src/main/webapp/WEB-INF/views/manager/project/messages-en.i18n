@@ -32,4 +32,7 @@ manager.project.error.usEmpty = The project can not be published if no user stor
 manager.project.list.button.update = Update
 manager.project.list.button.delete = Delete
 manager.project.list.button.publish = Publish
-manager.project.list.button.show = User Stories
+manager.project.form.button.list-userstories = Associated user stories
+manager.project.list.button.create = Create
+
+manager.project.form.button.add-userstories = Add user stories

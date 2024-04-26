@@ -13,8 +13,3 @@ manager.project-user-stories.form.title = Seleccione una historia de usuario
 manager.project-user-stories.form.button.delete = Eliminar
 manager.project-user-stories.form.label.userStory = Historias de usuario
 manager.project-user-stories.form.button.create = Añadir historia
-
-
-
-
-

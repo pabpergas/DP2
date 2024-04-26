@@ -45,7 +45,7 @@ public class Project extends AbstractEntity {
 	boolean						hasFatalErrors;
 
 	@PositiveOrZero
-	@Max(10)
+	@Max(10000)
 	Integer						cost;
 
 	@URL
