@@ -13,7 +13,7 @@ import acme.entities.S1.UserStories.priorityUserStories;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoriesShowService extends AbstractService<Manager, UserStories> {
+public class ManagerUserStoriesDeleteService extends AbstractService<Manager, UserStories> {
 
 	@Autowired
 	private ManagerUserStoriesRepository repo;
@@ -34,26 +34,41 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 
 	@Override
 	public void load() {
-		UserStories object;
-		int id;
+		int id = super.getRequest().getData("id", int.class);
+		UserStories userStory = this.repo.findUserStoryById(id);
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findUserStoryById(id);
+		super.getBuffer().addData(userStory);
+	}
 
-		super.getBuffer().addData(object);
+	@Override
+	public void bind(final UserStories object) {
+		assert object != null;
+
+		super.bind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link");
+	}
+
+	@Override
+	public void validate(final UserStories object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final UserStories object) {
+		assert object != null;
+
+		this.repo.delete(object);
 	}
 
 	@Override
 	public void unbind(final UserStories object) {
 		assert object != null;
+
 		SelectChoices choices = SelectChoices.from(priorityUserStories.class, object.getPriority());
 
-		Dataset dataset;
+		Dataset dataset = super.unbind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link", "draftMode");
 
-		dataset = super.unbind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link", "draftMode");
 		dataset.put("priority", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.S1.Project;
+import acme.entities.S1.ProjectUserStories;
+import acme.roles.Manager;
 
 public interface ManagerProjectRepository extends AbstractRepository {
 
@@ -17,5 +19,11 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	Collection<Project> findAllManagerProjectsById(int id);
 
 	@Query("SELECT p FROM Project p")
-	Collection<Project> findAllProjectsAvailable();
+	Collection<Project> findAllProjects();
+
+	@Query("SELECT m FROM Manager m WHERE m.id = :id")
+	Manager findManagerById(int id);
+
+	@Query("SELECT pus FROM ProjectUserStories pus WHERE pus.project.id = :id")
+	Collection<ProjectUserStories> findProjectUserStoriesByProjectId(int id);
 }

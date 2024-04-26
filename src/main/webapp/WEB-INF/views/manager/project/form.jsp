@@ -19,21 +19,26 @@
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
 	<acme:input-textbox code="manager.project.form.label.summary" path="summary"/>
-	<acme:input-textbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
 	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>
-	<acme:input-textbox code="manager.project.form.label.link" path="link"/>
+	<acme:input-url code="manager.project.form.label.link" path="link"/>
+	<acme:input-checkbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
 
 
-	<jstl:choose> 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+	<jstl:choose>
+		<jstl:when  test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:button code="manager.project.form.button.add-userstories" action="/manager/project-user-stories/create?projectId=${id}"/>
+			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-stories/list-by-proyect?projectId=${id}"/>
 			<acme:submit code="manager.project.list.button.update" action="/manager/project/update"/>
-			<acme:submit code="manager.project.list.button.delete" action="/sponsor/project/delete"/>
-			<acme:submit code="manager.project.list.button.publish" action="/sponsor/project/publish"/>	
+			<acme:submit code="manager.project.list.button.delete" action="/manager/project/delete"/>
+			<acme:submit code="manager.project.list.button.publish" action="/manager/project/publish"/>
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.project.list.button.create" action="/sponsor/project/create"/>
+			<acme:submit code="manager.project.list.button.create" action="/manager/project/create"/>
 		</jstl:when>
+		<jstl:otherwise>
+			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-stories/list-by-proyect?projectId=${id}"/>
+		</jstl:otherwise>	
 	</jstl:choose> 
 
 </acme:form>
