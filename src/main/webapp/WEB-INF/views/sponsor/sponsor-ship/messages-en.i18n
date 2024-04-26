@@ -1,0 +1,42 @@
+# banner-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+sponsor.sponsorShip.list.label.project.title = Project
+sponsor.sponsorShip.list.label.moment = Moment
+sponsor.sponsorShip.list.label.code  = Code
+sponsor.sponsorShip.list.label.startDate = Start Date
+sponsor.sponsorShip.list.label.endDate = End Date
+sponsor.sponsorShip.list.label.amount = Amount
+sponsor.sponsorShip.list.label.type = Type
+sponsor.sponsorShip.list.label.contactEmail = Contact Email
+sponsor.sponsorShip.list.label.link = Link
+sponsor.sponsorShip.list.label.sponsor.name = Sponsor Name
+sponsor.sponsor-ship.form.title = Sponsorship Information
+sponsor.sponsor-ship.list.title = Your sponsorShips
+sponsor.sponsorShip.list.button.create = Create
+sponsor.sponsorShip.list.button.invoices = Invoices
+sponsor.sponsorShip.list.submit.create = Create
+sponsor.sponsorShip.list.submit.update = Update
+sponsor.sponsorShip.list.submit.delete = Delete
+sponsor.sponsorShip.list.submit.publish = Publish
+
+sponsor.sponsorShip.form.placerholder.code = The code pattern should be 3 letters-3 numbers, like here: AAA-000
+sponsor.sponsorShip.form.placerholder.type = The type must be: FINANCIAL, IN_KIND
+sponsor.sponsorShip.error.amount = The amount must be greater than 0 and less than 1,000,000.00
+sponsor.sponsorShip.error.no-total-amount= This sponsorShip don't have any invoice, and the amount is not 0,00
+sponsor.sponsorShip.error.total-amount= The sum of the total amount of the invoices, must be equals than the amount of the sponsorShip
+sponsor.sponsorShip.error.duplicated = The sponsorship code cannot match one previously registered
+sponsor.sponsorShip.error.code = Patern of the code must be 3leters-3numbers, like that:AAA-000
+sponsor.sponsorShip.error.too-close = The sponsorship startDate must be after the moment
+sponsor.sponsorShip.error.endDate  = End Date must be 30 days later than Start Date
+sponsor.sponsorShip.error.amount.currency = Currency must be EUR, USD or GBD
+sponsor.sponsorShip.error.startDate.limitSup = The StartDate must be 2200/12/31 23:59 or lower
+sponsor.sponsorShip.error.endDate.limitSup = The endDate must be 2200/12/31 23:59 or lower

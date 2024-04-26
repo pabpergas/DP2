@@ -32,12 +32,8 @@ public class SponsorShip extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	@Valid
-	private Project				project;
-
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{sponsor.sponsorShip.error.code}")
 	@Column(unique = true)
 	private String				code;
 
@@ -55,28 +51,35 @@ public class SponsorShip extends AbstractEntity {
 	private Date				endDate;
 
 	@NotNull
+	@Valid
 	private Money				amount;
 
 	@NotNull
 	private SponsorShipType		type;
 
 	@Email
+	@Length(min = 0, max = 255)
 	private String				contactEmail;
 
 	@URL
-	@Length(max = 255)
+	@Length(min = 0, max = 255)
 	private String				link;
+
+	private boolean				draftMode			= true;
 
 	@ManyToOne
 	@Valid
+	@NotNull
 	private Sponsor				sponsor;
 
-	private boolean				draftMode;
+	@ManyToOne
+	@Valid
+	@NotNull
+	private Project				project;
 
 
 	public enum SponsorShipType {
 		FINANCIAL, IN_KIND
-
 	}
 
 }

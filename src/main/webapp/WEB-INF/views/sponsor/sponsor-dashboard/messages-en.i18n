@@ -1,0 +1,24 @@
+# banner-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsor-dashboard.form.title = SponsorDashBoard
+
+sponsor.sponsorShip.form.label.totalInvoicesWithTaxLessThanOrEqualTo21Percent = Total Invoice wih a tax les or equals to 21%
+sponsor.sponsorShip.form.label.totalSponsorshipsWithLink = Total of SponsorShips with Link
+
+
+sponsor.sponsorShip.form.label.averageSponsorshipAmount = Average Amount of your SponsorShips:
+sponsor.sponsorShip.form.label.deviationSponsorshipAmount = Deviation Amount of your SponsorShips:
+sponsor.sponsorShip.form.label.minimumSponsorshipAmount= Minimum Amount of your SponsorShips:
+sponsor.sponsorShip.form.label.maximumSponsorshipAmount = Maximum Amount of your SponsorShips:
+sponsor.sponsorShip.form.label.averageInvoiceQuantity = Average Quantity of your Invoices:
+sponsor.sponsorShip.form.label.deviationInvoiceQuantity = Deviation Quantity of your Invoices:
+sponsor.sponsorShip.form.label.minimumInvoiceQuantity= Minimum Quantity of your Invoices:
+sponsor.sponsorShip.form.label.maximumInvoiceQuantity  = Maximum Quantity of your Invoices:

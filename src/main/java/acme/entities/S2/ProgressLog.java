@@ -32,7 +32,7 @@ public class ProgressLog extends AbstractEntity {
 	private Contract			contract;
 
 	@NotBlank
-	@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$")
+	@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$", message = "error.recordId")
 	@Column(unique = true)
 	private String				recordId;
 

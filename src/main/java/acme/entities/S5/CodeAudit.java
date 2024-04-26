@@ -2,12 +2,10 @@
 package acme.entities.S5;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -35,7 +33,7 @@ public class CodeAudit extends AbstractEntity {
 	private Project				project;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.code")
 	@Column(unique = true)
 	private String				code;
 
@@ -44,18 +42,17 @@ public class CodeAudit extends AbstractEntity {
 	private Date				executionDate;
 
 	@NotNull
-	private type				type;
+	private CodeAuditType				type;
 
 	@NotBlank
 	@Size(max = 100)
 	private String				correctiveActions;
 
-
 	@ManyToOne
 	private Auditor				auditor;
+	
+	private Mark				mark				= Mark.FMINUS;
+	
+	private Boolean				draftMode			= true;
 
-
-	public enum type {
-		STATIC, DINAMIC
-	}
 }

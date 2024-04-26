@@ -3,6 +3,8 @@ package acme.entities.S1;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -36,23 +38,24 @@ public class UserStories extends AbstractEntity {
 	@Length(min = 0, max = 100)
 	String						acceptanceCriteria;
 
-	@Positive
-	Integer						estimatedCost;
+	@Positive  //tiene el Positive y no el PositiveOrZero porque el minimo es 1
+	@Max(10)
+	int							estimatedCost;
 
 	@NotNull
-	priorityUserStories			proirity;
+	priorityUserStories			priority;
 
 	@URL
-	@Length(min = 0, max = 100)
+	@Length(min = 0, max = 255)
 	String						link;
+
+	boolean						draftMode			= true;
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne
-	Project						project;
-
 	@ManyToOne(optional = false)
 	@NotNull
+	@Valid
 	Manager						manager;
 
 
