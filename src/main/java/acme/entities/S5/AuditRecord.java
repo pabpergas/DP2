@@ -1,7 +1,9 @@
 
 package acme.entities.S5;
 
+import java.beans.Transient;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +31,7 @@ public class AuditRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.auditRecord")
 	@Column(unique = true)
 	private String				code;
 
@@ -56,7 +58,12 @@ public class AuditRecord extends AbstractEntity {
 	private Auditor				auditor;
 
 
-	public enum Mark {
-		APLUS, A, B, C, F, FMINUS
+	private Boolean				draftMode				= true;
+	
+	@Transient
+	public Long getAuditionPeriod() {
+		long diff = this.endAudition.getTime() - this.startAudition.getTime();
+		return Long.valueOf(TimeUnit.MILLISECONDS.toMinutes(diff));
 	}
+
 }

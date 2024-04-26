@@ -23,4 +23,5 @@ public class AdministratorDashboard extends AbstractForm {
 	Double						minimumNumberOfClaimsLast10Weeks;
 	Double						maximumNumberOfClaimsLast10Weeks;
 	Double						standardDeviationNumberOfClaimsLast10Weeks;
+
 }

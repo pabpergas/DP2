@@ -23,6 +23,7 @@ master.menu.anonymous.favourite-link-1 = 76584962E: Ulecia García, Javier
 master.menu.anonymous.favourite-link-3 = 29562854B: Duque Colete, Rafael
 master.menu.anonymous.favourite-link-4 = 48124444A: Pérez Gaspar, Pablo
 master.menu.anonymous.favourite-link-5 = 29518565C: Rodríguez Sánchez, Pablo
+master.menu.anonymous.claim = Reclamaciones
 
 # master.menu.administrator ###################################################
 
@@ -32,13 +33,14 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
-master.menu.administrator.banner  = Bandera
+master.menu.administrator.banner  = Banderas
 # master.menu.sponsor ########################################################
 
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsor-ships = Patrocinio
 master.menu.sponsor.invoices = Facturas
 master.menu.sponsor.dashboard = Panel
+master.menu.sponsor.invoices = Facturas
 
 
 # master.menu.provider ########################################################
@@ -70,4 +72,4 @@ master.menu.manager.dashboard = Panel
 
 # master.menu.principal ####################################################
 master.menu.principal = Autenticado
-master.menu.principal.claim = Demandas
+master.menu.principal.claim = Reclamaciones

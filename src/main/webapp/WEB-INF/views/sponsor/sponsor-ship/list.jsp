@@ -16,9 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
+	<acme:list-column code="sponsor.sponsorShip.list.label.project.title" path="project.title" width="10%"/>
 	<acme:list-column code="sponsor.sponsorShip.list.label.code" path="code" width="10%"/>
 	<acme:list-column code="sponsor.sponsorShip.list.label.moment" path="moment" width="10%"/>
-¡	<acme:list-column code="sponsor.sponsorShip.list.label.type" path="type" width="10%"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list-mine'}">

@@ -1,14 +1,19 @@
 
 package acme.features.sponsor.invoice;
 
-import java.util.Collection;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
@@ -22,17 +27,29 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		SponsorShip sponsorship;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		sponsorship = this.repository.findOneSponsorShipById(masterId);
+		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Invoice object;
-		Sponsor sponsor;
+		SponsorShip sponsorShip;
+		int masterId;
 
-		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		masterId = super.getRequest().getData("masterId", int.class);
+		sponsorShip = this.repository.findOneSponsorShipById(masterId);
+
 		object = new Invoice();
-		object.setDraftMode(true);
+		object.setRegistrationTime(MomentHelper.getCurrentMoment());
+		object.setSponsorShip(sponsorShip);
 
 		super.getBuffer().addData(object);
 	}
@@ -41,29 +58,37 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		int sponsorShipId;
-		SponsorShip sponsorShip;
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 
-		sponsorShipId = super.getRequest().getData("sponsorShip", int.class);
-		sponsorShip = this.repository.findOneSponsorShipById(sponsorShipId);
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-
-		object.setSponsorShip(sponsorShip);
 	}
 
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		String sponsorShipCurrency = object.getSponsorShip().getAmount().getCurrency();
+		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+		Date limit = Date.from(instant);
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 
 			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
+			super.state(existing == null, "code", "sponsor.invoice.error.duplicated");
 		}
-		//Falta validar el moment
-		//if (!super.getBuffer().getErrors().hasErrors("startDate"))
-		//super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
+		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
+			Date deadLine;
+			Date registrationTime = object.getRegistrationTime();
+			Date registrationTimeMinusOneSecond = Date.from(Instant.ofEpochMilli(registrationTime.getTime()).minus(Duration.ofSeconds(1)));
+			deadLine = MomentHelper.deltaFromMoment(registrationTimeMinusOneSecond, 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getDueDate(), deadLine), "dueDate", "sponsor.invoice.error.dueDate");
+			super.state(MomentHelper.isAfter(limit, object.getDueDate()), "dueDate", "sponsor.invoice.error.dueDate.limitSup");
+
+		}
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
+		super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
 
 	}
 
@@ -78,18 +103,12 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void unbind(final Invoice object) {
 		assert object != null;
 
-		int sponsorId;
-		Collection<SponsorShip> sponsorShips;
-		SelectChoices choices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShips = this.repository.findManySponsorShipsBySponsorId(sponsorId);
-		choices = SelectChoices.from(sponsorShips, "code", object.getSponsorShip());
-
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("sponsorShip", choices.getSelected().getKey());
-		dataset.put("sponsorShips", choices);
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("draftMode", object.getSponsorShip().isDraftMode());
+
 		super.getResponse().addData(dataset);
 
 	}

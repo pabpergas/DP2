@@ -32,7 +32,7 @@ import lombok.Setter;
 public class Invoice extends AbstractEntity {
 
 	@NotBlank
-	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$")
+	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.error.code}")
 	@Column(unique = true)
 	private String	code;
 
@@ -46,6 +46,7 @@ public class Invoice extends AbstractEntity {
 	private Date	dueDate;
 
 	@NotNull
+	@Valid
 	private Money	quantity;
 
 	@Min(0)
@@ -55,19 +56,19 @@ public class Invoice extends AbstractEntity {
 	private Double	tax;
 
 	@URL
-	@Length(max = 255)
+	@Length(min = 0, max = 255)
 	private String	link;
 
 
 	@Transient
-	private Double totalAmount() {
+	public Double totalAmount() {
 		Double q = this.quantity.getAmount();
 
-		return q + q * this.tax;
+		return q + q * this.tax / 100;
 	}
 
 
-	private boolean		draftMode	= false;
+	private boolean		draftMode	= true;
 
 	@ManyToOne
 	@Valid

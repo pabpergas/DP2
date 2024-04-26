@@ -31,23 +31,23 @@ public class Notice extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(min = 0, max = 75)
+	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
-	@Length(min = 0, max = 75)
+	@Length(max = 75)
 	private String				author;
 
 	@NotBlank
-	@Length(min = 0, max = 100)
+	@Length(max = 100)
 	private String				message;
 
 	@Email
-	@Length(min = 0, max = 255)
+	@Length(max = 255)
 	private String				emailAddress;
 
 	@URL
-	@Length(min = 0, max = 255)
+	@Length(max = 255)
 	private String				link;
 
 

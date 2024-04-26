@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Training extends AbstractEntity {
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "code")
 	@Column(unique = true)
 	private String		code;
 

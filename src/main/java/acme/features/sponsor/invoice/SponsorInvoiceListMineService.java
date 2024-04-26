@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S4.Invoice;
+import acme.entities.S4.SponsorShip;
 import acme.roles.Sponsor;
 
 @Service
@@ -20,17 +21,26 @@ public class SponsorInvoiceListMineService extends AbstractService<Sponsor, Invo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		SponsorShip sponsorship;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		sponsorship = this.repository.findOneSponsorShipById(masterId);
+		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Invoice> sponsorShip;
-		int sponsorId;
+		Collection<Invoice> invoices;
+		int masterId;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		sponsorShip = this.repository.findInvoicesBySponsorId(sponsorId);
-		super.getBuffer().addData(sponsorShip);
+		masterId = super.getRequest().getData("masterId", int.class);
+		invoices = this.repository.findInvoicesBySponsorShipId(masterId);
+
+		super.getBuffer().addData(invoices);
 	}
 
 	@Override
@@ -39,8 +49,25 @@ public class SponsorInvoiceListMineService extends AbstractService<Sponsor, Invo
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "dueDate", "sponsorShip.code");
+
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<Invoice> objects) {
+		assert objects != null;
+
+		int masterId;
+		SponsorShip sponsorship;
+		final boolean showCreate;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		sponsorship = this.repository.findOneSponsorShipById(masterId);
+		showCreate = sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+
+		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }

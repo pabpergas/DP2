@@ -20,14 +20,17 @@ public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<SponsorShip> sponsorShip;
 		int sponsorId;
-
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		sponsorShip = this.repository.findSponsorShipBySponsorId(sponsorId);
 		super.getBuffer().addData(sponsorShip);
@@ -39,7 +42,7 @@ public class SponsorSponsorShipListMineService extends AbstractService<Sponsor, 
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		dataset = super.unbind(object, "code", "moment", "project.title");
 		super.getResponse().addData(dataset);
 	}
 
