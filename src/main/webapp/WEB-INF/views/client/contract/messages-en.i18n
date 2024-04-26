@@ -35,3 +35,63 @@ client.contract.form.placerholder.code = The code pattern should be 3 letters-3 
 client.contract.error.duplicated = The contract code cannot match one previously registered
 client.contract.error.code = Patern of the code must be 3leters-3numbers, like that:AAA-000
 client.contract.error.budget = The sum of the total budget less than or equal to the corresponding project cost
+
+
+
+client.contract.list.title = My Contracts
+
+client.contract.list.label.code = Code	
+
+client.contract.list.label.instantiationMoment = InstantiationMoment
+
+client.contract.list.label.providerName = Provider
+
+client.contract.list.label.customerName = Customer
+
+client.contract.list.label.goals = Goals
+
+client.contract.list.label.budget = Budget
+
+client.contract.list.label.project.code = Project Code
+
+client.contract.list.label.draftMode = Editable
+
+client.contract.list.button.create-contract = Create contract
+
+client.contract.form.title = Contract Detail
+
+client.contract.form.label.code = Code
+
+client.contract.form.label.instantiationMoment = Instantiation Moment
+
+client.contract.form.label.providerName = Provider
+
+client.contract.form.label.customerName = Customer
+
+client.contract.form.label.goals = Goals
+
+client.contract.form.label.budget = Budget
+
+client.contract.form.label.project = Project
+
+client.contract.form.button.create-contract = Create Contract
+
+client.contract.form.button.update = Update
+
+client.contract.form.button.delete = Delete
+
+client.contract.form.button.publish = Publish
+
+client.contract.form.providerName.placeholder = Provider
+
+client.contract.form.customerName.placeholder = Customer
+
+client.contract.form.goals.placeholder = Define its goals
+
+client.contract.form.code.placeholder = [A-Z]{1,3}-[0-9]{3}
+
+client.contract.form.error.duplicated = This code is already in use
+
+client.contract.form.error.excededBudget = The budget you entered exceeds the total cost of the project. Please enter a budget that is within the project's budget constraints
+
+client.contract.form.button.progressLogs = Progress Logs

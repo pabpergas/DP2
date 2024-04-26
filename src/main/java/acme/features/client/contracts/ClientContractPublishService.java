@@ -62,9 +62,34 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 	}
 
+	private Boolean checkContractsBudget(final Contract object) {
+		assert object != null;
+
+		if (object.getProject() != null) {
+			Collection<Contract> contratos = this.repository.findManyContractByProjectId(object.getProject().getId());
+
+			Double budget = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
+
+			Double projectCost = object.getProject().getCost().doubleValue();
+
+			return projectCost >= budget + object.getBudget().getAmount();
+		}
+
+		return true;
+	}
+
 	@Override
 	public void validate(final Contract object) {
-		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.repository.findOneContractByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
+
+			if (!super.getBuffer().getErrors().hasErrors("budget"))
+				super.state(this.checkContractsBudget(object), "budget", "client.contract.form.error.excededBudget");
+		}
 	}
 
 	@Override

@@ -65,6 +65,14 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.repository.findOneContractByCode(object.getCode());
+
+			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
+		}
 	}
 
 	@Override

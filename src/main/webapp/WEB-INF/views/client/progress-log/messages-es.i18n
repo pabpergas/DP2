@@ -29,3 +29,62 @@ client.contract.form.placerholder.code = El patrón del código deber ser 3 letr
 client.contract.error.duplicated = El código del contrato no puede coincidir con uno anteriormente registrado
 client.contract.error.code = El patrón del código deber ser 3 letras-3 números, como aquí: AAA-000
 client.contract.error.budget = La suma del presupuesto total menor o igual al costo correspondiente del proyecto.
+
+
+
+#cabeceras
+
+client.progress-log.list.title = Listado de registros de progreso
+
+client.progress-log.form.title = Datalles del registro de progreso
+
+#listado
+
+client.progressLog.list.label.recordId = Identificar de registro
+
+client.progressLog.list.label.completeness = Completitud
+
+client.progressLog.list.label.registrationMoment = Momento de Registro
+
+client.progressLog.list.label.responsiblePerson = Responsable
+
+client.progressLog.list.label.draftMode = Editable
+
+#formulario
+
+client.progress-log.form.label.recordId = Identificador de registro
+
+client.progress-log.form.label.completeness = Completitud
+
+client.progress-log.form.label.comment = Comentaria
+
+client.progress-log.form.label.registrationMoment = Momento del registro
+
+client.progress-log.form.label.responsiblePerson = Persona Responsable
+
+#botones
+
+client.progress-log.form.button.create = Crear registro de progreso
+
+client.progress-log.form.button.update = Actualizar
+
+client.progress-log.form.button.delete = Borrar
+
+client.progress-log.form.button.publish = Publicar
+
+client.progressLog.list.button.create = Crear registro de progreso
+
+
+#errores
+
+client.progressLog.form.error.duplicated = Esta id ya esta en uso.
+
+#placeholder
+
+client.progress-log.form.recordId.placeholder = PG-[A-Z]{1,2}-[0-9]{4}
+
+client.progress-log.form.completeness.placeholder = 0 - 100.00
+
+client.progress-log.form.comment.placeholder = Haz un comentario
+
+client.progress-log.form.responsiblePerson.placeholder = Persona Responsable

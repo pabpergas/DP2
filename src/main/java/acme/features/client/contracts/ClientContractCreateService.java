@@ -61,7 +61,12 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
-		// Puedes implementar la lógica de validación aquí antes de crear el contrato
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.repository.findOneContractByCode(object.getCode());
+			super.state(existing == null, "code", "client.contract.form.error.duplicated");
+		}
 	}
 
 	@Override
