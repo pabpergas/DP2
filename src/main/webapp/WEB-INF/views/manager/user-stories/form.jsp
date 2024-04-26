@@ -31,7 +31,7 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.userstories.form.button.create" action="/manager/user-stories/create"/>
-		</jstl:when>		
+		</jstl:when>	
 	</jstl:choose>
 	
 </acme:form>

@@ -24,9 +24,10 @@ manager.project.list.label.cost = Cost
 
 manager.project.form.button.us = Associated user stories
 
-error.project.code = The code must be three capital letters, a hyphen and four numbers between 0 and 9, both included.
+error.project.code = The code must be three capital letters, a hyphen and four numbers between 0 and 9, both included. Example AAA-0000
 manager.project.form.error.duplicated-code = This code is already in use 
 manager.project.form.error.hasErrors = The project can not be published if it has errors
+manager.project.error.usEmpty = The project can not be published if no user story is associated with it
 
 manager.project.list.button.update = Update
 manager.project.list.button.delete = Delete

@@ -25,10 +25,3 @@
 <jstl:if test="${_command == 'list-mine'}">
 	<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
 </jstl:if>
-
-<!--  
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="employer.job.list.button.create" action="/employer/job/create"/>
-</jstl:if>
-
--->	

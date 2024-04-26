@@ -20,12 +20,12 @@ public class ManagerProjectUserStoriesDeleteService extends AbstractService<Mana
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStories assignment = this.repo.findProjectUserStoriesById(id);
+		ProjectUserStories pus = this.repo.findProjectUserStoriesById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
 
-		final boolean authorise = assignment != null && assignment.getProject().getManager().getUserAccount().getId() == userAccountId;
+		final boolean authorise = pus != null && pus.getProject().getManager().getUserAccount().getId() == userAccountId;
 
 		super.getResponse().setAuthorised(authorise);
 	}
@@ -33,9 +33,9 @@ public class ManagerProjectUserStoriesDeleteService extends AbstractService<Mana
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStories assignment = this.repo.findProjectUserStoriesById(id);
+		ProjectUserStories pus = this.repo.findProjectUserStoriesById(id);
 
-		super.getBuffer().addData(assignment);
+		super.getBuffer().addData(pus);
 	}
 
 	@Override

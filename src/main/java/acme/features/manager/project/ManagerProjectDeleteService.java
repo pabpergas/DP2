@@ -30,7 +30,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		masterId = super.getRequest().getData("id", int.class);
 		Project project = this.repo.findProjectById(masterId);
 		Manager manager = project == null ? null : project.getManager();
-		status = project != null && !project.isDraftMode() && principal.hasRole(manager) && project.getManager().getUserAccount().getId() == userAccountId;
+		status = project != null && project.isDraftMode() && principal.hasRole(manager) && project.getManager().getUserAccount().getId() == userAccountId;
 
 		super.getResponse().setAuthorised(status);
 	}

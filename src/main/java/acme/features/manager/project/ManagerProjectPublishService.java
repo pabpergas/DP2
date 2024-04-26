@@ -68,6 +68,10 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 			super.state(!hasErrors, "hasFatalErrors", "manager.project.form.error.hasErrors");
 		}
+		int id = super.getRequest().getData("id", int.class);
+		Collection<UserStories> ls = this.repo.findProjectUserStoriesByProjectId(id).stream().map(ProjectUserStories::getUserStories).toList();
+		final boolean noUs = ls.isEmpty();
+		super.state(!noUs, "*", "manager.project.error.usEmpty");
 
 	}
 

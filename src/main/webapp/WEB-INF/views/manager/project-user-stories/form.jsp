@@ -18,7 +18,7 @@
 
 <acme:form>				
 	<jstl:choose>
-		<jstl:when test="${_command == 'show'}">
+		<jstl:when test="${_command == 'list-by-project'}">
 			<acme:submit code="manager.project-user-stories.form.button.delete" action="/manager/project-user-stories/delete?projectId=${projectId}"/>
 		</jstl:when>		
 
