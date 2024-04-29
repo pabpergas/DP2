@@ -20,20 +20,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<name>Acme-SF-D01</name>
-    	<description>This is the project for the Derivable01</description>
+	<name>Acme-SF-D04</name>
+    	<description>This is the project for the Derivable04</description>
 
 	<groupId>C1.040</groupId>
     	<artifactId>Acme-SF</artifactId>
-    	<version>D01</version>
+    	<version>D04</version>
 	
 	<packaging>war</packaging>
 	
 	<parent>
 		<groupId>Acme</groupId>
 		<artifactId>Parent-Pom</artifactId>
-		<version>24.1.0</version>
-		<relativePath>../../pom-24.1.0.xml</relativePath>
+		<version>24.4.0</version>
+		<relativePath>../../pom-24.4.0.xml</relativePath>
 	</parent>
 
 	<dependencies>
@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>Acme</groupId>
 			<artifactId>Acme-Framework</artifactId>
-			<version>24.1.0</version>
+			<version>24.4.0</version>
 		</dependency>
 	</dependencies>
 

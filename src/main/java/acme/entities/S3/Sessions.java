@@ -26,34 +26,39 @@ import lombok.Setter;
 @ValidTrainingSession
 public class Sessions extends AbstractEntity {
 
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
+
 	@NotBlank
 	@Pattern(regexp = "^TS-[A-Z]{1,3}-[0-9]{3}$", message = "error.session")
 	@Column(unique = true)
-	private String		code;
+	private String				code;
 
 	@ManyToOne
 	@Valid
-	private Training	training;
+	private Training			training;
 
 	@NotBlank
 	@Length(max = 76)
-	private String		location;
+	private String				location;
 
 	@NotBlank
 	@Length(max = 76)
-	private String		instructor;
+	private String				instructor;
 
 	@NotNull
 	@Email
-	private String		email;
+	private String				email;
 
 	@URL
-	private String		link;
+	private String				link;
 
 	@NotNull
-	private Date		startDate;
+	private Date				startDate;
 
 	@NotNull
-	private int			durationInWeeks;
+	private int					durationInWeeks;
 
 }

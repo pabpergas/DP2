@@ -43,7 +43,6 @@ public class SponsorInvoiceListAllService extends AbstractService<Sponsor, Invoi
 	public void unbind(final Invoice object) {
 		assert object != null;
 
-		int masterId;
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "sponsorShip.code", "dueDate");

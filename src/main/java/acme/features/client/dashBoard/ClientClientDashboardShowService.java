@@ -40,7 +40,7 @@ public class ClientClientDashboardShowService extends AbstractService<Client, Cl
 		Collection<Contract> myPublishedContracts = this.repository.findManyContractsByClientId(clientId).stream().filter(x -> !x.isDraftMode()).toList();
 		Collection<Integer> myContractsIds = myPublishedContracts.stream().map(x -> x.getId()).toList();
 		Collection<Money> myBudgets = this.repository.findManyBudgetsByClientId(clientId); //this only considers published contracts.
-		Collection<Double> myBudgetsAmount = myBudgets.stream().map(x -> x.getAmount()).toList();
+		//Collection<Double> myBudgetsAmount = myBudgets.stream().map(x -> x.getAmount()).toList();
 
 		//my progress logs less than 25
 		double totalNumProgressLogLessThan25 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompletenessPercentage() < 25.0).count();

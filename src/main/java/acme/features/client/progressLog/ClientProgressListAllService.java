@@ -43,7 +43,6 @@ public class ClientProgressListAllService extends AbstractService<Client, Progre
 	public void unbind(final ProgressLog object) {
 		assert object != null;
 
-		int masterId;
 		Dataset dataset;
 
 		dataset = super.unbind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");

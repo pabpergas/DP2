@@ -11,7 +11,6 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S2.Contract;
-import acme.entities.S2.ProgressLog;
 import acme.roles.Client;
 
 @Service
@@ -95,8 +94,6 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
-
-		Collection<ProgressLog> progressLog;
 
 		object.setDraftMode(false);
 

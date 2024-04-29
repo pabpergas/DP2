@@ -31,33 +31,38 @@ import lombok.Setter;
 @Setter
 public class Invoice extends AbstractEntity {
 
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
+
 	@NotBlank
 	@Pattern(regexp = "^IN-[0-9]{4}-[0-9]{4}$", message = "{sponsor.invoice.error.code}")
 	@Column(unique = true)
-	private String	code;
+	private String				code;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
-	private Date	registrationTime;
+	private Date				registrationTime;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	dueDate;
+	private Date				dueDate;
 
 	@NotNull
 	@Valid
-	private Money	quantity;
+	private Money				quantity;
 
 	@Min(0)
 	@Max(100)
 	@NotNull
 	@Digits(integer = 3, fraction = 2)
-	private Double	tax;
+	private Double				tax;
 
 	@URL
 	@Length(min = 0, max = 255)
-	private String	link;
+	private String				link;
 
 
 	@Transient
