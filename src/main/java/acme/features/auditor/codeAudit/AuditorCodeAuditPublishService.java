@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
 import acme.entities.S5.Mark;
+import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -17,6 +19,9 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	
 	@Autowired
 	private AuditorCodeAuditRepository repo;
+	
+	@Autowired
+	private AuditorAuditRecordRepository recordRepo;
 	
 	@Override
 	public void authorise() {
@@ -61,8 +66,13 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 		
 		Collection<Mark> invalid = Arrays.asList(Mark.F, Mark.FMINUS);
+		Collection<AuditRecord> records;
+		Mark mark;
 		
-		assert !(invalid.contains(object.getMark()));
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		mark = object.getMark(records);
+		
+		assert !(invalid.contains(mark));
 	}
 
 	@Override
@@ -78,11 +88,17 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		Auditor auditor;
+		Collection<AuditRecord> records;
+		Mark mark;
+		
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		mark = object.getMark(records);
 		auditor = object.getAuditor();
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
 		dataset.put("auditor", auditor);
+		dataset.put("mark", mark);
 		super.getResponse().addData(dataset);
 	}
 }

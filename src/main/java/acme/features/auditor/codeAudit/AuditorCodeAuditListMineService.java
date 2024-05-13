@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
 import acme.entities.S5.Mark;
+import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -18,6 +20,9 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 	@Autowired
 	private AuditorCodeAuditRepository repo;
 
+	@Autowired
+	private AuditorAuditRecordRepository recordRepo;
+	
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
@@ -37,8 +42,12 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
-
-		Mark mark = object.getMark();
+		
+		Collection<AuditRecord> records;
+		Mark mark;
+		
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		mark = object.getMark(records);
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");

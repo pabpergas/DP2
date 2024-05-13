@@ -2,12 +2,18 @@
 package acme.entities.S5;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -51,8 +57,32 @@ public class CodeAudit extends AbstractEntity {
 	@ManyToOne
 	private Auditor				auditor;
 	
-	private Mark				mark				= Mark.FMINUS;
-	
 	private Boolean				draftMode			= true;
+	
+	@Transient
+	public Mark getMark(Collection<AuditRecord> records) {		
+		if(records.isEmpty()) {
+			Map<Mark, Integer> repeated = new HashMap<>();
+			List<Mark> marks = records.stream().map(e-> e.getMark()).toList();
+			
+			for( Mark m: marks) {
+				if(repeated.containsKey(m)) {
+					int i = repeated.get(m) + 1;
+					repeated.put(m, i);
+				}else {
+					repeated.put(m, 1);
+				}
+			}
+			
+			return Collections.max(repeated.entrySet(), Map.Entry.comparingByValue()).getKey();
+		} else {
+			return Mark.FMINUS;
+		}
+	}
+	
+	@Transient
+	public Mark getMark() {
+		return Mark.FMINUS;
+	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S5.CodeAudit;
+import acme.entities.S5.Mark;
 import acme.roles.Auditor;
 
 @Service
@@ -60,10 +61,13 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		Auditor auditor;
 		auditor = object.getAuditor();
+		Mark mark = object.getMark();
+		
 
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
 		dataset.put("auditor", auditor);
+		dataset.put("mark", mark);
 		super.getResponse().addData(dataset);
 	}
 
