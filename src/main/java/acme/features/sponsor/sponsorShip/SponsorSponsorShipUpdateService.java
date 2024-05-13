@@ -3,6 +3,8 @@ package acme.features.sponsor.sponsorShip;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
@@ -72,28 +74,37 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 	public void validate(final SponsorShip object) {
 		assert object != null;
 
+		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+		Date limit = Date.from(instant);
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
 
 			existing = this.repository.findOneSponsorShipByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.sponsorShip.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("startDate"))
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
-
-		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date deadLine;
-			Date startDate = object.getStartDate();
-			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
-			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+			super.state(MomentHelper.isAfter(limit, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
+		if (!super.getBuffer().getErrors().hasErrors("endDate") && object.getStartDate() != null) {
+			if (object.getStartDate() != null) {
+				Date deadLine;
+				Date startDate = object.getStartDate();
+				Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDate.getTime()).minus(Duration.ofSeconds(1)));
+				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
+				super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
+			}
+			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
+
+		}
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 			super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBD") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
 
+		}
 	}
 	@Override
 	public void perform(final SponsorShip object) {

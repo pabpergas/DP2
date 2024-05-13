@@ -3,6 +3,8 @@ package acme.features.sponsor.invoice;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -56,13 +58,18 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 
 	}
 
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
+
+		String sponsorShipCurrency = object.getSponsorShip().getAmount().getCurrency();
+		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+		Date limit = Date.from(instant);
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
@@ -76,9 +83,12 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			Date registrationTimeMinusOneSecond = Date.from(Instant.ofEpochMilli(registrationTime.getTime()).minus(Duration.ofSeconds(1)));
 			deadLine = MomentHelper.deltaFromMoment(registrationTimeMinusOneSecond, 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfter(object.getDueDate(), deadLine), "dueDate", "sponsor.invoice.error.dueDate");
+			super.state(MomentHelper.isAfter(limit, object.getDueDate()), "dueDate", "sponsor.invoice.error.dueDate.limitSup");
+
 		}
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
 			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
+		super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
 
 	}
 

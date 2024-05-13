@@ -24,31 +24,36 @@ import lombok.Setter;
 @Setter
 public class Training extends AbstractEntity {
 
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
+
 	@NotBlank
 	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "code")
 	@Column(unique = true)
-	private String		code;
+	private String				code;
 
 	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		moment;
+	private Date				moment;
 
 	@NotBlank
 	@Length(max = 100)
-	private String		details;
+	private String				details;
 
 	@NotNull
-	private Difficulty	difficulty;
+	private Difficulty			difficulty;
 
 	@URL
-	private String		link;
+	private String				link;
 
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		updateMoment;
+	private Date				updateMoment;
 
-	private int			estimatedTotalTime;
+	private int					estimatedTotalTime;
 
 
 	public enum Difficulty {

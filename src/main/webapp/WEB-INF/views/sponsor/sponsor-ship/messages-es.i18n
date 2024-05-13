@@ -38,3 +38,6 @@ sponsor.sponsorShip.error.code = El patrón del código deber ser 3 letras-3 nú
 sponsor.sponsorShip.error.too-close = La fecha de inicio del patrocinio debe ser posterior al momento.
 sponsor.sponsorShip.error.endDate  = La fecha de finalización debe ser 30 días posterior a la fecha de inicio
 sponsor.sponsorShip.error.amount.currency = El tipo de moneda debe ser EUR, GBD o USD
+sponsor.sponsorShip.error.startDate.limitSup = La fecha de inicio debe ser 31/12/2200 23:59 o inferior
+sponsor.sponsorShip.error.endDate.limitSup = La fecha de fin debe ser 31/12/2200 23:59 o inferior
+

@@ -23,6 +23,7 @@ master.menu.anonymous.favourite-link-1 = 76584962E: Ulecia García, Javier
 master.menu.anonymous.favourite-link-3 = 29562854B: Duque Colete, Rafael
 master.menu.anonymous.favourite-link-4 = 48124444A: Pérez Gaspar, Pablo
 master.menu.anonymous.favourite-link-5 = 29518565C: Rodríguez Sánchez, Pablo
+master.menu.anonymous.claim = Reclamaciones
 
 # master.menu.administrator ###################################################
 
@@ -39,6 +40,7 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsor-ships = Patrocinio
 master.menu.sponsor.invoices = Facturas
 master.menu.sponsor.dashboard = Panel
+master.menu.sponsor.invoices = Facturas
 
 
 # master.menu.provider ########################################################
@@ -51,6 +53,12 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.client ##########################################################
+
+master.menu.client=Cliente
+master.menu.client.contract= Contrato
+master.menu.client.progressLog= ProgresoLog
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -59,13 +67,18 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.sponsor = Datos de sponsor
+master.menu.user-account.become-sponsor = Hazte  sponsor
+
 
 # master.menu.manager ###################################################
 
 master.menu.manager = Manager
 master.menu.manager.all-projects = Todos los proyectos
 master.menu.manager.my-projects = Mis proyectos
+master.menu.manager.user-stories = Historias de Usuario
+master.menu.manager.dashboard = Panel
 
 # master.menu.principal ####################################################
 master.menu.principal = Autenticado
-master.menu.principal.claim = Demandas
+master.menu.principal.claim = Reclamaciones

@@ -38,7 +38,7 @@ public class UserStories extends AbstractEntity {
 	@Length(min = 0, max = 100)
 	String						acceptanceCriteria;
 
-	@Positive  //tiene el Positive y no el PositiveOrZero porque el minimi es 1
+	@Positive  //tiene el Positive y no el PositiveOrZero porque el minimo es 1
 	@Max(10)
 	int							estimatedCost;
 
@@ -48,6 +48,8 @@ public class UserStories extends AbstractEntity {
 	@URL
 	@Length(min = 0, max = 255)
 	String						link;
+
+	boolean						draftMode			= true;
 
 	// Relationships ----------------------------------------------------------
 

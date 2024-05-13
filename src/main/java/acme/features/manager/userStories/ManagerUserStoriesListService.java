@@ -6,9 +6,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.S1.Project;
 import acme.entities.S1.UserStories;
 import acme.roles.Manager;
 
@@ -21,27 +21,19 @@ public class ManagerUserStoriesListService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int usId;
-		Project project;
+		final Principal principal = super.getRequest().getPrincipal();
 
-		usId = super.getRequest().getData("id", int.class);
-		project = this.repo.findOneProjectByUserStoryId(usId);
+		final boolean authorise = principal.hasRole(Manager.class);
 
-		status = project != null && (project.getDraftMode() == false || super.getRequest().getPrincipal().hasRole(project.getManager()));
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(authorise);
 	}
 
 	@Override
 	public void load() {
-		Collection<UserStories> objects;
-		int masterId;
+		final int managerId = super.getRequest().getPrincipal().getAccountId();
+		Collection<UserStories> userStories = this.repo.findUserStoriesByManagerId(managerId);
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repo.findManylUserStoriesByProjectId(masterId);
-
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(userStories);
 	}
 
 	@Override

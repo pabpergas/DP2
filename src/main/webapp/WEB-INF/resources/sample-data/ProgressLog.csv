@@ -1,14 +1,21 @@
-key,key:contract,recordId,completenessPercentage,progressComment,registrationMoment,responsiblePerson
-progessLog-01,contract-01,PG-AA-0000,95.55,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-02,contract-01,PG-ZZ-9999,95.55,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-03,contract-01,PG-AA-0001,00.01,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-04,contract-01,PG-AA-0002,99.99,"This is a progress comment.",2020/02/21 18:00,Person1
-progessLog-05,contract-01,PG-AA-0003,95.55,"a",2020/02/21 18:00,Person1
-progessLog-06,contract-01,PG-AA-0004,95.55,"aa",2020/02/21 18:00,Person1
-progessLog-07,contract-01,PG-AA-0005,95.55,"This is a progress commentttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1
-progessLog-08,contract-01,PG-AA-0006,95.55,"This is a progress commenttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",2020/02/21 18:00,Person1
-progessLog-09,contract-01,PG-AA-0007,95.55,"This is a progress comment.",2000/01/01 00:00,Person1
-progessLog-10,contract-01,PG-AA-0008,95.55,"This is a progress comment.",2000/01/01 00:01,Person1
-progessLog-11,contract-01,PG-AA-0009,95.55,"This is a progress comment.",2020/02/21 18:00,P
-progessLog-12,contract-01,PG-AA-0010,95.55,"This is a progress comment.",2020/02/21 18:00,Person11111111111111111111111111111111111111111111111111111111111111111111
-progessLog-13,contract-01,PG-AA-0011,95.55,"This is a progress comment.",2020/02/21 18:00,Person1111111111111111111111111111111111111111111111111111111111111111111
+key,record-id,completenessPercentage,progressComment,registration-moment,responsible-person,draft-mode,key:contract
+progress-log-01,PG-A-1234,1.00,T,2000/01/01 00:00,R,true,contract-01
+progress-log-02,PG-BB-5678,42.00,ThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacom,2022/07/28 12:00,ResponsiblResponsiblResponsiblResponsiblResponsiblResponsiblResponsiblRespo,true,contract-02
+progress-log-03,PG-C-9012,17.00,"""$%&""""""""@ñ·#¿?""",2022/07/27 08:30,"""$%&""""""""@ñ·#¿?""",true,contract-03
+progress-log-04,PG-DD-3456,91.00,這是一個項目,2022/07/26 18:45,這是一個項目,true,contract-04
+progress-log-05,PG-EF-7890,55.00,<h1>Trying to hack...</h1>,2022/07/25 10:00,<h1>Trying to hack...</h1>,true,contract-05
+progress-log-06,PG-GH-2345,3.00,Modificación de alcance aprobada.,2022/07/24 16:20,ResponsiblePerson1,true,contract-06
+progress-log-07,PG-I-6789,68.00,Actualización de presupuesto.,2022/07/23 05:55,ResponsiblePerson1,true,contract-07
+progress-log-08,PG-JK-0123,29.00,Pruebas finalizadas.,2022/07/22 14:15,ResponsiblePerson1,true,contract-08
+progress-log-09,PG-LM-4567,84.00,Reunión cancelada mañana.,2022/07/21 21:30,ResponsiblePerson1,true,contract-09
+progress-log-10,PG-AS-4321,11.00,Reunión cancelada mañana.,2022/07/25 10:00,ResponsiblePerson1,true,contract-10
+progress-log-11,PG-OP-2345,77.00,Hitos alcanzados: ventas.,2022/07/19 19:40,ResponsiblePerson1,true,contract-11
+progress-log-12,PG-Q-6789,63.00,Problema resuelto: código.,2022/07/18 07:10,ResponsiblePerson1,true,contract-12
+progress-log-13,PG-RR-0123,50.00,Reunión urgente con cliente.,2022/07/17 13:50,ResponsiblePerson1,true,contract-13
+progress-log-14,PG-S-4567,5.00,Entrega pospuesta al viernes.,2022/07/16 22:05,ResponsiblePerson1,true,contract-14
+progress-log-15,PG-TU-8901,88.00,Recurso a nuevo proyecto.,2022/07/15 11:15,ResponsiblePerson1,true,contract-15
+progress-log-16,PG-VW-2345,37.00,Riesgos actualizados.,2022/07/14 20:00,ResponsiblePerson1,true,contract-16
+progress-log-17,PG-X-6789,19.00,Cambio en equipo.,2022/07/13 04:30,ResponsiblePerson1,true,contract-17
+progress-log-18,PG-YY-0123,72.00,Mantenimiento fin de semana.,2022/07/12 15:45,ResponsiblePerson1,true,contract-18
+progress-log-19,PG-ZZ-4567,95.00,Evaluación de proveedores.,2022/07/11 09:20,ResponsiblePerson1,true,contract-19
+progress-log-20,PG-AZ-8901,10.00,Progreso reportado.,2022/07/10 17:55,ResponsiblePerson1,true,contract-20

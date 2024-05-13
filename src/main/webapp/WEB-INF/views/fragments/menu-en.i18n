@@ -23,6 +23,7 @@ master.menu.anonymous.favourite-link-1 = 76584962E: Ulecia García, Javier
 master.menu.anonymous.favourite-link-3 = 29562854B: Duque Colete, Rafael
 master.menu.anonymous.favourite-link-4 = 48124444A: Pérez Gaspar, Pablo
 master.menu.anonymous.favourite-link-5 = 29518565C: Rodríguez Sánchez, Pablo
+master.menu.anonymous.claim = Claims
 
 # master.menu.administrator ###################################################
 
@@ -62,6 +63,7 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.sponsor = Sponsor
 master.menu.sponsor.dashboard = Dashboard
 master.menu.sponsor.sponsor-ships =SponsorShips
+master.menu.sponsor.invoices = Invoices
 
 
 
@@ -69,6 +71,15 @@ master.menu.sponsor.sponsor-ships =SponsorShips
 
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
+
+
+# master.menu.client ##########################################################
+
+master.menu.client=Client
+master.menu.client.contract= Contract
+master.menu.client.progressLog= ProgressLog
+master.menu.client.dashboard= Dashboard
+
 
 
 # master.menu.user-account ####################################################
@@ -79,12 +90,17 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become a sponsor
+
 
 # master.menu.manager ###################################################
 
 master.menu.manager = Manager
 master.menu.manager.all-projects = All projects
 master.menu.manager.my-projects = My projects
+master.menu.manager.user-stories = User Stories
+master.menu.manager.dashboard = Dashboard
 
 # master.menu.principal ####################################################
 master.menu.principal = Authenticated
