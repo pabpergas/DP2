@@ -61,7 +61,7 @@ public class CodeAudit extends AbstractEntity {
 	
 	@Transient
 	public Mark getMark(Collection<AuditRecord> records) {		
-		if(records.isEmpty()) {
+		if(!records.isEmpty()) {
 			Map<Mark, Integer> repeated = new HashMap<>();
 			List<Mark> marks = records.stream().map(e-> e.getMark()).toList();
 			
@@ -79,10 +79,4 @@ public class CodeAudit extends AbstractEntity {
 			return Mark.FMINUS;
 		}
 	}
-	
-	@Transient
-	public Mark getMark() {
-		return Mark.FMINUS;
-	}
-
 }

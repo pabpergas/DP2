@@ -1,4 +1,4 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import javax.annotation.PostConstruct;
 

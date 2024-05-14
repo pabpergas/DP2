@@ -1,4 +1,4 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import acme.entities.S5.CodeAudit;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, AuditRecord> {
 	
 	@Autowired
 	private AuditorAuditRecordRepository repo;
@@ -26,20 +26,9 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		auditRecord = this.repo.findById(auditRecordId);
 		auditor = auditRecord.getCodeAudit().getAuditor();
 
-		status = auditRecord != null && super.getRequest().getPrincipal().hasRole(auditor) && auditRecord.getCodeAudit().getAuditor().equals(auditor);
+		status = auditRecord != null && auditRecord.getCodeAudit().getAuditor().equals(auditor);
 
 		super.getResponse().setAuthorised(status);
-	}
-
-	@Override
-	public void load() {
-		AuditRecord object;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findById(id);
-
-		super.getBuffer().addData(object);
 	}
 
 	@Override
@@ -54,15 +43,27 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	}
 
 	@Override
+	public void load() {
+		AuditRecord object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repo.findById(id);
+
+		super.getBuffer().addData(object);
+	}
+	
+	@Override
 	public void validate(final AuditRecord object) {
-		//¿? En principio nop hay restrincciones
+		assert object != null;
+		
+		assert object.getDraftMode();
 	}
 
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
-		
-		object.setDraftMode(false);
+
 		this.repo.save(object);
 	}
 
@@ -78,5 +79,5 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		dataset.put("codeAudit", codeAudit);
 		super.getResponse().addData(dataset);
 	}
-	
+
 }

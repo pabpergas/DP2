@@ -1,0 +1,23 @@
+# List ###########################################################
+
+auditor.codeAudit.list.label.project = Project Title
+auditor.codeAudit.list.label.code = Code
+auditor.codeAudit.list.label.executionDate = Execution Date
+auditor.codeAudit.list.label.type = Type
+auditor.codeAudit.list.label.correctiveActions = Corrective Actions
+auditor.codeAudit.list.label.mark = Mark
+
+auditor.code-audit.list.title = Yours Audits
+
+auditor.codeAudit.list.button.create = Create
+
+# Form ###########################################################
+
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.publish = Publish
+auditor.codeAudit.form.button.create = Create
+
+auditor.codeAudit.form.button.list.auditRecord = Audit's Records
+
+auditor.code-audit.form.title = Audit's Data

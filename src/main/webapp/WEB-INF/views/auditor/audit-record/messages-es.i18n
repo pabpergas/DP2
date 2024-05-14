@@ -1,0 +1,13 @@
+# List ###########################################################
+
+auditor.auditRecord.list.label.codeAudit = Código de la Auditoría
+auditor.auditRecord.list.label.startAudition = Comienzo de la Auditoría
+auditor.auditRecord.list.label.endAudition = Fin de la Auditoría
+auditor.auditRecord.list.label.mark = Calificación
+auditor.auditRecord.list.label.informationLink = Más Información
+
+auditor.auditRecord.list.button.create = Crear
+
+auditor.audit-record.list.title = Registros de Auditoría
+
+# Form ###########################################################

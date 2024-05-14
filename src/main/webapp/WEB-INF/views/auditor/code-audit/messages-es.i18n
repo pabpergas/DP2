@@ -1,0 +1,23 @@
+# List ###########################################################
+
+auditor.codeAudit.list.label.project = Nombre del Proyecto
+auditor.codeAudit.list.label.code = Código
+auditor.codeAudit.list.label.executionDate = Fecha de Ejecución
+auditor.codeAudit.list.label.type = Tipo
+auditor.codeAudit.list.label.correctiveActions = Correcciones
+auditor.codeAudit.list.label.mark = Evaluación
+
+auditor.code-audit.list.title = Tus Auditorías
+
+auditor.codeAudit.list.button.create = Crear
+
+# Form ###########################################################
+
+auditor.codeAudit.form.button.update = Actualizar
+auditor.codeAudit.form.button.delete = Borrar
+auditor.codeAudit.form.button.publish = Publicar
+auditor.codeAudit.form.button.create = Crear
+
+auditor.codeAudit.form.button.list.auditRecord = Registros de la Auditoría
+
+auditor.code-audit.form.title = Crear

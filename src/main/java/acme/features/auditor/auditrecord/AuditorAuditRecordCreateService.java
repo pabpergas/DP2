@@ -1,11 +1,11 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.features.auditor.codeAudit.AuditorCodeAuditRepository;
+import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
 import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
 import acme.roles.Auditor;

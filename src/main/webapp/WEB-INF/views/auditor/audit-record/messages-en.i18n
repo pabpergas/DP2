@@ -1,0 +1,13 @@
+# List ###########################################################
+
+auditor.auditRecord.list.label.codeAudit = Code Audit's Code
+auditor.auditRecord.list.label.startAudition = Audition's Start
+auditor.auditRecord.list.label.endAudition = Audition's End
+auditor.auditRecord.list.label.mark = Mark
+auditor.auditRecord.list.label.informationLink = More Information
+
+auditor.auditRecord.list.button.create = Create
+
+auditor.audit-record.list.title = Audit Records
+
+# Form ###########################################################

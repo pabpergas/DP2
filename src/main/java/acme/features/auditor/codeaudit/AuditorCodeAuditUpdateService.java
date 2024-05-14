@@ -1,6 +1,5 @@
-package acme.features.auditor.codeAudit;
+package acme.features.auditor.codeaudit;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,21 +7,24 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.S1.Project;
 import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
+import acme.entities.S5.CodeAuditType;
 import acme.entities.S5.Mark;
-import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
+import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
 	
 	@Autowired
 	private AuditorCodeAuditRepository repo;
 	
 	@Autowired
-	private AuditorAuditRecordRepository recordRepo;
-	
+	private AuditorAuditRecordRepository	 recordRepo;
+
 	@Override
 	public void authorise() {
 		boolean status;
@@ -40,17 +42,6 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	}
 
 	@Override
-	public void load() {
-		CodeAudit object;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findById(id);
-
-		super.getBuffer().addData(object);
-	}
-
-	@Override
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
@@ -62,24 +53,26 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	}
 
 	@Override
+	public void load() {
+		CodeAudit object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repo.findById(id);
+
+		super.getBuffer().addData(object);
+	}
+	
+	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
-		
-		Collection<Mark> invalid = Arrays.asList(Mark.F, Mark.FMINUS);
-		Collection<AuditRecord> records;
-		Mark mark;
-		
-		records = recordRepo.findAllByCodeAuditId(object.getId());
-		mark = object.getMark(records);
-		
-		assert !(invalid.contains(mark));
+		assert object.getDraftMode();
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-		
-		object.setDraftMode(false);
+
 		this.repo.save(object);
 	}
 
@@ -87,18 +80,28 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
-		Auditor auditor;
 		Collection<AuditRecord> records;
+		Collection<Project> projects;
+		SelectChoices choices;
+		SelectChoices typeChoices;
 		Mark mark;
 		
 		records = recordRepo.findAllByCodeAuditId(object.getId());
+		projects = this.repo.findAllProjects();
+		
 		mark = object.getMark(records);
-		auditor = object.getAuditor();
+		choices = SelectChoices.from(projects, "title", object.getProject());
+		typeChoices = SelectChoices.from(CodeAuditType.class, object.getType());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
-		dataset.put("auditor", auditor);
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "draftMode");
 		dataset.put("mark", mark);
+		
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
 		super.getResponse().addData(dataset);
 	}
 }

@@ -1,4 +1,4 @@
-package acme.features.auditor.codeAudit;
+package acme.features.auditor.codeaudit;
 
 import java.util.Collection;
 
@@ -11,7 +11,7 @@ import acme.client.services.AbstractService;
 import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
 import acme.entities.S5.Mark;
-import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
+import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -45,13 +45,16 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		
 		Collection<AuditRecord> records;
 		Mark mark;
+		String project;
 		
 		records = recordRepo.findAllByCodeAuditId(object.getId());
-		mark = object.getMark(records);
 
+		project = object.getProject().getTitle();
+		mark = object.getMark(records);
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions");
 		dataset.put("mark", mark);
+		dataset.put("project", project);
 		super.getResponse().addData(dataset);
 	}
 	
