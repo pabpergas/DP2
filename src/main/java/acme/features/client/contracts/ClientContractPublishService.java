@@ -69,7 +69,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 			Double budget = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
 
-			Double projectCost = object.getProject().getCost().doubleValue();
+			Integer projectCost = object.getProject().getCost();
 
 			return projectCost >= budget + object.getBudget().getAmount();
 		}

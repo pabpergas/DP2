@@ -11,24 +11,21 @@ public class ClientDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	double						totalNumProgressLogLessThan25;
+	Integer						percentageOfTotalNumberCompleteness25;
+	Integer						percentageOfTotalNumberCompleteness25At50;
+	Integer						percentageOfTotalNumberCompleteness50at75;
+	Integer						percentageOfTotalNumberCompletenessMore75;
+	Double						averageBudgetOfContract;
+	Double						deviationBudgetOfContract;
+	Double						minimumBudgetOfContract;
+	Double						maximumBudgetOfContract;
 
-	double						totalNumProgressLogBetween25And50;
+	// Derived attributes -----------------------------------------------------
 
-	double						totalNumProgressLogBetween50And75;
-
-	double						totalNumProgressLogAbove75;
-
-	double						averageBudget;
-
-	double						deviationBudget;
-
-	double						minimumBudget;
-
-	double						maximumBudget;
+	// Relationships ----------------------------------------------------------
 
 }
