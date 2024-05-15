@@ -11,15 +11,19 @@ import acme.forms.ClientDashboard;
 import acme.roles.Client;
 
 @Controller
-public class ClientClientDashboardController extends AbstractController<Client, ClientDashboard> {
+public class ClientDashboardController extends AbstractController<Client, ClientDashboard> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientClientDashboardShowService showService;
+	private ClientDashboardShowService showService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
-
 	}
+
 }

@@ -24,8 +24,6 @@
 	<acme:input-textbox code="client.contract.list.label.goals" path="goals" placeholder="client.contract.form.placerholder.goals"/>
 	<acme:input-money code="client.contract.list.label.budget" path="budget"/>
 	<acme:input-url code="client.contract.list.label.link" path="link"/>
-	
-
 
 
 	<jstl:choose> 

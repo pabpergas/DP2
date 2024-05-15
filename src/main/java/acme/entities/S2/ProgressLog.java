@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +30,7 @@ public class ProgressLog extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 	@ManyToOne
 	@Valid
+	@JoinColumn(name = "contract_id", nullable = false)
 	private Contract			contract;
 
 	@NotBlank
@@ -53,4 +55,6 @@ public class ProgressLog extends AbstractEntity {
 	private String				responsiblePerson;
 
 	private boolean				draftMode			= true;
+
+	private boolean				published;
 }
