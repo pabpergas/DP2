@@ -16,7 +16,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="client.progressLog.list.label.recordId" path="recordId" />
+	<acme:input-textbox code="client.progressLog.list.label.recordId" path="recordId" placeholder="client.progress-log.form.recordId.placeholder"/>
 	<acme:input-double code="client.progressLog.form.label.completenessPercentage" path="completenessPercentage"/>
 	<acme:input-textbox code="client.progressLog.list.label.progressComment" path="progressComment" />
 	<acme:input-moment code="client.progressLog.list.label.registrationMoment" path="registrationMoment" readonly ="true"/>
@@ -31,7 +31,7 @@
 		</jstl:when>
 		
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="client.contract.list.button.create" action="/client/progressLog/create?masterId=${masterId}"/>
+			<acme:submit code="client.contract.list.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
 		</jstl:when>
 	</jstl:choose> 
 	
