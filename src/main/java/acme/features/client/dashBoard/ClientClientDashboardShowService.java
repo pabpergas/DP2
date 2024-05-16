@@ -37,6 +37,7 @@ public class ClientClientDashboardShowService extends AbstractService<Client, Cl
 		clientDashboard = new ClientDashboard();
 
 		Collection<ProgressLog> progressLogsPublished = this.repository.findAllProgressLogs().stream().filter(x -> !x.isDraftMode()).toList();
+		System.out.println(progressLogsPublished);
 		Collection<Contract> myPublishedContracts = this.repository.findManyContractsByClientId(clientId).stream().filter(x -> !x.isDraftMode()).toList();
 		Collection<Integer> myContractsIds = myPublishedContracts.stream().map(x -> x.getId()).toList();
 		Collection<Money> myBudgets = this.repository.findManyBudgetsByClientId(clientId); //this only considers published contracts.

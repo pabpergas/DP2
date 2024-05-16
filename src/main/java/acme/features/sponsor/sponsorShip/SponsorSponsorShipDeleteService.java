@@ -54,7 +54,7 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 
 		object.setProject(project);
 
@@ -80,18 +80,17 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 	public void unbind(final SponsorShip object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "project", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 
 	}

@@ -46,11 +46,10 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void load() {
 		SponsorShip object;
-		Sponsor sponsor;
+		int id;
 
-		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new SponsorShip();
-		object.setSponsor(sponsor);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneSponsorShipById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -64,7 +63,7 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 
 		object.setProject(project);
 
@@ -77,9 +76,10 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 		Collection<Invoice> invoices;
 		int id;
 
-		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		LocalDateTime localDateTime = LocalDateTime.of(2201, 01, 01, 00, 00);
 		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
-		Date limit = Date.from(instant);
+		Date limitEndDate = Date.from(instant);
+		Date limitStartDate = MomentHelper.deltaFromMoment(limitEndDate, -30, ChronoUnit.DAYS);
 
 		id = super.getRequest().getData("id", int.class);
 		invoices = this.repository.findManyInvoicesBySponsorShipId(id);
@@ -92,10 +92,10 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
-			super.state(MomentHelper.isAfter(limit, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
+			super.state(MomentHelper.isAfter(limitStartDate, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endDate") && object.getStartDate() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
 			if (object.getStartDate() != null) {
 				Date deadLine;
 				Date startDate = object.getStartDate();
@@ -103,24 +103,26 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
 			}
-			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
+			super.state(MomentHelper.isAfter(limitEndDate, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
 
 		}
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
-			super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBD") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
 
 			Double totalAmount;
+			String currency;
 
 			totalAmount = invoices.stream().mapToDouble(Invoice::totalAmount).sum();
-			System.out.println("totalAmount" + totalAmount);
+			//Como al crear una invoices, tiene que ser del mismo tipo que el masterId para publicar si las invoices estan en USD 
+			//el sponsorShip tambien tendrá que estarlo
+			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
 
-			if (totalAmount != null)
-				super.state(totalAmount.equals(object.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.total-amount");
-			if (totalAmount == 0.0)
-				super.state(object.getAmount().getAmount() == .0, "amount", "sponsor.sponsorShip.error.no-total-amount");
-			if (!super.getBuffer().getErrors().hasErrors("amount"))
-				super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBD") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
+			if (!invoices.isEmpty()) {
+				currency = invoices.stream().toList().get(0).getQuantity().getCurrency();
+				super.state(object.getAmount().getCurrency().equals(currency), "amount", "sponsor.sponsorShip.error.amount.currency.invoices");
+			}
+
+			super.state(totalAmount.equals(object.getAmount().getAmount()), "amount", "sponsor.sponsorShip.error.total-amount");
+
 		}
 
 	}
@@ -142,14 +144,12 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 	public void unbind(final SponsorShip object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices typeChoices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
 

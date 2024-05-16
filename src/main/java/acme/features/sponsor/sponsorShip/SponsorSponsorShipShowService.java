@@ -31,8 +31,7 @@ public class SponsorSponsorShipShowService extends AbstractService<Sponsor, Spon
 		masterId = super.getRequest().getData("id", int.class);
 		sponsorShip = this.repository.findOneSponsorShipById(masterId);
 		sponsor = sponsorShip == null ? null : sponsorShip.getSponsor();
-		status = super.getRequest().getPrincipal().hasRole(sponsor) || sponsorShip != null && !sponsorShip.isDraftMode();
-
+		status = sponsorShip != null && (!sponsorShip.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsor));
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -51,14 +50,12 @@ public class SponsorSponsorShipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final SponsorShip object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices typeChoices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 
 		choices = SelectChoices.from(projects, "title", object.getProject());
 		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());

@@ -64,6 +64,7 @@ public class SponsorInvoiceListMineService extends AbstractService<Sponsor, Invo
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorShipById(masterId);
+		//Nunca entrará en la rama donde: DraftMode y !sponsor, debido al authorise.
 		showCreate = sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().addGlobal("masterId", masterId);
