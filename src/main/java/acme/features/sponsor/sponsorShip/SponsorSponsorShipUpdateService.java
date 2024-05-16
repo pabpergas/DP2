@@ -45,12 +45,10 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void load() {
 		SponsorShip object;
-		Sponsor sponsor;
+		int id;
 
-		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new SponsorShip();
-		object.setDraftMode(true);
-		object.setSponsor(sponsor);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneSponsorShipById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -64,7 +62,7 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link");
+		super.bind(object, "code", "startDate", "endDate", "amount", "type", "contactEmail", "link");
 
 		object.setProject(project);
 
@@ -74,9 +72,10 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 	public void validate(final SponsorShip object) {
 		assert object != null;
 
-		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		LocalDateTime localDateTime = LocalDateTime.of(2201, 01, 01, 00, 00);
 		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
-		Date limit = Date.from(instant);
+		Date limitEndDate = Date.from(instant);
+		Date limitStartDate = MomentHelper.deltaFromMoment(limitEndDate, -30, ChronoUnit.DAYS);
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			SponsorShip existing;
@@ -86,10 +85,10 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
 			super.state(MomentHelper.isAfter(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorShip.error.too-close");
-			super.state(MomentHelper.isAfter(limit, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
+			super.state(MomentHelper.isAfter(limitStartDate, object.getStartDate()), "startDate", "sponsor.sponsorShip.error.startDate.limitSup");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endDate") && object.getStartDate() != null) {
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
 			if (object.getStartDate() != null) {
 				Date deadLine;
 				Date startDate = object.getStartDate();
@@ -97,7 +96,7 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 30, ChronoUnit.DAYS);
 				super.state(MomentHelper.isAfter(object.getEndDate(), deadLine), "endDate", "sponsor.sponsorShip.error.endDate");
 			}
-			super.state(MomentHelper.isAfter(limit, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
+			super.state(MomentHelper.isAfter(limitEndDate, object.getEndDate()), "endDate", "sponsor.sponsorShip.error.endDate.limitSup");
 
 		}
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
@@ -106,6 +105,7 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 
 		}
 	}
+
 	@Override
 	public void perform(final SponsorShip object) {
 		assert object != null;
@@ -117,14 +117,12 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final SponsorShip object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices typeChoices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 
 		choices = SelectChoices.from(projects, "title", object.getProject());
 		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());

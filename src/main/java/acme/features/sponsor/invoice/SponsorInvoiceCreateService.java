@@ -67,7 +67,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		assert object != null;
 
 		String sponsorShipCurrency = object.getSponsorShip().getAmount().getCurrency();
-		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		LocalDateTime localDateTime = LocalDateTime.of(2201, 01, 01, 00, 00);
 		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
 		Date limit = Date.from(instant);
 
@@ -86,9 +86,11 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isAfter(limit, object.getDueDate()), "dueDate", "sponsor.invoice.error.dueDate.limitSup");
 
 		}
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
 			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
-		super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
+			super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
+
+		}
 
 	}
 

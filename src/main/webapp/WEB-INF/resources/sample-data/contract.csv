@@ -1,4 +1,4 @@
-key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,published,key:project,key:client
 contract-01,ABC-123,2000/01/01 00:00,P,C,g,"USD 1,000.00",true,project-01,client-01
 contract-02,XYZ-456,2022/07/08 19:25,ProviderNaProviderNaProviderNaProviderNaProviderNaProviderNaProviderNaProvi,CustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCusto,GoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExampl,"USD 1,000.00",true,project-01,client-01
 contract-03,A-789,2022/07/07 14:45,"""$%&""""""""@ñ·#¿?""","""$%&""""""""@ñ·#¿?""","""$%&""""""""@ñ·#¿?""","USD 1,000.00",true,project-02,client-01
@@ -18,4 +18,4 @@ contract-16,ZA-678,2022/06/24 17:35,ProviderName,CustomerName,Goal1,"USD 1,000.0
 contract-17,BC-901,2022/06/23 10:30,ProviderName,CustomerName,Goal1,"USD 1,000.00",true,project-01,client-02
 contract-18,DE-234,2022/06/22 22:55,ProviderName,CustomerName,Goal1,"USD 1,000.00",true,project-01,client-02
 contract-19,FGH-567,2022/06/21 07:15,ProviderName,CustomerName,Goal1,"USD 1,000.00",true,project-01,client-02
-contract-20,I-890,2022/06/20 14:00,ProviderName,CustomerName,Goal1,"USD 1,000.00",true,project-01,client-02
+contract-20,I-890,2022/06/20 14:00,ProviderName,CustomerName,Goal1,"USD 1,000.00",false,project-01,client-02

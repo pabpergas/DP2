@@ -17,8 +17,8 @@ risk-08,R-008,2022/02/02 18:00,2,1.00,a,http://acme.es
 risk-09,R-009,2022/02/02 18:00,2,1.00,aa,http://acme.es
 risk-10,R-010,2022/02/02 18:00,2,1.00,descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiona,http://acme.es
 risk-11,R-032,2022/02/02 18:00,2,1.00,descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription,http://acme.es
-risk-11-01,R-033,2022/02/02 18:00,2,1.00,<script>console.log(,http://acme.es
-risk-11-02,R-034,2022/02/02 18:00,2,1.00,or 'A' = 'A',http://acme.es
+risk-11-01,R-033,2022/02/02 18:00,2,1.00,<script>console.log("hacked")</script>,http://acme.es
+risk-11-02,R-034,2022/02/02 18:00,2,1.00,'Or 'A' = 'A,http://acme.es
 risk-11-03,R-035,2022/02/02 18:00,2,1.00,description芝,http://acme.es
 risk-12,R-012,2022/02/02 18:00,2,1.00,This is a risk for sample data,""
 risk-13,R-013,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://a.es
