@@ -18,7 +18,7 @@ import acme.roles.Client;
 public class ClientClientDashboardShowService extends AbstractService<Client, ClientDashboard> {
 
 	@Autowired
-	private ClientClientDashboardRepository repository;
+	private ClientDashboardRepository repository;
 
 
 	@Override

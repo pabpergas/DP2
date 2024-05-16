@@ -6,7 +6,7 @@ userStory-04,tt,description2,ac2,3,Should,https://www.example2.org,true,manager-
 userStory-05,74caracteresaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,description2,ac2,3,Should,https://www.example2.org,true,manager-01
 userStory-06,75caracteresaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,description2,ac2,3,Should,https://www.example2.org,true,manager-01
 userStory-07,37caracteresaaaaaaaaaaaaaaaaaaaaaaaaa,description2,ac2,3,Should,https://www.example2.org,true,manager-01
-userStory-08,Or 'A' = 'A',description1,ac1,1,Must,https://www.example.org,true,manager-01
+userStory-08,'Or 'A' = 'A,description1,ac1,1,Must,https://www.example.org,true,manager-01
 userStory-09,"<script>console.log(""hackeadoo"")</script>",description1,ac1,1,Must,https://www.example.org,true,manager-01
 userStory-10,مرحبا,description1,ac1,1,Must,https://www.example.org,true,manager-01
 userStory-11,title1,d,ac1,1,Must,https://www.example.org,true,manager-01
