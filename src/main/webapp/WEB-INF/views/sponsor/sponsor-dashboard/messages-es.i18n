@@ -18,7 +18,11 @@ sponsor.sponsorShip.form.label.deviationSponsorshipAmount = Desviación del Mont
 sponsor.sponsorShip.form.label.minimumSponsorshipAmount = Monto Mínimo del Patrocinio:
 sponsor.sponsorShip.form.label.maximumSponsorshipAmount = Monto Máximo del Patrocinio:
 
-sponsor.sponsorShip.form.label.averageSponsorshipQuantity = Promedio de la Cantidad del Patrocinio:
-sponsor.sponsorShip.form.label.deviationSponsorshipQuantity = Desviación de la Cantidad del Patrocinio:
-sponsor.sponsorShip.form.label.minimumSponsorshipQuantity = Cantidad Mínima del Patrocinio:
-sponsor.sponsorShip.form.label.maximumSponsorshipQuantity = Cantidad Máxima del Patrocinio:
+sponsor.sponsorShip.form.label.averageSponsorshipQuantity = Promedio de la Cantidad del Patrocinio
+sponsor.sponsorShip.form.label.deviationSponsorshipQuantity = Desviación de la Cantidad del Patrocinio
+sponsor.sponsorShip.form.label.minimumSponsorshipQuantity = Cantidad Mínima del Patrocinio
+sponsor.sponsorShip.form.label.maximumSponsorshipQuantity = Cantidad Máxima del Patrocinio
+sponsor.sponsorShip.form.label.averageInvoiceQuantity = Media de la cantidad de tus facturas
+sponsor.sponsorShip.form.label.deviationInvoiceQuantity = Desviación de la cantidad de tus facturas
+sponsor.sponsorShip.form.label.minimumInvoiceQuantity= Mínima cantidad de tus facturas
+sponsor.sponsorShip.form.label.maximumInvoiceQuantity  = Máxima cantidad de tus facturas
