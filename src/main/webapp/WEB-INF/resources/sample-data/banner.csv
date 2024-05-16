@@ -1,37 +1,49 @@
 key,instantationMoment,startDisplay,endDisplay,pictureLink,slogan,documentLink
-banner-01,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-01,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+#instantationMoment
 banner-02,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
 banner-03,2000/01/01 00:01,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
 banner-04,2022/07/30 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-05,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-06,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-05,2020/06/29 23:59,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-06,2020/02/29 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+#startDisplay
 banner-07,2000/01/01 00:00,2000/01/01 00:02,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-08,2000/01/01 00:00,2200/12/24 23:59,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-09,2000/01/01 00:00,2200/12/24 23:58,2000/01/08 00:01,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-10,2000/01/01 00:00,2000/01/01 00:01,2000/01/08 00:01,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-11,2000/01/01 00:00,2000/01/01 00:01,2000/01/08 00:02,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-17,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://a.org,Good Banner,https://www.change.org/
-banner-18,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://aa.org,Good Banner,https://www.change.org/
-banner-19,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictur.org,Good Banner,https://www.change.org/
-banner-20,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictu.org,Good Banner,https://www.change.org/
-banner-21,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://a芝.org,Good Banner,https://www.change.org/
-banner-22,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,http://?a.org,Good Banner,https://www.change.org/
-banner-23,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,G,https://www.change.org/
-banner-24,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Go,https://www.change.org/
-banner-25,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodb,https://www.change.org/
-banner-26,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGood,https://www.change.org/
-banner-27,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,"<script>console.log(""hacked"")<script>",https://www.change.org/
-banner-28,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,'or 'A'='A,https://www.change.org/
-banner-29,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good banner芝,https://www.change.org/
-banner-30,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://d.com
-banner-31,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://dd.com
-banner-32,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocu.com
-banner-32-01,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdoc.com
-banner-40,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://a?.com
-banner-33,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/8YcXhS0.png,Good Banner,http://document.com
-banner-34,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/MtBRoNP.png,Good Banner,http://document.com
-banner-35,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/NGLSjk6.png,Good Banner,https://www.doctorswithoutborders.org/
-banner-36,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-37,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
-banner-38,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/sgx1bFo.png,Good Banner,https://www.afoprodei.com/
-banner-39,2000/01/01 00:00,2022/06/26 18:00,2022/08/27 18:00,https://i.imgur.com/qu5SrLN.png,Good Banner,https://fundacionmornese.com
+banner-08,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-09,2000/01/01 00:00,2200/12/24 23:59,2000/01/08 00:01,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-10,2000/01/01 00:00,2200/12/24 23:58,2000/01/08 00:01,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-11,2000/01/01 00:00,2020/02/29 00:00,2000/01/08 00:02,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+#endDisplay,,
+banner-57,2000/01/01 00:00,2000/01/01 00:01,2000/01/08 00:01,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-58,2000/01/01 00:00,2000/01/01 00:01,2000/01/08 00:02,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-59,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-50,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:58,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-51,2000/01/01 00:00,2000/01/01 00:01,2020/02/29 00:00,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+#pictureLink
+banner-17,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://a.org,Good Banner,https://www.change.org/
+banner-18,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://aa.org,Good Banner,https://www.change.org/
+banner-19,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictur.org,Good Banner,https://www.change.org/
+banner-20,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictu.org,Good Banner,https://www.change.org/
+banner-21,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://a芝.org,Good Banner,https://www.change.org/
+banner-22,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://?a.org,Good Banner,https://www.change.org/
+#slogan
+banner-23,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,G,https://www.change.org/
+banner-24,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Go,https://www.change.org/
+banner-25,2000/01/01 00:00,2000/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodb,https://www.change.org/
+banner-26,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,GoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGoodbannerGood,https://www.change.org/
+banner-27,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,"<script>console.log(""hacked"")<script>",https://www.change.org/
+banner-28,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,'or 'A'='A,https://www.change.org/
+banner-29,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good banner芝,https://www.change.org/
+#documentLink
+banner-30,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://d.com
+banner-31,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://dd.com
+banner-32,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocu.com
+banner-32-01,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdoc.com
+banner-40,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://a?.com
+#Banners activos
+banner-33,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/8YcXhS0.png,Good Banner,http://document.com
+banner-34,2000/01/01 00:00,2022/06/26 18:00,2024/12/31 23:59,https://i.imgur.com/MtBRoNP.png,Good Banner,http://document.com
+banner-35,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/NGLSjk6.png,Good Banner,https://www.doctorswithoutborders.org/
+banner-36,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-37,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
+banner-38,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/sgx1bFo.png,Good Banner,https://www.afoprodei.com/
+banner-39,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/qu5SrLN.png,Good Banner,https://fundacionmornese.com
