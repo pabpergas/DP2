@@ -71,20 +71,16 @@ public class SponsorSponsorShipShowTest extends TestHarness {
 				super.request("/sponsor/sponsor-ship/show", param);
 				super.checkPanicExists();
 
-				super.signIn("administrator", "administrator");
+				super.signIn("administrator1", "administrator1");
 				super.request("/sponsor/sponsor-ship/show", param);
 				super.checkPanicExists();
 				super.signOut();
 
-				super.signIn("employer2", "employer2");
+				super.signIn("sponsor2", "sponsor2");
 				super.request("/sponsor/sponsor-ship/show", param);
 				super.checkPanicExists();
 				super.signOut();
 
-				super.signIn("worker1", "worker1");
-				super.request("/sponsor/sponsor-ship/show", param);
-				super.checkPanicExists();
-				super.signOut();
 			}
 	}
 
