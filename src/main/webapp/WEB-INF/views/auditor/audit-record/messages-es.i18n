@@ -1,6 +1,6 @@
 # List ###########################################################
 
-auditor.auditRecord.list.label.codeAudit = Código de la Auditoría
+auditor.auditRecord.list.label.code = Código del Registro
 auditor.auditRecord.list.label.startAudition = Comienzo de la Auditoría
 auditor.auditRecord.list.label.endAudition = Fin de la Auditoría
 auditor.auditRecord.list.label.mark = Calificación
@@ -11,3 +11,10 @@ auditor.auditRecord.list.button.create = Crear
 auditor.audit-record.list.title = Registros de Auditoría
 
 # Form ###########################################################
+
+auditor.auditRecord.form.button.update = Actualizar
+auditor.auditRecord.form.button.publish = Publicar
+auditor.auditRecord.form.button.delete = Borrar
+auditor.auditRecord.form.button.create = Crear
+
+auditor.audit-record.form.title = Datos del Registro

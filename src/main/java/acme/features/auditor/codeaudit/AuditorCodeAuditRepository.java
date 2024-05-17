@@ -17,7 +17,7 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	Collection<CodeAudit> findAllByAuditorId(int id);
 	
 	@Query("SELECT ca FROM CodeAudit ca WHERE ca.id = :id")
-	CodeAudit findById(int id);
+	CodeAudit findOneById(int id);
 	
 	@Query("select a from Auditor a where a.id = :id")
 	Auditor findAuditorByAuditorId(int id);

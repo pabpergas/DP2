@@ -33,7 +33,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		CodeAudit codeAudit;
 
 		codeAuditId = super.getRequest().getData("id", int.class);
-		codeAudit = this.repo.findById(codeAuditId);
+		codeAudit = this.repo.findOneById(codeAuditId);
 		auditor = this.repo.findAuditorByAuditorId(super.getRequest().getPrincipal().getActiveRoleId());
 		
 		// Comprobamos si el code audit que queremos mostrar existe y nos pertenece
@@ -48,7 +48,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findById(id);
+		object = this.repo.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}

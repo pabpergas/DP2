@@ -33,7 +33,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		CodeAudit codeAudit;
 
 		codeAuditId = super.getRequest().getData("id", int.class);
-		codeAudit = this.repo.findById(codeAuditId);
+		codeAudit = this.repo.findOneById(codeAuditId);
 		auditor = codeAudit.getAuditor();
 
 		status = codeAudit != null && codeAudit.getAuditor().equals(auditor);
@@ -62,7 +62,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findById(id);
+		object = this.repo.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}

@@ -37,13 +37,20 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		assert object != null;
 
 		Dataset dataset;
-		String code;
 		
-		code = object.getCodeAudit().getCode();
+		dataset = super.unbind(object, "code", "startAudition", "endAudition", "mark", "informationLink", "draftMode");
 		
-		dataset = super.unbind(object, "code", "startAudition", "endAudition", "mark", "informationLink");
-		dataset.put("codeAudit", code);
 		super.getResponse().addData(dataset);
 	}
 
+	@Override
+	public void unbind(final Collection<AuditRecord> objects) {
+		assert objects != null;
+
+		int codeAuditId;
+
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+
+		super.getResponse().addGlobal("codeAuditId", codeAuditId);
+	}
 }
