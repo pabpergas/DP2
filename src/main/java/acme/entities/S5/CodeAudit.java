@@ -21,6 +21,8 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.URL;
+
 import acme.client.data.AbstractEntity;
 import acme.entities.S1.Project;
 import acme.roles.Auditor;
@@ -56,6 +58,9 @@ public class CodeAudit extends AbstractEntity {
 
 	@ManyToOne
 	private Auditor				auditor;
+	
+	@URL
+	private String link;
 	
 	private Boolean				draftMode			= true;
 	

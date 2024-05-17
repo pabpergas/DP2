@@ -51,7 +51,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		auditor = object.getAuditor();
 		project = repo.findOneProject(super.getRequest().getData("project", int.class));
 		
-		super.bind(object, "code", "executionDate", "type", "correctiveActions");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link");
 		object.setProject(project);
 		object.setAuditor(auditor);
 	}
@@ -101,7 +101,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		typeChoices = SelectChoices.from(CodeAuditType.class, object.getType());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "draftMode");
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "draftMode", "link");
 		dataset.put("mark", mark);
 		
 		dataset.put("project", choices.getSelected().getKey());

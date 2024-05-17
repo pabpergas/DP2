@@ -6,6 +6,7 @@ auditor.codeAudit.list.label.executionDate = Fecha de Ejecución
 auditor.codeAudit.list.label.type = Tipo
 auditor.codeAudit.list.label.correctiveActions = Correcciones
 auditor.codeAudit.list.label.mark = Evaluación
+auditor.codeAudit.list.label.link = Enlace
 
 auditor.code-audit.list.title = Tus Auditorías
 

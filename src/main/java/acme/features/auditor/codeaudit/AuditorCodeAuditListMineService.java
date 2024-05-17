@@ -52,7 +52,7 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		project = object.getProject().getTitle();
 		mark = object.getMark(records);
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link");
 		dataset.put("mark", mark);
 		dataset.put("project", project);
 		super.getResponse().addData(dataset);

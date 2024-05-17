@@ -10,6 +10,7 @@
 	<acme:input-select code="auditor.codeAudit.list.label.type" path="type" choices="${types}"/>
 	<acme:input-textbox code="auditor.codeAudit.list.label.correctiveActions" path="correctiveActions"/>
 	<acme:input-textbox code="auditor.codeAudit.list.label.mark" readonly="true" path="mark"/>
+	<acme:input-textbox code="auditor.codeAudit.list.label.link" path="link"/>
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
