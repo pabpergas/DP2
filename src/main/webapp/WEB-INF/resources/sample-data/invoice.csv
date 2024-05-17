@@ -2,35 +2,38 @@ key,key:sponsorShip,code,registration-time,due-date,quantity,tax,link,draft-mode
 invoice-01,sponsorShip-01,IN-0000-0000,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
 invoice-02,sponsorShip-01,IN-9999-9999,2022/01/01 13:00,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
 #registration-time
-invoice-03,sponsorShip-01,IN-0000-0001,2000/01/01 00:00,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
-invoice-04,sponsorShip-01,IN-1000-0002,2000/01/01 00:01,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
-invoice-04-01,sponsorShip-01,IN-2000-0002,2022/07/30 00:00,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
-invoice-04-02,sponsorShip-01,IN-3000-0002,2022/06/30 23:59,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
-invoice-04-03,sponsorShip-01,IN-4000-0002,2020/02/29 23:58,2023/02/03 12:00,"USD  2,000.00",2.00,http://invoice01.es,1
-#due-date
-invoice-05,sponsorShip-01,IN-5000-0003,2022/01/01 13:00,2000/01/01 00:01,"USD 2,000.00",2.00,http://invoice01.es,1
-invoice-06,sponsorShip-01,IN-6000-0004,2022/01/01 13:00,2000/01/01 00:02,"USD 2,000.00",2.00,http://invoice01.es,1
-invoice-06-01,sponsorShip-01,IN-7000-0004,2022/01/01 13:00,2200/12/31 23:59,"USD 2,000.00",2.00,http://invoice01.es,1
-invoice-06-02,sponsorShip-01,IN-8000-0004,2022/01/01 13:00,2200/12/31 23:58,"USD 2,000.00",2.00,http://invoice01.es,1
-invoice-06-03,sponsorShip-01,IN-9000-0004,2022/01/01 13:00,2020/02/29 23:58,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-03,sponsorShip-01,IN-0000-0001,2000/01/01 00:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-04,sponsorShip-01,IN-1000-0002,2000/01/01 00:01,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-04-01,sponsorShip-01,IN-2000-0002,2022/07/30 00:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-04-02,sponsorShip-01,IN-3000-0002,2022/06/30 23:59,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-04-03,sponsorShip-01,IN-4000-0002,2020/02/29 23:58,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+#due-date,,,,,,
+invoice-01-11,sponsorShip-01,IN-0000-0900,2000/01/01 00:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-05,sponsorShip-01,IN-5000-0003,2000/01/01 00:00,2000/01/01 00:01,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-06,sponsorShip-01,IN-6000-0004,2000/01/01 00:00,2000/01/01 00:02,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-06-01,sponsorShip-01,IN-7000-0004,2000/01/01 00:00,2200/12/31 23:59,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-06-02,sponsorShip-01,IN-8000-0004,2000/01/01 00:00,2200/12/31 23:58,"USD 2,000.00",2.00,http://invoice01.es,1
+invoice-06-03,sponsorShip-01,IN-9000-0004,2000/01/01 00:00,2020/02/29 23:58,"USD 2,000.00",2.00,http://invoice01.es,1
 #Quantity
-invoice-10,sponsorShip-01,IN-0700-0008,2022/01/01 13:00,2023/02/03 12:00,USD 00.01,2.00,http://invoice01.es,1
-invoice-10-01,sponsorShip-01,IN-0030-0008,2022/01/01 13:00,2023/02/03 12:00,USD 00.02,2.00,http://invoice01.es,1
-invoice-11,sponsorShip-01,IN-0000-0009,2022/01/01 13:00,2023/02/03 12:00,"USD 1,000,000.00",2.00,http://invoice01.es,1
-invoice-12,sponsorShip-01,IN-0000-0010,2022/01/01 13:00,2023/02/03 12:00,"USD 999,999.99",2.00,http://invoice01.es,1
-invoice-13,sponsorShip-02,IN-0000-0011,2022/01/01 13:00,2023/02/03 12:00,EUR  00.01,2.00,http://invoice01.es,1
-invoice-14,sponsorShip-02,IN-0000-0012,2022/01/01 13:00,2023/02/03 12:00,EUR 00.02,2.00,http://invoice01.es,1
-invoice-15,sponsorShip-02,IN-0000-0013,2022/01/01 13:00,2023/02/03 12:00,"EUR 1,000,000.00",2.00,http://invoice01.es,1
-invoice-16,sponsorShip-02,IN-0000-0014,2022/01/01 13:00,2023/02/03 12:00,"EUR 999,999.99",2.00,http://invoice01.es,1
-invoice-17,sponsorShip-03,IN-0000-0015,2022/01/01 13:00,2023/02/03 12:00,GBD 00.01,2.00,http://invoice01.es,1
-invoice-18,sponsorShip-03,IN-0000-0016,2022/01/01 13:00,2023/02/03 12:00,GBD 00.02,2.00,http://invoice01.es,1
-invoice-19,sponsorShip-03,IN-0000-0017,2022/01/01 13:00,2023/02/03 12:00,"GBD 1,000,000.00",2.00,http://invoice01.es,1
-invoice-20,sponsorShip-03,IN-0000-0018,2022/01/01 13:00,2023/02/03 12:00,"GBD 999,999.99",2.00,http://inv.es,1
+invoice-01-12,sponsorShip-01,IN-0070-0000,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-10,sponsorShip-13,IN-0700-0008,2022/01/01 13:00,2023/02/03 12:00,USD 00.01,0.00,http://invoice01.es,1
+invoice-10-01,sponsorShip-14,IN-0030-0008,2022/01/01 13:00,2023/02/03 12:00,USD 00.02,0.00,http://invoice01.es,1
+invoice-11,sponsorShip-15,IN-0000-0009,2022/01/01 13:00,2023/02/03 12:00,"USD 500,000.00",0.00,http://invoice01.es,1
+invoice-12,sponsorShip-16,IN-0000-0010,2022/01/01 13:00,2023/02/03 12:00,"USD 499,999.00",0.00,http://invoice01.es,1
+invoice-13,sponsorShip-17,IN-0000-0011,2022/01/01 13:00,2023/02/03 12:00,EUR  00.01,0.00,http://invoice01.es,1
+invoice-14,sponsorShip-18,IN-0000-0012,2022/01/01 13:00,2023/02/03 12:00,EUR 00.02,0.00,http://invoice01.es,1
+invoice-15,sponsorShip-19,IN-0000-0013,2022/01/01 13:00,2023/02/03 12:00,"EUR 500,000.00",0.00,http://invoice01.es,1
+invoice-16,sponsorShip-20,IN-0000-0014,2022/01/01 13:00,2023/02/03 12:00,"EUR 499,999.00",0.00,http://invoice01.es,1
+invoice-17,sponsorShip-21,IN-0000-0015,2022/01/01 13:00,2023/02/03 12:00,GBD 00.01,0.00,http://invoice01.es,1
+invoice-18,sponsorShip-22,IN-0000-0016,2022/01/01 13:00,2023/02/03 12:00,GBD 00.02,0.00,http://invoice01.es,1
+invoice-19,sponsorShip-23,IN-0000-0017,2022/01/01 13:00,2023/02/03 12:00,"GBD 500,000.00",0.00,http://invoice01.es,1
+invoice-20,sponsorShip-24,IN-0000-0018,2022/01/01 13:00,2023/02/03 12:00,"GBD 499,999.00",0.00,http://inv.es,1
 #tax
-invoice-21,sponsorShip-01,IN-0000-0019,2022/01/01 13:00,2023/02/03 12:00,"USD  2,000.00",0.00,http://invoice01.es,1
+invoice-21,sponsorShip-01,IN-0000-0019,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
 invoice-22,sponsorShip-01,IN-0000-0020,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.01,http://invoice01.es,1
 invoice-23,sponsorShip-01,IN-0000-0021,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",100.00,http://invoice01.es,1
 invoice-24,sponsorShip-01,IN-0000-0022,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",99.99,http://invoice01.es,1
+#link
 invoice-25,sponsorShip-01,IN-0000-0023,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,,1
 invoice-26,sponsorShip-01,IN-0000-0024,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://a.es,1
 invoice-27,sponsorShip-01,IN-0000-0025,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://linklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklink.com,1
@@ -38,4 +41,39 @@ invoice-28,sponsorShip-01,IN-0000-0026,2022/01/01 13:00,2023/02/03 12:00,"USD 2,
 invoice-29,sponsorShip-01,IN-0000-0027,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01芝.es,1
 invoice-29-01,sponsorShip-01,IN-0100-0027,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://a?.es,1
 invoice-29-2,sponsorShip-01,IN-0200-0027,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,null,1
-invoice-30,sponsorShip-01,IN-0300-0000,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",2.00,http://invoice01.es,0
+#DraftMode
+invoice-30,sponsorShip-01,IN-0300-0000,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0,http://invoice01.es,0
+#Invoices extras para poder publicar sponsorShips
+invoice-11-01,sponsorShip-15,IN-1500-0009,2022/01/01 13:00,2023/02/03 12:00,"USD 500,000.0",0.00,http://invoice01.es,1
+invoice-12-01,sponsorShip-16,IN-1600-0010,2022/01/01 13:00,2023/02/03 12:00,"USD 500,000.0",0.00,http://invoice01.es,1
+invoice-15-01,sponsorShip-19,IN-1900-0013,2022/01/01 13:00,2023/02/03 12:00,"EUR 500,000.0",0.00,http://invoice01.es,1
+invoice-16-01,sponsorShip-20,IN-1600-0014,2022/01/01 13:00,2023/02/03 12:00,"EUR 500,000.0",0.00,http://invoice01.es,1
+invoice-19-01,sponsorShip-23,IN-2300-0017,2022/01/01 13:00,2023/02/03 12:00,"GBD 500,000.0",0.00,http://invoice01.es,1
+invoice-20-01,sponsorShip-24,IN-2400-0017,2022/01/01 13:00,2023/02/03 12:00,"GBD 500,000.0",0.00,http://invoice01.es,1
+invoice-01-01,sponsorShip-01,IN-0100-0001,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-02-01,sponsorShip-02,IN-0200-0002,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-03-01,sponsorShip-03,IN-0300-0003,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-04-01-01,sponsorShip-04-01,IN-0400-0004,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-04-02-01,sponsorShip-04-02,IN-0420-0004,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-05-01,sponsorShip-05,IN-0500-0005,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-06-01-01,sponsorShip-06,IN-0600-0006,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-07-01,sponsorShip-07,IN-0700-0007,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-08-01,sponsorShip-08,IN-0800-0008,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-09-01,sponsorShip-09,IN-0900-0009,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-10-01-01,sponsorShip-10,IN-1000-0010,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-11-01-01,sponsorShip-11,IN-1100-0011,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-12-01-01,sponsorShip-12,IN-1200-0012,2022/01/01 13:00,2023/02/03 12:00,"USD 56,880.00",0.00,http://invoice01.es,1
+invoice-25-01-01,sponsorShip-25,IN-2500-0018,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-25-01-02,sponsorShip-25,IN-2520-0018,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-26-01,sponsorShip-26,IN-2600-0019,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-27-01,sponsorShip-27,IN-2700-0020,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-28-01,sponsorShip-28,IN-2800-0021,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-29-01-01,sponsorShip-29,IN-2900-0022,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-30-01,sponsorShip-30,IN-3000-0023,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-31-01,sponsorShip-31,IN-3100-0024,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-32-01,sponsorShip-32,IN-3200-0025,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-33-01,sponsorShip-33,IN-3300-0026,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-34-01-01,sponsorShip-34,IN-3400-0027,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-34-01-02,sponsorShip-34,IN-3420-0027,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-35-01,sponsorShip-35-01,IN-3500-0028,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
+invoice-36-01,sponsorShip-36,IN-3600-0029,2022/01/01 13:00,2023/02/03 12:00,"USD 2,000.00",0.00,http://invoice01.es,1
