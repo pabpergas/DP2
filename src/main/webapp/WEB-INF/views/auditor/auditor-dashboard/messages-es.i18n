@@ -1,0 +1,12 @@
+auditor.dashboard.form.label.totalNumberStaticAudits = Número Total de Auditorías de tipo "STATIC":
+auditor.dashboard.form.label.totalNumberDinamicAudits = Número Total de Auditorías de tipo "DINAMIC":
+auditor.dashboard.form.label.minNumberRecords = Número Mínimo de Registros pertenecientes a una Auditoría:
+auditor.dashboard.form.label.maxNumberRecords = Número Máximo de Registros pertenecientes a una Auditoría:
+auditor.dashboard.form.label.averageNumberRecords = Media de Registros por Auditoría:
+auditor.dashboard.form.label.deviationNumberRecord = Deviación Estándar de Registros por Auditoría:
+auditor.dashboard.form.label.minPeriodRecord = Periodo Mínimo en Registros de Auditoría:
+auditor.dashboard.form.label.maxPeriodRecord = Periodo Máximo de Registros de Auditoría:
+auditor.dashboard.form.label.averagePeriodRecord = Media de Periodos de Registros de Auditoría:
+auditor.dashboard.form.label.deviationPeriodRecord = Desviación Estandar de Periodos de Registros Auditoría:
+
+auditor.auditor-dashboard.form.title = Panel de Auditor

@@ -105,7 +105,8 @@ master.menu.manager.dashboard = Dashboard
 # master.menu.auditor ####################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.code-audit = Code Audits
+master.menu.auditor.codeAudit = Code Audits
+master.menu.auditor.dashboard = Dashboard
 
 # master.menu.principal ####################################################
 master.menu.principal = Authenticated

@@ -84,7 +84,8 @@ master.menu.manager.dashboard = Panel
 # master.menu.auditor ####################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.code-audit = Auditorías de Código
+master.menu.auditor.codeAudit = Auditorías de Código
+master.menu.auditor.dashboard = Panel
 
 # master.menu.principal ####################################################
 master.menu.principal = Autenticado

@@ -97,10 +97,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		Dataset dataset;
 
-		dataset = super.unbind(object,	//
-			"totalStaticCodeAudits", "totalDynamicCodeAudits", "averageAuditRecord", "deviationAuditRecord", //
-			"minimumAuditRecord", "maximumAuditRecord", "averageTimeOfPeriodInAuditRecord", //
-			"deviationTimeOfPeriodInAuditRecord", "minimumTimeOfPeriodInAuditRecord", "maximumTimeOfPeriodInAuditRecord");
+		dataset = super.unbind(object,
+			"totalNumberStaticAudits", "totalNumberDinamicAudits", "averageNumberRecords", 
+			"deviationNumberRecords", "minNumberRecords", "maxNumberRecords", 
+			"averagePeriodRecord", "deviationPeriodRecord", "minPeriodRecord", "maxPeriodRecord");
 
 		super.getResponse().addData(dataset);
 	}
