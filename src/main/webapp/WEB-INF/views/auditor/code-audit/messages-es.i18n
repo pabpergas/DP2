@@ -21,3 +21,11 @@ auditor.codeAudit.form.button.create = Crear
 auditor.codeAudit.form.button.list.auditRecord = Registros de la Auditoría
 
 auditor.code-audit.form.title = Crear
+
+# Error ###########################################################
+
+auditor.codeAudit.error.code = El código debe de seguir el siguiente patrón: (de 1 a 3 letras)-(1 número) ejemplos: A-111, AB-123, AVG-938
+auditor.codeAudit.error.code.duplicated = El código debe ser único. Este código ya existe en otra Auditoría
+auditor.codeAudit.error.executionDate = La fecha de ejecución debe ser pasada
+auditor.codeAudit.error.publish.mark = Para que se pueda publicar la auditoría ha de tener una calificación mínima de C
+auditor.codeAudit.error.publish.recordsPublished = Para que se pueda publicar, todos los registros de la auditoría han de estar publicados

@@ -39,11 +39,11 @@ public class CodeAudit extends AbstractEntity {
 	private Project				project;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.code")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{auditor.codeAudit.error.code}")
 	@Column(unique = true)
 	private String				code;
 
-	@PastOrPresent
+	@PastOrPresent(message = "{auditor.codeAudit.error.executionDate}")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				executionDate;
 

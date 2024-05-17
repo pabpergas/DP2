@@ -68,14 +68,17 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void validate(final CodeAudit object) {
 		assert object != null;
 		
-		Collection<Mark> invalid = Arrays.asList(Mark.F, Mark.FMINUS);
-		Collection<AuditRecord> records;
-		Mark mark;
+		if(!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+			existing = this.repo.findOneBycode(object.getCode());
+			
+			super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");
+		}
 		
-		records = recordRepo.findAllByCodeAuditId(object.getId());
-		mark = object.getMark(records);
-		
-		assert !(invalid.contains(mark));
+		if(!super.getBuffer().getErrors().hasErrors("*")) {
+			super.state(!validMark(object), "*", "auditor.codeAudit.publish.mark");
+			super.state(this.publishRecords(object), "*", "auditor.codeAudit.error.publish.recordsPublished");
+		}
 	}
 
 	@Override
@@ -113,5 +116,27 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		dataset.put("type", typeChoices.getSelected().getKey());
 		dataset.put("types", typeChoices);
 		super.getResponse().addData(dataset);
+	}
+	
+	private Boolean validMark(final CodeAudit object) {
+		Collection<Mark> invalid = Arrays.asList(Mark.F, Mark.FMINUS);
+		Collection<AuditRecord> records;
+		Mark mark;
+		
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		mark = object.getMark(records);
+		
+		return !(invalid.contains(mark));
+	}
+	
+	private Boolean publishRecords(final CodeAudit object) {
+		Collection<AuditRecord> records;
+		
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		
+		for (AuditRecord auditRecord : records)
+			if (auditRecord.getDraftMode())
+				return false;
+		return true;
 	}
 }

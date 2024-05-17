@@ -27,6 +27,9 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	
 	@Query("SELECT p FROM Project p WHERE p.id = :id")
 	Project findOneProject(int id);
+	
+	@Query("SELECT ca FROM CodeAudit ca WHERE ca.code = :code")
+	CodeAudit findOneBycode(String code);
 
 	
 }

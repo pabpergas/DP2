@@ -1,6 +1,7 @@
 package acme.features.auditor.auditrecord;
 
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,26 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		
+		if (!super.getBuffer().getErrors().hasErrors("endAudition")) {
+			long diffInMili;
+			long diffInHour;
+
+			if (object.getStartAudition() != null) {
+				diffInMili = object.getEndAudition().getTime() - object.getStartAudition().getTime();
+				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
+				super.state(diffInHour >= 1, "endAudition", "auditor.auditRecord.error.duration");
+				super.state(object.getStartAudition() != null || object.getStartAudition().before(object.getEndAudition()),
+						"endAudition", "auditor.auditRecord.error.badDates");
+			}
+		}
+		
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+			existing = this.repo.findOneByCode(object.getCode());
+			
+			super.state(existing == null, "code", "auditor.auditRecord.error.code.existing");
+		}
 	}
 	
 	@Override
