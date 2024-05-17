@@ -11,7 +11,7 @@ public class SponsorSponsorShipListMineTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/sponsor/sponsorShip/list-mine-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String reference, final String projectTitle, final String code, final String moment) {
+	public void test100Positive(final int recordIndex, final String reference, final String project, final String code, final String moment) {
 		// HINT: this test authenticates as an employer, lists his or her jobs only,
 		// HINT+ and then checks that the listing has the expected data.
 
@@ -21,7 +21,7 @@ public class SponsorSponsorShipListMineTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, projectTitle);
+		super.checkColumnHasValue(recordIndex, 0, project);
 		super.checkColumnHasValue(recordIndex, 1, code);
 		super.checkColumnHasValue(recordIndex, 2, moment);
 
@@ -45,6 +45,10 @@ public class SponsorSponsorShipListMineTest extends TestHarness {
 		super.checkPanicExists();
 		super.signOut();
 
+		super.signIn("sponsor2", "sponsor2");
+		super.request("/sponsor/sponsor-ship/list-mine");
+		super.checkPanicExists();
+		super.signOut();
 	}
 
 }
