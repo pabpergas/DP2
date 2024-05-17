@@ -60,7 +60,7 @@ public class CodeAudit extends AbstractEntity {
 	private Auditor				auditor;
 	
 	@URL
-	private String link;
+	private String 				link;
 	
 	private Boolean				draftMode			= true;
 	

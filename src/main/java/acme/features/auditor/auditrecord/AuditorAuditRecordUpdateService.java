@@ -60,6 +60,14 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+			existing = this.repo.findOneByCode(object.getCode());
+			
+			if(!existing.equals(object)) {
+				
+				super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");}
+		}
 		
 		if (!super.getBuffer().getErrors().hasErrors("endAudition")) {
 			long diffInMili;
@@ -74,12 +82,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			}
 		}
 		
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			AuditRecord existing;
-			existing = this.repo.findOneByCode(object.getCode());
-			
-			super.state(existing == null, "code", "auditor.auditRecord.error.code.existing");
-		}
+		
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("select a from Auditor a where a.id = :id")
 	Auditor findAuditorByAuditorId(int id);
 	
-	@Query("SELECT p FROM Project p WHERE p.draftMode = false")
+	@Query("SELECT p FROM Project p")
 	Collection<Project> findAllProjects();
 	
 	@Query("SELECT p FROM Project p WHERE p.id = :id")

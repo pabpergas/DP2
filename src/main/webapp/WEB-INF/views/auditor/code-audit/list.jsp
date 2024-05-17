@@ -8,9 +8,7 @@
 	<acme:list-column code="auditor.codeAudit.list.label.code" path="code" width="10%"/>
 	<acme:list-column code="auditor.codeAudit.list.label.executionDate" path = "executionDate" width ="10%"/>
 	<acme:list-column code="auditor.codeAudit.list.label.type" path="type" width="10%"/>
-	<acme:list-column code="auditor.codeAudit.list.label.correctiveActions" path="correctiveActions" width="10%"/>
 	<acme:list-column code="auditor.codeAudit.list.label.mark" path="mark" width="10%"/>
-	<acme:list-column code="auditor.codeAudit.list.label.link" path="link"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list-mine'}">
