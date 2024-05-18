@@ -22,15 +22,17 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 		boolean status;
 		int invoiceId;
 		SponsorShip sponsorship;
+		Invoice object;
 
 		invoiceId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+		object = this.repository.findOneInvoiceById(invoiceId);
 
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		//No se puede comprobar el camino donde invoice NO este en dratMode y sponsorShip SI lo este
+		status = sponsorship != null && object.isDraftMode() && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		Invoice object;
