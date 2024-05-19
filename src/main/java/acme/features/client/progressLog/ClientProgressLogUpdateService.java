@@ -52,7 +52,21 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 	@Override
 	public void validate(final ProgressLog object) {
-		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+			ProgressLog existing;
+
+			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
+			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
+			Double existing;
+			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId());
+			super.state(object.getCompletenessPercentage() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
+			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+
 	}
 
 	@Override
