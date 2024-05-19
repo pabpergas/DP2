@@ -12,6 +12,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
+import acme.entities.S4.SponsorShip.SponsorShipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -82,14 +83,21 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 
 		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices typeChoices;
 		Dataset dataset;
 
 		projects = this.repository.findAllProjects();
-		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "project", "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+		choices = SelectChoices.from(projects, "title", object.getProject());
+		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
 
 		super.getResponse().addData(dataset);
 
