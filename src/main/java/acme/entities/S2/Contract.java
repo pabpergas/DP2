@@ -61,17 +61,19 @@ public class Contract extends AbstractEntity {
 	@Valid
 	private Money				budget;
 
+	private boolean				published;
+
 	@URL
-	@Length(max = 150)
+	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode			= true;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Project				project;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Client				client;
 

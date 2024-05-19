@@ -23,6 +23,6 @@ administrator.banner.list.title = Banners
 
 administrator.banner.error.startDisplay = StartDisplay must be after than the instationMoment
 administrator.banner.error.endDisplay = End Display must be at least 7 days before than Start Display
-administrator.banner.error.startDisplay.limitSup = The StartDisplay must be 2200/12/31 23:59 or lower
+administrator.banner.error.startDisplay.limitSup = The StartDisplay must be 2200/12/24 23:59 or lower
 administrator.banner.error.endDisplay.limitSup = The StartDisplay must be 2200/12/31 23:59 or lower
 

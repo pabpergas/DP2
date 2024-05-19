@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.groupal.Banner;
 
@@ -31,9 +30,10 @@ public class AdministratorBannerDeleteService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Banner object;
+		int id;
 
-		object = new Banner();
-		object.setInstantationMoment(MomentHelper.getCurrentMoment());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneBannerById(id);
 
 		super.getBuffer().addData(object);
 	}

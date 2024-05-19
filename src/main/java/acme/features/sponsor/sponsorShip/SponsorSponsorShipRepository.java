@@ -27,8 +27,8 @@ public interface SponsorSponsorShipRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 
-	@Query("SELECT DISTINCT s.project FROM SponsorShip s WHERE s.sponsor.id = :id")
-	Collection<Project> findManyProjectsBySponsorId(int id);
+	@Query("SELECT p FROM Project p WHERE p.draftMode = false")
+	Collection<Project> findAllProjects();
 
 	@Query("SELECT DISTINCT s FROM SponsorShip s WHERE s.sponsor.id = :id")
 	Collection<SponsorShip> findManySponsorShipsBySponsorId(int id);

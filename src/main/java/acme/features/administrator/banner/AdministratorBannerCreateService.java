@@ -21,7 +21,10 @@ import acme.entities.groupal.Banner;
 public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
 
 	@Autowired
-	private AdministratorBannerRepository repository;
+	private AdministratorBannerRepository	repository;
+
+	private String							endDisplay		= "endDisplay";
+	private String							startDisplay	= "startDisplay";
 
 
 	@Override
@@ -43,7 +46,7 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "startDisplay", "endDisplay", "pictureLink", "slogan", "documentLink");
+		super.bind(object, this.startDisplay, this.endDisplay, "pictureLink", "slogan", "documentLink");
 
 	}
 
@@ -51,23 +54,27 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	public void validate(final Banner object) {
 		assert object != null;
 
-		LocalDateTime localDateTime = LocalDateTime.of(2200, 12, 31, 23, 58);
+		LocalDateTime localDateTime = LocalDateTime.of(2201, 01, 01, 00, 00);
 		Instant instant = localDateTime.atZone(ZoneId.systemDefault()).toInstant();
-		Date limit = Date.from(instant);
+		Date limitEndDisplay = Date.from(instant);
+		Date limitStartDisplay = MomentHelper.deltaFromMoment(limitEndDisplay, -7, ChronoUnit.DAYS);
 
-		if (!super.getBuffer().getErrors().hasErrors("startDisplay"))
-			super.state(MomentHelper.isAfter(object.getStartDisplay(), object.getInstantationMoment()), "startDisplay", "administrator.banner.error.startDisplay");
-		super.state(MomentHelper.isAfter(limit, object.getStartDisplay()), "startDisplay", "administrator.banner.error.startDisplay.limitSup");
+		if (!super.getBuffer().getErrors().hasErrors(this.startDisplay)) {
+			super.state(MomentHelper.isAfter(object.getStartDisplay(), object.getInstantationMoment()), this.startDisplay, "administrator.banner.error.startDisplay");
+			super.state(MomentHelper.isAfter(limitStartDisplay, object.getStartDisplay()), this.startDisplay, "administrator.banner.error.startDisplay.limitSup");
+		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endDisplay")) {
+		if (!super.getBuffer().getErrors().hasErrors(this.endDisplay)) {
 			Date deadLine;
 			Date startDisplay = object.getStartDisplay();
 
-			Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDisplay.getTime()).minus(Duration.ofSeconds(1)));
+			if (object.getStartDisplay() != null) {
+				Date startDateMinusOneSecond = Date.from(Instant.ofEpochMilli(startDisplay.getTime()).minus(Duration.ofSeconds(1)));
+				deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 7, ChronoUnit.DAYS);
+				super.state(MomentHelper.isAfter(object.getEndDisplay(), deadLine), this.endDisplay, "administrator.banner.error.endDisplay");
+			}
 
-			deadLine = MomentHelper.deltaFromMoment(startDateMinusOneSecond, 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDisplay(), deadLine), "endDisplay", "administrator.banner.error.endDisplay");
-			super.state(MomentHelper.isAfter(limit, object.getEndDisplay()), "endDisplay", "administrator.banner.error.endDisplay.limitSup");
+			super.state(MomentHelper.isAfter(limitEndDisplay, object.getEndDisplay()), this.endDisplay, "administrator.banner.error.endDisplay.limitSup");
 
 		}
 	}
@@ -84,7 +91,7 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "instantationMoment", "startDisplay", "endDisplay", "pictureLink", "slogan", "documentLink");
+		dataset = super.unbind(object, "instantationMoment", this.startDisplay, this.endDisplay, "pictureLink", "slogan", "documentLink");
 
 		super.getResponse().addData(dataset);
 
