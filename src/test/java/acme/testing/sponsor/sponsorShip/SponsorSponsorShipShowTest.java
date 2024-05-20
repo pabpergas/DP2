@@ -23,19 +23,17 @@ public class SponsorSponsorShipShowTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/sponsor/sponsorShip/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String reference, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail,
-		final String link) {
+	public void test100Positive(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
 		// HINT: this test signs in as an employer, lists all of the jobs, click on  
 		// HINT+ one of them, and checks that the form has the expected data.
 
 		super.signIn("sponsor1", "sponsor1");
 
-		super.clickOnMenu("Employer", "List all jobs");
+		super.clickOnMenu("Sponsor", "SponsorShips");
 		super.sortListing(0, "asc");
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 
-		super.checkInputBoxHasValue("reference", reference);
 		super.checkInputBoxHasValue("code", code);
 		super.checkInputBoxHasValue("project", project);
 		super.checkInputBoxHasValue("moment", moment);

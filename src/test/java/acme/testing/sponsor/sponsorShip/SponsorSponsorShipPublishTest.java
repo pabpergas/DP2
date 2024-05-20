@@ -17,15 +17,10 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 	@Autowired
 	private SponsorSponsorShipTestRepository repository;
 
-	// Test methods ------------------------------------------------------------
-
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/sponsor/sponsorShip/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/sponsor/sponsorShip/publish-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
-		// HINT: this test logs in as an employer, lists his or her jobs, 
-		// HINT+ selects one of them, updates it, and then checks that 
-		// HINT+ the update has actually been performed.
 
 		super.signIn("sponsor1", "sponsor1");
 
@@ -33,7 +28,10 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, code);
+		super.checkColumnHasValue(recordIndex, 0, project);
+		super.checkColumnHasValue(recordIndex, 1, code);
+		super.checkColumnHasValue(recordIndex, 2, moment);
+
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.clickOnSubmit("Publish");
@@ -43,7 +41,7 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/employer/job/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/sponsor/sponsorShip/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test200Negative(final int recordIndex, final String reference, final String contractor, final String title, final String deadline, final String salary, final String score, final String moreInfo, final String description) {
 		// HINT: this test attempts to update a job with wrong data.
 
@@ -73,8 +71,8 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to publish a job with a role other than "Employer".
 
+		//TEST publish with another rol
 		Collection<SponsorShip> sponsorShips;
 		String params;
 
@@ -97,8 +95,8 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 
 	@Test
 	public void test301Hacking() {
-		// HINT: this test tries to publish a published job that was registered by the principal.
 
+		//TEST publish with !draftMode 
 		Collection<SponsorShip> sponsorShips;
 		String params;
 		super.signIn("sponsor1", "sponsor1");
@@ -113,9 +111,8 @@ public class SponsorSponsorShipPublishTest extends TestHarness {
 
 	@Test
 	public void test302Hacking() {
-		// HINT: this test tries to publish a job that was not registered by the principal,
-		// HINT+ be it published or unpublished.
 
+		//TEST publish with another sponsor
 		Collection<SponsorShip> sponsorShips;
 		String params;
 

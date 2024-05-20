@@ -1,5 +1,5 @@
 
-package acme.testing.sponsor.sponsorShip;
+package acme.testing.sponsor.invoices;
 
 import java.util.Collection;
 
@@ -11,17 +11,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.entities.S4.SponsorShip;
 import acme.testing.TestHarness;
 
-public class SponsorSponsorShipUpdateTest extends TestHarness {
+public class SponsorInvoiceDeleteTest extends TestHarness {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorShipTestRepository repository;
+	private SponsorInvoiceTestRepository repository;
 
-	// Test methods ------------------------------------------------------------
+	// Test methods -----------------------------------------------------------
 
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/sponsor/invoice/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/sponsor/invoice/delete-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int sponsorshipRecordIndex, final int invoiceRecordIndex, final String code, final String sponsorShipCode, final String registrationTime, final String dueDate, final String quantity, final String tax,
 		final String link) {
 
@@ -42,7 +43,7 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 		super.fillInputBoxIn("Quantity", quantity);
 		super.fillInputBoxIn("Tax", tax);
 		super.fillInputBoxIn("Link", link);
-		super.clickOnSubmit("Update");
+		super.clickOnSubmit("Delete");
 
 		super.checkListingExists();
 		super.sortListing(0, "asc");
@@ -62,8 +63,9 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/sponsor/sponsorShip/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String code, final String project, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
+	@CsvFileSource(resources = "/sponsor/invoice/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test200Negative(final int sponsorshipRecordIndex, final int invoiceRecordIndex, final String code, final String sponsorShipCode, final String registrationTime, final String dueDate, final String quantity, final String tax,
+		final String link) {
 
 		super.signIn("sponsor1", "sponsor1");
 
@@ -71,19 +73,18 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, code);
-		super.clickOnListingRecord(recordIndex);
-		super.checkFormExists();
-		super.fillInputBoxIn("code", code);
-		super.fillInputBoxIn("project", project);
-		super.fillInputBoxIn("startDate", startDate);
-		super.fillInputBoxIn("endDate", endDate);
-		super.fillInputBoxIn("amount", amount);
-		super.fillInputBoxIn("type", type);
-		super.fillInputBoxIn("contactEmail", contactEmail);
-		super.fillInputBoxIn("link", link);
-		super.clickOnSubmit("Update");
+		super.clickOnListingRecord(sponsorshipRecordIndex);
+		super.clickOnButton("Invoices");
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+		super.clickOnListingRecord(invoiceRecordIndex);
 
+		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("Due Date", dueDate);
+		super.fillInputBoxIn("Quantity", quantity);
+		super.fillInputBoxIn("Tax", tax);
+		super.fillInputBoxIn("Link", link);
+		super.clickOnSubmit("Delete");
 		super.checkErrorsExist();
 
 		super.signOut();
@@ -92,38 +93,39 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 	@Test
 	public void test300Hacking() {
 
-		//TEST update with another rol 
+		//TEST delete with another rol 
 		Collection<SponsorShip> sponsorShips;
 		String param;
 
 		sponsorShips = this.repository.findManySponsorShipsBySponsorUsername("sponsor1");
 		for (final SponsorShip sponsorShip : sponsorShips) {
-			param = String.format("id=%d", sponsorShip.getId());
+			param = String.format("masterId=%d", sponsorShip.getId());
 
 			super.checkLinkExists("Sign in");
-			super.request("/sponsor/sponsorShip/update", param);
+			super.request("/sponsor/invoices/delete", param);
 			super.checkPanicExists();
 
 			super.signIn("administrator", "administrator");
-			super.request("/sponsor/sponsorShip/update", param);
+			super.request("/sponsor/invoices/delete", param);
 			super.checkPanicExists();
-			super.signOut();
-
 		}
+		super.signOut();
 	}
 
 	@Test
 	public void test301Hacking() {
 
-		//TEST update with !draftMode 
+		//TEST delete with !draftMode 
 		Collection<SponsorShip> sponsorShips;
-		String params;
+		String param;
+
 		super.signIn("sponsor1", "sponsor1");
 		sponsorShips = this.repository.findManySponsorShipsBySponsorUsername("sponsor1");
 		for (final SponsorShip sponsorShip : sponsorShips)
 			if (!sponsorShip.isDraftMode()) {
-				params = String.format("id=%d", sponsorShip.getId());
-				super.request("/sponsor/sponsor-ship/update", params);
+				param = String.format("masterId=%d", sponsorShip.getId());
+				super.request("/sponsor/invoices/delete", param);
+				super.checkPanicExists();
 			}
 		super.signOut();
 	}
@@ -131,16 +133,16 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 	@Test
 	public void test302Hacking() {
 
-		//TEST update with another sponsor
+		//TEST delete with another sponsor
 		Collection<SponsorShip> sponsorShips;
-		String params;
+		String param;
 
-		super.signIn("sponsor2", "sponsor2");
-		sponsorShips = this.repository.findManySponsorShipsBySponsorUsername("sponsor1");
+		super.signIn("sponsor1", "sponsor1");
+		sponsorShips = this.repository.findManySponsorShipsBySponsorUsername("sponsor2");
 		for (final SponsorShip sponsorShip : sponsorShips) {
-
-			params = String.format("id=%d", sponsorShip.getId());
-			super.request("/sponsor/sponsor-ship/update", params);
+			param = String.format("masterId=%d", sponsorShip.getId());
+			super.request("/sponsor/invoices/delete", param);
+			super.checkPanicExists();
 		}
 		super.signOut();
 	}
