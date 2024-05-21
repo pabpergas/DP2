@@ -75,7 +75,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
 				super.state(diffInHour >= 1, "endAudition", "auditor.auditRecord.error.duration");
 				super.state(object.getStartAudition() != null || object.getStartAudition().before(object.getEndAudition()),
-						"endAudition", "auditor.auditRecord.error.badDates");
+						"startAudition", "auditor.auditRecord.error.badDates");
 			}
 		}
 		
