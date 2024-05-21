@@ -79,6 +79,13 @@
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show" access="hasRole('Auditor')"/>
 		</acme:menu-option>
 		
+				<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/sponsor-ship/list-mine" access="hasRole('Developer')"/>
+						<acme:menu-suboption code="master.menu.developer.training-sessions" action="/developer/training/list-all" access="hasRole('Developer')"/>
+			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
+		</acme:menu-option>
 		<acme:menu-option code="master.menu.anonymous.claim" action="/any/claim/list" access="!isAnonymous()"/>
 		
 	</acme:menu-left>

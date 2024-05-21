@@ -1,8 +1,6 @@
 
 package acme.forms;
 
-import javax.validation.constraints.NotNull;
-
 import acme.client.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +11,10 @@ public class DeveloperDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
-	Integer						totalTrainingModules;
+	int							totalTrainingModules;
 	String						lastUpdateMoment;
 
-	@NotNull
-	Integer						totalTrainingSessions;
+	int							totalTrainingSessions;
 	String						trainingSessionsLink;
 
 	Double						averageTimeModule;

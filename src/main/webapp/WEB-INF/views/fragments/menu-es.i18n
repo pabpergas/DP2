@@ -43,6 +43,14 @@ master.menu.sponsor.invoices = Facturas
 master.menu.sponsor.dashboard = Panel
 master.menu.sponsor.invoices = Facturas
 
+# master.menu.developer ########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.training-modules = Modulos de entreno
+master.menu.developer.training-sessions = Sesiones de entreno
+master.menu.developer.dashboard = Panel
+
+
 
 # master.menu.provider ########################################################
 

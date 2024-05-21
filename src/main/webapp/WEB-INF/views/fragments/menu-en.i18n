@@ -42,6 +42,13 @@ master.menu.sponsor.sponsor-ships = SponsorShip
 master.menu.sponsor.invoices = Invoices
 master.menu.sponsor.dashboard = DashBoard
 
+# master.menu.developer ########################################################
+
+master.menu.developer = Developer
+master.menu.developer.training-modules = Training Modules
+master.menu.developer.training-sessions = Training Sessions
+master.menu.developer.dashboard = DashBoard
+
 
 # master.menu.provider ########################################################
 

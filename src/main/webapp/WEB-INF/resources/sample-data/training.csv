@@ -2,3 +2,15 @@ key,code,moment,details,difficulty,link,updateMoment,estimatedTotalTime
 training-1,ABC-123,"2022/03/17 12:30",Run a marathon,ADVANCED,https://www.marathon.com,"2022/05/17 12:40",4
 training-2,DEF-456,"2022/03/18 14:00",Climb a mountain,INTERMEDIATE,https://www.mountain.com,"2022/04/18 14:10",6
 training-3,GHI-789,"2022/03/19 15:30",Swim a mile,BASIC,https://www.swim.com,"2022/05/19 15:40",1
+training-4,JKL-012,"2022/03/20 17:00",Learn to code,BASIC,https://www.code.com,"2022/05/20 17:10",3
+training-5,MNO-345,"2022/03/21 18:30",Read a book,INTERMEDIATE,https://www.read.com,"2022/05/21 18:40",2
+training-6,PQR-678,"2022/03/22 20:00",Cook a meal,ADVANCED,https://www.cook.com,"2022/05/22 20:10",5
+training-7,STU-901,"2022/03/23 21:30",Write a poem,BASIC,https://www.poem.com,"2022/05/23 21:40",2
+training-8,VWX-234,"2022/03/24 23:00",Paint a picture,INTERMEDIATE,https://www.paint.com,"2022/05/24 23:10",4
+training-9,YZA-567,"2022/03/25 00:30",Learn a new language,ADVANCED,https://www.language.com,"2022/05/25 00:40",6
+training-10,BCD-890,"2022/03/26 02:00",Play a musical instrument,BASIC,https://www.music.com,"2022/05/26 02:10",1
+training-11,CDE-111,"2022/03/27 03:30",Build a birdhouse,INTERMEDIATE,https://www.birdhouse.com,"2022/05/27 03:40",3
+training-12,DEF-222,"2022/03/28 05:00",Gardening,ADVANCED,https://www.garden.com,"2022/05/28 05:10",5
+training-13,EFG-333,"2022/03/29 06:30",Yoga,BASIC,https://www.yoga.com,"2022/05/29 06:40",2
+training-14,FGH-444,"2022/03/30 08:00",Meditation,INTERMEDIATE,https://www.meditate.com,"2022/05/30 08:10",4
+training-15,GHI-555,"2022/03/31 09:30",Drawing,ADVANCED,https://www.draw.com,"2022/05/31 09:40",6
