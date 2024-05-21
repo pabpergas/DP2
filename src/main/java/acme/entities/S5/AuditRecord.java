@@ -31,16 +31,16 @@ public class AuditRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.auditRecord")
+	@Pattern(regexp = "^AU-[0-9]{4}-[0-9]{3}$", message = "{auditor.auditRecord.error.code}")
 	@Column(unique = true)
 	private String				code;
 
-	@Past
+	@Past(message = "{auditor.audittRecord.error.startAudition}")
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startAudition;
 
-	@PastOrPresent
+	@PastOrPresent(message = "{auditor.AuditRecord.error.endAudition}")
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endAudition;
