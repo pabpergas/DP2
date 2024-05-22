@@ -19,13 +19,13 @@
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
 	<acme:input-textbox code="manager.project.form.label.summary" path="summary"/>
-	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>
+	<acme:input-integer code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	<acme:input-checkbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
 
 
 	<jstl:choose>
-		<jstl:when  test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+		<jstl:when  test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && status == true}">
 			<acme:button code="manager.project.form.button.add-userstories" action="/manager/project-user-stories/create?projectId=${id}"/>
 			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-stories/list-by-proyect?projectId=${id}"/>
 			<acme:submit code="manager.project.list.button.update" action="/manager/project/update"/>

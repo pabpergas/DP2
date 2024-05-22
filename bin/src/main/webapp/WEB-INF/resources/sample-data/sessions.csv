@@ -1,0 +1,4 @@
+key,code,key:training,location,instructor,email,link,startDate,durationInWeeks
+session-1,TS-ABB-001,training-1,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-001,"2022/02/12 12:00",4
+session-2,TS-ABB-002,training-2,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-002,"2022/05/17 11:00",2
+session-3,TS-ABB-003,training-3,Seville,Jane Doe,jane@acme.com,http://www.acme.com/ts-abb-003,"2022/09/23 11:00",3

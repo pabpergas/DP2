@@ -28,6 +28,9 @@ error.project.code = The code must be three capital letters, a hyphen and four n
 manager.project.form.error.duplicated-code = This code is already in use 
 manager.project.form.error.hasErrors = The project can not be published if it has errors
 manager.project.error.usEmpty = The project can not be published if no user story is associated with it
+manager.project.hascontracts = The project cannot be deleted if it has any associated contract
+manager.project.hassppnsor = The project cannot be deleted if it has any associated sponsor
+
 
 manager.project.list.button.update = Update
 manager.project.list.button.delete = Delete

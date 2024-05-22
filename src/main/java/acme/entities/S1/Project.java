@@ -46,6 +46,7 @@ public class Project extends AbstractEntity {
 
 	@PositiveOrZero
 	@Max(10000)
+	@NotNull
 	Integer						cost;
 
 	@URL
