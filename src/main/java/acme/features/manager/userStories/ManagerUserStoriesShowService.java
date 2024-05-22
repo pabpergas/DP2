@@ -8,6 +8,7 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.S1.Project;
 import acme.entities.S1.UserStories;
 import acme.entities.S1.UserStories.priorityUserStories;
 import acme.roles.Manager;
@@ -25,9 +26,8 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 		UserStories us = this.repo.findUserStoryById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccount = principal.getAccountId();
 
-		final boolean status = us != null && principal.hasRole(Manager.class) && us.getManager().getUserAccount().getId() == userAccount;
+		final boolean status = us != null && principal.hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,12 +46,21 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 	@Override
 	public void unbind(final UserStories object) {
 		assert object != null;
+		int masterId;
+		boolean status;
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 		SelectChoices choices = SelectChoices.from(priorityUserStories.class, object.getPriority());
+
+		masterId = super.getRequest().getData("id", int.class);
+		Project project = this.repo.findProjectById(masterId);
+		status = project != null && project.getManager().getUserAccount().getId() == userAccountId;
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link", "draftMode");
 		dataset.put("priority", choices);
+		dataset.put("status", status);
 
 		super.getResponse().addData(dataset);
 	}

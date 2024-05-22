@@ -19,12 +19,12 @@
 	<acme:input-textbox code="manager.userstories.form.label.title" path="title"/>
 	<acme:input-textbox code="manager.userstories.form.label.description" path="description"/>
 	<acme:input-textbox code="manager.userstories.form.label.acceptanceCriteria" path="acceptanceCriteria"/>
-	<acme:input-textbox code="manager.userstories.form.label.estimatedCost" path="estimatedCost"/>
+	<acme:input-integer code="manager.userstories.form.label.estimatedCost" path="estimatedCost"/>
 	<acme:input-select code="manager.userstories.form.label.proirity" path="priority" choices="${priority}"/>
 	<acme:input-textbox code="manager.userstories.form.label.link" path="link"/>
 		
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && status == true}">
 			<acme:submit code="manager.userstories.form.button.update" action="/manager/user-stories/update"/>
 			<acme:submit code="manager.userstories.form.button.delete" action="/manager/user-stories/delete"/>
 			<acme:submit code="manager.userstories.form.button.publish" action="/manager/user-stories/publish?id=${id}"/>

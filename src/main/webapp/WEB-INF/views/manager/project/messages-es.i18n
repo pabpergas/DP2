@@ -28,6 +28,8 @@ error.project.code = El codigo debe ser tres letras mayusculas, guion y cuatro n
 manager.project.form.error.duplicated-code = Este código ya está en uso 
 manager.project.form.error.hasErrors = No se puede publicar el proyecto si tiene errores
 manager.project.error.usEmpty = No se puede publicar si no tiene ninguna historia de usuario
+manager.project.hascontracts = No se puede eliminar si tiene algun contrato asociado
+manager.project.hassppnsor = No se puede eliminar si tiene algun esponsor asociado
 
 manager.project.list.button.update = Actualizar
 manager.project.list.button.delete = Eliminar
