@@ -1,3 +1,11 @@
-key,code,executionDate,type,correctiveActions,key:project,key:auditor
-codeAudit-01,B-034,"2022/01/01 13:00",STATIC,http://audit.com,project-01,auditor-01
-codeAudit-02,ACD-178,"2022/01/01 13:00",DINAMIC,http://audit.com,project-02,auditor-02
+key,code,executionDate,type,correctiveActions,link,draftMode,key:project,key:auditor
+codeAudit-01,A-001,2020/01/01 00:00,STATIC,Acciones sugeridasss,https://link.com,true,project-01,auditor-01
+codeAudit-02,A-002,2020/01/01 00:00,DINAMIC,Acciones sugeridas,http://link.es,true,project-02,auditor-02
+codeAudit-03,A-003,2020/01/01 00:00,DINAMIC,这条消息正好包含六十个字符，包括空格和标点符号。,,false,project-03,auditor-01
+codeAudit-04,A-004,2020/01/01 00:00,DINAMIC,هذه رسالة تحتوي على ستين حرفًا بالضبط، بما في ذلك المسافات.,https://askkd.nor,false,project-04,auditor-02
+codeAudit-05,A-005,2020/01/01 00:00,DINAMIC,"Это сообщение содержит ровно шестьдесят символов, включая пробелы.",,false,project-05,auditor-01
+codeAudit-06,A-006,2020/01/01 00:00,STATIC,Este mensaje tiene exactamente cincuenta caracteres.,https://prueba.uk,false,project-06,auditor-02
+codeAudit-07,A-007,2020/01/01 00:00,STATIC,Exactamente veintiocho caracteres.,https://hay.com,false,project-07,auditor-01
+codeAudit-08,A-008,2020/01/01 00:00,STATIC,Cinco,https://wgshs.se,false,project-08,auditor-02
+codeAudit-09,SF-291,2022/01/01 19:26,DINAMIC,"Este mensaje contiene exactamente setenta y ocho caracteres, contados con precisión.",,false,project-09,auditor-01
+codeAudit-10,GHF-918,2022/07/30 00:00,STATIC,"Este mensaje tiene exactamente cien caracteres, incluyendo espacios y signos de puntuación.",https://ejemplo.com/页面/文档,false,project-10,auditor-02

@@ -1,0 +1,12 @@
+auditor.dashboard.form.label.totalNumberStaticAudits = Total Number of Static Code Audits:
+auditor.dashboard.form.label.totalNumberDinamicAudits = Total Number of Dinamic Code Audits:
+auditor.dashboard.form.label.minNumberRecords = Minimum Number of Records in a Code Audit:
+auditor.dashboard.form.label.maxNumberRecords = Maximum Number of Records in a Code Audit:
+auditor.dashboard.form.label.averageNumberRecords = Average of Records per Code Audit:
+auditor.dashboard.form.label.deviationNumberRecord = Standard Deviation of Records per Code Audit:
+auditor.dashboard.form.label.minPeriodRecord = Minimum Period Length in Audit Records:
+auditor.dashboard.form.label.maxPeriodRecord = Maximum Period Length in Audit Records:
+auditor.dashboard.form.label.averagePeriodRecord = Average Length of Periods in Audit Records:
+auditor.dashboard.form.label.deviationPeriodRecord = Standard Deviation of Periods in Audit Records:
+
+auditor.auditor-dashboard.form.title = Auditor Dashboard

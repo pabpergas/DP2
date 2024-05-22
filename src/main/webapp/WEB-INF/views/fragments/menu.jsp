@@ -71,6 +71,14 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-dashboard/show"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.codeAudit" action="/auditor/code-audit/list-mine" access="hasRole('Auditor')"/>
+			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show" access="hasRole('Auditor')"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.anonymous.claim" action="/any/claim/list" access="!isAnonymous()"/>
 		
 	</acme:menu-left>

@@ -1,0 +1,32 @@
+# List ###########################################################
+
+auditor.codeAudit.list.label.project = Project Title
+auditor.codeAudit.list.label.code = Code
+auditor.codeAudit.list.label.executionDate = Execution Date
+auditor.codeAudit.list.label.type = Type
+auditor.codeAudit.list.label.correctiveActions = Corrective Actions
+auditor.codeAudit.list.label.mark = Mark
+auditor.codeAudit.list.label.link = Enlace
+
+auditor.code-audit.list.title = Yours Audits
+
+auditor.codeAudit.list.button.create = Create
+
+# Form ###########################################################
+
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.publish = Publish
+auditor.codeAudit.form.button.create = Create
+
+auditor.codeAudit.form.button.list.auditRecord = Audit's Records
+
+auditor.code-audit.form.title = Audit's Data
+
+# Error ###########################################################
+
+auditor.codeAudit.error.code = Code must follow the next Pattern: 1 to 3 capital letters follow by - and 3 numbers ex: A-111, AB-123, ABF-124
+auditor.codeAudit.error.code.duplicated = Code must be unique. There's already an existing code audit with the same code
+auditor.codeAudit.error.executionDate = Execution Date must be in the past
+auditor.codeAudit.error.publish.mark = To be published the mark of the code audit must be at least C
+auditor.codeAudit.error.publish.recordsPublished = To be published all auditRecords of the audit code must be published

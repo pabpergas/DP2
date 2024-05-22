@@ -1,4 +1,4 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import java.util.Collection;
 
@@ -20,4 +20,6 @@ public interface AuditorAuditRecordRepository extends AbstractRepository {
 	@Query("select a from AuditRecord a where a.codeAudit.auditor.id = :auditorId")
 	Collection<AuditRecord> findAllByAuditorId(int auditorId);
 
+	@Query("SELECT ar FROM AuditRecord ar WHERE ar.code = :code")
+	AuditRecord findOneByCode(String code);
 }

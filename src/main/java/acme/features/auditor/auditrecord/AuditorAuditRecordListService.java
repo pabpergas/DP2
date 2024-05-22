@@ -1,4 +1,4 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import java.util.Collection;
 
@@ -37,9 +37,20 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startAudition", "endAudition", "mark", "informationLink");
-		dataset.put("codeAuditId", object.getCodeAudit().getId());
+		
+		dataset = super.unbind(object, "code", "startAudition", "endAudition", "mark", "informationLink", "draftMode");
+		
 		super.getResponse().addData(dataset);
 	}
 
+	@Override
+	public void unbind(final Collection<AuditRecord> objects) {
+		assert objects != null;
+
+		int codeAuditId;
+
+		codeAuditId = super.getRequest().getData("codeAuditId", int.class);
+
+		super.getResponse().addGlobal("codeAuditId", codeAuditId);
+	}
 }

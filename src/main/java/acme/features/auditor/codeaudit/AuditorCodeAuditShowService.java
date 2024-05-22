@@ -1,12 +1,19 @@
-package acme.features.auditor.codeAudit;
+package acme.features.auditor.codeaudit;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.S1.Project;
+import acme.entities.S5.AuditRecord;
 import acme.entities.S5.CodeAudit;
+import acme.entities.S5.CodeAuditType;
 import acme.entities.S5.Mark;
+import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -14,6 +21,9 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	
 	@Autowired
 	private AuditorCodeAuditRepository repo;
+	
+	@Autowired
+	private AuditorAuditRecordRepository recordRepo;
 	
 	@Override
 	public void authorise() {
@@ -23,7 +33,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		CodeAudit codeAudit;
 
 		codeAuditId = super.getRequest().getData("id", int.class);
-		codeAudit = this.repo.findById(codeAuditId);
+		codeAudit = this.repo.findOneById(codeAuditId);
 		auditor = this.repo.findAuditorByAuditorId(super.getRequest().getPrincipal().getActiveRoleId());
 		
 		// Comprobamos si el code audit que queremos mostrar existe y nos pertenece
@@ -38,7 +48,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repo.findById(id);
+		object = this.repo.findOneById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -47,11 +57,28 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
-		Mark mark = object.getMark();
+		Collection<AuditRecord> records;
+		Collection<Project> projects;
+		SelectChoices choices;
+		SelectChoices typeChoices;
+		Mark mark;
+		
+		records = recordRepo.findAllByCodeAuditId(object.getId());
+		projects = this.repo.findAllProjects();
+		
+		mark = object.getMark(records);
+		choices = SelectChoices.from(projects, "title", object.getProject());
+		typeChoices = SelectChoices.from(CodeAuditType.class, object.getType());
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "project");
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "draftMode", "link");
 		dataset.put("mark", mark);
+		
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
 		super.getResponse().addData(dataset);
 	}
 
