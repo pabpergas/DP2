@@ -52,7 +52,7 @@ public class SponsorSponsorShiDeleteTest extends TestHarness {
 	}
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/employer/job/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/sponsor/sponsorShip/delete-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test200Negative(final int recordIndex, final String reference, final String contractor, final String title, final String deadline, final String salary, final String score, final String moreInfo, final String description) {
 	}
 
@@ -67,18 +67,20 @@ public class SponsorSponsorShiDeleteTest extends TestHarness {
 		for (final SponsorShip sponsorShip : sponsorShips) {
 			param = String.format("id=%d", sponsorShip.getId());
 
+			super.requestHome();
 			super.checkLinkExists("Sign in");
-			super.request("/sponsor/sponsorShip/delete", param);
+			super.request("/sponsor/sponsor-ship/delete", param);
 			super.checkPanicExists();
 
-			super.signIn("administrator", "administrator");
-			super.request("/sponsor/sponsorShip/delete", param);
+			super.signIn("administrator1", "administrator1");
+			super.request("/sponsor/sponsor-ship/delete", param);
 			super.checkPanicExists();
 			super.signOut();
 
 		}
 	}
 
+	@Test
 	public void test301Hacking() {
 
 		//TEST delete with !draftMode 
@@ -90,6 +92,7 @@ public class SponsorSponsorShiDeleteTest extends TestHarness {
 			if (!sponsorShip.isDraftMode()) {
 				params = String.format("id=%d", sponsorShip.getId());
 				super.request("/sponsor/sponsor-ship/delete", params);
+				super.checkPanicExists();
 			}
 		super.signOut();
 	}
@@ -107,6 +110,7 @@ public class SponsorSponsorShiDeleteTest extends TestHarness {
 
 			params = String.format("id=%d", sponsorShip.getId());
 			super.request("/sponsor/sponsor-ship/delete", params);
+			super.checkPanicExists();
 		}
 		super.signOut();
 	}

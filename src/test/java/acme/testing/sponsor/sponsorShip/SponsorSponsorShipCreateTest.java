@@ -83,11 +83,12 @@ public class SponsorSponsorShipCreateTest extends TestHarness {
 	public void test300Hacking() {
 
 		//TEST publish with another rol
+		super.requestHome();
 		super.checkLinkExists("Sign in");
 		super.request("/sponsor/sponsor-ship/create");
 		super.checkPanicExists();
 
-		super.signIn("administrator", "administrator");
+		super.signIn("administrator1", "administrator1");
 		super.request("/sponsor/sponsor-ship/create");
 		super.checkPanicExists();
 		super.signOut();

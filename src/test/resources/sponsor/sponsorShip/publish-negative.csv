@@ -16,6 +16,7 @@ recordIndex,code,project,moment,startDate,endDate,amount,type,contact-email,link
 0,AAA-000,title1,2022/02/26 18:00,2023/02/27 18:00,2024/04/27 18:00,EUR -00.01,IN_KIND,sponsorShip1@email.com,http://sponsorShip1.masInfo.es
 0,AAA-000,title1,2022/02/26 18:00,2023/02/27 18:00,2024/04/27 18:00,EUR 0,IN_KIND,sponsorShip1@email.com,http://sponsorShip1.masInfo.es
 0,AAA-000,title1,2022/02/26 18:00,2023/02/27 18:00,2024/04/27 18:00,EUR 1000000.01,IN_KIND,sponsorShip1@email.com,http://sponsorShip1.masInfo.es
+0,AAA-000,title1,2022/02/26 18:00,2023/02/27 18:00,2024/04/27 18:00,EUR 40,IN_KIND,sponsorShip1@email.com,http://sponsorShip1.masInfo.es
 #type
 0,AAA-000,title1,2022/02/26 18:00,2023/02/27 18:00,2024/04/27 18:00,EUR 1000000.01,----,sponsorShip1@email.com,http://sponsorShip1.masInfo.es
 #contact-email

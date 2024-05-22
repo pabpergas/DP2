@@ -21,49 +21,53 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/sponsor/invoice/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int sponsorshipRecordIndex, final int invoiceRecordIndex, final String code, final String sponsorShipCode, final String registrationTime, final String dueDate, final String quantity, final String tax,
-		final String link) {
+	@CsvFileSource(resources = "/sponsor/sponsorShip/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
 
 		super.signIn("sponsor1", "sponsor1");
 
 		super.clickOnMenu("Sponsor", "SponsorShips");
 		super.checkListingExists();
-		super.sortListing(0, "asc");
 
-		super.clickOnListingRecord(sponsorshipRecordIndex);
-		super.clickOnButton("Invoices");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.clickOnListingRecord(invoiceRecordIndex);
+		super.clickOnListingRecord(recordIndex);
 
 		super.fillInputBoxIn("code", code);
-		super.fillInputBoxIn("Due Date", dueDate);
-		super.fillInputBoxIn("Quantity", quantity);
-		super.fillInputBoxIn("Tax", tax);
-		super.fillInputBoxIn("Link", link);
+		super.fillInputBoxIn("project", project);
+		super.fillInputBoxIn("startDate", startDate);
+		super.fillInputBoxIn("endDate", endDate);
+		super.fillInputBoxIn("amount", amount);
+		super.fillInputBoxIn("type", type);
+		super.fillInputBoxIn("contactEmail", contactEmail);
+		super.fillInputBoxIn("link", link);
 		super.clickOnSubmit("Update");
 
+		super.clickOnMenu("Sponsor", "SponsorShips");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
-		super.checkInputBoxHasValue("code", code);
-		super.checkInputBoxHasValue("SponsorShip Code", sponsorShipCode);
-		super.checkInputBoxHasValue("Due Date", dueDate);
+		super.checkColumnHasValue(recordIndex, 0, project);
+		super.checkColumnHasValue(recordIndex, 1, code);
+		super.checkColumnHasValue(recordIndex, 2, moment);
 
-		super.clickOnListingRecord(invoiceRecordIndex);
+		super.clickOnListingRecord(recordIndex);
+		super.checkFormExists();
 		super.checkInputBoxHasValue("code", code);
-		super.checkInputBoxHasValue("Registration Time", registrationTime);
-		super.checkInputBoxHasValue("Due Date", dueDate);
-		super.checkInputBoxHasValue("Quantity", quantity);
-		super.checkInputBoxHasValue("Tax", tax);
-		super.checkInputBoxHasValue("Link", link);
+		super.checkInputBoxHasValue("project", project);
+		super.checkInputBoxHasValue("moment", moment);
+		super.checkInputBoxHasValue("startDate", startDate);
+		super.checkInputBoxHasValue("endDate", endDate);
+		super.checkInputBoxHasValue("amount", amount);
+		super.checkInputBoxHasValue("type", type);
+		super.checkInputBoxHasValue("contactEmail", contactEmail);
+		super.checkInputBoxHasValue("link", link);
 
 		super.signOut();
 	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/sponsor/sponsorShip/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String code, final String project, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
+	public void test200Negative(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
 
 		super.signIn("sponsor1", "sponsor1");
 
@@ -71,7 +75,6 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 
-		super.checkColumnHasValue(recordIndex, 0, code);
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
 		super.fillInputBoxIn("code", code);
@@ -100,12 +103,13 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 		for (final SponsorShip sponsorShip : sponsorShips) {
 			param = String.format("id=%d", sponsorShip.getId());
 
+			super.requestHome();
 			super.checkLinkExists("Sign in");
 			super.request("/sponsor/sponsorShip/update", param);
 			super.checkPanicExists();
 
-			super.signIn("administrator", "administrator");
-			super.request("/sponsor/sponsorShip/update", param);
+			super.signIn("administrator1", "administrator1");
+			super.request("/sponsor/sponsor-ship/update", param);
 			super.checkPanicExists();
 			super.signOut();
 
@@ -124,6 +128,8 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 			if (!sponsorShip.isDraftMode()) {
 				params = String.format("id=%d", sponsorShip.getId());
 				super.request("/sponsor/sponsor-ship/update", params);
+				super.checkPanicExists();
+
 			}
 		super.signOut();
 	}
@@ -141,6 +147,8 @@ public class SponsorSponsorShipUpdateTest extends TestHarness {
 
 			params = String.format("id=%d", sponsorShip.getId());
 			super.request("/sponsor/sponsor-ship/update", params);
+			super.checkPanicExists();
+
 		}
 		super.signOut();
 	}

@@ -33,7 +33,7 @@ public class SponsorInvoiceUpdateTest extends TestHarness {
 		super.sortListing(0, "asc");
 
 		super.clickOnListingRecord(sponsorshipRecordIndex);
-		super.clickOnButton("Inovices");
+		super.clickOnButton("Invoices");
 
 		super.clickOnButton("Update");
 
