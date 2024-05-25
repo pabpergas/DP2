@@ -1,17 +1,18 @@
-package acme.features.auditor.auditRecord;
+package acme.features.auditor.auditrecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.S5.AuditRecord;
-import acme.entities.S5.CodeAudit;
+import acme.entities.S5.Mark;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
-	
+public class AuditorAuditRecordShowService extends AbstractService<Auditor, AuditRecord> {
+
 	@Autowired
 	private AuditorAuditRecordRepository repo;
 	
@@ -43,39 +44,18 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	}
 
 	@Override
-	public void bind(final AuditRecord object) {
-		assert object != null;
-
-		CodeAudit codeAudit;
-		codeAudit = object.getCodeAudit();
-
-		super.bind(object, "code", "startAudition", "endAudition", "mark", "informationLink");
-		object.setCodeAudit(codeAudit);
-	}
-
-	@Override
-	public void validate(final AuditRecord object) {
-		//¿? En principio nop hay restrincciones
-	}
-
-	@Override
-	public void perform(final AuditRecord object) {
-		assert object != null;
-		
-		object.setDraftMode(false);
-		this.repo.save(object);
-	}
-
-	@Override
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
-		CodeAudit codeAudit;
-		codeAudit = object.getCodeAudit();
-
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "startAudition", "endAudition", "mark", "informationLink");
-		dataset.put("codeAudit", codeAudit);
+		SelectChoices marks;
+		
+		marks = SelectChoices.from(Mark.class, object.getMark());
+		dataset = super.unbind(object, "code", "startAudition", "endAudition", "informationLink", "draftMode");
+
+		dataset.put("mark", marks.getSelected().getKey());
+		dataset.put("marks", marks);
+		
 		super.getResponse().addData(dataset);
 	}
 	

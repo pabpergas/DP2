@@ -10,8 +10,8 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S5.AuditRecord;
-import acme.features.auditor.auditRecord.AuditorAuditRecordRepository;
-import acme.features.auditor.codeAudit.AuditorCodeAuditRepository;
+import acme.features.auditor.auditrecord.AuditorAuditRecordRepository;
+import acme.features.auditor.codeaudit.AuditorCodeAuditRepository;
 import acme.forms.AuditorDashboard;
 import acme.roles.Auditor;
 
@@ -97,10 +97,10 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		Dataset dataset;
 
-		dataset = super.unbind(object,	//
-			"totalStaticCodeAudits", "totalDynamicCodeAudits", "averageAuditRecord", "deviationAuditRecord", //
-			"minimumAuditRecord", "maximumAuditRecord", "averageTimeOfPeriodInAuditRecord", //
-			"deviationTimeOfPeriodInAuditRecord", "minimumTimeOfPeriodInAuditRecord", "maximumTimeOfPeriodInAuditRecord");
+		dataset = super.unbind(object,
+			"totalNumberStaticAudits", "totalNumberDinamicAudits", "averageNumberRecords", 
+			"deviationNumberRecords", "minNumberRecords", "maxNumberRecords", 
+			"averagePeriodRecord", "deviationPeriodRecord", "minPeriodRecord", "maxPeriodRecord");
 
 		super.getResponse().addData(dataset);
 	}

@@ -1,0 +1,29 @@
+# List ###########################################################
+
+auditor.auditRecord.list.label.code = Código del Registro
+auditor.auditRecord.list.label.startAudition = Comienzo de la Auditoría
+auditor.auditRecord.list.label.endAudition = Fin de la Auditoría
+auditor.auditRecord.list.label.mark = Calificación
+auditor.auditRecord.list.label.informationLink = Más Información
+
+auditor.auditRecord.list.button.create = Crear
+
+auditor.audit-record.list.title = Registros de Auditoría
+
+# Form ###########################################################
+
+auditor.auditRecord.form.button.update = Actualizar
+auditor.auditRecord.form.button.publish = Publicar
+auditor.auditRecord.form.button.delete = Borrar
+auditor.auditRecord.form.button.create = Crear
+
+auditor.audit-record.form.title = Datos del Registro
+
+# Error ###########################################################
+
+auditor.auditRecord.error.code = El código debe de seguir el siguiente patrón: AU-(4 números)-(3 números) ej: AU-2835-928
+auditor.auditRecord.error.code.existing = El código debe de ser único. Este código ya existe en otro Registro
+auditor.auditRecord.error.startAudition = La fecha de inicio de la auditoría debe ser pasada
+auditor.auditRecord.error.endAudition = La fecha de fin de la auditoría debe ser pasada
+auditor.auditRecord.error.duration = Entre el comienzo y el fin de la auditoría debe transcurrir almenos 1 hora
+auditor.auditRecord.error.badDates = El comienzo de la auditoría debe ser anterior al final de esta

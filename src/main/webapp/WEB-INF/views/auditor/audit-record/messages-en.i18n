@@ -1,0 +1,29 @@
+# List ###########################################################
+
+auditor.auditRecord.list.label.code = Record's Code
+auditor.auditRecord.list.label.startAudition = Audition's Start
+auditor.auditRecord.list.label.endAudition = Audition's End
+auditor.auditRecord.list.label.mark = Mark
+auditor.auditRecord.list.label.informationLink = More Information
+
+auditor.auditRecord.list.button.create = Create
+
+auditor.audit-record.list.title = Audit Records
+
+# Form ###########################################################
+
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.publish = Publish
+auditor.auditRecord.form.button.delete = Delete
+auditor.auditRecord.form.button.create = Create
+
+auditor.audit-record.form.title = Record's Data
+
+# Error ###########################################################
+
+auditor.auditRecord.error.code = The code must follow the following pattern: AU-(4 numbers)-(3 numbers) ex: AU-9826-234
+auditor.auditRecord.error.code.existing = The code must be unique. This code already exist in other Audit Record
+auditor.auditRecord.error.startAudition = The start Audition date must be in the past
+auditor.auditRecord.error.endAudition =  The end Audition date must be in the past
+auditor.auditRecord.error.duration = The time period between end Audition and start Audition must be of at least 1 hour
+auditor.auditRecord.error.badDates = The start audition date must be before the end audition date
