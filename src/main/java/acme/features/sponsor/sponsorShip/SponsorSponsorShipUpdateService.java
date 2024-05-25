@@ -113,7 +113,8 @@ public class SponsorSponsorShipUpdateService extends AbstractService<Sponsor, Sp
 				currency = invoices.stream().toList().get(0).getQuantity().getCurrency();
 				super.state(object.getAmount().getCurrency().equals(currency), "amount", "sponsor.sponsorShip.error.amount.currency.invoices");
 
-			}
+			} else
+				super.state(object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("GBP") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorShip.error.amount.currency");
 		}
 	}
 

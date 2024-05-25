@@ -6,13 +6,10 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
-import acme.entities.S4.SponsorShip.SponsorShipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -79,28 +76,32 @@ public class SponsorSponsorShipDeleteService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void unbind(final SponsorShip object) {
-		assert object != null;
 
-		Collection<Project> projects;
-		SelectChoices choices;
-		SelectChoices typeChoices;
-		Dataset dataset;
-
-		projects = this.repository.findAllProjects();
-
-		choices = SelectChoices.from(projects, "title", object.getProject());
-		typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
-
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
-
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
-
-		dataset.put("type", typeChoices.getSelected().getKey());
-		dataset.put("types", typeChoices);
-
-		super.getResponse().addData(dataset);
-
+		/*
+		 * Nunca vamos a entrar en el unbind debido al validate
+		 * assert object != null;
+		 * 
+		 * 
+		 * Collection<Project> projects;
+		 * SelectChoices choices;
+		 * SelectChoices typeChoices;
+		 * Dataset dataset;
+		 * 
+		 * projects = this.repository.findAllProjects();
+		 * 
+		 * choices = SelectChoices.from(projects, "title", object.getProject());
+		 * typeChoices = SelectChoices.from(SponsorShipType.class, object.getType());
+		 * 
+		 * dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "contactEmail", "link", "draftMode");
+		 * 
+		 * dataset.put("project", choices.getSelected().getKey());
+		 * dataset.put("projects", choices);
+		 * 
+		 * dataset.put("type", typeChoices.getSelected().getKey());
+		 * dataset.put("types", typeChoices);
+		 * 
+		 * super.getResponse().addData(dataset);
+		 */
 	}
 
 }
