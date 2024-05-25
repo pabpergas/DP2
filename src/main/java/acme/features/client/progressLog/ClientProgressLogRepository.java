@@ -31,7 +31,7 @@ public interface ClientProgressLogRepository extends AbstractRepository {
 	@Query("select pl from ProgressLog pl where pl.recordId = :recordId")
 	ProgressLog findOneProgressLogByRecordId(String recordId);
 
-	@Query("select max(pl.completeness) from ProgressLog pl where pl.contract.id = :contractId")
+	@Query("select max(pl.completenessPercentage) from ProgressLog pl where pl.contract.id = :contractId")
 	Double findPublishedProgressLogWithMaxCompletenessPublished(int contractId);
 	/*
 	 * @Query("select s from Contract s")
