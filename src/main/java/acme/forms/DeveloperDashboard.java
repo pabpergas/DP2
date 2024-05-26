@@ -11,11 +11,11 @@ public class DeveloperDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	int							totalTrainingModules;
-	String						lastUpdateMoment;
+	Double						totalTrainingModules;
+	Double						lastUpdateMoment;
 
-	int							totalTrainingSessions;
-	String						trainingSessionsLink;
+	Double						totalTrainingSessions;
+	Double						trainingSessionsLink;
 
 	Double						averageTimeModule;
 	Double						deviationTimeModule;

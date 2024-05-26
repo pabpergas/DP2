@@ -1,16 +1,16 @@
-key,code,key:training,location,instructor,email,link,startDate,durationInWeeks
-session-1,TS-ABB-001,training-1,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-001,"2022/02/12 12:00",4
-session-2,TS-ABB-002,training-2,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-002,"2022/05/17 11:00",2
-session-3,TS-ABB-003,training-3,Seville,Jane Doe,jane@acme.com,http://www.acme.com/ts-abb-003,"2022/09/23 11:00",3
-session-4,TS-ABC-004,training-4,Madrid,Alice Smith,alice@example.com,http://www.example.com/ts-abc-004,"2023/03/05 09:30",5
-session-5,TS-ABC-005,training-5,Barcelona,Bob Johnson,bob@example.com,http://www.example.com/ts-abc-005,"2023/06/10 14:00",6
-session-6,TS-ABC-006,training-6,Madrid,Carol Williams,carol@example.com,http://www.example.com/ts-abc-006,"2023/09/15 10:00",4
-session-7,TS-XYZ-007,training-7,Barcelona,Dan Brown,dan@example.com,http://www.example.com/ts-xyz-007,"2023/12/20 11:30",3
-session-8,TS-XYZ-008,training-8,Madrid,Ellen Davis,ellen@example.com,http://www.example.com/ts-xyz-008,"2024/02/25 08:45",2
-session-9,TS-XYZ-009,training-9,Barcelona,Frank White,frank@example.com,http://www.example.com/ts-xyz-009,"2024/05/30 13:15",1
-session-10,TS-XYZ-010,training-10,Lo,George Adams,george@example.com,http://www.example.com/ts-xyz-010,"2024/08/05 09:00",3
-session-11,TS-XYZ-011,training-11,S,Harry Brown,harry@example.com,http://www.example.com/ts-xyz-011,"2024/11/10 14:30",2
-session-12,TS-XYZ-012,training-12,MidLocationNameThatIsWithinMaxLengthLimittestetstestestetstesttestetstesttes,Isabel Green,isabel@example.com,http://www.example.com/ts-xyz-012,"2025/02/15 11:45",4
-session-13,TS-XYZ-013,training-13,Madrid,Jacob White,jacob@example.com,http://www.example.com/ts-xyz-013,"2025/05/20 08:15",5
-session-14,TS-XYZ-014,training-14,MidLocationNameThatIsWithinMaxLengthLimittestetstestestetstesttestetstestte,Kate Johnson,kate@example.com,http://www.example.com/ts-xyz-014,"2025/08/25 12:30",6
-session-15,TS-XYZ-015,training-15,LocationWithSpecialCharacters@!#%&!,Lily Davis,lily@example.com,http://www.example.com/ts-xyz-015,"2025/11/30 10:00",1
+key,code,key:training,location,instructor,email,link,startDate,durationInWeeks,draft-mode,endDate
+session-1,TS-ABB-001,training-1,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-001,"2022/02/12 12:00",4,true,2022/07/17 00:00
+session-2,TS-ABB-002,training-2,Seville,John Doe,john@acme.com,http://www.acme.com/ts-abb-002,"2022/05/17 11:00",2,true,2022/07/17 00:00
+session-3,TS-ABB-003,training-3,Seville,Jane Doe,jane@acme.com,http://www.acme.com/ts-abb-003,"2022/09/23 11:00",3,true,2022/07/17 00:00
+session-4,TS-ABC-004,training-4,Madrid,Alice Smith,alice@example.com,http://www.example.com/ts-abc-004,"2023/03/05 09:30",5,true,2022/07/17 00:00
+session-5,TS-ABC-005,training-5,Barcelona,Bob Johnson,bob@example.com,http://www.example.com/ts-abc-005,"2023/06/10 14:00",6,true,2022/07/17 00:00
+session-6,TS-ABC-006,training-6,Madrid,Carol Williams,carol@example.com,http://www.example.com/ts-abc-006,"2023/09/15 10:00",4,true,2022/07/17 00:00
+session-7,TS-XYZ-007,training-7,Barcelona,Dan Brown,dan@example.com,http://www.example.com/ts-xyz-007,"2023/12/20 11:30",3,true,2022/07/17 00:00
+session-8,TS-XYZ-008,training-8,Madrid,Ellen Davis,ellen@example.com,http://www.example.com/ts-xyz-008,"2024/02/25 08:45",2,true,2022/07/17 00:00
+session-9,TS-XYZ-009,training-9,Barcelona,Frank White,frank@example.com,http://www.example.com/ts-xyz-009,"2024/05/30 13:15",1,true,2022/07/17 00:00
+session-10,TS-XYZ-010,training-10,Lo,George Adams,george@example.com,http://www.example.com/ts-xyz-010,"2024/08/05 09:00",3,true,2022/07/17 00:00
+session-11,TS-XYZ-011,training-11,S,Harry Brown,harry@example.com,http://www.example.com/ts-xyz-011,"2024/11/10 14:30",2,true,2022/07/17 00:00
+session-12,TS-XYZ-012,training-12,MidLocationNameThatIsWithinMaxLengthLimittestetstestestetstesttestetstesttes,Isabel Green,isabel@example.com,http://www.example.com/ts-xyz-012,"2025/02/15 11:45",4,true,2022/07/17 00:00
+session-13,TS-XYZ-013,training-13,Madrid,Jacob White,jacob@example.com,http://www.example.com/ts-xyz-013,"2025/05/20 08:15",5,true,2022/07/17 00:00
+session-14,TS-XYZ-014,training-14,MidLocationNameThatIsWithinMaxLengthLimittestetstestestetstesttestetstestte,Kate Johnson,kate@example.com,http://www.example.com/ts-xyz-014,"2025/08/25 12:30",6,true,2022/07/17 00:00
+session-15,TS-XYZ-015,training-15,LocationWithSpecialCharacters@!#%&!,Lily Davis,lily@example.com,http://www.example.com/ts-xyz-015,"2025/11/30 10:00",1,true,2022/07/17 00:00

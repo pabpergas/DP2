@@ -80,8 +80,7 @@
 		</acme:menu-option>
 		
 				<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
-			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/sponsor-ship/list-mine" access="hasRole('Developer')"/>
-						<acme:menu-suboption code="master.menu.developer.training-sessions" action="/developer/training/list-all" access="hasRole('Developer')"/>
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training/list-mine" access="hasRole('Developer')"/>
 			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>

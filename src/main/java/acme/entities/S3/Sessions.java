@@ -59,6 +59,11 @@ public class Sessions extends AbstractEntity {
 	private Date				startDate;
 
 	@NotNull
+	private Date				endDate;
+
+	@NotNull
 	private int					durationInWeeks;
+
+	private boolean				draftMode;
 
 }
