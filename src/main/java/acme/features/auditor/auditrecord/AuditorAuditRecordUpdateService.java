@@ -60,14 +60,6 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			AuditRecord existing;
-			existing = this.repo.findOneByCode(object.getCode());
-			
-			if(!existing.equals(object)) {
-				
-				super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");}
-		}
 		
 		if (!super.getBuffer().getErrors().hasErrors("endAudition")) {
 			long diffInMili;
@@ -77,12 +69,25 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 				diffInMili = object.getEndAudition().getTime() - object.getStartAudition().getTime();
 				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
 				super.state(diffInHour >= 1, "endAudition", "auditor.auditRecord.error.duration");
-				super.state(object.getStartAudition() != null || object.getStartAudition().before(object.getEndAudition()),
-						"startAudition", "auditor.auditRecord.error.badDates");
 			}
 		}
 		
+		if (!super.getBuffer().getErrors().hasErrors("startAudition")) {
+			if(object.getEndAudition() != null) {
+				super.state(object.getStartAudition().before(object.getEndAudition()),
+						"startAudition", "auditor.auditRecord.error.badDates");
+			}
+			}
 		
+		if(!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+			existing = this.repo.findOneByCode(object.getCode());
+			if(existing != null) {
+			if(!existing.equals(object)) {
+				
+				super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");}
+		}
+		}
 	}
 
 	@Override

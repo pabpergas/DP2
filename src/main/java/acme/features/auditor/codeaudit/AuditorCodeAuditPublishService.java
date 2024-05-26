@@ -79,7 +79,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		}
 		
 		if(!super.getBuffer().getErrors().hasErrors("*")) {
-			super.state(validMark(object), "*", "auditor.codeAudit.publish.mark");
+			super.state(validMark(object), "*", "auditor.codeAudit.error.publish.mark");
 			super.state(this.publishRecords(object), "*", "auditor.codeAudit.error.publish.recordsPublished");
 		}
 	}
