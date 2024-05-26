@@ -39,7 +39,7 @@ public class UserStories extends AbstractEntity {
 	String						acceptanceCriteria;
 
 	@Positive  //tiene el Positive y no el PositiveOrZero porque el minimo es 1
-	@Max(10)
+	@Max(10000)
 	int							estimatedCost;
 
 	@NotNull

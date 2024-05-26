@@ -16,7 +16,6 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-moment code="administrator.banner.list.label.instantationMoment" path="instantationMoment" readonly="true" />
 	<acme:input-moment code="administrator.banner.list.label.startDisplay" path="startDisplay" />
 	<acme:input-moment code="administrator.banner.list.label.endDisplay" path="endDisplay" />
 	<acme:input-url code="administrator.banner.list.label.pictureLink" path="pictureLink"/>
@@ -24,7 +23,7 @@
 	<acme:input-url code="administrator.banner.list.label.documentLink" path="documentLink"/>
 	
 		<jstl:choose> 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|deletes')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 			<acme:submit code="sponsor.sponsorShip.list.submit.update" action="/administrator/banner/update"/>
 			<acme:submit code="sponsor.sponsorShip.list.submit.delete" action="/administrator/banner/delete"/>
 		</jstl:when>

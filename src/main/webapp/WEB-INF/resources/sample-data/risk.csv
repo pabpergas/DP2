@@ -21,13 +21,27 @@ risk-08,R-008,2022/02/02 18:00,2,1.00,a,http://acme.es
 risk-09,R-009,2022/02/02 18:00,2,1.00,aa,http://acme.es
 risk-10,R-010,2022/02/02 18:00,2,1.00,descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiona,http://acme.es
 risk-11,R-032,2022/02/02 18:00,2,1.00,descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription,http://acme.es
-risk-11-01,R-033,2022/02/02 18:00,2,1.00,<script>console.log("hacked")</script>,http://acme.es
+risk-11-01,R-033,2022/02/02 18:00,2,1.00,"<script>console.log(""hacked"")</script>",http://acme.es
 risk-11-02,R-034,2022/02/02 18:00,2,1.00,'Or 'A' = 'A,http://acme.es
 risk-11-03,R-035,2022/02/02 18:00,2,1.00,description芝,http://acme.es
-risk-12,R-012,2022/02/02 18:00,2,1.00,This is a risk for sample data,""
+risk-12,R-012,2022/02/02 18:00,2,1.00,This is a risk for sample data,
 risk-13,R-013,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://a.es
 risk-14,R-014,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://linklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklink.com
 risk-15,R-015,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://linklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklin.com
 risk-16,R-016,2022/02/02 18:00,2,1.00,This is a risk for sample data芝,http://acme.es
 risk-17,R-017,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://acme芝.es
 risk-18,R-018,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://a?.es
+risk-20,R-118,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://a?.es
+risk-21-01,R-218,2022/02/02 18:00,2,1.00,This is a risk for sample data,https://www.lorem-ipsum.org
+risk-22-02,R-318,2022/02/02 18:00,2,1.00,This is a risk for sample data,ftp://www.lorem-ipsum.org
+risk-23-01,R-418,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://www.lorem-ipsum.org/dolor/sit.html
+risk-24-01,R-518,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+risk-25-01,R-618,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org?a=1&b=2
+risk-26-01,R-718,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org?
+risk-27,R-818,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org?a
+risk-28,R-918,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org?a&b
+risk-29,R-028,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org/
+risk-30,R-038,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org/a
+risk-31,R-048,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org/a/b
+risk-32,R-058,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org/a/b?
+risk-33,R-068,2022/02/02 18:00,2,1.00,This is a risk for sample data,http://example.org/a/b?a&b

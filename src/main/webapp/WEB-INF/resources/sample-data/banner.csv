@@ -21,12 +21,25 @@ banner-59,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:59,https://i.imgur.com
 banner-50,2000/01/01 00:00,2000/01/01 00:01,2200/12/31 23:58,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
 banner-51,2000/01/01 00:00,2000/01/01 00:01,2020/02/29 00:00,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.change.org/
 #pictureLink
-banner-17,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://a.org,Good Banner,https://www.change.org/
-banner-18,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://aa.org,Good Banner,https://www.change.org/
-banner-19,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictur.org,Good Banner,https://www.change.org/
+banner-17,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,ftp://,Good Banner,https://www.change.org/
+banner-17-01,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,ftp://a,Good Banner,https://www.change.org/
+banner-18,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://linklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklink.com,Good Banner,https://www.change.org/
+banner-19,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://linklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklinklin.com,Good Banner,https://www.change.org/
 banner-20,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://picturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepicturepictu.org,Good Banner,https://www.change.org/
-banner-21,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://a芝.org,Good Banner,https://www.change.org/
-banner-22,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://?a.org,Good Banner,https://www.change.org/
+banner-21,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://sponsorShip1.masInfo芝.es,Good Banner,https://www.change.org/
+banner-22,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,ftp://www.lorem-ipsum.org,Good Banner,https://www.change.org/
+banner-60,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://www.lorem-ipsum.org,Good Banner,https://www.change.org/
+banner-61,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://www.lorem-ipsum.org/dolor/sit.html,Good Banner,https://www.change.org/
+banner-62,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://www.lorem-ipsum.org/dolor/sit.html#dolor,Good Banner,https://www.change.org/
+banner-63,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org?a=1&b=2,Good Banner,https://www.change.org/
+banner-64,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org?,Good Banner,https://www.change.org/
+banner-65,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org?a,Good Banner,https://www.change.org/
+banner-66,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org?a&b,Good Banner,https://www.change.org/
+banner-67,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org/,Good Banner,https://www.change.org/
+banner-68,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org/a,Good Banner,https://www.change.org/
+banner-69,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org/a/b,Good Banner,https://www.change.org/
+banner-70,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org/a/b?,Good Banner,https://www.change.org/
+banner-71,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,http://example.org/a/b?a&b,Good Banner,https://www.change.org/
 #slogan
 banner-23,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,G,https://www.change.org/
 banner-24,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Go,https://www.change.org/
@@ -36,11 +49,24 @@ banner-27,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com
 banner-28,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,'or 'A'='A,https://www.change.org/
 banner-29,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good banner芝,https://www.change.org/
 #documentLink
-banner-30,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://d.com
-banner-31,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://dd.com
+banner-30,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,ftp://
+banner-31,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,ftp://a
 banner-32,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocu.com
 banner-32-01,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://documentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdocumentdoc.com
 banner-40,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://a?.com
+banner-72,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,https://www.lorem-ipsum.org
+banner-73,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,ftp://www.lorem-ipsum.org
+banner-74,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://www.lorem-ipsum.org/dolor/sit.html
+banner-75,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+banner-76,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org?a=1&b=2
+banner-77,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org?
+banner-78,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org?a
+banner-79,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org?a&b
+banner-80,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org/
+banner-81,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org/a
+banner-82,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org/a/b
+banner-83,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org/a/b?
+banner-84,2000/01/01 00:00,2023/01/01 00:01,2024/12/31 23:59,https://i.imgur.com/2eVF1HG.png,Good Banner,http://example.org/a/b?a&b
 #Banners activos
 banner-33,2000/01/01 00:00,2022/06/26 18:00,2024/12/31 23:59,https://i.imgur.com/8YcXhS0.png,Good Banner,http://document.com
 banner-34,2000/01/01 00:00,2022/06/26 18:00,2024/12/31 23:59,https://i.imgur.com/MtBRoNP.png,Good Banner,http://document.com

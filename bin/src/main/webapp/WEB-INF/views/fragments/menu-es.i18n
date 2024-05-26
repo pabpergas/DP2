@@ -1,0 +1,84 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+﻿# master.menu #################################################################
+
+master.menu.home = Inicio
+master.menu.sign-up = Registrarse
+master.menu.sign-in = Entrar
+master.menu.sign-out = Salir
+
+# master.menu.anonymous #######################################################
+
+master.menu.anonymous = Anónimo
+master.menu.anonymous.favourite-link-2 = 08892865F: Romero Sánchez, Rubén
+master.menu.anonymous.favourite-link-1 = 76584962E: Ulecia García, Javier
+master.menu.anonymous.favourite-link-3 = 29562854B: Duque Colete, Rafael
+master.menu.anonymous.favourite-link-4 = 48124444A: Pérez Gaspar, Pablo
+master.menu.anonymous.favourite-link-5 = 29518565C: Rodríguez Sánchez, Pablo
+master.menu.anonymous.claim = Reclamaciones
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.populate-initial = Poblar BD (inicial)
+master.menu.administrator.populate-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.banner  = Banderas
+# master.menu.sponsor ########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsor-ships = Patrocinio
+master.menu.sponsor.invoices = Facturas
+master.menu.sponsor.dashboard = Panel
+master.menu.sponsor.invoices = Facturas
+
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Proveedor
+master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Consumidor
+master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.client ##########################################################
+
+master.menu.client=Cliente
+master.menu.client.contract= Contrato
+master.menu.client.progressLog= ProgresoLog
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+master.menu.user-account.provider = Datos de proveedor
+master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.consumer = Datos de consumidor
+master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.sponsor = Datos de sponsor
+master.menu.user-account.become-sponsor = Hazte  sponsor
+
+
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.all-projects = Todos los proyectos
+master.menu.manager.my-projects = Mis proyectos
+master.menu.manager.user-stories = Historias de Usuario
+master.menu.manager.dashboard = Panel
+
+# master.menu.principal ####################################################
+master.menu.principal = Autenticado
+master.menu.principal.claim = Reclamaciones

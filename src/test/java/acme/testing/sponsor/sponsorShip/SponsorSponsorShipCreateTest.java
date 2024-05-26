@@ -11,11 +11,9 @@ public class SponsorSponsorShipCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/sponsor/sponsorShip/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
+	public void test100Positive(final int recordIndex, final String code, final String project, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
 
-		// HINT: this test authenticates as an employer and then lists his or her
-		// HINT: jobs, creates a new one, and check that it is been created properly.
-
+		String moment = "2022/07/30 00:00";
 		super.signIn("sponsor1", "sponsor1");
 
 		super.clickOnMenu("Sponsor", "SponsorShips");
@@ -24,7 +22,6 @@ public class SponsorSponsorShipCreateTest extends TestHarness {
 		super.clickOnButton("Create");
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("project", project);
-		super.fillInputBoxIn("moment", moment);
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("endDate", endDate);
 		super.fillInputBoxIn("amount", amount);
@@ -61,16 +58,14 @@ public class SponsorSponsorShipCreateTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/sponsor/sponsorShip/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test200Negative(final int recordIndex, final String code, final String project, final String moment, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
-		// HINT: this test attempts to create jobs with incorrect data.
+	public void test200Negative(final int recordIndex, final String code, final String project, final String startDate, final String endDate, final String amount, final String type, final String contactEmail, final String link) {
 
-		super.signIn("Sponsor1", "Sponsor1");
+		super.signIn("sponsor1", "sponsor1");
 		super.clickOnMenu("Sponsor", "SponsorShips");
 		super.clickOnButton("Create");
 		super.checkFormExists();
 		super.fillInputBoxIn("code", code);
 		super.fillInputBoxIn("project", project);
-		super.fillInputBoxIn("moment", moment);
 		super.fillInputBoxIn("startDate", startDate);
 		super.fillInputBoxIn("endDate", endDate);
 		super.fillInputBoxIn("amount", amount);
@@ -86,14 +81,14 @@ public class SponsorSponsorShipCreateTest extends TestHarness {
 
 	@Test
 	public void test300Hacking() {
-		// HINT: this test tries to create a job using principals with
-		// HINT+ inappropriate roles.
 
+		//TEST publish with another rol
+		super.requestHome();
 		super.checkLinkExists("Sign in");
 		super.request("/sponsor/sponsor-ship/create");
 		super.checkPanicExists();
 
-		super.signIn("administrator", "administrator");
+		super.signIn("administrator1", "administrator1");
 		super.request("/sponsor/sponsor-ship/create");
 		super.checkPanicExists();
 		super.signOut();

@@ -78,8 +78,7 @@ public class ManagerProjectUserStoriesCreateService extends AbstractService<Mana
 		assert object != null;
 		final int projectId = super.getRequest().getData("projectId", int.class);
 
-		int managerID = object.getProject().getManager().getUserAccount().getId();
-		Collection<UserStories> userStories = this.repo.findUserStoriesByManagerId(managerID).stream() //
+		Collection<UserStories> userStories = this.repo.findUserStories().stream() //
 			.filter(us -> !this.repo.findProjectUserStoriesByProjectId(projectId).stream().map(ProjectUserStories::getUserStories).anyMatch(us2 -> us2.equals(us))).toList();
 
 		SelectChoices choices = SelectChoices.from(userStories, "title", object.getUserStories());

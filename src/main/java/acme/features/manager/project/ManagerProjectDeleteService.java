@@ -54,6 +54,11 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
+
+		int id = object.getId();
+
+		super.state(this.repo.contractsWithProject(id) == 0, "*", "manager.project.hascontracts");
+		super.state(this.repo.sponsorsWithProject(id) == 0, "*", "manager.project.hassppnsor");
 	}
 
 	@Override

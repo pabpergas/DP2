@@ -30,5 +30,6 @@ sponsor.invoice.form.title = Crear
 sponsor.invoice.error.code = El patrón del código debe ser IN-4 números-4 números, así:IN-0000-0000
 sponsor.invoice.error.duplicated = El código de la factura no puede coincidir con uno anteriormente registrado
 sponsor.invoice.error.dueDate = La fecha de vencimiento debe ser al menos 1 mes después de la fecha de registro de la factura
-sponsor.invoice.error.quantity = La cantidad debe ser mayor a 0 y menor a 1.000.000,00
+sponsor.invoice.error.quantity = La cantidad debe ser mayor a 0 y menor a 500.000,00
 sponsor.invoice.error.quantity.currency = El tipo de moneda de la factura debe ser igual a la del patrocinio
+sponsor.invoice.error.dueDate.limitSup = La fecha de vencimiento debe ser 31/12/2000 23:59 o inferior

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>0</y>
+      <w>495</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++ code: String {Pattern(^C-[0-9]{4}$)}
++ instantiation: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ heading: String {NotBlank, Length(0, 75)}
++ description: String {NotBlank, Length(0, 100)}
++ department: String{NotBlank, Length(0, 100)}
++ email: String {Email, Length(0, 100)}
++ link: String {URL, Length(0, 100)}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>180</y>
+      <w>540</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
++ title: String {NotBlank, Length(0, 75)}
++ description: String {NotBlank, Length(0, 100)}
++ priority: Priority {NotNull}
++ critical: boolean
++ instantiationMoment: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ startDate: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ endDate: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ link: String {URL, Length(0, 150)}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>882</x>
+      <y>207</y>
+      <w>90</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Priority
+--
+LOW
+MEDIUM
+HIGH
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>351</y>
+      <w>540</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++ reference: String {Pattern(^R-[0-9]{3}$)}
++ identificationDate: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ impact: Integer {NotNull, Positive}
++ probability: Double {NotNull, Min(0)}
++ description: String{NotBlank, Length(0, 100)}
++ link: String {URL, Length(0, 255)}
++ / Value: Double {Transient}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>513</y>
+      <w>540</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Banner
+--
++ instantationMoment: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ startDisplay: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ endDisplay: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ pictureLink: String {NotNull}
++ slogan: String{NotBlank, Length(0, 75)}
++ documentLink: String {URL, NotNull}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>675</y>
+      <w>540</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++ instantationMoment: Date {NotNull, PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ title: String {NotBlank, Length(0, 75)}
++ author: String {NotBlank, Length(0, 75)}
++ message: String {NotBlank, Length(0, 75)}
++ email: String {Email, Length(0, 100)}
++ link: String {URL, Length(0, 255)}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

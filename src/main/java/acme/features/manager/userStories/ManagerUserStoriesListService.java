@@ -31,7 +31,7 @@ public class ManagerUserStoriesListService extends AbstractService<Manager, User
 	@Override
 	public void load() {
 		final int managerId = super.getRequest().getPrincipal().getAccountId();
-		Collection<UserStories> userStories = this.repo.findUserStoriesByManagerId(managerId);
+		Collection<UserStories> userStories = this.repo.findUserStories();
 
 		super.getBuffer().addData(userStories);
 	}
