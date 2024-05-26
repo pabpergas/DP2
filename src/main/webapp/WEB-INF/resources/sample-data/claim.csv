@@ -13,7 +13,7 @@ claim-05,C-1237,2020/12/31 23:58,hh,description1,department1,null,null
 claim-08,C-1230,2020/01/01 19:30,74caracteresaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,description1,department1,null,null
 claim-09,C-1334,2020/01/01 19:30,75caracteresaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,description1,department1,null,null
 claim-10,C-1434,2020/01/01 19:30,37caracteresaaaaaaaaaaaaaaaaaaaaaaaaa,description1,department1,null,null
-claim-11,C-1534,2020/01/01 19:30,<script>console.log(,description1,department1,null,null
+claim-11,C-1534,2020/01/01 19:30,"<script>console.log(""hola"")</script>",description1,department1,null,null
 claim-12,C-1634,2020/01/01 19:30,'Or 'A' = 'A,description1,department1,null,null
 claim-19,C-0000,2020/01/01 19:30,مرحبا,description1,department1,null,null
 #description
