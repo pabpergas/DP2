@@ -50,6 +50,7 @@ public class Invoice extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dueDate;
 
+	//Si la tasa fuera del 100% y quantity = USD 500.000, totalAmount = 1.000.000, limite superior => 500.000
 	@NotNull
 	@Valid
 	private Money				quantity;
