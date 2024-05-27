@@ -13,10 +13,14 @@ import acme.entities.S2.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogListMineService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogListService extends AbstractService<Client, ProgressLog> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ClientProgressLogRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -27,20 +31,20 @@ public class ClientProgressLogListMineService extends AbstractService<Client, Pr
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = contract != null && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<ProgressLog> progressLogs;
+		Collection<ProgressLog> objects;
 		int masterId;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		progressLogs = this.repository.findProgressLogsByContractId(masterId);
+		objects = this.repository.findManyProgressLogsByMasterId(masterId);
 
-		super.getBuffer().addData(progressLogs);
+		super.getBuffer().addData(objects);
 	}
 
 	@Override
@@ -49,7 +53,8 @@ public class ClientProgressLogListMineService extends AbstractService<Client, Pr
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
+
 		super.getResponse().addData(dataset);
 	}
 
@@ -63,9 +68,11 @@ public class ClientProgressLogListMineService extends AbstractService<Client, Pr
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
-		showCreate = contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		showCreate = super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("contractPublished", contract.isPublished());
 	}
+
 }

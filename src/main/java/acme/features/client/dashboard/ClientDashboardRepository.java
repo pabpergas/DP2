@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.client.dashBoard;
+package acme.features.client.dashboard;
 
 import java.util.Optional;
 
@@ -24,19 +24,19 @@ import acme.roles.Client;
 public interface ClientDashboardRepository extends AbstractRepository {
 
 	// Consulta para obtener el porcentaje del número total de registros de progreso con completitud por debajo del 25%
-	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completenessPercentage <=25 and pl.published=true")
+	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completeness <=25 and pl.published=true")
 	Optional<Integer> percentageOfTotalNumberCompleteness25(Client client);
 
 	// Consulta para obtener el porcentaje del número total de registros de progreso con completitud entre 25% y 50%
-	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completenessPercentage <= 50 and 25 <= pl.completenessPercentage and pl.published=true")
+	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completeness <= 50 and 25 <= pl.completeness and pl.published=true")
 	Optional<Integer> percentageOfTotalNumberCompleteness25At50(Client client);
 
 	// Consulta para obtener el porcentaje del número total de registros de progreso con completitud entre 50% y 75%
-	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completenessPercentage <= 75 and 50 <= pl.completenessPercentage and pl.published=true")
+	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and pl.completeness <= 75 and 50 <= pl.completeness and pl.published=true")
 	Optional<Integer> percentageOfTotalNumberCompleteness50at75(Client client);
 
 	// Consulta para obtener el porcentaje del número total de registros de progreso con completitud por encima del 75%
-	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and 75 <= pl.completenessPercentage and pl.published=true")
+	@Query("select count(pl) from ProgressLog pl where pl.contract.client = :client and 75 <= pl.completeness and pl.published=true")
 	Optional<Integer> percentageOfTotalNumberCompletenessMore75(Client client);
 
 	// Consulta para obtener el promedio del presupuesto de los contratos

@@ -13,38 +13,19 @@ import acme.entities.S2.ProgressLog;
 @Repository
 public interface ClientProgressLogRepository extends AbstractRepository {
 
-	@Query("select i from ProgressLog i where i.contract.id = :id")
-	Collection<ProgressLog> findProgressLogsByContractId(int id);
-
-	@Query("select i from ProgressLog i where i.contract.client.id = :id")
-	Collection<ProgressLog> findAllProgressLogsByClientId(int id);
-
-	@Query("select i from ProgressLog i where i.id = :id")
-	ProgressLog findOneProgressLogById(int id);
-
-	@Query("select i.contract from ProgressLog i where i.id = :id")
-	Contract findOneContractByProgressLogId(int id);
-
-	@Query("select s from Contract s where s.id = :id")
+	@Query("select c from Contract c where c.id = :id")
 	Contract findOneContractById(int id);
 
-	/*
-	 * @Query("select s from Contract s")
-	 * Collection<Contract> findAllContract();
-	 * 
-	 * @Query("select c from Contract c where c.client.id = :id")
-	 * Collection<Contract> findManyContractsByClientId(int id);
-	 * 
-	 * @Query("select s from Contract s where s.id = :id")
-	 * Contract findOneContractById(int id);
-	 * 
-	 * @Query("select i from ProgressLog i where i.contract.id = :id")
-	 * Collection<ProgressLog> findProgressLogsByContractId(int id);
-	 * 
-	 * @Query("select i.contract from ProgressLog i where i.id = :id")
-	 * Contract findOneContractByProgressLogId(int id);
-	 * 
-	 * @Query("select i from ProgressLog i where i.contract.client.id = :id")
-	 * Collection<ProgressLog> findAllProgressLogsByClientId(int id);
-	 */
+	@Query("select pl.contract from ProgressLog pl where pl.id = :id")
+	Contract findOneContractByProgressLogId(int id);
+
+	@Query("select pl from ProgressLog pl where pl.id = :id")
+	ProgressLog findOneProgressLogById(int id);
+
+	@Query("select pl from ProgressLog pl where pl.contract.id = :masterId")
+	Collection<ProgressLog> findManyProgressLogsByMasterId(int masterId);
+
+	@Query("select pl from ProgressLog pl where pl.recordId = :recordId")
+	ProgressLog findOneProgressLogtByRecordId(String recordId);
+
 }

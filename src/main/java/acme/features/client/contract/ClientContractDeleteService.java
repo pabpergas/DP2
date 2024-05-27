@@ -1,5 +1,5 @@
 
-package acme.features.client.contracts;
+package acme.features.client.contract;
 
 import java.util.Collection;
 
@@ -7,25 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S2.Contract;
+import acme.entities.S2.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientContractCreateService extends AbstractService<Client, Contract> {
+public class ClientContractDeleteService extends AbstractService<Client, Contract> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ClientContractRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
+		int masterId;
+		Contract contract;
+		Client client;
 
-		status = super.getRequest().getPrincipal().hasRole(Client.class);
+		masterId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractById(masterId);
+		client = contract == null ? null : contract.getClient();
+		status = contract != null && !contract.isPublished() && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -33,13 +43,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	@Override
 	public void load() {
 		Contract object;
-		Client client;
+		int id;
 
-		client = this.repository.findOneClientById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Contract();
-		object.setDraftMode(true);
-		object.setClient(client);
-		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneContractById(id);
+
 		super.getBuffer().addData(object);
 	}
 
@@ -53,28 +61,24 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "providerName", "customerName", "goals", "budget", "link");
-
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(object.getCode());
-			super.state(existing == null, "code", "client.contract.form.error.duplicated");
-		}
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
 
-		// Aquí guardas el contrato en la base de datos
-		this.repository.save(object);
+		Collection<ProgressLog> progressLogs;
+
+		progressLogs = this.repository.findManyProgressLogByContractId(object.getId());
+		this.repository.deleteAll(progressLogs);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -82,10 +86,8 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		assert object != null;
 
 		int clientId;
-		SelectChoices choices;
-
 		Collection<Project> projects;
-
+		SelectChoices choices;
 		Dataset dataset;
 
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
@@ -93,13 +95,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "link");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "client", "published");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
-
 	}
 
-	// Aquí puedes agregar más métodos según sea necesario para la creación, actualización y eliminación de contratos
 }

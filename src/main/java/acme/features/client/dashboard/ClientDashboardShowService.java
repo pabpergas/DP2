@@ -1,5 +1,5 @@
 
-package acme.features.client.dashBoard;
+package acme.features.client.dashboard;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

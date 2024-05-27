@@ -1,0 +1,6 @@
+# messages-en.i18n
+
+validation.Contract.code = The code of a contract must follow one of the following patterns: A-111, AA-111 and AAA-111
+validation.ProgressLog.recordId = The recordId of a progress Log must follow one of the following patterns: PG-A-1111 and PG-AA-1111
+validation.Client.identification = The code of a client must follow the example pattern: CLI-1111
+validation.Client.type = The type can only be company or individual

@@ -1,5 +1,5 @@
 
-package acme.features.client.contracts;
+package acme.features.client.contract;
 
 import javax.annotation.PostConstruct;
 
@@ -13,8 +13,10 @@ import acme.roles.Client;
 @Controller
 public class ClientContractController extends AbstractController<Client, Contract> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	private ClientContractListMineService	listMineService;
+	private ClientContractListService		listService;
 
 	@Autowired
 	private ClientContractShowService		showService;
@@ -23,26 +25,26 @@ public class ClientContractController extends AbstractController<Client, Contrac
 	private ClientContractCreateService		createService;
 
 	@Autowired
+	private ClientContractUpdateService		updateService;
+
+	@Autowired
 	private ClientContractDeleteService		deleteService;
 
 	@Autowired
 	private ClientContractPublishService	publishService;
 
-	@Autowired
-	private ClientContractUpdateService		updateService;
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-
+		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
-		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addCustomCommand("publish", "update", this.publishService);
-
 	}
 
 }
