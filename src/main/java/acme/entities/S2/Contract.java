@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -15,7 +17,6 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
@@ -27,54 +28,56 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id"), @Index(columnList = "code"), @Index(columnList = "client_id"), @Index(columnList = "project_id"), @Index(columnList = "client_id, published")
+
+})
 public class Contract extends AbstractEntity {
+
+	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "error.contract")
-	@Column(unique = true)
+	// Attributes -------------------------------------------------------------
 
+	@Column(unique = true)
+	@NotBlank
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{validation.Contract.code}")
 	private String				code;
 
 	@NotNull
-	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
+	@PastOrPresent
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 75)
-
+	@Length(max = 75, min = 0)
 	private String				providerName;
 
 	@NotBlank
-	@Length(max = 75)
-
+	@Length(max = 75, min = 0)
 	private String				customerName;
 
 	@NotBlank
-	@Length(max = 100)
-
+	@Length(max = 100, min = 0)
 	private String				goals;
 
 	@NotNull
-	@Valid
 	private Money				budget;
 
 	private boolean				published;
 
-	@URL
-	@Length(max = 255)
-	private String				link;
+	// Derived attributes -----------------------------------------------------
 
-	private boolean				draftMode			= true;
+	// Relationships ----------------------------------------------------------
 
-	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
+	@ManyToOne(optional = false)
 	private Project				project;
 
-	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
+	@ManyToOne(optional = false)
 	private Client				client;
-
 }

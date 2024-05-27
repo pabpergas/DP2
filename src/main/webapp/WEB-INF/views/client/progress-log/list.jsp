@@ -1,13 +1,5 @@
 <%--
-- banner.jsp
--
-- Copyright (C) 2012-2024 Rafael Corchuelo.
--
-- In keeping with the traditional purpose of furthering education and research, it is
-- the policy of the copyright owner to permit non-commercial use and redistribution of
-- this software. It has been tested carefully, but it is not guaranteed for any particular
-- purposes.  The copyright owner does not offer any warranties or representations, nor do
-- they accept any liabilities with respect to them.
+- list.jsp
 --%>
 
 <%@page%>
@@ -16,9 +8,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="client.progressLog.list.label.code" path="recordId" width="10%"/>
-	<acme:list-column code="client.progressLog.list.label.completenessPercentage" path="completenessPercentage" width="10%"/>
-¡	<acme:list-column code="client.progressLog.list.label.progressComment" path="progressComment" width="10%"/>
+	<acme:list-column code="client.ProgressLog.list.label.recordId" path="recordId" width="20%"/>
+	<acme:list-column code="client.ProgressLog.list.label.completeness" path="completeness" width="20%"/>
+	<acme:list-column code="client.ProgressLog.list.label.comment" path="comment" width="20%"/>
+	<acme:list-column code="client.ProgressLog.list.label.registrationMoment" path="registrationMoment" width="20%"/>
+	<acme:list-column code="client.ProgressLog.list.label.responsiblePerson" path="responsiblePerson" width="20%"/>
 </acme:list>
 
-<acme:button test="${showCreate}" code="client.Contract.list.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
+<jstl:if test="${contractPublished == false}">
+	<acme:button test="${showCreate}" code="client.ProgressLog.list.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
+</jstl:if>

@@ -13,18 +13,23 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogShowService extends AbstractService<Client, ProgressLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private ClientProgressLogRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int invoiceId;
+		int progressLogId;
 		Contract contract;
-		invoiceId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractByProgressLogId(invoiceId);
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		status = contract != null && contract.getClient().getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername()) && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -36,8 +41,8 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneProgressLogById(id);
-		super.getBuffer().addData(object);
 
+		super.getBuffer().addData(object);
 	}
 
 	@Override
@@ -46,9 +51,10 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
 		dataset.put("masterId", object.getContract().getId());
-		super.getResponse().addData(dataset);
 
+		super.getResponse().addData(dataset);
 	}
+
 }

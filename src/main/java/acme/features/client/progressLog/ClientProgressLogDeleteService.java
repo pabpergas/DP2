@@ -13,20 +13,26 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private ClientProgressLogRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int invoiceId;
+		int progressLogId;
 		Contract contract;
+		ProgressLog progressLog;
 
-		invoiceId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractByProgressLogId(invoiceId);
-
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		progressLog = this.repository.findOneProgressLogById(progressLogId);
+		status = contract != null && !contract.isPublished() && !progressLog.isPublished() && contract.getClient().getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername())
+			&& super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,21 +52,12 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");
-
+		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-			ProgressLog existing;
-
-			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null || existing.equals(object), "recordId", "client.progressLog.form.error.duplicated");
-		}
-
 	}
 
 	@Override
@@ -76,11 +73,9 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");
-		dataset.put("masterId", object.getContract().getId());
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
 
 		super.getResponse().addData(dataset);
-
 	}
 
 }

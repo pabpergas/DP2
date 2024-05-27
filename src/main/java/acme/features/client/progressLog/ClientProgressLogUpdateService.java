@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.S2.Contract;
 import acme.entities.S2.ProgressLog;
@@ -13,20 +14,26 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private ClientProgressLogRepository repository;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int invoiceId;
+		int progressLogId;
 		Contract contract;
+		ProgressLog progressLog;
 
-		invoiceId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractByProgressLogId(invoiceId);
-
-		status = contract != null && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		progressLog = this.repository.findOneProgressLogById(progressLogId);
+		status = contract != null && !contract.isPublished() && !progressLog.isPublished() && super.getRequest().getPrincipal().hasRole(contract.getClient())
+			&& contract.getClient().getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -38,6 +45,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneProgressLogById(id);
+		object.setRegistrationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
 	}
@@ -46,26 +54,19 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog object) {
 		assert object != null;
 
-		super.bind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");
-
+		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
 			ProgressLog existing;
-
-			existing = this.repository.findOneProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null || existing.equals(object), "recordId", "client.progress-log.form.error.duplicated");
+			existing = this.repository.findOneProgressLogtByRecordId(object.getRecordId());
+			final ProgressLog progressLog2 = object.getRecordId().equals("") || object.getRecordId() == null ? null : this.repository.findOneProgressLogById(object.getId());
+			super.state(existing == null || progressLog2.equals(existing), "recordId", "client.progressLog.form.error.duplicated");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
-			Double existing;
-			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId());
-			super.state(object.getCompletenessPercentage() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
 
 	}
 
@@ -82,11 +83,9 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completenessPercentage", "progressComment", "registrationMoment", "responsiblePerson");
-		dataset.put("masterId", object.getContract().getId());
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
 
 		super.getResponse().addData(dataset);
-
 	}
 
 }

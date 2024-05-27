@@ -1,4 +1,4 @@
-key,record-id,completenessPercentage,progressComment,registration-moment,responsible-person,published,key:contract
+key,record-id,completeness,comment,registration-moment,responsible-person,published,key:contract
 progress-log-01,PG-AZ-0001,10.00,El proyecto va bien,2022/07/28 12:00,Persona1,true,contract-01
 progress-log-02,PG-AA-0001,10.00,El proyecto va bien,2022/07/28 12:00,Persona1,true,contract-02
 progress-log-03,PG-ZZ-0001,10.00,El proyecto va bien,2022/07/28 12:00,Persona1,true,contract-03
