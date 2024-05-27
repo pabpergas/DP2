@@ -74,7 +74,8 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "title", "summary", "hasFatalErrors", "cost", "link", "draftMode");
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "title", "summary", "hasFatalErrors", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

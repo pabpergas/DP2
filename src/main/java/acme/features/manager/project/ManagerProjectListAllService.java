@@ -25,12 +25,10 @@ public class ManagerProjectListAllService extends AbstractService<Manager, Proje
 
 	@Override
 	public void authorise() {
-		int id = super.getRequest().getData("id", int.class);
-		Project p = this.repo.findProjectById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
 
-		final boolean status = p != null && principal.hasRole(Manager.class);
+		final boolean status = principal.hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}
