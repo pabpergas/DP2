@@ -8,7 +8,6 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.S1.Project;
 import acme.entities.S1.UserStories;
 import acme.entities.S1.UserStories.priorityUserStories;
 import acme.roles.Manager;
@@ -47,20 +46,20 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 	public void unbind(final UserStories object) {
 		assert object != null;
 		int masterId;
-		boolean status;
+		boolean autorizado;
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
 		SelectChoices choices = SelectChoices.from(priorityUserStories.class, object.getPriority());
 
 		masterId = super.getRequest().getData("id", int.class);
-		Project project = this.repo.findProjectById(masterId);
-		status = project != null && project.getManager().getUserAccount().getId() == userAccountId;
+		UserStories us = this.repo.findUserStoryById(masterId);
+		autorizado = us != null && us.getManager().getUserAccount().getId() == userAccountId;
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link", "draftMode");
 		dataset.put("priority", choices);
-		dataset.put("status", status);
+		dataset.put("autorizado", autorizado);
 
 		super.getResponse().addData(dataset);
 	}
