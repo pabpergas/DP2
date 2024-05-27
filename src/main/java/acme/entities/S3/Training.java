@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +18,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.S1.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,6 +58,16 @@ public class Training extends AbstractEntity {
 	private Date				updateMoment;
 
 	private int					estimatedTotalTime;
+	private boolean				draftMode;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "developer_id")
+	private Developer			developer;
+
+	@NotNull
+	@ManyToOne(optional = false)
+	private Project				project;
 
 
 	public enum Difficulty {

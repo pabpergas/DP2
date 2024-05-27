@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                                     
     
     
     
     
+=======
+                    
+>>>>>>> main
     
     
     
@@ -59,11 +63,15 @@
     
     
     <wb-module deploy-name="Acme-SF-D04">
+<<<<<<< HEAD
                                                                         
         
         
         
         
+=======
+                                        
+>>>>>>> main
         
         
         
@@ -118,11 +126,15 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< HEAD
                                                                         
         
         
         
         
+=======
+                                        
+>>>>>>> main
         
         
         
@@ -177,11 +189,15 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                                                                         
         
         
         
         
+=======
+                                        
+>>>>>>> main
         
         
         
@@ -235,11 +251,15 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+<<<<<<< HEAD
                                                                         
         
         
         
         
+=======
+                                        
+>>>>>>> main
         
         
         
@@ -281,6 +301,7 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
                                                                                                 
         
         
@@ -296,16 +317,29 @@
                                                                                 
         
         
+=======
+                                                                
+>>>>>>> main
         
         
         
         
         
         
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                                                
+        
+        
+        
+        
+>>>>>>> main
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
                                 
         
         
+<<<<<<< HEAD
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                                 
         
@@ -332,6 +366,13 @@
         
         </dependent-module>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-24.4.0"/>
+        <dependent-module archiveName="Acme-Framework-24.4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Acme-Framework-24.4.0/Acme-Framework-24.4.0">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+>>>>>>> main
 
         
         
@@ -387,6 +428,7 @@
         
         
         
+<<<<<<< HEAD
         
         
         
@@ -397,13 +439,21 @@
         
         
         
+=======
+        <property name="java-output-path" value="/Hello-World-22.0/target/classes"/>
+                                                        
+>>>>>>> main
         
         
         
         
         
         <property name="context-root" value="Acme-SF"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+=======
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+>>>>>>> main
 
                                 
         
@@ -467,6 +517,7 @@
     
     
     
+<<<<<<< HEAD
     
     
     
@@ -477,6 +528,10 @@
 
 
 
+=======
+    </wb-module>
+                
+>>>>>>> main
 
 
 

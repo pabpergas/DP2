@@ -115,7 +115,6 @@ public class SponsorSponsorShipPublishService extends AbstractService<Sponsor, S
 			//Como al crear una invoices, tiene que ser del mismo tipo que el masterId para publicar si las invoices estan en USD 
 			//el sponsorShip tambien tendrá que estarlo
 			super.state(object.getAmount().getAmount() > 0 && object.getAmount().getAmount() <= 1000000, "amount", "sponsor.sponsorShip.error.amount");
-
 			if (!invoices.isEmpty()) {
 				currency = invoices.stream().toList().get(0).getQuantity().getCurrency();
 				super.state(object.getAmount().getCurrency().equals(currency), "amount", "sponsor.sponsorShip.error.amount.currency.invoices");

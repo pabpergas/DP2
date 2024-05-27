@@ -4,7 +4,6 @@ package acme.features.sponsor.invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S4.Invoice;
 import acme.entities.S4.SponsorShip;
@@ -22,15 +21,17 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 		boolean status;
 		int invoiceId;
 		SponsorShip sponsorship;
+		Invoice object;
 
 		invoiceId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+		object = this.repository.findOneInvoiceById(invoiceId);
 
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		//No se puede comprobar el camino donde invoice NO este en dratMode y sponsorShip SI lo este
+		status = sponsorship != null && object.isDraftMode() && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		Invoice object;
@@ -65,15 +66,19 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void unbind(final Invoice object) {
-		assert object != null;
 
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
-		dataset.put("masterId", object.getSponsorShip().getId());
-
-		super.getResponse().addData(dataset);
-
+		/*
+		 * Nunca vamos a entrar en el unbind debido al validate
+		 * 
+		 * assert object != null;
+		 * 
+		 * Dataset dataset;
+		 * 
+		 * dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		 * dataset.put("masterId", object.getSponsorShip().getId());
+		 * 
+		 * super.getResponse().addData(dataset);
+		 */
 	}
 
 }

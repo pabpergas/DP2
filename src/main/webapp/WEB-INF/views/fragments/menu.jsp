@@ -19,11 +19,14 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.claim" action="/any/claim/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-2" action="https://www.instagram.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-1" action="https://www.youtube.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-3" action="https://www.twitch.tv/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-4" action="https://www.facebook.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-5" action="https://www.tiktok.com"/>
+			
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.anonymous.claim" action="/any/claim/list" access="isAnonymous()"/>
 
@@ -36,6 +39,11 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.principal" access="hasRole('Authenticated')">	
+			<acme:menu-suboption code="master.menu.principal.claim" action="/any/claim/list"/>
+		</acme:menu-option>
+		
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
@@ -43,11 +51,9 @@
 		
 
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
-			
-			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
-		</acme:menu-option>
+			<acme:menu-suboption code="master.menu.client.list" action="/client/contract/list"/>
+    </acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.all-projects" action="/manager/project/list-all"/>
@@ -66,7 +72,6 @@
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.sponsor-ships" action="/sponsor/sponsor-ship/list-mine" access="hasRole('Sponsor')"/>
-						<acme:menu-suboption code="master.menu.sponsor.invoices" action="/sponsor/invoice/list-all" access="hasRole('Sponsor')"/>
 			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-dashboard/show"/>
@@ -79,6 +84,12 @@
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-dashboard/show" access="hasRole('Auditor')"/>
 		</acme:menu-option>
 		
+				<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-modules" action="/developer/training/list-mine" access="hasRole('Developer')"/>
+			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
+		</acme:menu-option>
 		<acme:menu-option code="master.menu.anonymous.claim" action="/any/claim/list" access="!isAnonymous()"/>
 		
 	</acme:menu-left>
@@ -89,6 +100,7 @@
 
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
 			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>

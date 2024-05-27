@@ -42,6 +42,13 @@ master.menu.sponsor.sponsor-ships = SponsorShip
 master.menu.sponsor.invoices = Invoices
 master.menu.sponsor.dashboard = DashBoard
 
+# master.menu.developer ########################################################
+
+master.menu.developer = Developer
+master.menu.developer.training-modules = Training Modules
+master.menu.developer.training-sessions = Training Sessions
+master.menu.developer.dashboard = DashBoard
+
 
 # master.menu.provider ########################################################
 
@@ -76,7 +83,7 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.client ##########################################################
 
 master.menu.client=Client
-master.menu.client.contract= Contract
+master.menu.client.list= Contract
 master.menu.client.progressLog= ProgressLog
 master.menu.client.dashboard= Dashboard
 

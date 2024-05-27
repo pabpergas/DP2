@@ -13,39 +13,38 @@ import acme.roles.Client;
 @Controller
 public class ClientProgressLogController extends AbstractController<Client, ProgressLog> {
 
-	@Autowired
-	private ClientProgressLogListMineService	listMineService;
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientProgressListAllService		listAllService;
+	private ClientProgressLogListService	listService;
 
 	@Autowired
-	private ClientProgressLogShowService		showService;
+	private ClientProgressLogShowService	showService;
 
 	@Autowired
-	private ClientProgressLogCreateService		createService;
+	private ClientProgressLogCreateService	createService;
 
 	@Autowired
-	private ClientProgressLogUpdateService		updateService;
+	private ClientProgressLogUpdateService	updateService;
 
 	@Autowired
-	private ClientProgressLogDeleteService		deleteService;
+	private ClientProgressLogDeleteService	deleteService;
 
 	@Autowired
-	private ClientProgressLogPublishService		publishService;
+	private ClientProgressLogPublishService	publishService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-
+		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
-		super.addCustomCommand("list-mine", "list", this.listMineService);
-		super.addCustomCommand("list-all", "list", this.listAllService);
 		super.addCustomCommand("publish", "update", this.publishService);
-
 	}
+
 }

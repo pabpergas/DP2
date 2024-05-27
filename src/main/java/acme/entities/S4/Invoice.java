@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -29,6 +31,11 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "sponsor_ship_id"), //
+	@Index(columnList = "code")
+
+})
 public class Invoice extends AbstractEntity {
 
 	/**
@@ -50,6 +57,7 @@ public class Invoice extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dueDate;
 
+	//Si la tasa fuera del 100% y quantity = USD 500.000, totalAmount = 1.000.000, limite superior => 500.000
 	@NotNull
 	@Valid
 	private Money				quantity;

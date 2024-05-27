@@ -35,12 +35,12 @@ public class AuditRecord extends AbstractEntity {
 	@Column(unique = true)
 	private String				code;
 
-	@Past(message = "{auditor.audittRecord.error.startAudition}")
+	@Past(message = "{auditor.auditRecord.error.startAudition}")
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startAudition;
 
-	@PastOrPresent(message = "{auditor.AuditRecord.error.endAudition}")
+	@PastOrPresent(message = "{auditor.auditRecord.error.endAudition}")
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endAudition;

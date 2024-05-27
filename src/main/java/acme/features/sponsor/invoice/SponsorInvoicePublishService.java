@@ -30,11 +30,14 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		boolean status;
 		int invoiceId;
 		SponsorShip sponsorship;
+		Invoice object;
 
 		invoiceId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorShipByInvoiceId(invoiceId);
+		object = this.repository.findOneInvoiceById(invoiceId);
 
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		//No se puede comprobar el camino donde invoice NO este en draftMode y sponsorShip SI lo este
+		status = sponsorship != null && object.isDraftMode() && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -54,7 +57,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 
 	}
 
@@ -70,7 +73,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 
-			existing = this.repository.findOneInvoiceByCode(object.getCode());
+			existing = this.repository.findOneInvoiceByCodeAndDistinctId(object.getCode(), object.getId());
 			super.state(existing == null, "code", "sponsor.invoice.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
@@ -84,7 +87,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		}
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
 
-			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.error.quantity");
+			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 500000, "quantity", "sponsor.invoice.error.quantity");
 			super.state(object.getQuantity().getCurrency().equals(sponsorShipCurrency), "quantity", "sponsor.invoice.error.quantity.currency");
 		}
 
