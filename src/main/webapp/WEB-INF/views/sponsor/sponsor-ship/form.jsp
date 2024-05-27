@@ -18,7 +18,6 @@
 <acme:form>
 	<acme:input-textbox code="sponsor.sponsorShip.list.label.code" path="code" placeholder="sponsor.sponsorShip.form.placerholder.code"/>
 	<acme:input-select code="sponsor.sponsorShip.list.label.project.title" path="project" choices="${projects}"/>
-	<acme:input-moment code="sponsor.sponsorShip.list.label.moment" path="moment" readonly = "true"/>
 	<acme:input-moment code="sponsor.sponsorShip.list.label.startDate" path="startDate"/>
 	<acme:input-moment code="sponsor.sponsorShip.list.label.endDate" path="endDate"/>
 	<acme:input-money code="sponsor.sponsorShip.list.label.amount" path="amount"/>
