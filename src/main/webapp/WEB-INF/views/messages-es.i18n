@@ -1,0 +1,6 @@
+# messages-es.i18n
+
+validation.Contract.code = El código de un contrato debe seguir alguno de los siguentes patrones: A-111, AA-111 y AAA-111
+validation.ProgressLog.recordId = El recordId de un registro de progreso debe seguir alguno de los siguentes patrones: PG-A-1111 y PG-AA-1111
+validation.Client.identification = El código de un cliente debe seguir el patrón de ejemplo: CLI-1111
+validation.Client.type = El tipo solo puede ser company o individual
