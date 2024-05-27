@@ -30,7 +30,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		auditRecord = this.repo.findById(auditRecordId);
 		auditor = auditRecord.getCodeAudit().getAuditor();
 
-		status = auditRecord != null && super.getRequest().getPrincipal().hasRole(auditor) && auditRecord.getCodeAudit().getAuditor().equals(auditor);
+		status = auditRecord != null && auditRecord.getCodeAudit().getAuditor().equals(auditor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,15 +60,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			AuditRecord existing;
-			existing = this.repo.findOneByCode(object.getCode());
-			
-			if(!existing.equals(object)) {
-				
-				super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");}
-		}
-	
+		
 		if (!super.getBuffer().getErrors().hasErrors("endAudition")) {
 			long diffInMili;
 			long diffInHour;
@@ -77,11 +69,25 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 				diffInMili = object.getEndAudition().getTime() - object.getStartAudition().getTime();
 				diffInHour = TimeUnit.MILLISECONDS.toHours(diffInMili);
 				super.state(diffInHour >= 1, "endAudition", "auditor.auditRecord.error.duration");
-				super.state(object.getStartAudition() != null || object.getStartAudition().before(object.getEndAudition()),
-						"endAudition", "auditor.auditRecord.error.badDates");
 			}
 		}
 		
+		if (!super.getBuffer().getErrors().hasErrors("startAudition")) {
+			if(object.getEndAudition() != null) {
+				super.state(object.getStartAudition().before(object.getEndAudition()),
+						"startAudition", "auditor.auditRecord.error.badDates");
+			}
+			}
+		
+		if(!super.getBuffer().getErrors().hasErrors("code")) {
+			AuditRecord existing;
+			existing = this.repo.findOneByCode(object.getCode());
+			if(existing != null) {
+			if(!existing.equals(object)) {
+				
+				super.state(existing == null, "code", "auditor.codeAudit.error.code.duplicated");}
+		}
+		}
 	}
 
 	@Override
