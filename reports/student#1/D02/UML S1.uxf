@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
+      <x>450</x>
       <y>126</y>
       <w>522</w>
       <h>162</h>
@@ -15,10 +15,10 @@ Project
 + code: String {Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$"), NotBlank, Unique}
 + title: String {NotBlank, Length(0, 75)}
 + summary: String {NotBlank, Length(0, 100)}
-+ hasFatalErrors: Boolean {NotNull}
-+ cost: Integer {PositiveOrZero}
-+ link: String {URL, Length(0, 100)}
-+ darftMode: Boolean {NotNull}
++ hasFatalErrors: boolean {NotNull}
++ cost: Integer {PositiveOrZero, Max(10000)}
++ link: String {URL, Length(0, 255)}
++ darftMode: boolean
 bg=GREEN
 fg=BLACK</panel_attributes>
     <additional_attributes/>
@@ -26,7 +26,7 @@ fg=BLACK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
+      <x>504</x>
       <y>414</y>
       <w>396</w>
       <h>135</h>
@@ -37,9 +37,9 @@ UserStories
 + title: String {NotBlank, Length(0, 75)}
 + description: String {NotBlank, Length(0, 100)}
 + acceptanceCriteria: String {NotBlank, Length(0, 100)}
-+ estimatedCost: Integer {Positive}
++ estimatedCost: Integer {Positive, Max(10000)}
 + priority: priorityUserStories {NotNull}
-+ link: String {URL, Length(0, 100)}
++ link: String {URL, Length(0, 255)}
 fg=DARK_GRAY
 bg=GREEN</panel_attributes>
     <additional_attributes/>
@@ -47,7 +47,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
+      <x>693</x>
       <y>279</y>
       <w>27</w>
       <h>153</h>
@@ -59,7 +59,7 @@ bg=BLACK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>918</x>
+      <x>927</x>
       <y>414</y>
       <w>126</w>
       <h>99</h>
@@ -77,7 +77,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>45</x>
+      <x>54</x>
       <y>297</y>
       <w>288</w>
       <h>126</h>
@@ -95,7 +95,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
+      <x>189</x>
       <y>180</y>
       <w>279</w>
       <h>135</h>
@@ -109,7 +109,7 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
+      <x>180</x>
       <y>414</y>
       <w>342</w>
       <h>108</h>
