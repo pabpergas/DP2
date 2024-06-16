@@ -25,8 +25,9 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 		UserStories us = this.repo.findUserStoryById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
 
-		final boolean status = us != null && principal.hasRole(Manager.class);
+		final boolean status = us != null && us.getManager().getUserAccount().getId() == userAccountId || us != null && !us.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}

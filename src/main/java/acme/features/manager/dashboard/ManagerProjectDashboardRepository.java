@@ -38,4 +38,10 @@ public interface ManagerProjectDashboardRepository extends AbstractRepository {
 
 	@Query("SELECT max(p.cost) FROM Project p WHERE p.manager.userAccount.id = :id")
 	Double maxCostProject(int id);
+
+	@Query("SELECT count(p) FROM Project p WHERE p.manager.userAccount.id = :id")
+	Integer numeroDeProyectos(int id);
+
+	@Query("SELECT count(us) FROM UserStories us WHERE us.manager.userAccount.id = :id")
+	Integer numeroDeUs(int id);
 }

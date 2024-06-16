@@ -30,7 +30,7 @@ public class ManagerUserStoriesListByProjectService extends AbstractService<Mana
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
 
-		final boolean authorise = project != null && principal.hasRole(Manager.class) && project.getManager().getUserAccount().getId() == userAccountId;
+		final boolean authorise = project != null && project.getManager().getUserAccount().getId() == userAccountId || project != null && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(authorise);
 	}
