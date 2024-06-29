@@ -19,22 +19,17 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 	@Override
 	public void authorise() {
-		/*
-		 * boolean status;
-		 * int pId;
-		 * Manager manager;
-		 * Project p;
-		 * 
-		 * pId = super.getRequest().getData("id", int.class);
-		 * p = this.repo.findProjectById(pId);
-		 * 
-		 * manager = p == null ? null : p.getManager();
-		 * status = manager != null && super.getRequest().getPrincipal().hasRole(manager);
-		 * 
-		 * super.getResponse().setAuthorised(status);
-		 */
+		boolean status;
+		int masterId;
 
-		super.getResponse().setAuthorised(true);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+
+		masterId = super.getRequest().getData("id", int.class);
+		Project project = this.repo.findProjectById(masterId);
+		status = project != null && project.getManager().getUserAccount().getId() == userAccountId || project != null && !project.isDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

@@ -33,6 +33,9 @@ public class ManagerProjectDashboardShowService extends AbstractService<Manager,
 		Principal principal = super.getRequest().getPrincipal();
 		int id = principal.getAccountId();
 
+		int numProjects = this.repo.numeroDeProyectos(id);
+		int numUs = this.repo.numeroDeUs(id);
+
 		db = new managerDashboard();
 
 		Integer totalMusts = this.repo.totalUserStoriesByPriority(priorityUserStories.Must, id);
@@ -56,12 +59,18 @@ public class ManagerProjectDashboardShowService extends AbstractService<Manager,
 		db.setTotalWonts(totalWonts);
 
 		db.setAverageEstimatedCostUserHistory(avgCostUS);
-		db.setDeviationEstimatedCostUserHistory(devCostUS);
+		if (numUs > 1)
+			db.setDeviationEstimatedCostUserHistory(devCostUS);
+		else
+			db.setDeviationEstimatedCostUserHistory(null);
 		db.setMinimiunEstimatedCostUserHistory(minCostUS);
 		db.setMaximunEstimatedCostUserHistory(maxCostUS);
 
 		db.setAverageEstimatedCostProject(avgCostProject);
-		db.setDeviationEstimatedCostProject(devCostProject);
+		if (numProjects > 1)
+			db.setDeviationEstimatedCostProject(devCostProject);
+		else
+			db.setDeviationEstimatedCostProject(null);
 		db.setMinimiunEstimatedCostProject(minCostProject);
 		db.setMaximunEstimatedCostProject(maxCostProject);
 
