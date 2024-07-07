@@ -1,35 +1,63 @@
 # messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
 
-client.contract.form.title = Contract form 
-client.contract.list.title = Listing of Contracts
+#Cabecera de titulos de pantallas
 
-client.contract.form.label.code = Code:
-client.contract.form.label.instantiationMoment = InstantiationMoment: 
-client.contract.form.label.providerName = ProviderName:
-client.contract.form.label.customerName = CustomerName:
-client.contract.form.label.goals = Goals:
-client.contract.form.label.budget = Budget:
-client.contract.form.label.project = Projects
-		
-client.contract.form.button.progressLog = ProgressLog
-client.contract.form.button.publish = Publish
+client.contract.list.title= List of your contracts
+client.contract.form.title= Contract detail
 
+#detalles del listado
 client.contract.list.label.code = Code
-client.contract.list.label.instantiationMoment = InstantiationMoment
-client.contract.list.label.providerName = ProviderName
-client.contract.list.label.customerName = CustomerName
+client.contract.list.label.instantiationMoment = Instantiation Moment
+client.contract.list.label.providerName = Provider
+client.contract.list.label.customerName = Customer
 client.contract.list.label.goals = Goals
 client.contract.list.label.budget = Budget
-client.contract.form.label.projectTitle = Project Title
+client.contract.list.label.project = Project
+client.contract.list.label.draftMode = Editable
 
-client.contract.list.button.create = Create contract
-client.contract.form.button.create = Create
-client.contract.form.button.update = Update contract
-client.contract.form.button.delete = Delete contract
+#detalles del formulario
+client.contract.form.label.code = Code
+client.contract.form.label.instantiationMoment = Instantiation Moment
+client.contract.form.label.providerName = Provider
+client.contract.form.label.customerName = Customer
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.project = Project
 
-client.contract.form.error.duplicated = This code is taken
-client.contract.form.error.higher-cost = The budget can be higher than project cost
-client.contract.form.error.higher-amount = A budget cannot be greater than 1000000.00
-client.contract.form.error.lower-amount = A budget cannot be lower than 0.00
-client.contract.form.error.currency = The currency can only be EUR
+#placeholders del formulario
+client.contract.form.provider.placeholder = Provider
+client.contract.form.customer.placeholder = Customer
+client.contract.form.goals.placeholder = Define its goals
+client.contract.form.code.placeholder = [A-Z]{1,3}-[0-9]{3}
+
+#errores en el formulario
+client.contract.form.error.duplicated = This code is already in use
+client.contract.form.error.excededBudget = The budget you entered exceeds the total cost of the project. Please enter a budget that is within the project's budget constraints
+client.contract.form.error.negative-amount = Negative amounts are not allowed
+client.contract.form.error.currency-not-suported = Currency not supported. Supported currencies are EUR, USD, and GBP
+client.contract.form.error.different-currency = The selected currency does not match the project's currency. Please check the project's currency again
+#submits
+
+client.contract.form.button.update = Update 
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+
+
+client.contract.list.button.create-contract=Create Contract
+
+client.contract.form.button.create-contract=Create Contract
+
+client.contract.form.button.progressLogs = Progress Logs
+
+
+
+
 

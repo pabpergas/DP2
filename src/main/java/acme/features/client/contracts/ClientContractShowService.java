@@ -1,5 +1,5 @@
 
-package acme.features.client.contract;
+package acme.features.client.contracts;
 
 import java.util.Collection;
 
@@ -16,25 +16,24 @@ import acme.roles.Client;
 @Service
 public class ClientContractShowService extends AbstractService<Client, Contract> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	private ClientContractRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	ClientContractRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
+		Boolean status;
 		int masterId;
-		Contract contract;
+		Contract c;
 		Client client;
 
 		masterId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractById(masterId);
-		client = contract == null ? null : contract.getClient();
-		status = super.getRequest().getPrincipal().hasRole(client) && contract != null;
+		c = this.repository.findOneContractById(masterId);
+		client = c == null ? null : c.getClient();
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsContract = c.getClient() == activeClient;
+		status = c != null && clientOwnsContract && c.isDraftMode() || super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -54,18 +53,26 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 	public void unbind(final Contract object) {
 		assert object != null;
 
+		int contractId;
 		Collection<Project> projects;
 		SelectChoices choices;
+
+		if (object.isDraftMode())
+			projects = this.repository.findAllProjects();
+		else {
+			contractId = super.getRequest().getData("id", int.class);
+			projects = this.repository.findOneProjectByContractId(contractId);
+
+		}
+
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		Dataset dataset;
 
-		projects = this.repository.findAllProjectsPublished();
-
-		choices = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "client", "published");
-		dataset.put("projectTitle", object.getProject().getTitle());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 

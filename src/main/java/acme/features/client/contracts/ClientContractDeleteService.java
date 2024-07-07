@@ -1,5 +1,5 @@
 
-package acme.features.client.contract;
+package acme.features.client.contracts;
 
 import java.util.Collection;
 
@@ -17,49 +17,49 @@ import acme.roles.Client;
 @Service
 public class ClientContractDeleteService extends AbstractService<Client, Contract> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	private ClientContractRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	private ClientContractRepository clientContractRepository;
 
 
 	@Override
 	public void authorise() {
+
 		boolean status;
 		int masterId;
 		Contract contract;
 		Client client;
 
 		masterId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractById(masterId);
+		contract = this.clientContractRepository.findOneContractById(masterId);
 		client = contract == null ? null : contract.getClient();
-		status = contract != null && !contract.isPublished() && super.getRequest().getPrincipal().hasRole(client);
+		status = contract != null && contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Contract object;
+
+		Contract contract;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneContractById(id);
 
-		super.getBuffer().addData(object);
+		contract = this.clientContractRepository.findOneContractById(id);
+
+		super.getBuffer().addData(contract);
 	}
 
 	@Override
 	public void bind(final Contract object) {
+
 		assert object != null;
 
 		int projectId;
 		Project project;
 
 		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
+		project = this.clientContractRepository.findOneProjectById(projectId);
 
 		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
@@ -68,34 +68,36 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+
 	}
 
 	@Override
 	public void perform(final Contract object) {
+
 		assert object != null;
 
 		Collection<ProgressLog> progressLogs;
 
-		progressLogs = this.repository.findManyProgressLogByContractId(object.getId());
-		this.repository.deleteAll(progressLogs);
-		this.repository.delete(object);
+		progressLogs = this.clientContractRepository.findManyProgressLogByContractId(object.getId());
+
+		this.clientContractRepository.deleteAll(progressLogs);
+		this.clientContractRepository.delete(object);
 	}
 
 	@Override
 	public void unbind(final Contract object) {
+
 		assert object != null;
 
-		int clientId;
 		Collection<Project> projects;
 		SelectChoices choices;
+
+		projects = this.clientContractRepository.findAllProjects();
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		Dataset dataset;
 
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsByClientId(clientId);
-
-		choices = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "client", "published");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

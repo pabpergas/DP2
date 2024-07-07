@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progressLogs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,25 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogShowService extends AbstractService<Client, ProgressLog> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private ClientProgressLogRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
+
 		boolean status;
 		int progressLogId;
 		Contract contract;
+		ProgressLog pl;
 
 		progressLogId = super.getRequest().getData("id", int.class);
+		pl = this.repository.findOneProgressLogById(progressLogId);
 		contract = this.repository.findOneContractByProgressLogId(progressLogId);
-		status = contract != null && contract.getClient().getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername()) && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsPl = pl.getContract().getClient() == activeClient;
+		status = contract != null && clientOwnsPl && (!contract.isDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -43,15 +45,18 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 		object = this.repository.findOneProgressLogById(id);
 
 		super.getBuffer().addData(object);
+
 	}
 
 	@Override
 	public void unbind(final ProgressLog object) {
+
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
+
 		dataset.put("masterId", object.getContract().getId());
 
 		super.getResponse().addData(dataset);

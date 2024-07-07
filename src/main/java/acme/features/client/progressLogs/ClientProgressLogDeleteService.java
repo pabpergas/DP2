@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progressLogs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,8 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogDeleteService extends AbstractService<Client, ProgressLog> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private ClientProgressLogRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -26,19 +22,24 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 		boolean status;
 		int progressLogId;
 		Contract contract;
-		ProgressLog progressLog;
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		contract = this.repository.findOneContractByProgressLogId(progressLogId);
-		progressLog = this.repository.findOneProgressLogById(progressLogId);
-		status = contract != null && !contract.isPublished() && !progressLog.isPublished() && contract.getClient().getUserAccount().getUsername().equals(super.getRequest().getPrincipal().getUsername())
-			&& super.getRequest().getPrincipal().hasRole(contract.getClient());
+		ProgressLog pl = this.repository.findOneProgressLogById(progressLogId);
+
+		int activeClientId = super.getRequest().getPrincipal().getActiveRoleId();
+		Client activeClient = this.repository.findOneClientById(activeClientId);
+		boolean clientOwnsPl = pl.getContract().getClient() == activeClient;
+
+		status = pl.isDraftMode() && clientOwnsPl && contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
+
 		ProgressLog object;
 		int id;
 
@@ -46,18 +47,27 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 		object = this.repository.findOneProgressLogById(id);
 
 		super.getBuffer().addData(object);
+
 	}
 
 	@Override
 	public void bind(final ProgressLog object) {
+
 		assert object != null;
 
+		int progressLogId;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		Contract contract = this.repository.findOneContractByProgressLogId(progressLogId);
+
 		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		object.setContract(contract);
 	}
 
 	@Override
 	public void validate(final ProgressLog object) {
 		assert object != null;
+
 	}
 
 	@Override
@@ -73,7 +83,10 @@ public class ClientProgressLogDeleteService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+
+		dataset.put("masterId", object.getContract().getId());
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

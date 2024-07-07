@@ -1,3 +1,3 @@
-key,key:userAccount,identification,companyName,type,email,link
-client-01,user-account-client-01,CLI-0000,Company name,COMPANY,acme@sf.com,http://AcmeSF
-client-02,user-account-client-02,CLI-0001,C,COMPANY,acme@sf.com,http://AcmeSF
+key,key:userAccount,identification,company-name,type,email,link
+client-01,user-account-client-01,CLI-0000,Company name,COMPANY,acme@sf.com,http://AcmeSF.com/
+client-02,user-account-client-02,CLI-0001,C,COMPANY,acme@sf.com,http://AcmeSF.com/

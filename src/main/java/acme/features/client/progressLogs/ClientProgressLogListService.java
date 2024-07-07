@@ -1,7 +1,8 @@
 
-package acme.features.client.progressLog;
+package acme.features.client.progressLogs;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,25 +16,23 @@ import acme.roles.Client;
 @Service
 public class ClientProgressLogListService extends AbstractService<Client, ProgressLog> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private ClientProgressLogRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
+
 		boolean status;
 		int masterId;
 		Contract contract;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
-		status = contract != null && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		status = contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 		int masterId;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findManyProgressLogsByMasterId(masterId);
+		objects = this.repository.findManyProgressLogByContractId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -53,13 +52,21 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "published");
+		dataset = super.unbind(object, "recordId", "completeness", "registrationMoment", "responsiblePerson", "draftMode");
+
+		if (object.isDraftMode()) {
+			final Locale local = super.getRequest().getLocale();
+
+			dataset.put("draftMode", local.equals(Locale.ENGLISH) ? "Yes" : "Sí");
+		} else
+			dataset.put("draftMode", "No");
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void unbind(final Collection<ProgressLog> objects) {
+
 		assert objects != null;
 
 		int masterId;
@@ -72,7 +79,7 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
-		super.getResponse().addGlobal("contractPublished", contract.isPublished());
+
 	}
 
 }
