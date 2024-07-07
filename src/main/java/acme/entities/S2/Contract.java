@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -29,8 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "id"), @Index(columnList = "code"), @Index(columnList = "client_id"), @Index(columnList = "project_id"), @Index(columnList = "client_id, published")
-
+	@Index(columnList = "client_id"), @Index(columnList = "project_id"), @Index(columnList = "code")
 })
 public class Contract extends AbstractEntity {
 
@@ -40,32 +39,32 @@ public class Contract extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$", message = "{validation.Contract.code}")
+	@Pattern(regexp = "^[A-Z]{1,3}-[0-9]{3}$")
+	@Column(unique = true)
 	private String				code;
 
 	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	@PastOrPresent
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 75, min = 0)
+	@Length(max = 75)
 	private String				providerName;
 
 	@NotBlank
-	@Length(max = 75, min = 0)
+	@Length(max = 75)
 	private String				customerName;
 
 	@NotBlank
-	@Length(max = 100, min = 0)
+	@Length(max = 100)
 	private String				goals;
 
 	@NotNull
 	private Money				budget;
 
-	private boolean				published;
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -80,4 +79,5 @@ public class Contract extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Client				client;
+
 }

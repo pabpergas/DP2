@@ -83,7 +83,7 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.client ##########################################################
 
 master.menu.client=Client
-master.menu.client.list= Contract
+master.menu.client.list-contract= Contract
 master.menu.client.progressLog= ProgressLog
 master.menu.client.dashboard= Dashboard
 
