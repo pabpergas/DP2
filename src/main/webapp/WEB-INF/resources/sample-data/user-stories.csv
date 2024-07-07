@@ -44,3 +44,4 @@ userStory-30,title1,description1,ac1,10,WillNot,http://www.lorem-ipsum.org/dolor
 userStory-31,title1,description1,ac1,10,WillNot,http://example.org?a=1&b=2,true,manager-02
 userStory-32,title1,description1,ac1,10,WillNot,http://www.lorem-ipsum.org/dolor/sit.html,true,manager-02
 userStory-33,title1,description1,ac1,10,WillNot,http://www.lorem-ipsum.org/dolor/sit.html#dolor,true,manager-02
+userStory-34,111historiaPublicada,description1,ac1,10,WillNot,http://www.lorem-ipsum.org/dolor/sit.html#dolor,false,manager-01
