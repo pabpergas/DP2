@@ -41,4 +41,7 @@ public interface ClientDashboardRepository extends AbstractRepository {
 
 	@Query("select s from SystemConfiguration s")
 	List<SystemConfiguration> findSystemConfiguration();
+
+	@Query("SELECT count(p) FROM Contract p WHERE p.client.id = :id and p.draftMode = false")
+	Integer numeroDeContratos(int id);
 }

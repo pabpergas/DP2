@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>104</y>
+      <w>352</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String {NotBlank, Unique, Pattern("[A-Z]{3}-[0-9]{4}")}
++ title: String {NotBlank,length(0,75)}
++ summary: String {NotBlank,length(0,100)}
++ hasFatalErrors: boolean
++ cost: Integer {NotNull, PositiveOrZero, Max(10000}
++ link: String {URL, length(0,255)}
++ draftMode: boolean 
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>656</x>
+      <y>376</y>
+      <w>360</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Contract
+--
++ code: String {NotBlank, Unique, Pattern("[A-Z]{1,3}-[0-9]{3}")}
++ instantiationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ providerName: String {NotBlank, length(1,75)}
++ customerName: String {NotBlank, length(1,75)}
++ goals: String {NotBlank, length(1,100)}
++ budget: Money {NotNull}
++ draftMode: boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>224</y>
+      <w>56</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+rules ^
+m1=1
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1104</x>
+      <y>384</y>
+      <w>400</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ProgressLogs
+--
++ recordId: String {NotBlank, Unique, Pattern("PG-[A-Z]{1,2}-[0-9]{4}")}
++ completeness: double {Range(min=0,max=100)}
++ comment: String {NotBlank, length(1,100)}
++ registrationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ responsiblePerson: String {NotBlank, length(1,75)}
++ draftMode: boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>416</y>
+      <w>112</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+
+m2= 1..*</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>248</y>
+      <w>288</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ClientDashboard
+--
++ totalNumProgressLogLessThan25: double
++ totalNumProgressLogBetween25and50: double
++ totalNumProgressLogBetween50and75: double
++ totalNumProgressLogAbove75: double
++ averagePerCurrency: Map&lt;String,Double&gt;
++ deviationPerCurrency: Map&lt;String,Double&gt;
++ minimumPerCurrency: Map&lt;String,Double&gt;
++ maximumPerCurrency: Map&lt;String,Double&gt;
++ supportedCurrencies: String[]
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>568</y>
+      <w>376</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Client
+--
++ identification: String{NotBlank, Unique, Pattern("CLI-[0-9]{4}")}
++ companyName: String{NotBlank, length(1,75)}
++ type: ClientRoleType {NotNull}
++ email: String {NotBlank, Email}
++ link: String {URL}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>808</x>
+      <y>496</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+
+created by ^
+m1=1
+m2=  0..*
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1056</x>
+      <y>552</y>
+      <w>96</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+ClientRoleType
+--
++ COMPANY
++ INDIVIDUAL
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>456</x>
+      <y>464</y>
+      <w>144</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Budget must be lower or 
+equal than the project cost.
+bg=#FFD444
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>472</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+</diagram>

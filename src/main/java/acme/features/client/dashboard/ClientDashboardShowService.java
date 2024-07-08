@@ -40,6 +40,8 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		ClientDashboard clientDashboard;
 
+		Integer NumeroDeContratos = this.repository.numeroDeContratos(clientId);
+
 		clientDashboard = new ClientDashboard();
 
 		Collection<ProgressLog> progressLogsPublished = this.repository.findAllProgressLogs().stream().filter(x -> !x.isDraftMode()).toList();
@@ -92,7 +94,10 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		clientDashboard.setMaximumPerCurrency(maximoPorCurrency);
 		clientDashboard.setMinimumPerCurrency(minimoPorCurrency);
 		clientDashboard.setAveragePerCurrency(mediaPorCurrency);
-		clientDashboard.setDeviationPerCurrency(desviacionPorCurrency);
+		if (NumeroDeContratos > 1)
+			clientDashboard.setDeviationPerCurrency(desviacionPorCurrency);
+		else
+			clientDashboard.setDeviationPerCurrency(null);
 
 		clientDashboard.setSupportedCurrencies(supportedCurrencies);
 		super.getBuffer().addData(clientDashboard);
