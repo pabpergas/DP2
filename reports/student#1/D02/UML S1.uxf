@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>126</y>
+      <x>513</x>
+      <y>117</y>
       <w>522</w>
       <h>162</h>
     </coordinates>
@@ -26,8 +26,8 @@ fg=BLACK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>414</y>
+      <x>567</x>
+      <y>405</y>
       <w>396</w>
       <h>135</h>
     </coordinates>
@@ -47,8 +47,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>279</y>
+      <x>756</x>
+      <y>270</y>
       <w>27</w>
       <h>153</h>
     </coordinates>
@@ -59,8 +59,8 @@ bg=BLACK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>927</x>
-      <y>414</y>
+      <x>990</x>
+      <y>405</y>
       <w>126</w>
       <h>99</h>
     </coordinates>
@@ -77,8 +77,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
-      <y>297</y>
+      <x>117</x>
+      <y>288</y>
       <w>288</w>
       <h>126</h>
     </coordinates>
@@ -88,15 +88,15 @@ Manager
 + degree: String {NotBlank, Length(0, 75)}
 + overview: String {NotBlank, Length(0, 100)}
 + certifications: String {NotBlank, Length(0, 100)}
-+ link: String {URL, Length(0, 100)}
++ link: String {URL, Length(0, 255)}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>180</y>
+      <x>252</x>
+      <y>171</y>
       <w>279</w>
       <h>135</h>
     </coordinates>
@@ -109,8 +109,8 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>414</y>
+      <x>243</x>
+      <y>405</y>
       <w>342</w>
       <h>108</h>
     </coordinates>
