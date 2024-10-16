@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.S1.UserStories.priorityUserStories;
+import acme.entities.S1.UserStory.priorityUserStories;
 import acme.forms.managerDashboard;
 import acme.roles.Manager;
 

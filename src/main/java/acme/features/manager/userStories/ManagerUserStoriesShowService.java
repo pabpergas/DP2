@@ -8,12 +8,12 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.S1.UserStories;
-import acme.entities.S1.UserStories.priorityUserStories;
+import acme.entities.S1.UserStory;
+import acme.entities.S1.UserStory.priorityUserStories;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoriesShowService extends AbstractService<Manager, UserStories> {
+public class ManagerUserStoriesShowService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoriesRepository repo;
@@ -22,7 +22,7 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		UserStories us = this.repo.findUserStoryById(id);
+		UserStory us = this.repo.findUserStoryById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
@@ -34,7 +34,7 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 
 	@Override
 	public void load() {
-		UserStories object;
+		UserStory object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
@@ -44,7 +44,7 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 	}
 
 	@Override
-	public void unbind(final UserStories object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 		int masterId;
 		boolean autorizado;
@@ -53,7 +53,7 @@ public class ManagerUserStoriesShowService extends AbstractService<Manager, User
 		SelectChoices choices = SelectChoices.from(priorityUserStories.class, object.getPriority());
 
 		masterId = super.getRequest().getData("id", int.class);
-		UserStories us = this.repo.findUserStoryById(masterId);
+		UserStory us = this.repo.findUserStoryById(masterId);
 		autorizado = us != null && us.getManager().getUserAccount().getId() == userAccountId;
 
 		Dataset dataset;

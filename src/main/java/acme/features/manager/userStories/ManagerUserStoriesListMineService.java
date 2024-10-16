@@ -13,7 +13,7 @@ import acme.entities.S1.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoriesListService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoriesListMineService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoriesRepository repo;
@@ -30,7 +30,11 @@ public class ManagerUserStoriesListService extends AbstractService<Manager, User
 
 	@Override
 	public void load() {
-		Collection<UserStory> userStories = this.repo.findUserStories();
+
+		Collection<UserStory> userStories;
+
+		Principal principal = super.getRequest().getPrincipal();
+		userStories = this.repo.findUserStoriesByManagerId(principal.getActiveRoleId());
 
 		super.getBuffer().addData(userStories);
 	}

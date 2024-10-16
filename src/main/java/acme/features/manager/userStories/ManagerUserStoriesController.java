@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.S1.UserStories;
+import acme.entities.S1.UserStory;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerUserStoriesController extends AbstractController<Manager, UserStories> {
+public class ManagerUserStoriesController extends AbstractController<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoriesShowService			showService;
@@ -34,6 +34,9 @@ public class ManagerUserStoriesController extends AbstractController<Manager, Us
 	@Autowired
 	private ManagerUserStoriesPublishService		publishService;
 
+	@Autowired
+	private ManagerUserStoriesListMineService		listMineService;
+
 
 	@PostConstruct
 	protected void initialice() {
@@ -44,6 +47,7 @@ public class ManagerUserStoriesController extends AbstractController<Manager, Us
 		super.addBasicCommand("delete", this.deleteService);
 
 		super.addCustomCommand("list-by-proyect", "list", this.listByProjectService);
+		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }

@@ -12,11 +12,11 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S1.Project;
 import acme.entities.S1.ProjectUserStories;
-import acme.entities.S1.UserStories;
+import acme.entities.S1.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoriesListByProjectService extends AbstractService<Manager, UserStories> {
+public class ManagerUserStoriesListByProjectService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoriesRepository repo;
@@ -37,7 +37,7 @@ public class ManagerUserStoriesListByProjectService extends AbstractService<Mana
 
 	@Override
 	public void load() {
-		Collection<UserStories> userStories;
+		Collection<UserStory> userStories;
 
 		final int projectId = super.getRequest().getData("projectId", int.class);
 		userStories = this.repo.findProjectUserStoriesByProjectId(projectId).stream().map(ProjectUserStories::getUserStories).collect(Collectors.toList());
@@ -46,7 +46,7 @@ public class ManagerUserStoriesListByProjectService extends AbstractService<Mana
 	}
 
 	@Override
-	public void unbind(final UserStories object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 
 		Dataset dataset;

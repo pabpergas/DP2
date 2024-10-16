@@ -27,7 +27,7 @@
 	<jstl:choose>
 		<jstl:when  test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">  
 			<acme:button code="manager.project.form.button.add-userstories" action="/manager/project-user-stories/create?projectId=${id}"/>
-			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-stories/list-by-proyect?projectId=${id}"/>
+			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-story/list-by-proyect?projectId=${id}"/>
 			<acme:submit code="manager.project.list.button.update" action="/manager/project/update"/>
 			<acme:submit code="manager.project.list.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.list.button.publish" action="/manager/project/publish"/>
@@ -37,7 +37,7 @@
 			<acme:submit code="manager.project.list.button.create" action="/manager/project/create"/>
 		</jstl:when>
 		<jstl:otherwise>
-			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-stories/list-by-proyect?projectId=${id}"/>
+			<acme:button code="manager.project.form.button.list-userstories" action="/manager/user-story/list-by-proyect?projectId=${id}"/>
 		</jstl:otherwise>	
 	</jstl:choose> 
 

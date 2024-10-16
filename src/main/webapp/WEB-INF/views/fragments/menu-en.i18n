@@ -106,6 +106,7 @@ master.menu.manager = Manager
 master.menu.manager.all-projects = All projects
 master.menu.manager.my-projects = My projects
 master.menu.manager.user-stories = User Stories
+master.menu.manager.mine-user-stories = My user stories
 master.menu.manager.dashboard = Dashboard
 
 # master.menu.auditor ####################################################
