@@ -85,6 +85,7 @@ master.menu.manager = Manager
 master.menu.manager.all-projects = Todos los proyectos
 master.menu.manager.my-projects = Mis proyectos
 master.menu.manager.user-stories = Historias de Usuario
+master.menu.manager.mine-user-stories = Mis historias de usuario
 master.menu.manager.dashboard = Panel
 
 

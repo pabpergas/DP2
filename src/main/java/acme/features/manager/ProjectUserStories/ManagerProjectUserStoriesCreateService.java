@@ -12,7 +12,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S1.ProjectUserStories;
-import acme.entities.S1.UserStories;
+import acme.entities.S1.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -78,7 +78,7 @@ public class ManagerProjectUserStoriesCreateService extends AbstractService<Mana
 		assert object != null;
 		final int projectId = super.getRequest().getData("projectId", int.class);
 
-		Collection<UserStories> userStories = this.repo.findUserStories().stream() //
+		Collection<UserStory> userStories = this.repo.findUserStories().stream() //
 			.filter(us -> !this.repo.findProjectUserStoriesByProjectId(projectId).stream().map(ProjectUserStories::getUserStories).anyMatch(us2 -> us2.equals(us))).toList();
 
 		SelectChoices choices = SelectChoices.from(userStories, "title", object.getUserStories());

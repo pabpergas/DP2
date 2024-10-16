@@ -8,8 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.user-stories.list.title = User stories
-manager.user-stories.form.title = User story
+manager.user-story.list.title = User stories
+manager.user-story.form.title = User story
 
 manager.userstories.form.label.title = Title
 manager.userstories.form.label.description = Description

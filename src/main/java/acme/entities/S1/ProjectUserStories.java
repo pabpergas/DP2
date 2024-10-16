@@ -2,7 +2,9 @@
 package acme.entities.S1;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "project_id"), @Index(columnList = "id")
+})
 public class ProjectUserStories extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -33,6 +38,6 @@ public class ProjectUserStories extends AbstractEntity {
 	@NotNull
 	@ManyToOne(optional = false)
 	@Valid
-	protected UserStories		userStories;
+	protected UserStory		userStories;
 
 }

@@ -8,12 +8,12 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.S1.UserStories;
-import acme.entities.S1.UserStories.priorityUserStories;
+import acme.entities.S1.UserStory;
+import acme.entities.S1.UserStory.priorityUserStories;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoriesUpdateService extends AbstractService<Manager, UserStories> {
+public class ManagerUserStoriesUpdateService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoriesRepository repo;
@@ -22,7 +22,7 @@ public class ManagerUserStoriesUpdateService extends AbstractService<Manager, Us
 	@Override
 	public void authorise() {
 		int id = super.getRequest().getData("id", int.class);
-		UserStories us = this.repo.findUserStoryById(id);
+		UserStory us = this.repo.findUserStoryById(id);
 
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccount = principal.getAccountId();
@@ -35,32 +35,32 @@ public class ManagerUserStoriesUpdateService extends AbstractService<Manager, Us
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		UserStories userStory = this.repo.findUserStoryById(id);
+		UserStory userStory = this.repo.findUserStoryById(id);
 
 		super.getBuffer().addData(userStory);
 	}
 
 	@Override
-	public void bind(final UserStories object) {
+	public void bind(final UserStory object) {
 		assert object != null;
 
 		super.bind(object, "title", "description", "acceptanceCriteria", "estimatedCost", "priority", "link");
 	}
 
 	@Override
-	public void validate(final UserStories object) {
+	public void validate(final UserStory object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final UserStories object) {
+	public void perform(final UserStory object) {
 		assert object != null;
 
 		this.repo.save(object);
 	}
 
 	@Override
-	public void unbind(final UserStories object) {
+	public void unbind(final UserStory object) {
 		assert object != null;
 
 		SelectChoices choices = SelectChoices.from(priorityUserStories.class, object.getPriority());

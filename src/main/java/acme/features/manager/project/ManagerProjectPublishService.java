@@ -11,7 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.S1.Project;
 import acme.entities.S1.ProjectUserStories;
-import acme.entities.S1.UserStories;
+import acme.entities.S1.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -69,7 +69,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(!hasErrors, "hasFatalErrors", "manager.project.form.error.hasErrors");
 		}
 		int id = super.getRequest().getData("id", int.class);
-		Collection<UserStories> ls = this.repo.findProjectUserStoriesByProjectId(id).stream().map(ProjectUserStories::getUserStories).toList();
+		Collection<UserStory> ls = this.repo.findProjectUserStoriesByProjectId(id).stream().map(ProjectUserStories::getUserStories).toList();
 		final boolean noUs = ls.isEmpty();
 		super.state(!noUs, "*", "manager.project.error.usEmpty");
 
@@ -80,7 +80,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		object.setDraftMode(false);
-		Collection<UserStories> ls = this.repo.findProjectUserStoriesByProjectId(object.getId()).stream().map(ProjectUserStories::getUserStories).toList();
+		Collection<UserStory> ls = this.repo.findProjectUserStoriesByProjectId(object.getId()).stream().map(ProjectUserStories::getUserStories).toList();
 		ls.stream().forEach(us -> us.setDraftMode(false));
 
 		this.repo.save(object);
