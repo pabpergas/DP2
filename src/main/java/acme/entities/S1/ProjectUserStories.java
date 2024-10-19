@@ -38,6 +38,6 @@ public class ProjectUserStories extends AbstractEntity {
 	@NotNull
 	@ManyToOne(optional = false)
 	@Valid
-	protected UserStory		userStories;
+	protected UserStory			userStories;
 
 }
