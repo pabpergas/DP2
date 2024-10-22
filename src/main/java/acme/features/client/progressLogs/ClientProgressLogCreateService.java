@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.S2.Contract;
 import acme.entities.S2.ProgressLog;
@@ -40,16 +41,13 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 	@Override
 	public void load() {
-		ProgressLog object;
-		int masterId;
-		Contract contract;
+		ProgressLog object = new ProgressLog();
+		int masterId = super.getRequest().getData("masterId", int.class);
+		Contract contract = this.repository.findOneContractById(masterId);
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		contract = this.repository.findOneContractById(masterId);
-
-		object = new ProgressLog();
 		object.setDraftMode(true);
 		object.setContract(contract);
+		object.setRegistrationMoment(MomentHelper.getCurrentMoment());  // Fecha automática
 
 		super.getBuffer().addData(object);
 	}
@@ -59,7 +57,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		assert object != null;
 
-		super.bind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		super.bind(object, "recordId", "completeness", "comment", "responsiblePerson");
 	}
 
 	@Override
@@ -79,8 +77,10 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 			existing = this.repository.findPublishedProgressLogWithMaxCompletenessPublished(object.getContract().getId()).orElse(0.);
 			super.state(object.getCompleteness() > existing, "completeness", "client.progress-log.form.error.completeness-too-low");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
-			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+		if (object.getContract() != null) {
+			boolean validMoment = !object.getRegistrationMoment().before(object.getContract().getInstantiationMoment());
+			super.state(validMoment, "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+		}
 
 	}
 

@@ -20,7 +20,7 @@
 	<acme:input-textbox code="client.progress-log.form.label.recordId" path="recordId" placeholder="client.progress-log.form.recordId.placeholder"/>
 	<acme:input-double code="client.progress-log.form.label.completeness" path="completeness" placeholder="client.progress-log.form.completeness.placeholder"/>
 	<acme:input-textarea code="client.progress-log.form.label.comment" path="comment" placeholder="client.progress-log.form.comment.placeholder"/>
-	<acme:input-moment code="client.progress-log.form.label.registrationMoment" path="registrationMoment" />
+	<acme:input-moment code="client.progress-log.form.label.registrationMoment" path="registrationMoment" readonly="true" />
 	<acme:input-textbox code="client.progress-log.form.label.responsiblePerson" path="responsiblePerson" placeholder="client.progress-log.form.responsiblePerson.placeholder"/>
 	
 	<jstl:choose>

@@ -75,32 +75,36 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 
 			if (!super.getBuffer().getErrors().hasErrors("budget")) {
-				if (object.getProject() != null)
+				double amount = object.getBudget().getAmount();
+				String currency = object.getBudget().getCurrency();
 
-					super.state(this.checkContractsAmountsLessThanProjectCost(object), "budget", "client.contract.form.error.excededBudget");
-				super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
+				super.state(amount > 0, "budget", "client.contract.form.error.negative-amount");
+				super.state(amount <= 1000000, "budget", "client.contract.error.amount");
 
+				// Validación de la moneda permitida
+				boolean validCurrency = currency.equals("EUR") || currency.equals("GBP") || currency.equals("USD");
+				super.state(validCurrency, "budget", "client.contract.error.amount.currency");
 			}
 		}
 
 	}
-
-	private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
-		assert object != null;
-
-		if (object.getProject() != null) {
-			Collection<Contract> contratos = this.clientContractRepository.findManyContractByProjectId(object.getProject().getId());
-
-			Double budgetTotal = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
-
-			double projectCost = (double) object.getProject().getCost();
-
-			return projectCost >= budgetTotal + object.getBudget().getAmount();
-		}
-
-		return true;
-	}
-
+	/*
+	 * private Boolean checkContractsAmountsLessThanProjectCost(final Contract object) {
+	 * assert object != null;
+	 * 
+	 * if (object.getProject() != null) {
+	 * Collection<Contract> contratos = this.clientContractRepository.findManyContractByProjectId(object.getProject().getId());
+	 * 
+	 * Double budgetTotal = contratos.stream().filter(contract -> !contract.isDraftMode()).mapToDouble(contract -> contract.getBudget().getAmount()).sum();
+	 * 
+	 * double projectCost = (double) object.getProject().getCost();
+	 * 
+	 * return projectCost >= budgetTotal + object.getBudget().getAmount();
+	 * }
+	 * 
+	 * return true;
+	 * }
+	 */
 	/*
 	 * private Double moneyToUSDollars(final Money money) {
 	 * 

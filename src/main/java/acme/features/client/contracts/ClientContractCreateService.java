@@ -2,18 +2,16 @@
 package acme.features.client.contracts;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.S1.Project;
 import acme.entities.S2.Contract;
-import acme.entities.S2.SystemConfiguration;
 import acme.roles.Client;
 
 @Service
@@ -38,6 +36,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		contract.setDraftMode(true);
 		contract.setClient(client);
+		contract.setInstantiationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(contract);
 
@@ -55,7 +54,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		object.setDraftMode(true);
 		project = this.clientContractRepository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "providerName", "customerName", "goals", "budget");
 		object.setProject(project);
 	}
 
@@ -68,26 +67,24 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.clientContractRepository.findOneContractByCode(object.getCode());
+			Contract existing = this.clientContractRepository.findOneContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
-			
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-			//if (object.getProject() != null)
-			//	super.state(object.getBudget().getCurrency().equals(object.getProject().getCost()), "budget", "client.contract.form.error.different-currency");
+			double amount = object.getBudget().getAmount();
+			String currency = object.getBudget().getCurrency();
 
-			//List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
-			//final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
+			super.state(amount > 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(amount <= 1000000, "budget", "client.contract.error.amount");
 
-			//super.state(foundCurrency, "budget", "client.contract.form.error.currency-not-suported");
-
+			// Validación de la moneda permitida
+			boolean validCurrency = currency.equals("EUR") || currency.equals("GBP") || currency.equals("USD");
+			super.state(validCurrency, "budget", "client.contract.error.amount.currency");
 		}
-
 	}
+	//if (object.getProject() != null)
+	//	super.state(object.getBudget().getCurrency().equals(object.getProject().getCost()), "budget", "client.contract.form.error.different-currency");
 
 	@Override
 	public void perform(final Contract object) {

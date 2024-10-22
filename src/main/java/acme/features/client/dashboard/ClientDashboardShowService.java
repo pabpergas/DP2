@@ -49,13 +49,6 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Collection<Integer> myContractsIds = myPublishedContracts.stream().map(x -> x.getId()).toList();
 		Collection<Money> myBudgets = this.repository.findManyBudgetsByClientId(clientId); //this only considers published contracts.
 
-		if (progressLogsPublished.isEmpty())
-			throw new IllegalStateException("No progress logs available.");
-		if (myPublishedContracts.isEmpty())
-			throw new IllegalStateException("No published contracts found for the client.");
-		if (myBudgets.isEmpty())
-			throw new IllegalStateException("No budgets found for the client.");
-
 		Map<String, List<Money>> budgetsByCurrency = myBudgets.stream().collect(Collectors.groupingBy(Money::getCurrency));
 
 		Map<String, Double> mediaPorCurrency = budgetsByCurrency.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> this.calcularMedia(entry.getValue()).getAmount()));
@@ -78,13 +71,13 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		String[] supportedCurrencies = systemConfiguration.get(0).acceptedCurrencies.split(",");
 		//my progress logs less than 25
-		double totalNumProgressLogLessThan25 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() < 25.0).count();
+		int totalNumProgressLogLessThan25 = (int) progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() < 25.0).count();
 		// PL between 25 and 50
-		double totalNumProgressLogBetween25and50 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() >= 25.0 && x.getCompleteness() <= 50.0).count();
+		int totalNumProgressLogBetween25and50 = (int) progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() >= 25.0 && x.getCompleteness() <= 50.0).count();
 		//PL between 50 and 75
-		double totalNumProgressLogBetween50and75 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() > 50.0 && x.getCompleteness() <= 75.0).count();
+		int totalNumProgressLogBetween50and75 = (int) progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() > 50.0 && x.getCompleteness() <= 75.0).count();
 		// PL above 75
-		double totalNumProgressLogAbove75 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() > 75.0).count();
+		int totalNumProgressLogAbove75 = (int) progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() > 75.0).count();
 
 		clientDashboard.setTotalNumProgressLogLessThan25(totalNumProgressLogLessThan25);
 		clientDashboard.setTotalNumProgressLogBetween25And50(totalNumProgressLogBetween25and50);

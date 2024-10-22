@@ -44,11 +44,14 @@ client.contract.form.error.excededBudget = The budget you entered exceeds the to
 client.contract.form.error.negative-amount = Negative amounts are not allowed
 client.contract.form.error.currency-not-suported = Currency not supported. Supported currencies are EUR, USD, and GBP
 client.contract.form.error.different-currency = The selected currency does not match the project's currency. Please check the project's currency again
+error.contract.code = The code must be 1 to 3 letters [A-Z] and 3 numbers [0-9]
 #submits
 
 client.contract.form.button.update = Update 
 client.contract.form.button.delete = Delete
 client.contract.form.button.publish = Publish
+client.contract.error.amount.currency = Currency must be EUR, USD or GBP
+client.contract.error.amount = The amount must be greater than 0 and less than 1,000,000.00
 
 
 client.contract.list.button.create-contract=Create Contract

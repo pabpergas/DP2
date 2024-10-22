@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "contract_id")
+	@Index(columnList = "contract_id"), @Index(columnList = "recordId"), @Index(columnList = "id")
 })
 public class ProgressLog extends AbstractEntity {
 
@@ -38,7 +38,7 @@ public class ProgressLog extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
-	@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$")
+	@Pattern(regexp = "^PG-[A-Z]{1,2}-[0-9]{4}$", message = "{error.progressLog.code}")
 	@Column(unique = true)
 	private String				recordId;
 
