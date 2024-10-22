@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>513</x>
+      <x>504</x>
       <y>117</y>
       <w>522</w>
       <h>162</h>
@@ -15,8 +15,8 @@ Project
 + code: String {Pattern(regexp = "^[A-Z]{3}-[0-9]{4}$"), NotBlank, Unique}
 + title: String {NotBlank, Length(0, 75)}
 + summary: String {NotBlank, Length(0, 100)}
-+ hasFatalErrors: boolean {NotNull}
-+ cost: Integer {PositiveOrZero, Max(10000)}
++ hasFatalErrors: boolean
++ cost: int {PositiveOrZero, Max(10000)}
 + link: String {URL, Length(0, 255)}
 + darftMode: boolean
 bg=GREEN
@@ -26,20 +26,21 @@ fg=BLACK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>558</x>
       <y>405</y>
       <w>396</w>
-      <h>135</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-UserStories
+UserStory
 --
 + title: String {NotBlank, Length(0, 75)}
 + description: String {NotBlank, Length(0, 100)}
 + acceptanceCriteria: String {NotBlank, Length(0, 100)}
-+ estimatedCost: Integer {Positive, Max(10000)}
++ estimatedCost: int {Positive, Max(10000)}
 + priority: priorityUserStories {NotNull}
 + link: String {URL, Length(0, 255)}
++ darftMode: boolean
 fg=DARK_GRAY
 bg=GREEN</panel_attributes>
     <additional_attributes/>
@@ -47,19 +48,21 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
+      <x>747</x>
       <y>270</y>
-      <w>27</w>
+      <w>45</w>
       <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-bg=BLACK</panel_attributes>
+m1= 0..*
+m2=1..*
+bg=WHITE</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>990</x>
+      <x>981</x>
       <y>405</y>
       <w>126</w>
       <h>99</h>
@@ -77,7 +80,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>117</x>
+      <x>108</x>
       <y>288</y>
       <w>288</w>
       <h>126</h>
@@ -95,7 +98,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
+      <x>243</x>
       <y>171</y>
       <w>279</w>
       <h>135</h>
@@ -109,7 +112,7 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>243</x>
+      <x>234</x>
       <y>405</y>
       <w>342</w>
       <h>108</h>
