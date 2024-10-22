@@ -19,7 +19,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "c8454b29-ca9a-a441-c38f-3480413401ac",GET,"/libraries/fontawesome/5.2.0/webfonts/fa-solid-900.woff2",,,200,application/font-woff2,,,69842863591999,69842867629300,69842869166699
 "e395131c-12a2-a794-cdb0-a2e34ba1ee3a",GET,"/libraries/fontawesome/5.2.0/webfonts/fa-brands-400.woff2",,,200,application/font-woff2,,,69842883352699,69842889565000,69842891955600
 "27f3dc4f-f7be-bc67-1725-1fb3d239eccf",GET,/images/favicon.ico,,,200,image/x-icon,,,69842906629200,69842948018700,69842949791499
-"51114fbd-700f-8031-10a9-fd561eed3af6",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69864799732500,69864839956900,69866461023200
+"51114fbd-700f-8031-10a9-fd561eed3af6",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69864799732500,69864839956900,69866461023200
 "4bea19f0-cb57-8ad9-f511-0e636e64ec47",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69866515541100,69866518374299,69866519354300
 "99bc0352-77d6-5b15-e399-3c077fe58a7e",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69866524716500,69866527757100,69866528605600
 "83d32566-719e-8769-207e-b1aef421e406",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,69866534766400,69866537502199,69866538290300
@@ -71,7 +71,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "c6e954dc-c856-92bf-da70-933dcd0dd4ac",GET,/images/banner.png,,,200,image/png,,,69880688977200,69880691402000,69880692054700
 "7a624991-63eb-453c-21b2-a4c6b44c8b9c",GET,/images/logo.png,,,200,image/png,,,69880695388500,69880697706299,69880698236600
 "520c0645-799e-cd72-a03d-2d6a494f857e",GET,/images/bannerGIF.gif,,,200,image/gif,,,69880707652700,69880713524399,69880714793100
-"c11d5028-f314-f7b9-6cd8-f9ff48cf5be7",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69884075117900,69884102755700,69884507702600
+"c11d5028-f314-f7b9-6cd8-f9ff48cf5be7",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69884075117900,69884102755700,69884507702600
 "d6beb9dd-75c1-5367-f2fb-c1f54272b1de",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69884529668200,69884532457300,69884533297999
 "427fe8c9-3d44-b332-289f-41485082e5c4",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69884536987300,69884539178100,69884539711800
 "bf04ad64-ce29-b523-1ca0-5bac32656ea7",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,69884543173400,69884545152199,69884545633600
@@ -141,7 +141,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "fc46067c-4fff-fda5-54fd-7241e263f642",GET,/images/logo.png,,,200,image/png,,,69892677904900,69892682077300,69892683184900
 "4d4f51a9-4c87-fa8f-34fe-91b59089f1bb",GET,/images/bannerGIF.gif,,,200,image/gif,,,69892689379599,69892699069099,69892702059200
 "4e4c2f9b-2bb3-32f0-d7ac-6ff58629f051",GET,/images/favicon.ico,,,200,image/x-icon,,,69892760327300,69892781686600,69892786270000
-"097f8403-a256-3b51-28d1-7f26ba6d64fa",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=251,"Access is not authorised",69896185933000,69896213455599,69896685766700
+"097f8403-a256-3b51-28d1-7f26ba6d64fa",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=251,"Access is not authorised",69896185933000,69896213455599,69896685766700
 "27cb6ca0-33ba-3c59-2404-13add651142d",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69896707999200,69896711302700,69896712124000
 "54801a9f-213d-c7c4-243d-2c09e4b2f97e",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69896716686800,69896719560600,69896720354599
 "b067a0a5-82a4-0c02-9d18-a848c77639cf",GET,"/libraries/datatables/1.10.18/js/datatables.min.js",,,200,application/javascript,,,69896724385900,69896727955300,69896728922600
@@ -210,7 +210,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "cebde4f3-7ae4-076c-0d90-35465ca04bf8",GET,/images/logo.png,,,200,image/png,,,69906306649700,69906310496499,69906311158000
 "3319053d-00cd-d26e-4d18-72542cb66560",GET,/images/bannerGIF.gif,,,200,image/gif,,,69906314789600,69906322979300,69906326560899
 "0b54c17f-da33-167a-a2b9-2b1433666bf9",GET,/images/favicon.ico,,,200,image/x-icon,,,69906368936500,69906372019999,69906373008099
-"4bb5521e-c568-9088-7e8b-8d9e4c4eeda0",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=248,"Access is not authorised",69910355086100,69910380314099,69910821169300
+"4bb5521e-c568-9088-7e8b-8d9e4c4eeda0",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=248,"Access is not authorised",69910355086100,69910380314099,69910821169300
 "e1c0e12b-d82b-caf9-cf57-0c29d0315d76",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69910849922199,69910852973500,69910853807199
 "e303107b-5ce3-c0f6-3cbe-803e89a96857",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69910858377500,69910861482800,69910861970800
 "2d10670c-172c-54e7-aadb-11f80de59a43",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,69910865954099,69910868866100,69910869625299
@@ -279,7 +279,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "27f8fe98-b5c9-2b77-a539-602cf1c9b499",GET,/images/logo.png,,,200,image/png,,,69918119903100,69918122731800,69918123124499
 "8892fe16-f9c5-79ab-7c84-e2d9d18c9ee6",GET,/images/bannerGIF.gif,,,200,image/gif,,,69918125623900,69918132147300,69918134558299
 "86e05872-11da-5ef6-af49-47c79ce99c85",GET,/images/favicon.ico,,,200,image/x-icon,,,69918176158500,69918179336200,69918179791000
-"fc88e25e-5124-7a26-d4d3-f5ac93537a6a",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69921019018199,69921048584899,69921464668400
+"fc88e25e-5124-7a26-d4d3-f5ac93537a6a",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=196,"Access is not authorised",69921019018199,69921048584899,69921464668400
 "437be021-c638-3f3f-920f-ec1110697e98",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69921493149100,69921497577300,69921498319200
 "042dd956-c0be-8730-5e87-6ef0af5e8708",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69921502649999,69921504858800,69921505176000
 "ccf31def-6e45-8312-fc14-871119efe135",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,69921507959500,69921509877900,69921510143499
@@ -346,7 +346,7 @@ request-id,request-method,request-path,request-query,request-payload,response-st
 "b741ea86-6c1d-4f6b-b42f-875cec38a529",GET,/images/banner.png,,,200,image/png,,,69929093602400,69929097064400,69929097457200
 "57d46acb-d002-6545-7463-c71275e9ee22",GET,/images/logo.png,,,200,image/png,,,69929100405900,69929102915800,69929103284800
 "65d236ab-8850-7f6f-f000-52fb4c37c434",GET,/images/bannerGIF.gif,,,200,image/gif,,,69929105923100,69929113112000,69929114724300
-"81f489f6-463c-f6dc-b8b7-0c0e437f1d1f",GET,"/manager/user-stories/create",,,500,text/html;charset=utf-8,banner=249,"Access is not authorised",69932594325100,69932619587900,69932925411400
+"81f489f6-463c-f6dc-b8b7-0c0e437f1d1f",GET,"/manager/user-story/create",,,500,text/html;charset=utf-8,banner=249,"Access is not authorised",69932594325100,69932619587900,69932925411400
 "2207e82f-b506-0086-cbd5-4570c42e6fe7",GET,"/libraries/fontawesome/5.2.0/css/all.min.css",,,200,text/css,,,69932953162699,69932955021200,69932955319200
 "24fb2de7-3c4a-7f7d-5e98-a4223e854e28",GET,"/libraries/bootstrap/4.1.3/css/bootstrap.min.css",,,200,text/css,,,69932957236600,69932959439200,69932959789999
 "9114d753-a008-3d12-f954-7c6c6fdca6be",GET,"/libraries/datatables/1.10.18/css/datatables.min.css",,,200,text/css,,,69932962707800,69932964428600,69932964716000
