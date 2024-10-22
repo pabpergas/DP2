@@ -67,6 +67,8 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.client=Cliente
 master.menu.client.contract= Contrato
 master.menu.client.progressLog= ProgresoLog
+master.menu.client.dashboard= Panel
+master.menu.client.list-contract= Contratos
 
 # master.menu.user-account ####################################################
 

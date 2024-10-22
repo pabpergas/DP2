@@ -74,12 +74,18 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-amount");
-		//if (object.getProject() != null)
-		//	super.state(object.getBudget().getCurrency().equals(object.getProject().getCost()), "budget", "client.contract.form.error.different-currency");
-		//List<SystemConfiguration> sc = this.clientContractRepository.findSystemConfiguration();
-		//final boolean foundCurrency = Stream.of(sc.get(0).acceptedCurrencies.split(",")).anyMatch(c -> c.equals(object.getBudget().getCurrency()));
+		// Validación del budget
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			double amount = object.getBudget().getAmount();
+			String currency = object.getBudget().getCurrency();
+
+			super.state(amount > 0, "budget", "client.contract.form.error.negative-amount");
+			super.state(amount <= 1000000, "budget", "client.contract.error.amount");
+
+			// Validación de la moneda permitida
+			boolean validCurrency = currency.equals("EUR") || currency.equals("GBP") || currency.equals("USD");
+			super.state(validCurrency, "budget", "client.contract.error.amount.currency");
+		}
 	}
 
 	@Override

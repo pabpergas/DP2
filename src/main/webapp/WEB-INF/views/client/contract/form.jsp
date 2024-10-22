@@ -17,7 +17,7 @@
 
 <acme:form>
 	<acme:input-textbox code="client.contract.form.label.code" path="code" placeholder="client.contract.form.code.placeholder"/>
-	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
+	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment" readonly="true"/> 
 	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName" placeholder="client.contract.form.provider.placeholder"/>	
 	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName" placeholder="client.contract.form.customer.placeholder"/>	
 	<acme:input-textarea code="client.contract.form.label.goals" path="goals" placeholder="client.contract.form.goals.placeholder"/>
